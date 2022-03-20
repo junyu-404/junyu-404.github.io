@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-icon-fish.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-fish.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-fish.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-bounce.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"fish-404.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="在了解到Vim编辑器的强大的功能后，对于喜爱键盘想要摆脱鼠标的我来说是一个非常大的诱惑。而Vim自带的vimtutor无疑是一个入门的非常好的教程，该教程适合边学边用，很快就能了解最基本的Vim编辑器操作。本文将整理摘录vimtutor中的前六章内容，顺序上做了一定的归纳和调整。8.24 更新：补充了在Interactive Vim tutorial中学到的小技巧，因为大部分内容均为基本操作，故不">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vim-Vimtutor学习整理">
+<meta property="og:url" content="https://fish-404.github.io/vim-vimtutor/index.html">
+<meta property="og:site_name" content="在逃的貓">
+<meta property="og:description" content="在了解到Vim编辑器的强大的功能后，对于喜爱键盘想要摆脱鼠标的我来说是一个非常大的诱惑。而Vim自带的vimtutor无疑是一个入门的非常好的教程，该教程适合边学边用，很快就能了解最基本的Vim编辑器操作。本文将整理摘录vimtutor中的前六章内容，顺序上做了一定的归纳和调整。8.24 更新：补充了在Interactive Vim tutorial中学到的小技巧，因为大部分内容均为基本操作，故不">
+<meta property="og:locale">
+<meta property="article:published_time" content="2018-08-13T16:00:00.000Z">
+<meta property="article:modified_time" content="2019-05-05T14:06:44.000Z">
+<meta property="article:author" content="Fish__404">
+<meta property="article:tag" content="Vim">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://fish-404.github.io/vim-vimtutor/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-Hans'
+  };
+</script>
+
+  <title>Vim-Vimtutor学习整理 | 在逃的貓</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="تشغيل شريط التصفح">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">在逃的貓</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">A cat called fish.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fort-awesome fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="question fa-fw"></i>معلومات</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="list fa-fw"></i>التصنيفات</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="inbox fa-fw"></i>الأرشيفات</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>بحث
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="بحث..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://fish-404.github.io/vim-vimtutor/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/cat.jpg">
+      <meta itemprop="name" content="Fish__404">
+      <meta itemprop="description" content="What's dream? Just fun!">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="在逃的貓">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Vim-Vimtutor学习整理
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">نُشر في</span>
+
+              <time title="أُنشأ: Aug 14 2018 0:00:00" itemprop="dateCreated datePublished" datetime="2018-08-14T00:00:00+08:00">Aug 14 2018</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">عُدل في</span>
+                <time title="عُدل: May 5 2019 22:06:44" itemprop="dateModified" datetime="2019-05-05T22:06:44+08:00">May 5 2019</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">في</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8/" itemprop="url" rel="index"><span itemprop="name">软件使用</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/vim-vimtutor/" class="post-meta-item leancloud_visitors" data-flag-title="Vim-Vimtutor学习整理" title="مشاهدات">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">مشاهدات: </span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/vim-vimtutor/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/vim-vimtutor/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>在了解到Vim编辑器的强大的功能后，对于喜爱键盘想要摆脱鼠标的我来说是一个非常大的诱惑。而Vim自带的vimtutor无疑是一个入门的非常好的教程，该教程适合边学边用，很快就能了解最基本的Vim编辑器操作。本文将整理摘录vimtutor中的前六章内容，顺序上做了一定的归纳和调整。<br>8.24 更新：<br>补充了在<a target="_blank" rel="noopener" href="https://www.openvim.com/">Interactive Vim tutorial</a>中学到的小技巧，因为大部分内容均为基本操作，故不再另外写文整理。</p>
+<span id="more"></span>
+<h1 id="第一讲-基本使用"><a href="#第一讲-基本使用" class="headerlink" title="第一讲 基本使用"></a>第一讲 基本使用</h1><h2 id="1-1-移动光标"><a href="#1-1-移动光标" class="headerlink" title="1.1 移动光标"></a>1.1 移动光标</h2><p>在正常模式（Normal)下（使用<ESC>键可以进入正常模式），使用<code>h j k l</code>键进行光标的移动，刚开始觉得这个设定极为反人类，但熟练其操作后会发现这个设定极为巧妙，能更快第在屏幕内四处移动光标。<br><code>h</code>: 光标向左移动；<br><code>l</code>: 光标向右移动；<br><code>j</code>: 光标向下移动；<br><code>k</code>: 光标向上移动.</p>
+<p><em>小贴士</em>：在所有移动操作前加上<code>g</code>，就可以实现相对屏幕行进行操作而不是实际行，如<code>gj</code>。</p>
+<h2 id="1-2-VIM的进入和退出"><a href="#1-2-VIM的进入和退出" class="headerlink" title="1.2 VIM的进入和退出"></a>1.2 VIM的进入和退出</h2><p>在 Normal 模式下，<br><code>:q!&lt;Enter&gt;</code> : 退出编辑器，这种方式将会丢弃所有未写入的改动。<br><code>wq&lt;Enter&gt;</code>: 保存文件并退出。 </p>
+<h2 id="1-3-文本编辑"><a href="#1-3-文本编辑" class="headerlink" title="1.3 文本编辑"></a>1.3 文本编辑</h2><p>在 Normal 模式下，<br><code>x</code>: 删除光标所在位置的字符；<br><code>X</code>: 删除光标左侧位置字符；<br><code>.</code>: 可重复前一次操作；<br><code>i</code>: 在光标所在位置之前插入字符；<br><code>a</code>: 在光标所在位置之后插入字符；<br><code>A</code>: 在光标所在行末尾插入字符。</p>
+<h1 id="第二讲-删除撤销动作"><a href="#第二讲-删除撤销动作" class="headerlink" title="第二讲 删除撤销动作"></a>第二讲 删除撤销动作</h1><h2 id="2-1-动作"><a href="#2-1-动作" class="headerlink" title="2.1 动作"></a>2.1 动作</h2><h3 id="动作列表"><a href="#动作列表" class="headerlink" title="动作列表"></a>动作列表</h3><p><code>w</code>: 从当前光标位置移动到下一个单词起始处，不包括它的第一个字符；<br><code>e</code>: 从当前光标位置移动到单词末尾，包括最后一个字符；<br><code>$</code>: 从当前光标位置移动到当前行末；<br><code>ge</code>: 从当前光标位置移动到上一个单词末尾；<br><code>b</code>：从当前光标位置移动到上一个单词开头。</p>
+<h3 id="计数指定动作"><a href="#计数指定动作" class="headerlink" title="计数指定动作"></a>计数指定动作</h3><ol>
+<li>在动作前输入数字会使该动作重复多次，e.g. ：</li>
+</ol>
+<ul>
+<li><code>2w</code> 将光标向后移动两个单词</li>
+<li><code>3e</code> 使光标移向后移动到第三个单词末尾</li>
+<li><code>7perfect &lt;ESC&gt;</code>将插入7个perfect单词 </li>
+</ul>
+<ol start="2">
+<li><code>0</code>：移动光标到行首</li>
+</ol>
+<h2 id="2-2-删除类命令"><a href="#2-2-删除类命令" class="headerlink" title="2.2 删除类命令"></a>2.2 删除类命令</h2><p>改变文本的命令通常由一个操作符和一个动作构成：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">operator [number] motion</span><br></pre></td></tr></table></figure>
+<ul>
+<li>operator  操作符</li>
+<li>[number] 可选操作，附加数字表示动作重复次数</li>
+<li>motion  动作，表示在所操作的文本上的移动<br>例如删除类命令：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">d [number] motion</span><br></pre></td></tr></table></figure></li>
+<li>d  删除操作符<br><code>dw</code>: 删除至下一个单词起始处，不包括下一个单词的第一个字符；<br><code>de</code>: 删除至当前单词末尾，包括最后一个字符；<br><code>d$</code>: 删除至当前行末尾；<br>删除命令也可以搭配计数删除更多。<br><code>dd</code>: 删除当前行；<br><code>dd</code> 命令同样可以在之前插入数字进行计数删除多行。</li>
+</ul>
+<h2 id="2-3-撤销类命令"><a href="#2-3-撤销类命令" class="headerlink" title="2.3 撤销类命令"></a>2.3 撤销类命令</h2><p><code>u</code>: 撤销最后执行的命令；<br><code>U</code>: 撤销对整行的修改。<br><code>CTRL-R</code>: 撤销以前的撤销命令，恢复之前的操作结果</p>
+<h1 id="第三讲-插入替换更改"><a href="#第三讲-插入替换更改" class="headerlink" title="第三讲 插入替换更改"></a>第三讲 插入替换更改</h1><h2 id="3-1-插入类命令"><a href="#3-1-插入类命令" class="headerlink" title="3.1 插入类命令"></a>3.1 插入类命令</h2><p><code>p</code>: 将最后一次删除的内容插入当前光标之后, 类似于剪切功能。<br><code>o</code>: 在光标当前行下方创建新的一行，并进入插入模式；<br><code>O</code>: 在光标当前行上方创建新的一行，并进入插入模式。</p>
+<h2 id="3-2-替换类命令"><a href="#3-2-替换类命令" class="headerlink" title="3.2 替换类命令"></a>3.2 替换类命令</h2><p><code>r[CHARACTER]</code>: 输入 r 和一个字符替换光标所在位置的字符<br><code>R</code>: 连续替换多个字符，与插入模式类似，不过每个输入的字符会替代光标当前字符，与键盘使用了 insert 键进入改写模式的情况类似</p>
+<h2 id="3-3-更改类命令"><a href="#3-3-更改类命令" class="headerlink" title="3.3 更改类命令"></a>3.3 更改类命令</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">c [number] motion</span><br></pre></td></tr></table></figure>
+<ul>
+<li>c 操作符</li>
+</ul>
+<p><code>cw</code>: 更改文本直到该单词末尾；<br><code>ce</code>: 更改文本直到下一单词开始；<br><code>c$</code>: 更改文本直到行末。<br>更改命令执行后直接进入 insert 模式。</p>
+<h1 id="第四讲-定位查找"><a href="#第四讲-定位查找" class="headerlink" title="第四讲 定位查找"></a>第四讲 定位查找</h1><h2 id="4-1-定位及文件状态"><a href="#4-1-定位及文件状态" class="headerlink" title="4.1 定位及文件状态"></a>4.1 定位及文件状态</h2><p><code>F[CHAR]</code>: 光标移动到上一个 char 所指字母所在位置；<br><code>f[CHAR]</code>: 光标移动到下一个 char 所指字母所在位置；<br><code>*</code>: 光标移动到当前光标所指单词相同的下一个位置；<br><code>#</code>: 光标移动到当前光标所指单词相同的上一个位置；<br><code>CTRL-g/G</code>: 显示当前编辑文件中当前光标所在行位置以及文件状态信息；<br><code>G</code>: 光标跳转到文件最后一行；<br><code>gg</code>: 光标跳转到文件第一行；<br><code>G[NUMBER]</code>: 光标跳转到number表示的行号。</p>
+<h2 id="4-2-搜索类命令"><a href="#4-2-搜索类命令" class="headerlink" title="4.2 搜索类命令"></a>4.2 搜索类命令</h2><p><code>/[STRING]</code>: 正向查找string表示的字符串;<br><code>?[STRING]</code>: 逆向查找string表示的字符串；<br><code>CTRL-O</code> \ <code>N</code>：回到前一个位置；<br><code>CTRL-I</code> \ <code>n</code>: 到下一个位置。</p>
+<h2 id="4-3-配对括号的查找"><a href="#4-3-配对括号的查找" class="headerlink" title="4.3 配对括号的查找"></a>4.3 配对括号的查找</h2><p>使用<code>%</code>可查找匹配对的括号<code>) \ ] \ &#125;</code>：<br>将光标移动到左括号处，按下<code>%</code>，光标将跳转到匹配的右括号处，再按下一次可跳回原来的左括号处。<br>（这对程序员来说真是个福音~）</p>
+<h2 id="4-4-替换命令"><a href="#4-4-替换命令" class="headerlink" title="4.4 替换命令"></a>4.4 替换命令</h2><p><code>:s/old/new</code>: 在光标所在行第一次出现的 old 表示的字符串替换为新的字符串 new ;<br><code>:s/old/new/g</code>: 在光标所在行替换所有出现的 old 所表示的字符串替换为新的字符串 new ；<br><code>:#,#s/old/new/g</code>: 在两行内替换所有的字符串 old 为新的字符串 new ；<br><code>:%s/old/new/g</code>: 在文件内替换所有的字符串 old 为新的字符串 new ；<br><code>:%s/old/new/gc</code>: 进行全文替换时询问用户确认每个替换。</p>
+<h1 id="第五讲-文件操作"><a href="#第五讲-文件操作" class="headerlink" title="第五讲 文件操作"></a>第五讲 文件操作</h1><h2 id="5-1-在VIM内部执行外部命令"><a href="#5-1-在VIM内部执行外部命令" class="headerlink" title="5.1 在VIM内部执行外部命令"></a>5.1 在VIM内部执行外部命令</h2><p><code>:![COMMAND]</code>: 执行command所代表的外部命令</p>
+<h2 id="5-2-保存文件"><a href="#5-2-保存文件" class="headerlink" title="5.2 保存文件"></a>5.2 保存文件</h2><p><code>:w FILENAME</code>: 将对文件的改动保存到一个文件中;<br><code>v motion: w FILENAME</code>: 将文件的部分内容保存到文件中：<br>v 进入可视模式（Visual), motion 表示光标的移动，可选中文本，按下：后下方将出现<code>&#39;&lt;,&#39;&gt;</code>，输入w FILENAME将选中的文本保存在文件FILENAME中。可视选中后同样也可以进行批量删除操作。</p>
+<h2 id="5-3-提取合并文件"><a href="#5-3-提取合并文件" class="headerlink" title="5.3 提取合并文件"></a>5.3 提取合并文件</h2><p><code>:r FILENAME</code>: 提取磁盘文件 FILENAME 并将其插入到当前文件光标当前位置后；<br><code>:r !command</code>: 读取command命令的输出插入到当前文件光标当前位置后。</p>
+<h2 id="5-4-复制粘贴文本"><a href="#5-4-复制粘贴文本" class="headerlink" title="5.4 复制粘贴文本"></a>5.4 复制粘贴文本</h2><p>进入 Visual 模式，<br>使用<code>y</code>进行复制，使用<code>p</code>进行粘贴</p>
+<p>文本编辑部分整理至此。</p>
+<p>顺便推荐几个网站：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://vim-adventures.com/ ">VIM Adventures</a>，这是一个用VIM操作来进行的游戏，不过免费版只能练习最基本的移动操作~</li>
+<li><a target="_blank" rel="noopener" href="https://www.openvim.com/">Interative Vim tutorial</a>,这是一个交互的类似于 vimtutor 的教程网站</li>
+<li><a target="_blank" rel="noopener" href="https://www.openvim.com/sandbox.html">Interative Vim tutorial - sandbox</a>这是上面那个教程网站给出的一个练习，右侧还有命令提示，可以说非常贴心了</li>
+<li><a target="_blank" rel="noopener" href="http://www.vimsnake.com/">Vim Snake</a> 一个基于Vim移动操作的贪吃蛇游戏</li>
+</ul>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ul>
+<li>vimtutor</li>
+<li><a target="_blank" rel="noopener" href="https://www.openvim.com/">Interative Vim tutorial</a></li>
+<li>《Vim 实用技巧（第2版）》</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Vim/" rel="tag"># Vim</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/Bookcomment-lamb-jumping-out-of-the-sheepfold/" rel="prev" title="书评-跳出羊圈的羔羊">
+      <i class="fa fa-chevron-left"></i> 书评-跳出羊圈的羔羊
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/C-program-escape-sequence/" rel="next" title="C语言中的转义序列">
+      C语言中的转义序列 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          المحتويات
+        </li>
+        <li class="sidebar-nav-overview">
+          عام
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E8%AE%B2-%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"><span class="nav-number">1.</span> <span class="nav-text">第一讲 基本使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-%E7%A7%BB%E5%8A%A8%E5%85%89%E6%A0%87"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 移动光标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-VIM%E7%9A%84%E8%BF%9B%E5%85%A5%E5%92%8C%E9%80%80%E5%87%BA"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 VIM的进入和退出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 文本编辑</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E8%AE%B2-%E5%88%A0%E9%99%A4%E6%92%A4%E9%94%80%E5%8A%A8%E4%BD%9C"><span class="nav-number">2.</span> <span class="nav-text">第二讲 删除撤销动作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-%E5%8A%A8%E4%BD%9C"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 动作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A8%E4%BD%9C%E5%88%97%E8%A1%A8"><span class="nav-number">2.1.1.</span> <span class="nav-text">动作列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%A1%E6%95%B0%E6%8C%87%E5%AE%9A%E5%8A%A8%E4%BD%9C"><span class="nav-number">2.1.2.</span> <span class="nav-text">计数指定动作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-%E5%88%A0%E9%99%A4%E7%B1%BB%E5%91%BD%E4%BB%A4"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 删除类命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-%E6%92%A4%E9%94%80%E7%B1%BB%E5%91%BD%E4%BB%A4"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 撤销类命令</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E8%AE%B2-%E6%8F%92%E5%85%A5%E6%9B%BF%E6%8D%A2%E6%9B%B4%E6%94%B9"><span class="nav-number">3.</span> <span class="nav-text">第三讲 插入替换更改</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-%E6%8F%92%E5%85%A5%E7%B1%BB%E5%91%BD%E4%BB%A4"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 插入类命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-%E6%9B%BF%E6%8D%A2%E7%B1%BB%E5%91%BD%E4%BB%A4"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 替换类命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-%E6%9B%B4%E6%94%B9%E7%B1%BB%E5%91%BD%E4%BB%A4"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 更改类命令</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E5%9B%9B%E8%AE%B2-%E5%AE%9A%E4%BD%8D%E6%9F%A5%E6%89%BE"><span class="nav-number">4.</span> <span class="nav-text">第四讲 定位查找</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-%E5%AE%9A%E4%BD%8D%E5%8F%8A%E6%96%87%E4%BB%B6%E7%8A%B6%E6%80%81"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 定位及文件状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-2-%E6%90%9C%E7%B4%A2%E7%B1%BB%E5%91%BD%E4%BB%A4"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 搜索类命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-3-%E9%85%8D%E5%AF%B9%E6%8B%AC%E5%8F%B7%E7%9A%84%E6%9F%A5%E6%89%BE"><span class="nav-number">4.3.</span> <span class="nav-text">4.3 配对括号的查找</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-4-%E6%9B%BF%E6%8D%A2%E5%91%BD%E4%BB%A4"><span class="nav-number">4.4.</span> <span class="nav-text">4.4 替换命令</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%BA%94%E8%AE%B2-%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C"><span class="nav-number">5.</span> <span class="nav-text">第五讲 文件操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#5-1-%E5%9C%A8VIM%E5%86%85%E9%83%A8%E6%89%A7%E8%A1%8C%E5%A4%96%E9%83%A8%E5%91%BD%E4%BB%A4"><span class="nav-number">5.1.</span> <span class="nav-text">5.1 在VIM内部执行外部命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-2-%E4%BF%9D%E5%AD%98%E6%96%87%E4%BB%B6"><span class="nav-number">5.2.</span> <span class="nav-text">5.2 保存文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-3-%E6%8F%90%E5%8F%96%E5%90%88%E5%B9%B6%E6%96%87%E4%BB%B6"><span class="nav-number">5.3.</span> <span class="nav-text">5.3 提取合并文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-4-%E5%A4%8D%E5%88%B6%E7%B2%98%E8%B4%B4%E6%96%87%E6%9C%AC"><span class="nav-number">5.4.</span> <span class="nav-text">5.4 复制粘贴文本</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">6.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Fish__404"
+      src="/images/cat.jpg">
+  <p class="site-author-name" itemprop="name">Fish__404</p>
+  <div class="site-description" itemprop="description">What's dream? Just fun!</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">93</span>
+          <span class="site-state-item-name">المقالات</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">التصنيفات</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">35</span>
+        <span class="site-state-item-name">الوسوم</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/fish-404" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;fish-404" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:yourname@gmail.com" title="E-Mail → mailto:yourname@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="user-secret"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Fish__404</span>
+</div>
+  <div class="powered-by">تطبيق الموقع <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : true,
+      notify     : true,
+      appId      : 'BwfroBJnkh22Gmd39XCKHVR6-MdYXbMMI',
+      appKey     : '6kUQN2hR5mA4BEGerhyY4dGa',
+      placeholder: "不说点什么嘛？邮箱网址选填~\n说不定有机会>触发本喵现身噢~ \n喵喵喵o(=•ェ•=)m",
+      avatar     : 'robohash',
+      meta       : guest,
+      pageSize   : '7' || 10,
+      visitor    : true,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>

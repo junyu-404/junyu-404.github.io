@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-icon-fish.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-fish.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-fish.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-bounce.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"fish-404.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="本文简要介绍在Python中如何使用 selenium 模块控制浏览器获取动态页面元素。包括获取信息，点击链接，下拉框选取。毕设通过本方式自动化获取数据，简要记录。更新了没保存好被吞掉的部分…">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python-使用Selenium模块控制浏览器">
+<meta property="og:url" content="https://fish-404.github.io/python-use-selenium-control-browser/index.html">
+<meta property="og:site_name" content="在逃的貓">
+<meta property="og:description" content="本文简要介绍在Python中如何使用 selenium 模块控制浏览器获取动态页面元素。包括获取信息，点击链接，下拉框选取。毕设通过本方式自动化获取数据，简要记录。更新了没保存好被吞掉的部分…">
+<meta property="og:locale">
+<meta property="article:published_time" content="2020-05-01T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-06-11T02:47:42.000Z">
+<meta property="article:author" content="Fish__404">
+<meta property="article:tag" content="Python">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://fish-404.github.io/python-use-selenium-control-browser/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-Hans'
+  };
+</script>
+
+  <title>Python-使用Selenium模块控制浏览器 | 在逃的貓</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="تشغيل شريط التصفح">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">在逃的貓</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">A cat called fish.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fort-awesome fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="question fa-fw"></i>معلومات</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="list fa-fw"></i>التصنيفات</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="inbox fa-fw"></i>الأرشيفات</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>بحث
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="بحث..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://fish-404.github.io/python-use-selenium-control-browser/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/cat.jpg">
+      <meta itemprop="name" content="Fish__404">
+      <meta itemprop="description" content="What's dream? Just fun!">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="在逃的貓">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Python-使用Selenium模块控制浏览器
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">نُشر في</span>
+
+              <time title="أُنشأ: May 2 2020 0:00:00" itemprop="dateCreated datePublished" datetime="2020-05-02T00:00:00+08:00">May 2 2020</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">عُدل في</span>
+                <time title="عُدل: Jun 11 2020 10:47:42" itemprop="dateModified" datetime="2020-06-11T10:47:42+08:00">Jun 11 2020</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">في</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/python-use-selenium-control-browser/" class="post-meta-item leancloud_visitors" data-flag-title="Python-使用Selenium模块控制浏览器" title="مشاهدات">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">مشاهدات: </span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/python-use-selenium-control-browser/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/python-use-selenium-control-browser/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>本文简要介绍在Python中如何使用 selenium 模块控制浏览器获取动态页面元素。包括获取信息，点击链接，下拉框选取。毕设通过本方式自动化获取数据，简要记录。更新了没保存好被吞掉的部分…</p>
+<span id="more"></span>
+
+<p>部分网页在右键使用查看源代码与检查元素时看到的内容是不相同的，上下页的切换也不会导致页面链接发生变化，这一类网页仅仅依靠获取网页源代码的方式是无法自动获取页面元素的。Python中的selenium模块可以模拟手动操作浏览器的过程，虽然该模块主要用于编写功能/验收测试，用来获取动态网页的数据也很方便。</p>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h2 id="下载-selenium-安装包"><a href="#下载-selenium-安装包" class="headerlink" title="下载 selenium 安装包"></a>下载 selenium 安装包</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install selenium</span><br></pre></td></tr></table></figure>
+
+<h2 id="安装-WebDriver"><a href="#安装-WebDriver" class="headerlink" title="安装 WebDriver"></a>安装 WebDriver</h2><p>将要模拟的浏览器的 webdrver 下载至 Python 所在的位置。</p>
+<p>（注意：该驱动与浏览器版本相关，下载前请先确认自己的浏览器版本）</p>
+<ul>
+<li><p>Firefox: <a target="_blank" rel="noopener" href="https://github.com/mozilla/geckodriver/releases">Releases · mozilla/geckodriver</a></p>
+</li>
+<li><p>Chrome: <a target="_blank" rel="noopener" href="https://chromedriver.chromium.org/downloads">Downloads - ChromeDriver - WebDriver for Chrome</a></p>
+</li>
+</ul>
+<h1 id="启动浏览器"><a href="#启动浏览器" class="headerlink" title="启动浏览器"></a>启动浏览器</h1><h2 id="导入模块"><a href="#导入模块" class="headerlink" title="导入模块"></a>导入模块</h2><p>导入该模块通常使用以下语句：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br></pre></td></tr></table></figure>
+
+<h2 id="启动浏览器-1"><a href="#启动浏览器-1" class="headerlink" title="启动浏览器"></a>启动浏览器</h2><p>对不同的浏览器，使用webdriver启动浏览器：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">browser = webdriver.Firefox()</span><br><span class="line"><span class="comment"># browser = webdriver.Chrome()</span></span><br></pre></td></tr></table></figure>
+
+<p>使用 <code>get()</code> 方法访问指定链接：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">driver.get(<span class="string">&quot;YOUR_URL&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h1 id="页面元素定位"><a href="#页面元素定位" class="headerlink" title="页面元素定位"></a>页面元素定位</h1><p>使用 <code>find_element_*</code> 和 <code>find_elements_*</code> 查找页面中的 WebDriver对象，前者返回第一个匹配元素，后者返回所有匹配元素，形式为列表。</p>
+<p>以下是 WebDriver 方法，仅列出查找第一个匹配元素的方法名，查找所有元素的方法明只需在 <code>element</code> 后加上 <code>s</code> 即可。</p>
+<table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>定位对象</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>find_element_by_class_name(name)</code></td>
+<td>根据 <code>class</code> 名定位</td>
+</tr>
+<tr>
+<td><code>find_element_by_css_selector(selector)</code></td>
+<td>根据 CSS 选择器定位</td>
+</tr>
+<tr>
+<td><code>find_element_by_id(id)</code></td>
+<td>根据元素的 <code>id</code> 属性定位</td>
+</tr>
+<tr>
+<td><code>find_element_by_link_text(text)</code></td>
+<td>根据文本定位</td>
+</tr>
+<tr>
+<td><code>find_element_by_partial_link_text(text)</code></td>
+<td>根据文本的子字符串匹配</td>
+</tr>
+<tr>
+<td><code>find_element_by_name(name)</code></td>
+<td>根据元素的 <code>name</code> 属性定位</td>
+</tr>
+<tr>
+<td><code>find_element_by_tag_name(name)</code></td>
+<td>根据标签名定位</td>
+</tr>
+<tr>
+<td><code>find_element_by_xpath(path)</code></td>
+<td>根据 Xpath 定位</td>
+</tr>
+</tbody></table>
+<p>以上所有的元素定位，若不能找到匹配元素，将抛出 <code>NoSuchElementException</code> 异常。</p>
+<p>个人倾向于使用 CSS 选择器的方式进行元素定位，虽然完全不懂前端，但其实通过浏览器的检查元素可以很轻易地获取 CSS选择器的语法，同时参照 <a target="_blank" rel="noopener" href="https://www.w3school.com.cn/cssref/css_selectors.asp">CSS选择器参考手册</a> 就能很容易通过 CSS 选择器进行定位。</p>
+<p>通过 浏览器快速获取 CSS 选择器语法的方式是：</p>
+<ol>
+<li><p>打开页面右键菜单中的检查元素窗口；</p>
+</li>
+<li><p>点击左上角的选择元素工具；</p>
+</li>
+<li><p>在页面上选取需要定位的元素；</p>
+</li>
+<li><p>这时 HTML 代码的浏览窗格中将定位到所选取元素的 HTML 代码位置；</p>
+</li>
+<li><p>查看代码浏览窗格的下方，以 <code>&gt;</code> 连接的形式呈现了子代以及每一级父代的 CSS 选择器语法。</p>
+</li>
+</ol>
+<p>例如：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">td</span> <span class="attr">class</span>=<span class="string">&quot;el-table_1_column_2  &quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;cell&quot;</span>&gt;</span>data<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>定位到 data 的 CSS 选择器语法为：<code>td.el-table_1_column_2 div</code> ，上面提到的定位方法使用方式如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">elem = browser.fidn_element_by_css_selector(<span class="string">&#x27;td.el-table_1_column_2 div&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>此时 <code>elem</code> 为定位到的 WebElement 对象，还不是我们想要的内容。</p>
+<h1 id="获取内容"><a href="#获取内容" class="headerlink" title="获取内容"></a>获取内容</h1><p>可以通过 WebElement 对象提供的属性和方法访问对象的信息，如下表所示：</p>
+<table>
+<thead>
+<tr>
+<th>属性或方法名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>tag_name</code></td>
+<td>标签名</td>
+</tr>
+<tr>
+<td><code>get_attribute()</code></td>
+<td>属性值</td>
+</tr>
+<tr>
+<td><code>text</code></td>
+<td>文本</td>
+</tr>
+<tr>
+<td><code>clear()</code></td>
+<td>清除文本字段或文本区域输入的文本</td>
+</tr>
+<tr>
+<td><code>is_displayed()</code></td>
+<td>根据文本的子字符串匹配</td>
+</tr>
+<tr>
+<td><code>find_element_by_name(name)</code></td>
+<td>元素是否可见</td>
+</tr>
+<tr>
+<td><code>is_enabled()</code></td>
+<td>元素是否启用</td>
+</tr>
+<tr>
+<td><code>is_selected()</code></td>
+<td>选框是否选中</td>
+</tr>
+<tr>
+<td><code>location</code></td>
+<td>元素在页面上的位置</td>
+</tr>
+</tbody></table>
+<p>如上文提到的 data 信息的获取可通过 text 属性提取：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(elem.text)</span><br></pre></td></tr></table></figure>
+
+<p>但对于一些隐藏的 CSS 元素，尽管页面上可以找到该元素，但无法通过 <code>text</code> 方式获取，如下面这段 HTML 代码：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">td</span> <span class="attr">class</span>=<span class="string">&quot;el-table_1_column_1   is-hidden&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;cell&quot;</span>&gt;</span>data1<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>直接使用 text 属性，获取到的内容将为空白，需要使用 <code>get_attribute()</code> 方法，如下列代码所示：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(elem.get_attribute(<span class="string">&quot;textContent&quot;</span>))</span><br></pre></td></tr></table></figure>
+
+<p>具体可参考 <a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/prop_node_textcontent.asp">HTML DOM textContent Property</a> 。</p>
+<h1 id="点击页面"><a href="#点击页面" class="headerlink" title="点击页面"></a>点击页面</h1><p>WebElement 中还提供了 <code>click()</code> 方法，通过该方法可模拟手动操作鼠标对页面元素进行点击，如上下页的切换等。在页面元素无法点击的情况下（如末页的下一页按钮被禁用），该方法不会执行任何操作，也不会有异常返回。以下是示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">browser.find_element_by_css_selector(<span class="string">&#x27;button.searchBtr&#x27;</span>).click()</span><br></pre></td></tr></table></figure>
+
+<h1 id="下拉框选取"><a href="#下拉框选取" class="headerlink" title="下拉框选取"></a>下拉框选取</h1><p>webdriver 中提供了 select 模块用于下拉框的选取，以下是导入该模块的语句的两种方式：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium.webdriver.support.ui <span class="keyword">import</span> Select</span><br><span class="line"><span class="keyword">from</span> selecnium.webdriver.support.select <span class="keyword">import</span> Select</span><br></pre></td></tr></table></figure>
+
+<p>使用时将查找的元素作为 <code>Select()</code> 的参数，下拉框的选取有以下三种方式：</p>
+<ul>
+<li><p><code>select_by_index(index)</code> ：通过索引选取，即第几个元素，索引编号从 0 开始；</p>
+</li>
+<li><p><code>select_by_value(value)</code>： 通过 <code>value</code> 属性值选取；</p>
+</li>
+<li><p><code>select_by_visible_text(text)</code>： 通过可见文本选取，即该下拉菜单中显示值。</p>
+</li>
+</ul>
+<p>以下是示例 HTML代码段：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;listquerybox&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;selectTitle&quot;</span> <span class="attr">class</span>=<span class="string">&quot;selectTitle&quot;</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span>&gt;</span>所属行政区：<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">select</span> <span class="attr">class</span>=<span class="string">&quot;area-select&quot;</span> <span class="attr">id</span>=<span class="string">&quot;pid&quot;</span> <span class="attr">onchange</span>=<span class="string">&quot;gradeChange()&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>&gt;</span>--省--<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;110000&quot;</span>&gt;</span>北京市<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;120000&quot;</span>&gt;</span>天津市<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">            ...</span><br><span class="line">        <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>通过三种不同方式选取 北京市 选项如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Select(browser.find_element_by_css_selector(<span class="string">&#x27;select#pid.area-select&#x27;</span>)).select_by_index(<span class="number">1</span>)</span><br><span class="line">Select(browser.find_element_by_css_selector(<span class="string">&#x27;select#pid.area-select&#x27;</span>)).select_by_value(<span class="string">&#x27;110000&#x27;</span>)</span><br><span class="line">Select(browser.find_element_by_css_selector(<span class="string">&#x27;select#pid.area-select&#x27;</span>)).select_by_visible_text(<span class="string">&#x27;北京市&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>在下拉框中的选择值查找失败时，将抛出 <code>NoSuchElementException</code> 异常。</p>
+<h1 id="关闭浏览器"><a href="#关闭浏览器" class="headerlink" title="关闭浏览器"></a>关闭浏览器</h1><p>在信息获取完后，应使用 <code>quit()</code> 关闭浏览器，否则通过 selenium 启动的浏览器将一直处于活动运行状态。以下是包括浏览器常用的操控按钮示例。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">browser.quit() <span class="comment"># 点击 关闭浏览器 按钮</span></span><br><span class="line">browser.back() <span class="comment"># 点击 返回 按钮</span></span><br><span class="line">browser.forward() <span class="comment"># 点击 前进 按钮</span></span><br><span class="line">browser.refresh() <span class="comment"># 点击 刷新 按钮</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ul>
+<li><p>《Python编程快速上手——让繁琐工作自动化》</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://python-selenium-zh.readthedocs.io/zh_CN/latest/">selenium-python中文文档</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/61383136/how-to-read-hidden-text-in-python-by-using-selenium">html - how to read hidden text in python by using selenium? - Stack Overflow</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.selenium.dev/selenium/docs/api/py/webdriver_support/selenium.webdriver.support.select.html#module-selenium.webdriver.support.select">selenium.webdriver.support.select — Selenium 3.14 documentation</a></p>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Python/" rel="tag"># Python</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/Bookcomment-job-seek-record/" rel="prev" title="书评-求职小记">
+      <i class="fa fa-chevron-left"></i> 书评-求职小记
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/Translate-efficient-string-matching-an-aid-to-bibliographic-search/" rel="next" title="翻译-高效的字符串匹配：辅助参考书目检索">
+      翻译-高效的字符串匹配：辅助参考书目检索 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          المحتويات
+        </li>
+        <li class="sidebar-nav-overview">
+          عام
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">1.</span> <span class="nav-text">安装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD-selenium-%E5%AE%89%E8%A3%85%E5%8C%85"><span class="nav-number">1.1.</span> <span class="nav-text">下载 selenium 安装包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-WebDriver"><span class="nav-number">1.2.</span> <span class="nav-text">安装 WebDriver</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8%E6%B5%8F%E8%A7%88%E5%99%A8"><span class="nav-number">2.</span> <span class="nav-text">启动浏览器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%BC%E5%85%A5%E6%A8%A1%E5%9D%97"><span class="nav-number">2.1.</span> <span class="nav-text">导入模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8%E6%B5%8F%E8%A7%88%E5%99%A8-1"><span class="nav-number">2.2.</span> <span class="nav-text">启动浏览器</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A1%B5%E9%9D%A2%E5%85%83%E7%B4%A0%E5%AE%9A%E4%BD%8D"><span class="nav-number">3.</span> <span class="nav-text">页面元素定位</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E5%86%85%E5%AE%B9"><span class="nav-number">4.</span> <span class="nav-text">获取内容</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%82%B9%E5%87%BB%E9%A1%B5%E9%9D%A2"><span class="nav-number">5.</span> <span class="nav-text">点击页面</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%8B%E6%8B%89%E6%A1%86%E9%80%89%E5%8F%96"><span class="nav-number">6.</span> <span class="nav-text">下拉框选取</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%B3%E9%97%AD%E6%B5%8F%E8%A7%88%E5%99%A8"><span class="nav-number">7.</span> <span class="nav-text">关闭浏览器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">8.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Fish__404"
+      src="/images/cat.jpg">
+  <p class="site-author-name" itemprop="name">Fish__404</p>
+  <div class="site-description" itemprop="description">What's dream? Just fun!</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">93</span>
+          <span class="site-state-item-name">المقالات</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">التصنيفات</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">35</span>
+        <span class="site-state-item-name">الوسوم</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/fish-404" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;fish-404" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:yourname@gmail.com" title="E-Mail → mailto:yourname@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="user-secret"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Fish__404</span>
+</div>
+  <div class="powered-by">تطبيق الموقع <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : true,
+      notify     : true,
+      appId      : 'BwfroBJnkh22Gmd39XCKHVR6-MdYXbMMI',
+      appKey     : '6kUQN2hR5mA4BEGerhyY4dGa',
+      placeholder: "不说点什么嘛？邮箱网址选填~\n说不定有机会>触发本喵现身噢~ \n喵喵喵o(=•ェ•=)m",
+      avatar     : 'robohash',
+      meta       : guest,
+      pageSize   : '7' || 10,
+      visitor    : true,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>

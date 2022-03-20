@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-icon-fish.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-fish.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-fish.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-bounce.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"fish-404.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="本文对STM8单片机进行简要介绍，并对GPIO输入输出模式进行介绍，对GPIO的相关寄存器配置进行介绍。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="STM8-认识GPIO及输入输出模式">
+<meta property="og:url" content="https://fish-404.github.io/STM8-GPIO-input-output/index.html">
+<meta property="og:site_name" content="在逃的貓">
+<meta property="og:description" content="本文对STM8单片机进行简要介绍，并对GPIO输入输出模式进行介绍，对GPIO的相关寄存器配置进行介绍。">
+<meta property="og:locale">
+<meta property="article:published_time" content="2018-02-19T15:01:00.000Z">
+<meta property="article:modified_time" content="2020-02-19T14:22:38.000Z">
+<meta property="article:author" content="Fish__404">
+<meta property="article:tag" content="STM8">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://fish-404.github.io/STM8-GPIO-input-output/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-Hans'
+  };
+</script>
+
+  <title>STM8-认识GPIO及输入输出模式 | 在逃的貓</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="تشغيل شريط التصفح">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">在逃的貓</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">A cat called fish.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fort-awesome fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="question fa-fw"></i>معلومات</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="list fa-fw"></i>التصنيفات</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="inbox fa-fw"></i>الأرشيفات</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>بحث
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="بحث..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://fish-404.github.io/STM8-GPIO-input-output/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/cat.jpg">
+      <meta itemprop="name" content="Fish__404">
+      <meta itemprop="description" content="What's dream? Just fun!">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="在逃的貓">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          STM8-认识GPIO及输入输出模式
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">نُشر في</span>
+
+              <time title="أُنشأ: Feb 19 2018 23:01:00" itemprop="dateCreated datePublished" datetime="2018-02-19T23:01:00+08:00">Feb 19 2018</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">عُدل في</span>
+                <time title="عُدل: Feb 19 2020 22:22:38" itemprop="dateModified" datetime="2020-02-19T22:22:38+08:00">Feb 19 2020</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">في</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/STM8/" itemprop="url" rel="index"><span itemprop="name">STM8</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/STM8-GPIO-input-output/" class="post-meta-item leancloud_visitors" data-flag-title="STM8-认识GPIO及输入输出模式" title="مشاهدات">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">مشاهدات: </span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/STM8-GPIO-input-output/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/STM8-GPIO-input-output/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>本文对STM8单片机进行简要介绍，并对GPIO输入输出模式进行介绍，对GPIO的相关寄存器配置进行介绍。</p>
+<span id="more"></span>
+
+<p>本STM8系列实验基于STM8S105C6芯片。相关参考手册可以访问<a target="_blank" rel="noopener" href="http://www.st.com/content/st_com/en/products/microcontrollers/stm8-8-bit-mcus/stm8s-series/stm8s103-105/stm8s105c6.html">ST官网</a>获取。</p>
+<h1 id="GPIO简介"><a href="#GPIO简介" class="headerlink" title="GPIO简介"></a>GPIO简介</h1><p>GPIO(General purpose input/output ports)，即通用输入/输出口，用于芯片与外部的数据传输。一个I/O端口包含8个引脚，每个引脚可以被独立配置为数字输入或数字输出，部分引脚有模拟输入，外部中断等功能。打个也许不太恰当的比方，当我们的手接近火焰时会有缩手反射的现象，这个过程需要神经中枢的参与，手就像是外设，而单片机就像是神经中枢，手对于外界火焰的感知就好比输入，而神经中枢对输入的处理就好比单片机的软件处理，神经中枢所产生的神经冲动而导致缩手反射就好比输出。一个强大的系统离不开输入输出和中枢系统的协调配合。GPIO的配置是单片机编程中最基本，最常用的配置。LQFP48(7×7)封装的STM8S105C6可用I/O端口共38个(参考STM8/STM32选型手册)。不同型号的STM8芯片的可用I/O端口数量不一样，更多的I/O端口可以连接更多的外设，但也不要盲目求多，适用即可，比所用的预留一些即可，过多也是资源的浪费。</p>
+<h1 id="输入模式"><a href="#输入模式" class="headerlink" title="输入模式"></a>输入模式</h1><p>STM8S系列芯片的GPIO输入模式有四种：</p>
+<ul>
+<li>悬浮不带中断输入</li>
+<li>悬浮中断输入</li>
+<li>上拉不带中断输入</li>
+<li>上拉中断输入</li>
+</ul>
+<p>这里中断我们暂且不提，将输入方式分为悬浮输入和上拉输入。区分方式是从GPIO的内部结构来划分。</p>
+<h2 id="悬浮输入"><a href="#悬浮输入" class="headerlink" title="悬浮输入"></a>悬浮输入</h2><p>悬浮输入，也叫浮空输入，顾名思义，即引脚悬空。这种方式的输入阻抗很高。当悬浮输入的引脚上加上信号时，单片机所得到的信号并不确定是高电平或是低电平，是一个不确定的信号。因而常用于模拟信号转换为数字信号的信号输入方式，例如ADC。</p>
+<h2 id="上拉输入"><a href="#上拉输入" class="headerlink" title="上拉输入"></a>上拉输入</h2><p>上拉输入也很好理解，即在引脚处接一个上拉电阻到内部电源。这种方式的优点是可以增强驱动能力，增强抗干扰性，同时上拉电阻也起到了一个限流的作用。根据ST官方提供的STM8S105XX系列数据手册，内部电源$ V_DD $ 通常为5.0V，在此条件下，上拉电阻的取值最小为30kΩ，最大为80kΩ，典型值为55kΩ（不知道为什么中文版的数据手册典型值为45kΩ）。可以计算得出此时电流的大小是μA级别，这是因为我们的上拉电阻取值很大，所以限流作用就相对较小，这也被称之为弱上拉输入模式，即Weak Pull-up(WPU)。</p>
+<h1 id="输出模式"><a href="#输出模式" class="headerlink" title="输出模式"></a>输出模式</h1><p>STM8S系列输出模式有两种：</p>
+<ul>
+<li>推挽输出</li>
+<li>开漏输出</li>
+</ul>
+<h2 id="推挽输出"><a href="#推挽输出" class="headerlink" title="推挽输出"></a>推挽输出</h2><p>推挽输出(Push-pull output)，也称为互补输出，推拉式输出。推挽输出模式导通损耗小，效率高。在此模式下，N-MOS、P-MOS两个MOS均被接入电路，通过输出控制寄存器控制两个MOS管的导通或关闭。正常工作状态下，仅有一个MOS管导通，另一个MOS管截止，从而可以自如地控制高低数字信号的输出。</p>
+<h2 id="开漏输出"><a href="#开漏输出" class="headerlink" title="开漏输出"></a>开漏输出</h2><p>开漏输出(Open drain output)，有时简称为OD输出。相比推挽输出，GPIO结构中的P-MOS管没有被接入，无法输出高电平状态，需要外接上拉电阻。在没有外接上拉电阻，引脚悬空的状态下，端口引脚状态将不确定。上拉电阻阻值的大小会引起输出信号上升沿时间的变化，上拉电阻越小，上升沿时间越短，速度越快。开漏输出模式吸收电流能力强（一般在20mA以内），适用于电流型驱动。用作电流型驱动时，驱动电流由外部电源经上拉电阻给引脚连接的电路或器件，单片机内部几乎不需要提供驱动电流，减少了单片机自身功耗。利用开漏输出模式通过上拉电阻外接不同的电源还可以实现电平信号标准的转换。将多个开漏模式引脚连在一起，可以构成线与结构。</p>
+<p>需要注意的是，有部分引脚具有“真正的”开漏输出功能。所谓“真正的”开漏输出指的是除了无P-MOS以外，也没有连接电源的保护二极管，即不存在任何电路连接到内部电源。在此模式下，必须加上拉电阻。</p>
+<h1 id="补充：保护二极管"><a href="#补充：保护二极管" class="headerlink" title="补充：保护二极管"></a>补充：保护二极管</h1><p>GPIO引脚内部通常还会有一对反向连接电源地的保护二极管。以防止外部管脚输入电压过高或过低损坏引脚电路。通常为锗二极管，肖特基势垒二极管。</p>
+<h1 id="输入输出寄存器配置"><a href="#输入输出寄存器配置" class="headerlink" title="输入输出寄存器配置"></a>输入输出寄存器配置</h1><p>简单地了解了输入输出模式，接下来我们将介绍如何配置相应的输入输出模式。查阅对应芯片系列的Reference manual（建议看原版，或者中英对照），查阅GPIO章节，与之相关的几个寄存器分别是<code>Px_DDR</code>,<code>Px_IDR</code>,<code>Px_ODR</code>,<code>Px_CR1</code>,<code>Px_CR2</code>，手册中详细地描述了每个寄存器的配置过程及功能。</p>
+<ul>
+<li>输出数据寄存器        ODR</li>
+<li>数据方向寄存器               DDR</li>
+<li>控制寄存器                      CR1</li>
+<li>控制寄存器                      CR2</li>
+<li>输入寄存器                       IDR</li>
+</ul>
+<p>如果我们需要IO输出一个低电平，需要如何操作呢？</p>
+<ul>
+<li>将DDR置1选择输出模式</li>
+<li>配置CR1,CR2选择输出模式<ul>
+<li>CR1：选择开漏输出或是推挽输出（有些翻译为上拉输出）</li>
+<li>CR2：配置输出速率</li>
+</ul>
+</li>
+<li>写ODR寄存器，STM8将通过锁存器输出对应的数值到I/O</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/STM8/" rel="tag"># STM8</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/LaTex-use-mcmthesis-write/" rel="prev" title="LaTeX-使用Mcmthesis模板写作美赛论文">
+      <i class="fa fa-chevron-left"></i> LaTeX-使用Mcmthesis模板写作美赛论文
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/Blog-themes-config/" rel="next" title="Blog-NexT主题配置文件配置">
+      Blog-NexT主题配置文件配置 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          المحتويات
+        </li>
+        <li class="sidebar-nav-overview">
+          عام
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#GPIO%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">GPIO简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A8%A1%E5%BC%8F"><span class="nav-number">2.</span> <span class="nav-text">输入模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%82%AC%E6%B5%AE%E8%BE%93%E5%85%A5"><span class="nav-number">2.1.</span> <span class="nav-text">悬浮输入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8A%E6%8B%89%E8%BE%93%E5%85%A5"><span class="nav-number">2.2.</span> <span class="nav-text">上拉输入</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A8%A1%E5%BC%8F"><span class="nav-number">3.</span> <span class="nav-text">输出模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%A8%E6%8C%BD%E8%BE%93%E5%87%BA"><span class="nav-number">3.1.</span> <span class="nav-text">推挽输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%80%E6%BC%8F%E8%BE%93%E5%87%BA"><span class="nav-number">3.2.</span> <span class="nav-text">开漏输出</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A1%A5%E5%85%85%EF%BC%9A%E4%BF%9D%E6%8A%A4%E4%BA%8C%E6%9E%81%E7%AE%A1"><span class="nav-number">4.</span> <span class="nav-text">补充：保护二极管</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E5%AF%84%E5%AD%98%E5%99%A8%E9%85%8D%E7%BD%AE"><span class="nav-number">5.</span> <span class="nav-text">输入输出寄存器配置</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Fish__404"
+      src="/images/cat.jpg">
+  <p class="site-author-name" itemprop="name">Fish__404</p>
+  <div class="site-description" itemprop="description">What's dream? Just fun!</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">93</span>
+          <span class="site-state-item-name">المقالات</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">التصنيفات</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">35</span>
+        <span class="site-state-item-name">الوسوم</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/fish-404" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;fish-404" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:yourname@gmail.com" title="E-Mail → mailto:yourname@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="user-secret"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Fish__404</span>
+</div>
+  <div class="powered-by">تطبيق الموقع <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : true,
+      notify     : true,
+      appId      : 'BwfroBJnkh22Gmd39XCKHVR6-MdYXbMMI',
+      appKey     : '6kUQN2hR5mA4BEGerhyY4dGa',
+      placeholder: "不说点什么嘛？邮箱网址选填~\n说不定有机会>触发本喵现身噢~ \n喵喵喵o(=•ェ•=)m",
+      avatar     : 'robohash',
+      meta       : guest,
+      pageSize   : '7' || 10,
+      visitor    : true,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>

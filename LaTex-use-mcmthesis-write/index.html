@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-icon-fish.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-fish.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-fish.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-bounce.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"fish-404.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="本文总结了使用mcmthesis的方法，以及一些美赛时可能用到的表格，图片等环境。本文并不能作为LaTex的学习教程。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LaTeX-使用Mcmthesis模板写作美赛论文">
+<meta property="og:url" content="https://fish-404.github.io/LaTex-use-mcmthesis-write/index.html">
+<meta property="og:site_name" content="在逃的貓">
+<meta property="og:description" content="本文总结了使用mcmthesis的方法，以及一些美赛时可能用到的表格，图片等环境。本文并不能作为LaTex的学习教程。">
+<meta property="og:locale">
+<meta property="article:published_time" content="2018-02-08T05:19:31.000Z">
+<meta property="article:modified_time" content="2020-01-11T15:38:38.000Z">
+<meta property="article:author" content="Fish__404">
+<meta property="article:tag" content="LaTeX">
+<meta property="article:tag" content="Mathematical modeling">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://fish-404.github.io/LaTex-use-mcmthesis-write/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-Hans'
+  };
+</script>
+
+  <title>LaTeX-使用Mcmthesis模板写作美赛论文 | 在逃的貓</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="تشغيل شريط التصفح">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">在逃的貓</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">A cat called fish.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fort-awesome fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="question fa-fw"></i>معلومات</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="list fa-fw"></i>التصنيفات</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="inbox fa-fw"></i>الأرشيفات</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>بحث
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="بحث..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://fish-404.github.io/LaTex-use-mcmthesis-write/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/cat.jpg">
+      <meta itemprop="name" content="Fish__404">
+      <meta itemprop="description" content="What's dream? Just fun!">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="在逃的貓">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          LaTeX-使用Mcmthesis模板写作美赛论文
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">نُشر في</span>
+
+              <time title="أُنشأ: Feb 8 2018 13:19:31" itemprop="dateCreated datePublished" datetime="2018-02-08T13:19:31+08:00">Feb 8 2018</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">عُدل في</span>
+                <time title="عُدل: Jan 11 2020 23:38:38" itemprop="dateModified" datetime="2020-01-11T23:38:38+08:00">Jan 11 2020</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">في</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/LaTeX/" itemprop="url" rel="index"><span itemprop="name">LaTeX</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/LaTex-use-mcmthesis-write/" class="post-meta-item leancloud_visitors" data-flag-title="LaTeX-使用Mcmthesis模板写作美赛论文" title="مشاهدات">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">مشاهدات: </span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/LaTex-use-mcmthesis-write/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/LaTex-use-mcmthesis-write/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>本文总结了使用mcmthesis的方法，以及一些美赛时可能用到的表格，图片等环境。本文并不能作为LaTex的学习教程。</p>
+<span id="more"></span>
+
+<h1 id="论文基本设置"><a href="#论文基本设置" class="headerlink" title="论文基本设置"></a>论文基本设置</h1><p>在<code>mcmthesis</code>中设置了<code>\mcmsetup</code>来调整基本选项，通过这些选项设置队伍的相关信息，论文中的标题，摘要等。如果想要调整模板的一些参数设置，或者是摘要页的格式，可以通过修改<code>mcmthesis.cls</code>文件进行修改，也就是调整模板格式 。</p>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\mcmsetup</span>&#123;</span><br><span class="line">          tcn = 12345,</span><br><span class="line">          problem = B,</span><br><span class="line">          sheet = true,</span><br><span class="line">          titleinsheet = true,</span><br><span class="line">          keywordsinsheet = false,</span><br><span class="line">          titlepage = false,</span><br><span class="line">          abstract = true</span><br><span class="line">          &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="队伍控制号"><a href="#队伍控制号" class="headerlink" title="队伍控制号"></a>队伍控制号</h2><p>在成功注册缴费报名后，每个队伍会得到一个控制号（Team Control Number），根据美赛的规则，控制号必须在摘要页以及之后的论文的页眉中出现，这点模板中已经设置好了，我们只需要改为自己队伍的控制号即可，即将<code>tcn</code>的值改为本队控制号，例如12345（默认值为0000）。</p>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\mcmsetup</span>&#123;tcn = 12345&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="选题"><a href="#选题" class="headerlink" title="选题"></a>选题</h2><p>在比赛开始后，将一共发布6道题，队伍只能选择一道题作答，并将该题编号写于摘要页上。我们只需要改动<code>problem</code>的值为本队选择的问题即可，例如B题（默认值为A）。</p>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\mcmsetup</span>&#123;probelm = B&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="摘要页"><a href="#摘要页" class="headerlink" title="摘要页"></a>摘要页</h2><p><code>mcmthesis</code>模板中生成了摘要页，队伍可以选择使用此摘要页，或者选择学校提供的摘要页或者官网提供的Word摘要页，关闭此摘要页（默认值为<code>true</code>，即开启）。</p>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\mcmsetup</span>&#123;sheet = true&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="摘要页中的标题"><a href="#摘要页中的标题" class="headerlink" title="摘要页中的标题"></a>摘要页中的标题</h2><p>如果希望在摘要页中显示文章标题，将<code>titleinsheet</code>的值设置为<code>true</code>（默认值为<code>false</code>）。</p>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\mcmsetup</span>&#123;titleinsheet = true&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="摘要页中的关键词"><a href="#摘要页中的关键词" class="headerlink" title="摘要页中的关键词"></a>摘要页中的关键词</h2><p>如果希望在摘要页中显示关键词，将<code>keywordsinsheet</code>的值设置为<code>true</code>（默认值为<code>false</code>）。如果不显示关键词，请记得也把摘要中的<code>\begin&#123;keywords&#125;...\end&#123;keywords&#125;</code>去掉或修改注释掉。</p>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\mcmsetup</span>&#123;keywordsinsheet = false&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="标题页"><a href="#标题页" class="headerlink" title="标题页"></a>标题页</h2><p>如果希望在摘要后显示LaTex标准的标题页，将<code>titlepage</code>的值设置为<code>true</code>（默认值为<code>true</code>）。</p>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\mcmsetup</span>&#123;titlepage = false&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="标题页的摘要"><a href="#标题页的摘要" class="headerlink" title="标题页的摘要"></a>标题页的摘要</h2><p>如果在上一项<code>titlepage</code>的值设置为<code>true</code>，将此选项<code>abstract</code>的值设置为<code>true</code>，将在标题页中显示摘要，也就是在前面的摘要页之后再一次显示摘要，摘要会被放在标题页中，如果<code>titlepage</code>值设置为<code>false</code>，则此处就无影响（默认值为<code>true</code>）。</p>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\mcmsetup</span>&#123;abstract = true&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="美赛写作常用"><a href="#美赛写作常用" class="headerlink" title="美赛写作常用"></a>美赛写作常用</h1><p>以下将整理一些在美赛中常用的设置，环境，调用等等。</p>
+<h2 id="段落缩进"><a href="#段落缩进" class="headerlink" title="段落缩进"></a>段落缩进</h2><p><code>mcmthesis</code>模板中的段落缩进与LaTex中一样，首段默认不缩进，其他段落缩进，通过资料搜寻，发现这似乎是一个英文习惯，所以首段不缩进的问题不大。可以通过<code>\usepackage&#123;identfirst&#125;</code>解决，本人调用宏包失败尚未解决这个问题。如果觉得有的缩进有的不缩进显得混乱，可以通过<code>\setlength&#123;\parindent&#125;&#123;0pt&#125;</code>设置缩进为0。</p>
+<h2 id="插入图片（Figure）"><a href="#插入图片（Figure）" class="headerlink" title="插入图片（Figure）"></a>插入图片（Figure）</h2><p>在文中常常需要插入图片，图片的标题应该在图片下方，<code>mcmthesis</code>模板中提供了一个参考格式如下：</p>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\begin</span>&#123;figure&#125;[htbp]</span><br><span class="line">    <span class="keyword">\small</span></span><br><span class="line">    <span class="keyword">\centering</span></span><br><span class="line">    <span class="keyword">\includegraphics</span>[width=12cm]&#123;a.eps&#125;</span><br><span class="line">    <span class="keyword">\caption</span>&#123;a&#125;</span><br><span class="line">    <span class="keyword">\label</span>&#123;fig:Figure 1&#125;</span><br><span class="line"><span class="keyword">\end</span>&#123;figure&#125;</span><br></pre></td></tr></table></figure>
+
+<p>htbp选项表示由LaTex决定插图位置，即这里，页顶，页底，浮动。 <code>\centring</code>表示居中，<code>\label&#123;&#125;</code>应该在<code>\caption</code>之后。图片格式可以通过 <a target="_blank" rel="noopener" href="http://www.tlhiv.org/rast2vec/">Convert PNG/JPEG(Raster) to EPS/PDF(Vector) Format</a> 转化为<code>*.eps</code>,<code>*.pdf</code>格式，放置于<code>figure</code>文件夹中，并且<code>*.pdf</code>的命名格式有一定的要求，如图片为<code>a.eps</code>，则PDF文件应该命名为<code>a-eps-converted-to.pdf</code>。</p>
+<h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><p>简单的列表样式通常用于列举assumptions，方程、公式等的参数</p>
+<h3 id="无序列表"><a href="#无序列表" class="headerlink" title="无序列表"></a>无序列表</h3><p>无序列表各项前的符号默认为实心小圆点，可以通过改变<code>\item[]</code>参数来修改符号。</p>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\begin</span>&#123;itemize&#125;</span><br><span class="line">  <span class="keyword">\item</span></span><br><span class="line">  <span class="keyword">\item</span>[-]</span><br><span class="line">  <span class="keyword">\item</span>[*]</span><br><span class="line"><span class="keyword">\end</span>&#123;itemize&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="有序列表"><a href="#有序列表" class="headerlink" title="有序列表"></a>有序列表</h3><p>参数同样可以改变。</p>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\begin</span>&#123;enumerate&#125;</span><br><span class="line">  <span class="keyword">\item</span></span><br><span class="line">  <span class="keyword">\item</span></span><br><span class="line"><span class="keyword">\end</span>&#123;enumerate&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="表格（Table）"><a href="#表格（Table）" class="headerlink" title="表格（Table）"></a>表格（Table）</h2><p>常用于列举notations，以及各种参数，表格的标题应该在表格上方，下面是一个简单的示例：</p>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\begin</span>&#123;table&#125;[htbp]</span><br><span class="line"><span class="keyword">\centering</span></span><br><span class="line"><span class="keyword">\caption</span>&#123;Notations&#125;</span><br><span class="line"><span class="keyword">\label</span>&#123;tab:Table 1&#125;</span><br><span class="line">  <span class="keyword">\begin</span>&#123;tabular&#125;&#123;c|l&#125;</span><br><span class="line">    <span class="keyword">\toprule</span></span><br><span class="line">    Symbol <span class="built_in">&amp;</span> Description<span class="keyword">\\</span></span><br><span class="line">    <span class="keyword">\midrule</span></span><br><span class="line">    <span class="built_in">$</span>W/L<span class="built_in">$</span> <span class="built_in">&amp;</span> width  <span class="keyword">\\</span></span><br><span class="line">    <span class="keyword">\hline</span></span><br><span class="line">    <span class="built_in">$</span>A<span class="built_in">$</span>   <span class="built_in">&amp;</span> area <span class="keyword">\\</span></span><br><span class="line">    <span class="keyword">\bottomrule</span></span><br><span class="line">  <span class="keyword">\end</span>&#123;tabular&#125;</span><br><span class="line"><span class="keyword">\end</span>&#123;table&#125;</span><br></pre></td></tr></table></figure>
+
+<p>参数设置与图片浮动Figure环境类似。<code>\hline</code>表示横线，<code>\toprule</code>,<code>\bottomrule</code>可以使顶部和底部的线与中间的线<code>\midrule</code>区分开来。<code>|</code>表示竖线，每列的横向对齐方式通过<code>l</code>,<code>c</code>,<code>r</code>控制，分别表示左对齐 ，居中，右对齐。<code>\\</code>用于换行，也就是分行，<code>&amp;</code>用于分列。</p>
+<h2 id="数学"><a href="#数学" class="headerlink" title="数学"></a>数学</h2><h3 id="公式"><a href="#公式" class="headerlink" title="公式"></a>公式</h3><p>带序号的行间公式，可以在equation后加上*不带序号。</p>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\begin</span>&#123;equation&#125;</span><br><span class="line">...</span><br><span class="line"><span class="keyword">\end</span>&#123;equation&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="方程组"><a href="#方程组" class="headerlink" title="方程组"></a>方程组</h3><p>可以使用方程和数组的结合，参考如下：</p>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\begin</span>&#123;equation&#125;</span><br><span class="line">  <span class="keyword">\left</span><span class="keyword">\&#123;</span></span><br><span class="line">  <span class="keyword">\begin</span>&#123;array&#125;&#123;lll&#125;</span><br><span class="line">    <span class="keyword">\frac</span>&#123;<span class="keyword">\partial</span> T&#125;&#123;<span class="keyword">\partial</span> n&#125;=0<span class="keyword">\\</span></span><br><span class="line">  <span class="keyword">\\</span></span><br><span class="line">    T = a</span><br><span class="line">  <span class="keyword">\\</span></span><br><span class="line">    T<span class="built_in">_</span>0=25</span><br><span class="line">  <span class="keyword">\end</span>&#123;array&#125;<span class="keyword">\right</span>.</span><br><span class="line">  <span class="keyword">\end</span>&#123;equation&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="多行公式等号对齐"><a href="#多行公式等号对齐" class="headerlink" title="多行公式等号对齐"></a>多行公式等号对齐</h3><figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\begin</span>&#123;align&#125;</span><br><span class="line">    <span class="keyword">\eta</span><span class="built_in">_</span>1 <span class="built_in">&amp;</span>= <span class="keyword">\frac</span>&#123;S<span class="built_in">_</span>1&#125;&#123;A&#125;</span><br><span class="line">    <span class="keyword">\\</span></span><br><span class="line">    <span class="keyword">\eta</span><span class="built_in">_</span>2 <span class="built_in">&amp;</span>= <span class="keyword">\frac</span>&#123;N <span class="keyword">\times</span> A&#125;&#123;S<span class="built_in">_</span>&#123;Total&#125;&#125;</span><br><span class="line">    <span class="keyword">\\</span></span><br><span class="line">         Z <span class="built_in">&amp;</span>= p <span class="keyword">\eta</span><span class="built_in">_</span>3 + (1-p)<span class="keyword">\eta</span><span class="built_in">_</span>4</span><br><span class="line"><span class="keyword">\end</span>&#123;align&#125;</span><br></pre></td></tr></table></figure>
+
+<p>更多常用数学符号的整理传送门：<a href="https://fish-404.github.io/LaTeX-common-math-symbol-equation/">LaTeX - 常用数学符号 | 在逃的貓</a></p>
+<p>LaTeX 数学符号快速搜索：<a target="_blank" rel="noopener" href="https://latex.guide/">LaTeX Search: Find LaTeX commands</a></p>
+<h2 id="参考文献的书写"><a href="#参考文献的书写" class="headerlink" title="参考文献的书写"></a>参考文献的书写</h2><figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\begin</span>&#123;thebibliography&#125;&#123;99&#125;</span><br><span class="line">  <span class="keyword">\bibitem</span>&#123;1&#125;Wikipedia. 2018. Thermal Conduction. <span class="keyword">\url</span>&#123;<span class="link">https://en.wikipedia.org/wiki/Thermal_conduction</span>&#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">\bibitem</span>&#123;2&#125;Name. Article(in Chinese). <span class="keyword">\emph</span>&#123;Magazine&#125;, year, number: page. <span class="keyword">\url</span>&#123;<span class="link">site</span>&#125;</span><br><span class="line"><span class="keyword">\end</span>&#123;thebibliography&#125;</span><br></pre></td></tr></table></figure>
+
+<p>99表示允许的最大条目数。在文章中可以使用<code>\cite&#123;&#125;</code>对<code>\bibitem</code>中编号了的参考文献进行引用。</p>
+<h2 id="强调"><a href="#强调" class="headerlink" title="强调"></a>强调</h2><p><code>\emph</code>用于强调，通常会变为斜体<br><code>\textbf&#123;&#125;</code>用于字体加粗</p>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ul>
+<li><p><a target="_blank" rel="noopener" href="https://liam0205.me/2016/01/27/how-to-use-mcmthesis/">如何使用美赛模板mcmthesis|始终</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="http://www.ptep-online.com/ctan/lshort_chinese.pdf">一份不太简短的LATEX2ε介绍(PDF)</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="http://dralpha.altervista.org/zh/tech/lnotes2.pdf">LATEX Notes雷太赫排版系统简介第二版v2.03(PDF)</a></p>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/LaTeX/" rel="tag"># LaTeX</a>
+              <a href="/tags/Mathematical-modeling/" rel="tag"># Mathematical modeling</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/Blog-adjust-sidebar-nextmist-left/" rel="prev" title="Blog-调整NexT主题Mist外观侧边栏在左">
+      <i class="fa fa-chevron-left"></i> Blog-调整NexT主题Mist外观侧边栏在左
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/STM8-GPIO-input-output/" rel="next" title="STM8-认识GPIO及输入输出模式">
+      STM8-认识GPIO及输入输出模式 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          المحتويات
+        </li>
+        <li class="sidebar-nav-overview">
+          عام
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AE%BA%E6%96%87%E5%9F%BA%E6%9C%AC%E8%AE%BE%E7%BD%AE"><span class="nav-number">1.</span> <span class="nav-text">论文基本设置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%98%9F%E4%BC%8D%E6%8E%A7%E5%88%B6%E5%8F%B7"><span class="nav-number">1.1.</span> <span class="nav-text">队伍控制号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%89%E9%A2%98"><span class="nav-number">1.2.</span> <span class="nav-text">选题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%91%98%E8%A6%81%E9%A1%B5"><span class="nav-number">1.3.</span> <span class="nav-text">摘要页</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%91%98%E8%A6%81%E9%A1%B5%E4%B8%AD%E7%9A%84%E6%A0%87%E9%A2%98"><span class="nav-number">1.4.</span> <span class="nav-text">摘要页中的标题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%91%98%E8%A6%81%E9%A1%B5%E4%B8%AD%E7%9A%84%E5%85%B3%E9%94%AE%E8%AF%8D"><span class="nav-number">1.5.</span> <span class="nav-text">摘要页中的关键词</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%87%E9%A2%98%E9%A1%B5"><span class="nav-number">1.6.</span> <span class="nav-text">标题页</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%87%E9%A2%98%E9%A1%B5%E7%9A%84%E6%91%98%E8%A6%81"><span class="nav-number">1.7.</span> <span class="nav-text">标题页的摘要</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BE%8E%E8%B5%9B%E5%86%99%E4%BD%9C%E5%B8%B8%E7%94%A8"><span class="nav-number">2.</span> <span class="nav-text">美赛写作常用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AE%B5%E8%90%BD%E7%BC%A9%E8%BF%9B"><span class="nav-number">2.1.</span> <span class="nav-text">段落缩进</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87%EF%BC%88Figure%EF%BC%89"><span class="nav-number">2.2.</span> <span class="nav-text">插入图片（Figure）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%97%E8%A1%A8"><span class="nav-number">2.3.</span> <span class="nav-text">列表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%A0%E5%BA%8F%E5%88%97%E8%A1%A8"><span class="nav-number">2.3.1.</span> <span class="nav-text">无序列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%89%E5%BA%8F%E5%88%97%E8%A1%A8"><span class="nav-number">2.3.2.</span> <span class="nav-text">有序列表</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A1%A8%E6%A0%BC%EF%BC%88Table%EF%BC%89"><span class="nav-number">2.4.</span> <span class="nav-text">表格（Table）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E5%AD%A6"><span class="nav-number">2.5.</span> <span class="nav-text">数学</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%AC%E5%BC%8F"><span class="nav-number">2.5.1.</span> <span class="nav-text">公式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E7%A8%8B%E7%BB%84"><span class="nav-number">2.5.2.</span> <span class="nav-text">方程组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E8%A1%8C%E5%85%AC%E5%BC%8F%E7%AD%89%E5%8F%B7%E5%AF%B9%E9%BD%90"><span class="nav-number">2.5.3.</span> <span class="nav-text">多行公式等号对齐</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE%E7%9A%84%E4%B9%A6%E5%86%99"><span class="nav-number">2.6.</span> <span class="nav-text">参考文献的书写</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%BA%E8%B0%83"><span class="nav-number">2.7.</span> <span class="nav-text">强调</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">3.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Fish__404"
+      src="/images/cat.jpg">
+  <p class="site-author-name" itemprop="name">Fish__404</p>
+  <div class="site-description" itemprop="description">What's dream? Just fun!</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">93</span>
+          <span class="site-state-item-name">المقالات</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">التصنيفات</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">35</span>
+        <span class="site-state-item-name">الوسوم</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/fish-404" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;fish-404" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:yourname@gmail.com" title="E-Mail → mailto:yourname@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="user-secret"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Fish__404</span>
+</div>
+  <div class="powered-by">تطبيق الموقع <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : true,
+      notify     : true,
+      appId      : 'BwfroBJnkh22Gmd39XCKHVR6-MdYXbMMI',
+      appKey     : '6kUQN2hR5mA4BEGerhyY4dGa',
+      placeholder: "不说点什么嘛？邮箱网址选填~\n说不定有机会>触发本喵现身噢~ \n喵喵喵o(=•ェ•=)m",
+      avatar     : 'robohash',
+      meta       : guest,
+      pageSize   : '7' || 10,
+      visitor    : true,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>

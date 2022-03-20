@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-icon-fish.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-fish.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-fish.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-bounce.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"fish-404.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="JavaScript 监听窗口关闭。初学JavaScript，如有不当请指正。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS-监听窗口关闭">
+<meta property="og:url" content="https://fish-404.github.io/JS-listen-browser-window-close/index.html">
+<meta property="og:site_name" content="在逃的貓">
+<meta property="og:description" content="JavaScript 监听窗口关闭。初学JavaScript，如有不当请指正。">
+<meta property="og:locale">
+<meta property="article:published_time" content="2020-10-12T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-10-13T16:00:00.000Z">
+<meta property="article:author" content="Fish__404">
+<meta property="article:tag" content="JavaScript">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://fish-404.github.io/JS-listen-browser-window-close/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-Hans'
+  };
+</script>
+
+  <title>JS-监听窗口关闭 | 在逃的貓</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="تشغيل شريط التصفح">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">在逃的貓</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">A cat called fish.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fort-awesome fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="question fa-fw"></i>معلومات</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="list fa-fw"></i>التصنيفات</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="inbox fa-fw"></i>الأرشيفات</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>بحث
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="بحث..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://fish-404.github.io/JS-listen-browser-window-close/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/cat.jpg">
+      <meta itemprop="name" content="Fish__404">
+      <meta itemprop="description" content="What's dream? Just fun!">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="在逃的貓">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          JS-监听窗口关闭
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">نُشر في</span>
+
+              <time title="أُنشأ: Oct 13 2020 0:00:00" itemprop="dateCreated datePublished" datetime="2020-10-13T00:00:00+08:00">Oct 13 2020</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">عُدل في</span>
+                <time title="عُدل: Oct 14 2020 0:00:00" itemprop="dateModified" datetime="2020-10-14T00:00:00+08:00">Oct 14 2020</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">في</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/JS-listen-browser-window-close/" class="post-meta-item leancloud_visitors" data-flag-title="JS-监听窗口关闭" title="مشاهدات">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">مشاهدات: </span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/JS-listen-browser-window-close/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/JS-listen-browser-window-close/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>JavaScript 监听窗口关闭。初学JavaScript，如有不当请指正。</p>
+<span id="more"></span>
+
+<p>接手的项目中有这样一个场景：</p>
+<ol>
+<li><p>点击打印按钮，生成需要临时文件存储在项目内（该步骤为水晶报表生成打印文件必须进行的流程）；</p>
+</li>
+<li><p>弹出新窗口，显示即将打印的文件名和下载按钮供用户确认；</p>
+</li>
+<li><p>用户点击下载按钮，浏览器启动下载；</p>
+</li>
+<li><p>用户关闭窗口，系统删除生成的临时文件。</p>
+</li>
+</ol>
+<p>原有的处理方式：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="variable language_">window</span>.<span class="title function_">onbeforeunload</span>(<span class="params"></span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="title function_">with</span>(<span class="variable language_">window</span>.<span class="property">event</span>) <span class="keyword">if</span> (clientY&lt;<span class="number">0</span>&amp;&amp;clientX+<span class="number">40</span>&gt;<span class="variable language_">document</span>.<span class="property">body</span>.<span class="property">clientWidth</span>||altKey)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="title function_">deletePDF</span>(); <span class="comment">// 为了便于表示，将原有的此处代码块写作一个函数</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>原有的写法在 Visual Studio 2015 中编辑器环境下会提示语法错误，但在 Debug / Run 过程中，在其他浏览器中均不会弹出错误提示，但没有跑进 <code>deletePDF()</code> 函数中，在 IE 的测试中部分测试环境会弹出错误弹窗提示：</p>
+<blockquote>
+<p>JavaScript critical error at … in … \n\nSCRIPT1002: Syntax error</p>
+</blockquote>
+<p>点击 Continue 后与其他浏览器类似，并不会影响文件下载，同样未进入 <code>deletePDF()</code> 函数。</p>
+<h1 id="onbeforeunload-beforeunload"><a href="#onbeforeunload-beforeunload" class="headerlink" title="onbeforeunload/beforeunload"></a>onbeforeunload/beforeunload</h1><p>查询 MDN 的 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/WindowEventHandlers/onbeforeunload">文档</a> ，<code>onbeforeunload</code> 是 <code>beforeunload</code> 的处理程序。语法如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">window</span>.<span class="property">onbeforeunload</span> = <span class="keyword">function</span>(<span class="params">event</span>) &#123; ... &#125;;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">window</span>.<span class="title function_">addEventListener</span>(<span class="string">&quot;beforeunload&quot;</span>, <span class="keyword">function</span>(<span class="params">event</span>) &#123; ... &#125;);</span><br></pre></td></tr></table></figure>
+
+<p><em>MDN 建议使用第二种语法。</em> 根据 <a target="_blank" rel="noopener" href="https://stackoverflow.com/a/20001174/8257973">javascript - beforeunload Or onbeforeunload - Stack Overflow</a> ，第一种语法取代原有的处理程序，第二种语法新增一个处理程序。</p>
+<p>分别使用上述两种语法修改原有的处理函数，原有的函数中的第 3 行存在语法错误，该语句用于判断鼠标的位置，将该语句移除后将会出现多次触发 <code>onbeforeunload</code> 的情况：</p>
+<ul>
+<li><p>页面刚进入时</p>
+</li>
+<li><p>点击下载按钮时</p>
+</li>
+<li><p>关闭窗口时</p>
+</li>
+</ul>
+<p>以上情况将导致在文件未下载成功前，已进入 <code>deletePDF</code> ，临时文件已被删除无法下载。</p>
+<p>实际上，<code>beforeunload</code> 会在多种情况下被触发，包括但不限于提交表单，点击链接/按钮，关闭窗口或标签，通过地址栏，搜索栏，书签等方式访问新页面。</p>
+<p>因此，尽管 <code>addEventListener</code> 实现了关闭窗口的监听，却会在关闭窗口前就执行了相关操作。</p>
+<p>尝试使用原有的处理方式中的 <code>event.ClientY</code> 进行下一步限制，但实际上仅仅使用 <code>ClientY</code> 将只能检测鼠标的工作情况，而无法检测通过快捷键关闭的情况，原有的处理方式同时检测了 <code>alt</code> 键，但这将导致所有的 <code>alt</code> 快捷键触发。且测试中 <code>event.ClientY</code> 并未起作用，原因尚未查明。</p>
+<h1 id="addEventListener-removeEventListener"><a href="#addEventListener-removeEventListener" class="headerlink" title="addEventListener/removeEventListener"></a>addEventListener/removeEventListener</h1><p>与 <code>addEventListener</code> 对应的方法是 <code>removeEventListener</code> 。这两个方法在不支持 IE 9 以下版本。如果要在 IE9 以下版本使用，应该使用 <code>attachEvent</code> （实际上 MDN 不建议使用 <code>attachEvent</code> ）。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="variable language_">window</span>.<span class="property">attachEvent</span>) &#123;</span><br><span class="line">    <span class="variable language_">window</span>.<span class="title function_">attachEvent</span>(<span class="string">&quot;beforeunload&quot;</span>, <span class="title function_">deletePDF</span>());</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span> (<span class="variable language_">window</span>.<span class="property">addEventListener</span>) &#123;</span><br><span class="line">    <span class="variable language_">window</span>.<span class="title function_">addEventListener</span>(<span class="string">&quot;beforeunload&quot;</span>, <span class="title function_">deletePDF</span>(), <span class="literal">false</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>经过几次尝试，结合 MDN 的文档，<code>addEventListener</code> 与 <code>removeEventListener</code> 必须完全一致，也即，无法添加 <code>window.addEventListner</code> 而移除 <code>button.removeEventListeneer</code> 。</p>
+<h1 id="jQuery-on-off-bind-unbind"><a href="#jQuery-on-off-bind-unbind" class="headerlink" title="jQuery on/off bind/unbind"></a>jQuery on/off bind/unbind</h1><p>在检测关闭窗口并禁止提交触发的实践中，常用的方式还有使用 <code>jQuery</code> ：<code>on/off</code> <code>bind/unbind</code> 。其中 <code>on/off</code> 在 jQuery 1.7 中取代 <code>bind/unbind</code> 。由于项目较老旧，使用的 jQuery 1.2，故使用 <code>bind/unbind</code> 测试。测试中并未进入 <code>deletePDF</code> 函数，原因尚未查明。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">&quot;[id$=&#x27;_btnDownload&#x27;]&quot;</span>).<span class="title function_">click</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    $(<span class="variable language_">window</span>).<span class="title function_">unbind</span>(<span class="string">&quot;beforeunload&quot;</span>);</span><br><span class="line">    <span class="comment">// $(window).off(&quot;beforeunload&quot;);</span></span><br><span class="line">&#125;)</span><br><span class="line">$(<span class="variable language_">window</span>).<span class="title function_">bind</span>(<span class="string">&quot;beforeunload&quot;</span>, <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line"><span class="comment">//$(window).on(&quot;beforeunload&quot;, function() &#123;</span></span><br><span class="line">    ...</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h1 id="添加标志位检测"><a href="#添加标志位检测" class="headerlink" title="添加标志位检测"></a>添加标志位检测</h1><p>考虑添加一个监听事件，当按钮按下时变更标志位，标记此次操作触发方式。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> download = <span class="literal">false</span>;</span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">addEventListener</span>(<span class="string">&quot;click&quot;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    download = <span class="literal">true</span>;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="variable language_">window</span>.<span class="title function_">addEventListener</span>(<span class="string">&quot;beforeunload&quot;</span>, <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (download)</span><br><span class="line">        download = <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="title function_">deletePDF</span>();</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>此代码可正常工作，但未知是否可能存在这样一种情况：</p>
+<ol>
+<li><p>用户1点击下载按钮，<code>download = true</code>;</p>
+</li>
+<li><p>用户2不进行下载直接关闭窗口，<code>download = true</code>;</p>
+</li>
+</ol>
+<p>在这种情况下，用户2的操作产生的临时文件将不会被删除。在本地使用 Start without debug 调试，通过不同浏览器打开不同窗口，此代码可以正常工作。</p>
+<h1 id="onunload-unload"><a href="#onunload-unload" class="headerlink" title="onunload/unload"></a>onunload/unload</h1><p>考虑需求，并不需要实现 <code>beforeunload</code> 中的离开弹窗提示，即可以直接使用 <code>unload</code> 事件，监听 <code>unload</code> 将不会在按钮按下时被触发，使用 <code>unload</code> 似乎更简洁。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">window</span>.<span class="title function_">addEventListener</span>(<span class="string">&quot;unload&quot;</span>, deletePDF);</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://developers.google.com/web/updates/2018/07/page-lifecycle-api#legacy-lifecycle-apis-to-avoid">Page Lifecycle API | Web | Google Developers</a> 指出：使用 <code>unload</code> , <code>beforeunload</code> 作为检查页面生命周期的方式并不可靠，尤其是 <code>unload</code> 在移动端极不可靠，建议使用 <code>pagehide</code>，而 <code>beforeunload</code> 适用于存在用户未保存的更改时离开页面的监听，并应该在保存后移除该监听事件，不应使用其作为判断页生命周期的方法。</p>
+<p>根据该文章的建议，使用以下代码：</p>
+<p>（原文使用的是 <code>const</code>， 但经过测试，IE 10及以下版本中并不支持 <code>const</code>）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> terminationEvent = <span class="string">&#x27;onpagehide&#x27;</span> <span class="keyword">in</span> self ? <span class="string">&#x27;pagehide&#x27;</span> : <span class="string">&#x27;unload&#x27;</span>;</span><br><span class="line"><span class="variable language_">window</span>.<span class="title function_">addEventListener</span>(terminationEvent, deletePDF);</span><br></pre></td></tr></table></figure>
+
+<p>该代码在本地测试除 Firefox 以外可正常使用，而该项目没有移动端需求，目前尚不能看出使用 <code>unload</code> 的劣势。</p>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ul>
+<li><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/WindowEventHandlers/onbeforeunload">WindowEventHandlers.onbeforeunload - Web APIs | MDN</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://zh.javascript.info/onload-ondomcontentloaded">页生命周期：DOMContentLoaded, load, beforeunload, unload</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/20001125/beforeunload-or-onbeforeunload">javascript - beforeunload Or onbeforeunload - Stack Overflow</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/1631959/how-to-capture-the-browser-window-close-event">javascript - How to capture the browser window close event? - Stack Overflow</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/Window/beforeunload_event">Window: beforeunload event - Web APIs | MDN</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/52745244/disable-js-beforeunload-if-button-with-specific-id-has-been-clicked">javascript - disable js beforeunload if button with specific id has been clicked - Stack Overflow</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/removeEventListener">EventTarget.removeEventListener() - Web APIs | MDN</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener">EventTarget.addEventListener() - Web APIs | MDN</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/2657182/correct-usage-of-addeventlistener-attachevent">javascript - correct usage of addeventlistener attachevent - Stack Overflow</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://dotblogs.com.tw/jasonyah/2013/05/31/jquery-confirm-when-user-leaving-page-if-changed">[jQuery] jQuery 實作離開網頁或表單前向使用者確認，以防止使用者誤觸離開按鈕 | 分享你的 Coding 新鮮事 - 點部落</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/54155648/narrow-down-beforeunload-to-only-fire-if-field-is-changed-or-updated">javascript - Narrow Down BeforeUnload To Only Fire If Field Is Changed or Updated - Stack Overflow</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/Window/unload_event">Window: unload event - Web APIs | MDN</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://developers.google.com/web/updates/2018/07/page-lifecycle-api#legacy-lifecycle-apis-to-avoid">Page Lifecycle API | Web | Google Developers</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/64273246/capture-close-window-by-beforeunload-but-exclude-asp-button/64311590#64311590">javascript - capture close window by beforeunload but exclude asp button - Stack Overflow</a></p>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/Blog-bind-subdomain-to-blog/" rel="prev" title="Blog-为博客绑定自定义二级域名">
+      <i class="fa fa-chevron-left"></i> Blog-为博客绑定自定义二级域名
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/Book-2021-extract/" rel="next" title="书摘-2021读书摘录（待补完）">
+      书摘-2021读书摘录（待补完） <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          المحتويات
+        </li>
+        <li class="sidebar-nav-overview">
+          عام
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#onbeforeunload-beforeunload"><span class="nav-number">1.</span> <span class="nav-text">onbeforeunload&#x2F;beforeunload</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#addEventListener-removeEventListener"><span class="nav-number">2.</span> <span class="nav-text">addEventListener&#x2F;removeEventListener</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#jQuery-on-off-bind-unbind"><span class="nav-number">3.</span> <span class="nav-text">jQuery on&#x2F;off bind&#x2F;unbind</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E6%A0%87%E5%BF%97%E4%BD%8D%E6%A3%80%E6%B5%8B"><span class="nav-number">4.</span> <span class="nav-text">添加标志位检测</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#onunload-unload"><span class="nav-number">5.</span> <span class="nav-text">onunload&#x2F;unload</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">6.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Fish__404"
+      src="/images/cat.jpg">
+  <p class="site-author-name" itemprop="name">Fish__404</p>
+  <div class="site-description" itemprop="description">What's dream? Just fun!</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">93</span>
+          <span class="site-state-item-name">المقالات</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">التصنيفات</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">35</span>
+        <span class="site-state-item-name">الوسوم</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/fish-404" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;fish-404" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:yourname@gmail.com" title="E-Mail → mailto:yourname@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="user-secret"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Fish__404</span>
+</div>
+  <div class="powered-by">تطبيق الموقع <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : true,
+      notify     : true,
+      appId      : 'BwfroBJnkh22Gmd39XCKHVR6-MdYXbMMI',
+      appKey     : '6kUQN2hR5mA4BEGerhyY4dGa',
+      placeholder: "不说点什么嘛？邮箱网址选填~\n说不定有机会>触发本喵现身噢~ \n喵喵喵o(=•ェ•=)m",
+      avatar     : 'robohash',
+      meta       : guest,
+      pageSize   : '7' || 10,
+      visitor    : true,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>
