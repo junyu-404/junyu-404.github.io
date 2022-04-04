@@ -310,7 +310,7 @@
 <blockquote>
 <p>General Rules</p>
 <ol>
-<li>Let X and Y be any two corresponding <row value constructor element>s. Let XV and YV be the values represented by X and Y, respectively.Case:a) If XV or YV is the null value, then “X <comp op> Y” is unknown.</li>
+<li>Let X and Y be any two corresponding <code>&lt;row value constructor element&gt;</code>s. Let XV and YV be the values represented by X and Y, respectively.Case:a) If XV or YV is the null value, then “X <code>&lt;comp op&gt;</code> Y” is unknown.</li>
 </ol>
 </blockquote>
 <p>在这里我们可以看到，如果被比较的两个值至少有一个为 <code>NULL</code> , 比较的结果实际上并非我们想象中的 <code>True | False</code> , 而是 <code>Unkown</code> ，所以我们的 <code>WHERE</code> 语句对于值为 <code>NULL</code> 的记录得到的并不是一个 <code>True</code> 的结果。</p>
@@ -329,7 +329,7 @@
 <p>两个表达式不等时返回第一个表达式，两个表达式相等时，返回 <code>NULL</code> 。</p>
 <p>根据 <a target="_blank" rel="noopener" href="https://www.contrib.andrew.cmu.edu/~shadow/sql/sql1992.txt">SQL - 92</a> ，实际上 <code>NULLIF</code> 相当于 <code>CASE ... WHEN</code> ：</p>
 <blockquote>
-<p>NULLIF (V1, V2) is equivalent to the following <case specification>:</p>
+<p>NULLIF (V1, V2) is equivalent to the following <code>&lt;case specification&gt;</code>:</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CASE</span> <span class="keyword">WHEN</span> V1<span class="operator">=</span>V2 <span class="keyword">THEN</span> <span class="keyword">NULL</span> <span class="keyword">ELSE</span> V1 <span class="keyword">END</span></span><br></pre></td></tr></table></figure>
 </blockquote>
 <p>当我们的 <code>c_name</code> 为空字符串或空白字符串时， 两个表达式根据前面的解释应该相等，即返回 <code>NULL</code> ，当 <code>c_name</code> 为 <code>NULL</code> 时，由于 <code>NULL</code> 不等于空白字符串，返回自身，即这里将空白字符串，空字符串，<code>NULL</code> 都返回为了 <code>NULL</code> ，注意这里的返回类型与 <code>c_name</code> 一致。</p>
