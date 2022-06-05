@@ -4,11 +4,13 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.4.1">
+<meta name="generator" content="Hexo 6.2.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-icon-fish.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-fish.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-fish.png">
   <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
 
 <link rel="stylesheet" href="/css/main.css">
 
@@ -19,7 +21,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"fish-404.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"fish-404.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":true,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta name="description" content="原文地址：Efficient String Matching - An Aid to Bibliographic Search 作者 Alfred V. Aho，Margaret J. Corasick 贝尔实验室 本文为个人毕业设计外文参考文献翻译部分，有不当之处欢迎指正。 文章主要论述了 AC 自动算法的原理，函数构建，性能。（伪代码部分由于未能找到在代码块中插入数学符号的方式，故采用图片方式">
@@ -42,7 +44,7 @@
 <meta property="og:image" content="https://i.loli.net/2020/06/11/xuDSKyivF8nagWX.png">
 <meta property="article:published_time" content="2020-06-07T16:00:00.000Z">
 <meta property="article:modified_time" content="2020-06-12T10:04:38.000Z">
-<meta property="article:author" content="逃貓">
+<meta property="article:author" content="Fish__404">
 <meta property="article:tag" content="Translate">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://d3i71xaburhd42.cloudfront.net/3547ac839d02f6efe3f6f76a8289738a22528442/2-Figure1-1.png">
@@ -208,8 +210,8 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/cat.jpg">
-      <meta itemprop="name" content="逃貓">
-      <meta itemprop="description" content="">
+      <meta itemprop="name" content="Fish__404">
+      <meta itemprop="description" content="What's dream? Just fun!">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -271,7 +273,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>原文地址：<a target="_blank" rel="noopener" href="https://dl.acm.org/doi/epdf/10.1145/360825.360855">Efficient String Matching - An Aid to Bibliographic Search</a></p>
+        <p>原文地址：<span class="exturl" data-url="aHR0cHM6Ly9kbC5hY20ub3JnL2RvaS9lcGRmLzEwLjExNDUvMzYwODI1LjM2MDg1NQ==">Efficient String Matching - An Aid to Bibliographic Search<i class="fa fa-external-link-alt"></i></span></p>
 <p>作者 Alfred V. Aho，Margaret J. Corasick 贝尔实验室</p>
 <p>本文为个人毕业设计外文参考文献翻译部分，有不当之处欢迎指正。</p>
 <p>文章主要论述了 AC 自动算法的原理，函数构建，性能。（伪代码部分由于未能找到在代码块中插入数学符号的方式，故采用图片方式，若有相关方法，期待评论告知。）</p>
@@ -285,32 +287,32 @@
 <p>在模式匹配程序中使用有限状态机并不新奇 [4,8,17]，但程序员们似乎常常回避使用它们。部分程序员不愿意这样做的部分原因可能是因为从正则表达式 [3,10,15] 构建有限自动机的常规算法的复杂性，尤其是在需要最优解的情况下 [2,14] 。本文表明，从受限的正则表达式，也即由有限集合组成的关键词，可以快速而简单地构建一个高效的有限状态模式匹配机。我们的方法将有限状态机与 KMP 算法 [13] 相结合。</p>
 <p>也许本文最有趣的地方在于有限状态算法提供了比常规方法更多的改进。我们在一个图书馆的参考书目查询程序中使用有限状态模式匹配算法。这个程序的目的是，让书目编者在引文索引中找到所有满足布尔匹配的关键词和短语的标题。这个查询程序开始是使用一种直接的字符串匹配算法。在该程序中使用有限状态算法来替代这个算法后，在典型输入上，运行时间为原程序的五到十分之一。</p>
 <h1 id="模式匹配机"><a href="#模式匹配机" class="headerlink" title="模式匹配机"></a>模式匹配机</h1><p>本节描述了一种在文本字符串中定位关键词的有限状态字符串模式匹配机。下一节将描述从一个给定的有限关键字集合中构建类似机器的算法。</p>
-<p>在本文中，字符串只是简单地表示为一个有限符号序列。设 $K={y_1,y_2,\dots,y_k}$ 是一个有限字符串集合，我们称之为关键字，设 $x$ 为任意字符串，我们称之为文本字符串。我们的问题是找出有限的所有x的子字符串中在K集合中的关键词。子字符串可能彼此重叠。</p>
+<p>在本文中，字符串只是简单地表示为一个有限符号序列。设 $K&#x3D;{y_1,y_2,\dots,y_k}$ 是一个有限字符串集合，我们称之为关键字，设 $x$ 为任意字符串，我们称之为文本字符串。我们的问题是找出有限的所有x的子字符串中在K集合中的关键词。子字符串可能彼此重叠。</p>
 <p>用于K的模式匹配机是一个程序，它将文本字符串 $x$ 作为输入，关键字 $K$ 在 $x$ 的子字符串中的出现的位置作为输出。这种模式匹配机由一个状态集组成。每种状态都用一个数字表示。这种机器通过连续读取 $x$ 中的字符来处理文本字符串 $x$ ，产生状态转换，或是状态输出。这种状态机的行为由三个函数决定：一个跳转函数 $g$ ，一个失败处理函数 $f$ ，以及一个输出函数 $output$ 。</p>
 <p>图1展示了函数在模式匹配状态机针对关键字集 {he, she, his, hers} 时的使用情况。</p>
 <p><img src="https://d3i71xaburhd42.cloudfront.net/3547ac839d02f6efe3f6f76a8289738a22528442/2-Figure1-1.png" alt="图1 模式匹配机"></p>
-<p>一种状态（通常是 0 状态）被指定 $start$ 状态。在图1中状态表示为 0,1,···,9。跳转函数 $g$ 将一种状态和一个输入字符组成一对映射为一种状态或 $fail$ 信息。图1(a) 的有向图表示跳转函数。例如，从 0 到 1 标有 h 的边表示 $g(0,h) = 1$ 。没有箭头表示$fail$。因此，对于所有不是 e 或者 i 的输入字符 $\delta$ ， $g(1,\delta)=fail$ 。我们的模式匹配机具有对所有的输入字符 $\delta$ ， $g(0,\delta)\ne fail$ 的特性。我们将看到跳转函数在 0 状态的这个特性确保在每一个机器周期机器都将处理一个输入字符。</p>
+<p>一种状态（通常是 0 状态）被指定 $start$ 状态。在图1中状态表示为 0,1,···,9。跳转函数 $g$ 将一种状态和一个输入字符组成一对映射为一种状态或 $fail$ 信息。图1(a) 的有向图表示跳转函数。例如，从 0 到 1 标有 h 的边表示 $g(0,h) &#x3D; 1$ 。没有箭头表示$fail$。因此，对于所有不是 e 或者 i 的输入字符 $\delta$ ， $g(1,\delta)&#x3D;fail$ 。我们的模式匹配机具有对所有的输入字符 $\delta$ ， $g(0,\delta)\ne fail$ 的特性。我们将看到跳转函数在 0 状态的这个特性确保在每一个机器周期机器都将处理一个输入字符。</p>
 <p>失败处理函数f将一个状态映射到另一个状态。当跳转函数返回 $fail$ 时失败函数将被调用。当一组关键字被找到时，某些状态将被指定为输出状态。输出函数将一组关键字（可能为空）与每个状态组合将此形式化。</p>
 <p>模式匹配机的一个操作周期定义如下：设 $s$ 表示机器的当前状态， $a$ 表示输入字符串 $x$ 中的当前字符。</p>
 <ol>
-<li><p>如果 $g(s, a) = s’$，状态机执行跳转转换，进入状态 $s’$ ，并将 $x$ 的下一个字符作为当前输入字符。此外，如果 $output(s’)$ 不为空，则机器输出 $output(s’)$ 集合和当前输入字符的位置。这个操作周期现在已完成。</p>
+<li><p>如果 $g(s, a) &#x3D; s’$，状态机执行跳转转换，进入状态 $s’$ ，并将 $x$ 的下一个字符作为当前输入字符。此外，如果 $output(s’)$ 不为空，则机器输出 $output(s’)$ 集合和当前输入字符的位置。这个操作周期现在已完成。</p>
 </li>
-<li><p>如果 $g(s,a) = fail$ ，状态机调用失败函数 $f$ ，也就是执行了失败转换。如果 $f(s) = s’$ ，状态机重复以 $s’$ 作为当前状态，以 $a$ 作为当前输入字符的循环。</p>
+<li><p>如果 $g(s,a) &#x3D; fail$ ，状态机调用失败函数 $f$ ，也就是执行了失败转换。如果 $f(s) &#x3D; s’$ ，状态机重复以 $s’$ 作为当前状态，以 $a$ 作为当前输入字符的循环。</p>
 </li>
 </ol>
 <p>最初，状态机的当前状态为开始状态，文本字符串的第一个字符作为当前输入字符。状态机随后通过对每一个文本字符串的字符执行一个操作周期来处理文本字符串。</p>
 <p>例如，考虑状态机 $M$ 使用图1 中的函数处理文本字符串 “ushers” 的行为。图2表明了 $M$ 处理文本字符串的状态转换关系。</p>
-<p>   <img src="https://i.loli.net/2020/06/10/QgEY7y2BbcUd9pm.png" alt="状态转化队列"><br>考虑这样一个操作周期， $M$ 处在状态 4，当前输入字符为 e 。因为 $g(4,e) = 5$ ，状态机进入状态 5，前移到下一个输入字符，并输出 $output(5)$ ，表明状态机已经发现了在文本字符串的倒数4个位置是关键词 “she” 和 “he” 。</p>
-<p>在状态 5输入字符 r，状态机在它的操作周期中执行两次状态转换。因为 $g(5,r) = fail$ ， $M$ 进入状态 $2 = f(5)$ 。然后因为$g(2,r) = 8$，$M$ 进入状态 8，接着前移一个输入字符。在这个操作周期中没有产生输出。</p>
+<p>   <img src="https://i.loli.net/2020/06/10/QgEY7y2BbcUd9pm.png" alt="状态转化队列"><br>考虑这样一个操作周期， $M$ 处在状态 4，当前输入字符为 e 。因为 $g(4,e) &#x3D; 5$ ，状态机进入状态 5，前移到下一个输入字符，并输出 $output(5)$ ，表明状态机已经发现了在文本字符串的倒数4个位置是关键词 “she” 和 “he” 。</p>
+<p>在状态 5输入字符 r，状态机在它的操作周期中执行两次状态转换。因为 $g(5,r) &#x3D; fail$ ， $M$ 进入状态 $2 &#x3D; f(5)$ 。然后因为$g(2,r) &#x3D; 8$，$M$ 进入状态 8，接着前移一个输入字符。在这个操作周期中没有产生输出。</p>
 <p>以下算法总结了模式匹配机的行为。</p>
 <p><strong>算法1</strong> 模式匹配机</p>
-<p><strong>输入</strong> 一个文本字符串 $x = a_1a_2 \dots a_n$ ,每一个 $a_i$  作为一个输入字符，模式匹配机 $M$ 包含跳转函数 $g$，失败函数 $f$，以及输出函数 $output$，如上所述</p>
+<p><strong>输入</strong> 一个文本字符串 $x &#x3D; a_1a_2 \dots a_n$ ,每一个 $a_i$  作为一个输入字符，模式匹配机 $M$ 包含跳转函数 $g$，失败函数 $f$，以及输出函数 $output$，如上所述</p>
 <p><strong>输出</strong> 关键词在$x$中的位置</p>
 <p><strong>方法</strong></p>
 <p><img src="https://i.loli.net/2020/06/12/LkejgAN8c6WV7il.png" alt="image.png"></p>
 <p>每一趟<strong>for</strong>循环都代表状态机的一个操作周期。</p>
 <p>算法1是在 KMP 算法的基础上模式化得到的，KMP 算法用于在一个文本字符串中查找一个关键字 [13]，也可以看作是 [11] 中讨论的 “trie” 搜索方法的扩展。Hopcroft和Karp（当时未发表）提出一种类似于算法1的模式，用于在文本字符串中查找任一有限关键字集合第一次出现的位置 [13]。本文的第6节探讨了一种算法1的有限自动机版本，它避免了所有的失败转换。</p>
-<h1 id="构造跳转，失败，输出函数"><a href="#构造跳转，失败，输出函数" class="headerlink" title="构造跳转，失败，输出函数"></a>构造跳转，失败，输出函数</h1><p>我们说，当 $g,f,output$ 三个函数应用于一组关键字，算法1表现为，关键字 $y$ 在文本字符串 $x$ 的第 $i$ 个位置中止，当且仅当 $x= uyv$ 并且$uy$的长度为 $i$。</p>
+<h1 id="构造跳转，失败，输出函数"><a href="#构造跳转，失败，输出函数" class="headerlink" title="构造跳转，失败，输出函数"></a>构造跳转，失败，输出函数</h1><p>我们说，当 $g,f,output$ 三个函数应用于一组关键字，算法1表现为，关键字 $y$ 在文本字符串 $x$ 的第 $i$ 个位置中止，当且仅当 $x&#x3D; uyv$ 并且$uy$的长度为 $i$。</p>
 <p>现在我们应该展示如何从一个关键字集构建有效的跳转，失败和输出函数。构建分为两部分。第一部分我们定义状态和跳转函数。第二部分我们计算失败函数。输出函数的计算则在第一部分开始构建，在第二部分完成。</p>
 <p>为了构建跳转函数，我们应该构建一个跳转图。我们从一个表示状态 0 的顶点开始这幅图。然后我们通过往图中添加一条从开始状态引出的有向路径将关键字 $y$ 添加到图中。这样就会有新的顶点和边被添加到图中，从开始状态开始，一条路径拼出关键字 $y$。当一个状态终结了这条路径，关键字 $y$ 将被添加到输出函数中。我们仅在必要时才往图中添加新的边。</p>
 <p>例如，设 {he,she,his,hers} 是关键字集。将第一个关键字添加到图中，我们得到：</p>
@@ -324,25 +326,25 @@
 <p>输出 “hers” 被关联到状态 9。这时我们可以使用已经存在的从状态 0 到状态 1 标号为 “h” 的边和从状态 1 到状态 2 标号为 “e” 的边。</p>
 <p>到目前为止，这幅图是一棵有根的有向树。为了完成跳转函数的构建，我们为所有不是 “h” 或 “s” 的输入字符添加一个从状态 0 到状态 0 的循环。我们得到了一个如图1（a）所示的有向图。这幅图表示跳转函数。</p>
 <p>失败函数从跳转函数构建。不妨设状态$s$的深度为在跳转图中从开始状态到 $s$ 的最短路径。这样在图1（a）中，开始状态的深度为 0，状态1和状态3深度为1，状态2，4，6深度为2，以此类推。</p>
-<p>我们应该计算失败函数中所有深度为 1 的状态，所有深度为 2 的状态，以此类推，直到失败函数计算了所有的状态（除了在失败函数中未定义的状态 0）。这个算法从理论上通过状态来计算失败函数 $f$ 非常简单。我们令所有深度为1的状态 $f(s)=0$。现在假设所有深度小于 $d$ 的状态的 $f$ 都已被计算，深度为$d$的状态的失败函数值将从深度小于 $d$ 的状态的失败函数值来计算。深度为 $d$ 的状态可以从深度为 $d-1$ 的状态的跳转函数定义。</p>
+<p>我们应该计算失败函数中所有深度为 1 的状态，所有深度为 2 的状态，以此类推，直到失败函数计算了所有的状态（除了在失败函数中未定义的状态 0）。这个算法从理论上通过状态来计算失败函数 $f$ 非常简单。我们令所有深度为1的状态 $f(s)&#x3D;0$。现在假设所有深度小于 $d$ 的状态的 $f$ 都已被计算，深度为$d$的状态的失败函数值将从深度小于 $d$ 的状态的失败函数值来计算。深度为 $d$ 的状态可以从深度为 $d-1$ 的状态的跳转函数定义。</p>
 <p>特别地，为了计算深度为 $d$ 的状态的失败函数，我们考虑深度为 $d-1$ 的每个状态$r$，按照如下步骤进行:</p>
 <ol>
-<li><p>如果对所有 $a$，$g(r,a) = fail$，不执行任何操作</p>
+<li><p>如果对所有 $a$，$g(r,a) &#x3D; fail$，不执行任何操作</p>
 </li>
-<li><p>否则，对于每个字符 $a$，$g(r,a) = s$，执行如下操作：</p>
-<p> a) 令 $state = f(r)$</p>
+<li><p>否则，对于每个字符 $a$，$g(r,a) &#x3D; s$，执行如下操作：</p>
+<p> a) 令 $state &#x3D; f(r)$</p>
 <p> b) 执行语句 $state\leftarrow f(state)$ 零至多次，直到有一个状态的值满足 $g(state,a)\ne fail$。（注意因为对于所有的输入 $a$，$g(0,a)\ne fail$，因此满足条件的状态总是可以找到。）</p>
-<p> c) 令 $f(s) = g(state,a)$</p>
+<p> c) 令 $f(s) &#x3D; g(state,a)$</p>
 </li>
 </ol>
-<p>例如，为了计算图1（a）中的失败函数，我们将首先令 $f(1) = f(3) = 0$，因为状态1和3的的深度为1。之后我们来计算深度为2 的状态2，6，4。为了计算$f(2)$，我们令 $state=f(1) = 0$;接着因为 $g(0,e) = 0$，我们得到 $f(2) = 0$。为了计算 $f(6)$，我们令 $state = f(1) = 0$；而因为 $g(0,i) = 0$，我们得到 $f(6) = 0$。为了计算 $f(4)$，我们令 $state = f(3) = 0$；又因为 $g(0,h) = 1$，我们得到 $f(4) = 1$。继续这个方法，我们得到图1(b)中所示的失败函数表。</p>
-<p>在计算失败函数时，我们同时更新输出函数。当我们确认 $f(s) = s’$ 时，我们将状态 $s$ 的输出与状态 $s’$ 的输出归并。</p>
-<p>例如，在图1(a)中我们定义 $f(5) = 2$。此时我们归并状态2的输出集，也即 {he}，加上状态5的输出及得到新的输出集 {he,she}。最后非空的输出及如图1(c)所示。</p>
+<p>例如，为了计算图1（a）中的失败函数，我们将首先令 $f(1) &#x3D; f(3) &#x3D; 0$，因为状态1和3的的深度为1。之后我们来计算深度为2 的状态2，6，4。为了计算$f(2)$，我们令 $state&#x3D;f(1) &#x3D; 0$;接着因为 $g(0,e) &#x3D; 0$，我们得到 $f(2) &#x3D; 0$。为了计算 $f(6)$，我们令 $state &#x3D; f(1) &#x3D; 0$；而因为 $g(0,i) &#x3D; 0$，我们得到 $f(6) &#x3D; 0$。为了计算 $f(4)$，我们令 $state &#x3D; f(3) &#x3D; 0$；又因为 $g(0,h) &#x3D; 1$，我们得到 $f(4) &#x3D; 1$。继续这个方法，我们得到图1(b)中所示的失败函数表。</p>
+<p>在计算失败函数时，我们同时更新输出函数。当我们确认 $f(s) &#x3D; s’$ 时，我们将状态 $s$ 的输出与状态 $s’$ 的输出归并。</p>
+<p>例如，在图1(a)中我们定义 $f(5) &#x3D; 2$。此时我们归并状态2的输出集，也即 {he}，加上状态5的输出及得到新的输出集 {he,she}。最后非空的输出及如图1(c)所示。</p>
 <p>这个从$K$集合构建了跳转，失败和输出函数的算法小结如下。</p>
 <p><strong>算法2</strong>  跳转函数构建</p>
-<p><strong>输入</strong>  关键字集$K={y_1,y_2,\dots,y_k}$</p>
+<p><strong>输入</strong>  关键字集$K&#x3D;{y_1,y_2,\dots,y_k}$</p>
 <p><strong>输出</strong>  跳转函数 $g$ 和部分输出函数的计算值</p>
-<p><strong>方法</strong>  我们假设当状态 $s$ 开始被创建时 $output(s)$ 为空，以及当 $a$ 未定义或 $g(s,a)$ 尚未被定义时，$g(s,a) = fail$。过程 $enter(y)$ 往跳转图中插入一条拼写为 $y$ 的路径。</p>
+<p><strong>方法</strong>  我们假设当状态 $s$ 开始被创建时 $output(s)$ 为空，以及当 $a$ 未定义或 $g(s,a)$ 尚未被定义时，$g(s,a) &#x3D; fail$。过程 $enter(y)$ 往跳转图中插入一条拼写为 $y$ 的路径。</p>
 <p>上面的算法，内循环与算法1类似，计算失败函数值。</p>
 <p><img src="https://i.loli.net/2020/06/11/dzRUHEXoTBvW9Lw.png" alt="image.png"></p>
 <p><strong>算法3</strong>  构建失败函数。</p>
@@ -351,35 +353,35 @@
 <p><strong>方法</strong></p>
 <p><img src="https://i.loli.net/2020/06/11/Eors8MIag4S5TZe.png" alt="image.png"></p>
 <p>第一个 <strong>for</strong> 循环计算深度为1的状态并将它们记录在一个先入先出的可变队列表示的表中。 <strong>while</strong> 主循环从深度为 $d-1$ 的状态集中计算深度为 $d$ 的状态集。</p>
-<p>算法3所产生的失败函数值在下面的情况下可能并非最佳。考虑图1中的模式匹配机 $M$ ，我们看到 $g(4,e) = 5$。如果 $M$ 在状态4并且当前输入字符 $a_i$ 不是 e，那么 $M$ 将进入状态 $f(4) = 1$。因为 $M$ 已经认定 $a_i\ne e$，于是 $M$ 无需考虑跳转函数在输入为 e 时状态1的值。实际上，如果关键字 “his” 不存在，$M$ 将直接从状态4到状态0，跳过一个并非必要的中间转换状态1。</p>
-<p>为了避免不必要的失败转换我们可以使用 $f’$ 概括[13]中的下一个函数取代算法1中的 $f$。特别地，令 $f’(1)=0$。对于 $i$ 大于1的情况，定义 $f’(i) = f’(f(i))$，因此对于所有的输入字符 $a$，$g(f(i),a)\ne fail$ 即 $g(i,a)\ne fail$；否则令 $f’(i) = f(i)$。但是，为了避免任何失败转换，我们可以使用第6节介绍的算法1的确定有限自动机版本。</p>
+<p>算法3所产生的失败函数值在下面的情况下可能并非最佳。考虑图1中的模式匹配机 $M$ ，我们看到 $g(4,e) &#x3D; 5$。如果 $M$ 在状态4并且当前输入字符 $a_i$ 不是 e，那么 $M$ 将进入状态 $f(4) &#x3D; 1$。因为 $M$ 已经认定 $a_i\ne e$，于是 $M$ 无需考虑跳转函数在输入为 e 时状态1的值。实际上，如果关键字 “his” 不存在，$M$ 将直接从状态4到状态0，跳过一个并非必要的中间转换状态1。</p>
+<p>为了避免不必要的失败转换我们可以使用 $f’$ 概括[13]中的下一个函数取代算法1中的 $f$。特别地，令 $f’(1)&#x3D;0$。对于 $i$ 大于1的情况，定义 $f’(i) &#x3D; f’(f(i))$，因此对于所有的输入字符 $a$，$g(f(i),a)\ne fail$ 即 $g(i,a)\ne fail$；否则令 $f’(i) &#x3D; f(i)$。但是，为了避免任何失败转换，我们可以使用第6节介绍的算法1的确定有限自动机版本。</p>
 <h1 id="算法1，2，3的性质"><a href="#算法1，2，3的性质" class="headerlink" title="算法1，2，3的性质"></a>算法1，2，3的性质</h1><p>本节证明从一个给定的关键字集合 $K$ 同通过算法2和算法3来构建跳转函数，失败函数和输出函数确实有效。</p>
 <p>我们设字符串 $uv$ 的 $u$ 为前缀，$v$ 为后缀。如果 $u$ 不是一个空字符串，那么 $u$ 是一个合法的前缀，同样地，如果 $v$ 非空，那么 $v$ 是一个合法的后缀。</p>
 <p>我们设字符串 $u$ 表示在模式匹配机中的跳转图中从开始状态到状态$s$的最短路径所拼出的字符。开始状态用空字符串表示。</p>
 <p>我们的第一个引理表示通过算法3构建的失败函数。</p>
-<p>引理1 <em>假定跳转图中状态 $s$ 由字符串 $u$ 表示，而状态 $t$ 由字符串 $v$ 表示。那么，$f(s)=t$ 当且仅当 $v$ 是 $u$ 的最长合法后缀，是某个关键词的前缀。</em></p>
-<p>证明  证明通过对 $u$ 的长度（或者也可以说状态$s$的深度）进行归纳法达成。在算法3中，$f(s)=0$ 的所有状态深度为1。既然每个深度为1的状态都由一个长度为1的字符串所代表，引理对所有的长度为1的字符串成立。</p>
-<p>归纳的下一步，假设引理1的叙述对所有长度小于 $j(j&gt;1)$ 的字符串为真，令 $u=a_1a_2\dots a_j$ ,对于部分大于1的 $j$，$v$ 是 $u$ 最长的合法后缀，是一些关键字的前缀。假设$u$代表状态 $s$ 而 $a_1 a_2\dots a_{j-1}$ 代表状态 $r$。状态队列 $r_1，r_2，\dots，r_n$ 会像是：</p>
+<p>引理1 <em>假定跳转图中状态 $s$ 由字符串 $u$ 表示，而状态 $t$ 由字符串 $v$ 表示。那么，$f(s)&#x3D;t$ 当且仅当 $v$ 是 $u$ 的最长合法后缀，是某个关键词的前缀。</em></p>
+<p>证明  证明通过对 $u$ 的长度（或者也可以说状态$s$的深度）进行归纳法达成。在算法3中，$f(s)&#x3D;0$ 的所有状态深度为1。既然每个深度为1的状态都由一个长度为1的字符串所代表，引理对所有的长度为1的字符串成立。</p>
+<p>归纳的下一步，假设引理1的叙述对所有长度小于 $j(j&gt;1)$ 的字符串为真，令 $u&#x3D;a_1a_2\dots a_j$ ,对于部分大于1的 $j$，$v$ 是 $u$ 最长的合法后缀，是一些关键字的前缀。假设$u$代表状态 $s$ 而 $a_1 a_2\dots a_{j-1}$ 代表状态 $r$。状态队列 $r_1，r_2，\dots，r_n$ 会像是：</p>
 <ol>
-<li><p>$r_1 = f(r)$</p>
+<li><p>$r_1 &#x3D; f(r)$</p>
 </li>
-<li><p>$r_{i+1} = f(r_i)(1\le i＜n)$</p>
+<li><p>$r_{i+1} &#x3D; f(r_i)(1\le i＜n)$</p>
 </li>
-<li><p>$g(r_i,a_j) = fail(1\le i＜n)$</p>
+<li><p>$g(r_i,a_j) &#x3D; fail(1\le i＜n)$</p>
 </li>
-<li><p>$g(r_n,a_j) = t \ne fail$</p>
+<li><p>$g(r_n,a_j) &#x3D; t \ne fail$</p>
 </li>
 </ol>
-<p>(如果 $g(r_1,a_j)\ne fail$，那么 $r_n = r_1$。)队列 $r_1,r_2,\dots,r_n$ 是算法3中的 <strong>while</strong> 内循环的可变状态的假设值队列。<strong>while</strong> 循环的上述描述使得 $f(s) = t$。我们定义 $t$ 由 $u$ 的最长合法后缀表示，同时也是一些关键字的前缀。</p>
+<p>(如果 $g(r_1,a_j)\ne fail$，那么 $r_n &#x3D; r_1$。)队列 $r_1,r_2,\dots,r_n$ 是算法3中的 <strong>while</strong> 内循环的可变状态的假设值队列。<strong>while</strong> 循环的上述描述使得 $f(s) &#x3D; t$。我们定义 $t$ 由 $u$ 的最长合法后缀表示，同时也是一些关键字的前缀。</p>
 <p>为了证明这点，假设 $v_i$ 表示状态 $r_i(1\ne i\ne n)$。通过归纳假设，$v_1$ 是 $a_1 a_2 \dots a_{j-1}$ 的最长后缀，是某些关键字的前缀；$v_2$ 是 $v_1$ 的最长后缀，是某些关键词的前缀；$v_3$是$v_2$的最长后缀，是某些关键词的后缀，以此类推。</p>
-<p>现在 $v_n$ 是 $a_1a_2\dots a_{j-1}$ 的最长合法后缀，$v_na_j$ 是一些关键字的前缀。因此 $v_na_j$ 是 $u$ 的最长后缀，同时是也些关键字的前缀。根据算法3有 $f(s)=g(r_n,a_j)=t$ ，证毕。</p>
+<p>现在 $v_n$ 是 $a_1a_2\dots a_{j-1}$ 的最长合法后缀，$v_na_j$ 是一些关键字的前缀。因此 $v_na_j$ 是 $u$ 的最长后缀，同时是也些关键字的前缀。根据算法3有 $f(s)&#x3D;g(r_n,a_j)&#x3D;t$ ，证毕。</p>
 <p>下一条引理证明通过算法2和算法3构建的输出函数。</p>
 <p>引理2 <em>$output(s)$ 集合有且仅有包含一个关键字，同时也是代表状态$s$的后缀字符串。</em></p>
-<p>证明  在算法2中无论我们何时向跳转图中添加一个状态 $s$ ，它都由我们通过 $output(s)={y}$ 得到的关键字 $y$ 表示。给定这个初值，我们可以演示关于状态 $s$ 的深度的推演，$output(s) ={y|y\text{是一个表示状态}s\text{的后缀字符串关键字}}$。</p>
+<p>证明  在算法2中无论我们何时向跳转图中添加一个状态 $s$ ，它都由我们通过 $output(s)&#x3D;{y}$ 得到的关键字 $y$ 表示。给定这个初值，我们可以演示关于状态 $s$ 的深度的推演，$output(s) &#x3D;{y|y\text{是一个表示状态}s\text{的后缀字符串关键字}}$。</p>
 <p>这个描述对于深度为0的开始状态是绝对正确的。假定这个叙述对于所有深度小于 $d$ 的状态为真，考虑深度为 $d$ 的状态 $s$。我们用字符串 $u$ 代表状态 $s$。</p>
-<p>考虑在 $output(s)$ 中的一个字符串 $y$。如果 $y$ 是通过算法2添加到 $output(s)$ 中的，那么 $y=u$，且 $y$ 是一个关键字。如果 $y$ 是通过算法2添加到 $output(s)$ 中的，那么 $y$ 在 $output(f(s))$中。通过归纳假设，$y$ 是一个关键字，同时是一个代表状态 $f(s)$ 的字符串的后缀。根据引理1，任一这样的关键字必须有一个 $u$ 的后缀。</p>
-<p>反过来，假设 $y$ 是任一关键字，同时是 $u$ 的后缀。因为 $y$ 是一个关键字，又状态 $t$ 由 $y$ 表示，根据算法2，$output(t)$ 包含 $y$。因此如果 $y=u$，那么 $s=t$ 并且 $output(t)$ 中包含$y$。如果 $y$ 是 $u$ 的一个合法后缀，那么从归纳假设和引理1我们知道 $output(f(s))$ 包含 $y$。因为算法3从增长的深度来考虑状态，算法3的最后一条语句添加 $output(f(s))$，因此 $y$ 在 $output(s)$ 中。</p>
-<p>下面这条引理表示算法1在一个文本字符串 $x=a_1a_2\dots a_n$ 上的行为。</p>
+<p>考虑在 $output(s)$ 中的一个字符串 $y$。如果 $y$ 是通过算法2添加到 $output(s)$ 中的，那么 $y&#x3D;u$，且 $y$ 是一个关键字。如果 $y$ 是通过算法2添加到 $output(s)$ 中的，那么 $y$ 在 $output(f(s))$中。通过归纳假设，$y$ 是一个关键字，同时是一个代表状态 $f(s)$ 的字符串的后缀。根据引理1，任一这样的关键字必须有一个 $u$ 的后缀。</p>
+<p>反过来，假设 $y$ 是任一关键字，同时是 $u$ 的后缀。因为 $y$ 是一个关键字，又状态 $t$ 由 $y$ 表示，根据算法2，$output(t)$ 包含 $y$。因此如果 $y&#x3D;u$，那么 $s&#x3D;t$ 并且 $output(t)$ 中包含$y$。如果 $y$ 是 $u$ 的一个合法后缀，那么从归纳假设和引理1我们知道 $output(f(s))$ 包含 $y$。因为算法3从增长的深度来考虑状态，算法3的最后一条语句添加 $output(f(s))$，因此 $y$ 在 $output(s)$ 中。</p>
+<p>下面这条引理表示算法1在一个文本字符串 $x&#x3D;a_1a_2\dots a_n$ 上的行为。</p>
 <p>引理3 <em>在第 $j$ 个操作周期之后，当且仅当表示  $s$ 的 $a_1a_2\dots a_j$ 最长后缀是某个关键词的前缀时，算法1会处在 $s$ 状态。</em></p>
 <p>证明  和引理1类似。</p>
 <p>定理1 <em>算法2和算法3产生有效的跳转，失败，和输出函数。</em></p>
@@ -403,8 +405,8 @@
 <p>失败函数值可以存储在一维数组中，这样对于每一个 $s$ 可以在常数时间内确定 $f(s)$。</p>
 <p>算法1中未打印的部分可以用于在 $cn$ 步内处理长度为 $n$ 的文本字符串，$c$ 是一个与关键字数量无关的常数。</p>
 <p>现在我们考虑需要打印的输出次数。可以使用一个一维数组在常数时间内确定 $output(s)$ 是否为空。在每一个操作周期中，打印输出花费的时间正比于 $output(s)$ 中关键字的长度总和，$s$ 是算法1 在每个操作周期中的结束状态。在许多情况下，$output(s)$ 通常只有一个关键字，所以对于每个输入状态打印输出所需的时间是常数。</p>
-<p>然而，数量众多的关键词集可能出现在文本字符串的每个位置。在这种情况下算法1将会花费相当大的时间来打印输出结果。在最坏的情况下我们可能不得不打印$K$中的所有关键字，简直是文本字符串的每个位置。（考虑一个极端情况，$K = {a,a^2,a^3,\dots,a^k}$，文本字符串是 $a^n$。即 $a_i$ 是 $i$ 个 $a$ 的字符串。）任何其他的模式匹配机算法将不得不打印所有在文本字符串的每个位置打印同样数量的关键字，所以，比较模式匹配算法在使用时间的基础上识别关键字出现的位置是合理的。</p>
-<p>我们应该比较算法1与另一种更直接的方式的表现，这种方式定位 $K$ 中的所有是给定的文本字符串的子串的位置。这样的方式将会返回每一个 $K$ 中的关键字，并针对文本字符串的所有字符位置成功匹配关键字。这种方法的运行时间最多与$K$中关键字的数量乘以文本字符串的长度成比例。如果有许多的关键字，算法性能将会比算法1差得多。实际上，正是早前算法的时间复杂度促使了算法1的发展。（读者可能希望在以下情况比较以下两个算法的性能，$K = {a,a^2,a^3,\dots,a^k}$，文本字符串是 $a^n$。）</p>
+<p>然而，数量众多的关键词集可能出现在文本字符串的每个位置。在这种情况下算法1将会花费相当大的时间来打印输出结果。在最坏的情况下我们可能不得不打印$K$中的所有关键字，简直是文本字符串的每个位置。（考虑一个极端情况，$K &#x3D; {a,a^2,a^3,\dots,a^k}$，文本字符串是 $a^n$。即 $a_i$ 是 $i$ 个 $a$ 的字符串。）任何其他的模式匹配机算法将不得不打印所有在文本字符串的每个位置打印同样数量的关键字，所以，比较模式匹配算法在使用时间的基础上识别关键字出现的位置是合理的。</p>
+<p>我们应该比较算法1与另一种更直接的方式的表现，这种方式定位 $K$ 中的所有是给定的文本字符串的子串的位置。这样的方式将会返回每一个 $K$ 中的关键字，并针对文本字符串的所有字符位置成功匹配关键字。这种方法的运行时间最多与$K$中关键字的数量乘以文本字符串的长度成比例。如果有许多的关键字，算法性能将会比算法1差得多。实际上，正是早前算法的时间复杂度促使了算法1的发展。（读者可能希望在以下情况比较以下两个算法的性能，$K &#x3D; {a,a^2,a^3,\dots,a^k}$，文本字符串是 $a^n$。）</p>
 <p>定理3 <em>算法2所需时间与关键字的总长度成线性比例关系。</em></p>
 <p>证明  前面已证明。</p>
 <p>定理4 <em>算法3对关键字的总长度处理可以达到线性级别。</em></p>
@@ -424,7 +426,7 @@
 <p><img src="https://i.loli.net/2020/06/11/xuDSKyivF8nagWX.png" alt="image.png"></p>
 <h1 id="在参考书目检索中的应用"><a href="#在参考书目检索中的应用" class="headerlink" title="在参考书目检索中的应用"></a>在参考书目检索中的应用</h1><p>算法1在模式匹配应用于大规模关键字时很有优势，因为所有的关键字在文本字符串中同时匹配只需要遍历一次文本字符串。这种算法类似的应用已经成功被用于一个图书馆参考书目检索程序中，用于定位在所有的参考书目中找到满足一定关键字布尔函数的所有参考书目。</p>
 <p>这个检索系统所使用的数据库是贝尔实验室的技术图书库中用于当代科技论文的机器可读数据。这些参考书目来自期刊，覆盖了很广阔的技术领域。在1973年夏天，三年累积的数据，覆盖了大概150000条参考书目，总长度约有107个字符。</p>
-<p>使用这个搜索系统书目编者可以在数据库中找到所有标题满足布尔组合条件的关键字。例如，书目编者可以请求查找数据库中所有同时包含关键字 “ion” 和 “bombardment” 的条目。书目编者也可以指定一个关键字是否有优先词 and/or，以及一些标点符号例如空格，逗号，分号等等。指明特性可以精确排除嵌于文本中的关键字。例如，将 “ions” 视为子串 “ion” 的匹配结果通常是合理的。但是，将 “motions” 视为该关键词的匹配结果通常就不合理了。这种实践允许选择接收完全嵌入的情况，左包含，右包含，或者不允许包含。这条规定对于算法1来说完全没有难度，即使用于标点符号在大量的跳转转换的关键词语法创造的状态。这可能导致算法1的确定有限自动机的应用消耗更多的空间，从而对一些应用来说失去魅力。</p>
+<p>使用这个搜索系统书目编者可以在数据库中找到所有标题满足布尔组合条件的关键字。例如，书目编者可以请求查找数据库中所有同时包含关键字 “ion” 和 “bombardment” 的条目。书目编者也可以指定一个关键字是否有优先词 and&#x2F;or，以及一些标点符号例如空格，逗号，分号等等。指明特性可以精确排除嵌于文本中的关键字。例如，将 “ions” 视为子串 “ion” 的匹配结果通常是合理的。但是，将 “motions” 视为该关键词的匹配结果通常就不合理了。这种实践允许选择接收完全嵌入的情况，左包含，右包含，或者不允许包含。这条规定对于算法1来说完全没有难度，即使用于标点符号在大量的跳转转换的关键词语法创造的状态。这可能导致算法1的确定有限自动机的应用消耗更多的空间，从而对一些应用来说失去魅力。</p>
 <p>这个参考书目搜索程序的一个早期版本引进了一个直接的模式匹配算法，每个关键词在搜索指令中成功匹配每个标题。这个程序的第二个版本被投入使用，也是使用 FORTRAN 语言，不同之处仅仅在于模式匹配模式在算法1，2，3的子情况。下面的表格展示了两个样本运行在Honeywell 6070电脑中的两个程序的情况。第一个搜索样本包含15个关键字，第二个搜索样本包含24个关键字。（计算时间开销如下表所示）</p>
 <table>
 <thead>
@@ -496,27 +498,28 @@
     
     
     
-        
+          
 
 <div>
 <ul class="post-copyright">
   <li class="post-copyright-author">
-    <strong>本文作者： </strong>逃貓
+    <strong>本文作者： </strong>Fish__404
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
     <a href="https://fish-404.github.io/Translate-efficient-string-matching-an-aid-to-bibliographic-search/" title="翻译-高效的字符串匹配：辅助参考书目检索">https://fish-404.github.io/Translate-efficient-string-matching-an-aid-to-bibliographic-search/</a>
   </li>
   <li class="post-copyright-license">
-    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！
   </li>
 </ul>
 </div>
 
 
       <footer class="post-footer">
+          
           <div class="post-tags">
-              <a href="/tags/Translate/" rel="tag"># Translate</a>
+              <a href="/tags/Translate/" rel="tag"><i class="fa fa-tag"></i> Translate</a>
           </div>
 
         
@@ -597,24 +600,24 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="逃貓"
+    <img class="site-author-image" itemprop="image" alt="Fish__404"
       src="/images/cat.jpg">
-  <p class="site-author-name" itemprop="name">逃貓</p>
-  <div class="site-description" itemprop="description"></div>
+  <p class="site-author-name" itemprop="name">Fish__404</p>
+  <div class="site-description" itemprop="description">What's dream? Just fun!</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">97</span>
+          <span class="site-state-item-count">99</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-count">22</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -631,14 +634,14 @@
   </div>
   <div class="links-of-author motion-element">
       <span class="links-of-author-item">
-        <a href="https://github.com/fish-404" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;fish-404" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2Zpc2gtNDA0" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;fish-404"><i class="fab fa-github fa-fw"></i></span>
       </span>
       <span class="links-of-author-item">
-        <a href="mailto:fish404hsif@gmail.com" title="E-Mail → mailto:fish404hsif@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+        <span class="exturl" data-url="bWFpbHRvOmZpc2g0MDRoc2lmQGdtYWlsLmNvbQ==" title="E-Mail → mailto:fish404hsif@gmail.com"><i class="fa fa-envelope fa-fw"></i></span>
       </span>
   </div>
   <div class="cc-license motion-element" itemprop="license">
-    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+    <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></span>
   </div>
 
 
@@ -668,7 +671,7 @@
   </span>
   <span class="author" itemprop="copyrightHolder">逃貓</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  <div class="powered-by">由 <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl theme-link" data-url="aHR0cHM6Ly9taXN0LnRoZW1lLW5leHQub3Jn">NexT.Mist</span> 强力驱动
   </div>
 
         
@@ -756,7 +759,7 @@ NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
       notify     : true,
       appId      : 'BwfroBJnkh22Gmd39XCKHVR6-MdYXbMMI',
       appKey     : '6kUQN2hR5mA4BEGerhyY4dGa',
-      placeholder: "不说点什么嘛？邮箱网址选填~\n说不定有机会>触发本喵现身噢~ \n喵喵喵o(=•ェ•=)m",
+      placeholder: "不说点什么嘛？邮箱网址选填~\n说不定有机会触发本喵现身噢~ \n喵喵喵o(=•ェ•=)m",
       avatar     : 'robohash',
       meta       : guest,
       pageSize   : '7' || 10,

@@ -4,11 +4,13 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.4.1">
+<meta name="generator" content="Hexo 6.2.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-icon-fish.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-fish.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-fish.png">
   <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
 
 <link rel="stylesheet" href="/css/main.css">
 
@@ -19,7 +21,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"fish-404.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"fish-404.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":true,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta name="description" content="觉得官方的主题不太好看，Github上，Hexo官网上都有许多可供选择的主题，我这里使用NexT主题，本文介绍了修改主题的方法以及站点配置文件_config.yml的一些相关配置。">
@@ -30,8 +32,8 @@
 <meta property="og:description" content="觉得官方的主题不太好看，Github上，Hexo官网上都有许多可供选择的主题，我这里使用NexT主题，本文介绍了修改主题的方法以及站点配置文件_config.yml的一些相关配置。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2018-02-06T07:23:31.000Z">
-<meta property="article:modified_time" content="2022-03-22T16:00:00.000Z">
-<meta property="article:author" content="逃貓">
+<meta property="article:modified_time" content="2019-02-05T16:00:00.000Z">
+<meta property="article:author" content="Fish__404">
 <meta property="article:tag" content="Blog">
 <meta property="article:tag" content="NexT">
 <meta property="article:tag" content="Hexo">
@@ -198,8 +200,8 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/cat.jpg">
-      <meta itemprop="name" content="逃貓">
-      <meta itemprop="description" content="">
+      <meta itemprop="name" content="Fish__404">
+      <meta itemprop="description" content="What's dream? Just fun!">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -224,7 +226,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022/03/23 0:00:00" itemprop="dateModified" datetime="2022-03-23T00:00:00+08:00">2022/03/23</time>
+                <time title="修改时间：2019/02/06 0:00:00" itemprop="dateModified" datetime="2019-02-06T00:00:00+08:00">2019/02/06</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -261,7 +263,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>觉得官方的主题不太好看，Github上，Hexo官网上都有许多可供选择的主题，我这里使用<a target="_blank" rel="noopener" href="http://theme-next.iissnan.com/">NexT</a>主题，本文介绍了修改主题的方法以及站点配置文件<code>_config.yml</code>的一些相关配置。</p>
+        <p>觉得官方的主题不太好看，Github上，Hexo官网上都有许多可供选择的主题，我这里使用<span class="exturl" data-url="aHR0cDovL3RoZW1lLW5leHQuaWlzc25hbi5jb20v">NexT<i class="fa fa-external-link-alt"></i></span>主题，本文介绍了修改主题的方法以及站点配置文件<code>_config.yml</code>的一些相关配置。</p>
 <span id="more"></span>
 
 <h1 id="改变主题"><a href="#改变主题" class="headerlink" title="改变主题"></a>改变主题</h1><h2 id="下载主题"><a href="#下载主题" class="headerlink" title="下载主题"></a>下载主题</h2><p>将需要的主题从Github下载（clone）到你的站点目录中。</p>
@@ -274,21 +276,16 @@
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Head portrait</span></span><br><span class="line"><span class="attr">avatar:</span> <span class="string">/images/cat.jpg</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="设置站点的基本信息"><a href="#设置站点的基本信息" class="headerlink" title="设置站点的基本信息"></a>设置站点的基本信息</h2><p>在<code>_config.yml</code>中找到如下字段，配置个人站点的基本信息，下面的出现位置举例基于NexT主题。</p>
-<p>请注意， NexT主题从 <a target="_blank" rel="noopener" href="https://github.com/theme-next/hexo-theme-next/releases/tag/v6.0.3">v6.0.3</a> 起中文简体字配置值改为 <code>zh-CN</code> 。</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Site</span></span><br><span class="line"><span class="attr">title:</span> <span class="comment"># 此处为站点名称，即左上角的名称 </span></span><br><span class="line"><span class="attr">description:</span> <span class="comment"># 站点描述，将出现在侧边栏头像下方</span></span><br><span class="line"><span class="attr">author:</span> <span class="comment"># 作者，将出现在侧边栏头像下方，如果没有修改主题配置文件，同时会出现在网页下方</span></span><br><span class="line"><span class="attr">language:</span> <span class="comment"># 界面语言，简体字为zh-Hans）</span></span><br></pre></td></tr></table></figure>
-
+ <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Site</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">（此处为站点名称，即左上角的名称）</span></span><br><span class="line"><span class="attr">description:</span> <span class="string">（站点描述，将出现在侧边栏头像下方）</span></span><br><span class="line"><span class="attr">author:</span> <span class="string">（作者，将出现在侧边栏头像下方，如果没有修改主题配置文件，同时会出现在网页下方）</span></span><br><span class="line"><span class="attr">language:</span> <span class="string">（界面语言，简体字为zh-Hans）</span></span><br></pre></td></tr></table></figure>
 <h1 id="设置置顶文章"><a href="#设置置顶文章" class="headerlink" title="设置置顶文章"></a>设置置顶文章</h1><p>找到文件<code>node_modules\hexo-generator-index\lib\generator.js</code>，将文件内容修改为：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&#x27;use strict&#x27;</span>;</span><br><span class="line"><span class="keyword">var</span> pagination = <span class="built_in">require</span>(<span class="string">&#x27;hexo-pagination&#x27;</span>);</span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = <span class="keyword">function</span>(<span class="params">locals</span>)&#123;</span><br><span class="line">  <span class="keyword">var</span> config = <span class="variable language_">this</span>.<span class="property">config</span>;</span><br><span class="line">  <span class="keyword">var</span> posts = locals.<span class="property">posts</span>;</span><br><span class="line">    posts.<span class="property">data</span> = posts.<span class="property">data</span>.<span class="title function_">sort</span>(<span class="keyword">function</span>(<span class="params">a, b</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span>(a.<span class="property">top</span> &amp;&amp; b.<span class="property">top</span>) &#123; <span class="comment">// 两篇文章top都有定义</span></span><br><span class="line">            <span class="keyword">if</span>(a.<span class="property">top</span> == b.<span class="property">top</span>) <span class="keyword">return</span> b.<span class="property">date</span> - a.<span class="property">date</span>; <span class="comment">// 若top值一样则按照文章日期降序排</span></span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">return</span> b.<span class="property">top</span> - a.<span class="property">top</span>; <span class="comment">// 否则按照top值降序排</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(a.<span class="property">top</span> &amp;&amp; !b.<span class="property">top</span>) &#123; <span class="comment">// 以下是只有一篇文章top有定义，那么将有top的排在前面</span></span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(!a.<span class="property">top</span> &amp;&amp; b.<span class="property">top</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">return</span> b.<span class="property">date</span> - a.<span class="property">date</span>; <span class="comment">// 都没定义按照文章日期降序排</span></span><br><span class="line">    &#125;);</span><br><span class="line">  <span class="keyword">var</span> paginationDir = config.<span class="property">pagination_dir</span> || <span class="string">&#x27;page&#x27;</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="title function_">pagination</span>(<span class="string">&#x27;&#x27;</span>, posts, &#123;</span><br><span class="line">    <span class="attr">perPage</span>: config.<span class="property">index_generator</span>.<span class="property">per_page</span>,</span><br><span class="line">    <span class="attr">layout</span>: [<span class="string">&#x27;index&#x27;</span>, <span class="string">&#x27;archive&#x27;</span>],</span><br><span class="line">    <span class="attr">format</span>: paginationDir + <span class="string">&#x27;/%d/&#x27;</span>,</span><br><span class="line">    <span class="attr">data</span>: &#123;</span><br><span class="line">      <span class="attr">__index</span>: <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
 <p>发布时需要置顶的文章在前面格式处配置，top值越大越前面:</p>
 <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line"><span class="section">top: 7</span></span><br><span class="line"><span class="section">---</span></span><br></pre></td></tr></table></figure>
-
 <h1 id="修改文章链接格式"><a href="#修改文章链接格式" class="headerlink" title="修改文章链接格式"></a>修改文章链接格式</h1><p>修改<code>permalink</code>样式可以改变自动生成的博文链接样式：</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># URL</span></span><br><span class="line"><span class="comment">## If your site is put in a subdirectory, set url as &#x27;http://yoursite.com/child&#x27; and root as &#x27;/child/&#x27;</span></span><br><span class="line"><span class="attr">url:</span> <span class="string">http://yoursite.com</span></span><br><span class="line"><span class="attr">root:</span> <span class="string">/</span></span><br><span class="line"><span class="attr">permalink:</span> <span class="string">:title/</span></span><br><span class="line"><span class="attr">permalink_defaults:</span></span><br></pre></td></tr></table></figure>
-
 <h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ul>
-<li><a target="_blank" rel="noopener" href="http://theme-next.iissnan.com/getting-started.html">开始使用-NexT使用文档</a></li>
-<li><a target="_blank" rel="noopener" href="http://shenzekun.cn/hexo%E7%9A%84next%E4%B8%BB%E9%A2%98%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B.html">hexo的next主题个性化教程：打造酷炫网站|Moorez</a></li>
+<li><span class="exturl" data-url="aHR0cDovL3RoZW1lLW5leHQuaWlzc25hbi5jb20vZ2V0dGluZy1zdGFydGVkLmh0bWw=">开始使用-NexT使用文档<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cDovL3NoZW56ZWt1bi5jbi9oZXhvJUU3JTlBJTg0bmV4dCVFNCVCOCVCQiVFOSVBMiU5OCVFNCVCOCVBQSVFNiU4MCVBNyVFNSU4QyU5NiVFOSU4NSU4RCVFNyVCRCVBRSVFNiU5NSU5OSVFNyVBOCU4Qi5odG1s">hexo的next主题个性化教程：打造酷炫网站|Moorez<i class="fa fa-external-link-alt"></i></span></li>
 </ul>
 
     </div>
@@ -296,29 +293,30 @@
     
     
     
-        
+          
 
 <div>
 <ul class="post-copyright">
   <li class="post-copyright-author">
-    <strong>本文作者： </strong>逃貓
+    <strong>本文作者： </strong>Fish__404
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
     <a href="https://fish-404.github.io/Blog-change-blog-theme/" title="Blog-修改站点主题以及站点配置文件">https://fish-404.github.io/Blog-change-blog-theme/</a>
   </li>
   <li class="post-copyright-license">
-    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！
   </li>
 </ul>
 </div>
 
 
       <footer class="post-footer">
+          
           <div class="post-tags">
-              <a href="/tags/Blog/" rel="tag"># Blog</a>
-              <a href="/tags/NexT/" rel="tag"># NexT</a>
-              <a href="/tags/Hexo/" rel="tag"># Hexo</a>
+              <a href="/tags/Blog/" rel="tag"><i class="fa fa-tag"></i> Blog</a>
+              <a href="/tags/NexT/" rel="tag"><i class="fa fa-tag"></i> NexT</a>
+              <a href="/tags/Hexo/" rel="tag"><i class="fa fa-tag"></i> Hexo</a>
           </div>
 
         
@@ -331,8 +329,8 @@
       <i class="fa fa-chevron-left"></i> Blog-Hexo搭建
     </a></div>
       <div class="post-nav-item">
-    <a href="/Blog-adjust-sidebar-nextmist-left/" rel="next" title="Blog-调整NexT主题Mist外观侧边栏在左（v7.3.0 以下）">
-      Blog-调整NexT主题Mist外观侧边栏在左（v7.3.0 以下） <i class="fa fa-chevron-right"></i>
+    <a href="/Blog-adjust-sidebar-nextmist-left/" rel="next" title="Blog-调整NexT主题Mist外观侧边栏在左">
+      Blog-调整NexT主题Mist外观侧边栏在左 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -399,24 +397,24 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="逃貓"
+    <img class="site-author-image" itemprop="image" alt="Fish__404"
       src="/images/cat.jpg">
-  <p class="site-author-name" itemprop="name">逃貓</p>
-  <div class="site-description" itemprop="description"></div>
+  <p class="site-author-name" itemprop="name">Fish__404</p>
+  <div class="site-description" itemprop="description">What's dream? Just fun!</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">97</span>
+          <span class="site-state-item-count">99</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-count">22</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -433,14 +431,14 @@
   </div>
   <div class="links-of-author motion-element">
       <span class="links-of-author-item">
-        <a href="https://github.com/fish-404" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;fish-404" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2Zpc2gtNDA0" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;fish-404"><i class="fab fa-github fa-fw"></i></span>
       </span>
       <span class="links-of-author-item">
-        <a href="mailto:fish404hsif@gmail.com" title="E-Mail → mailto:fish404hsif@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+        <span class="exturl" data-url="bWFpbHRvOmZpc2g0MDRoc2lmQGdtYWlsLmNvbQ==" title="E-Mail → mailto:fish404hsif@gmail.com"><i class="fa fa-envelope fa-fw"></i></span>
       </span>
   </div>
   <div class="cc-license motion-element" itemprop="license">
-    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+    <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></span>
   </div>
 
 
@@ -470,7 +468,7 @@
   </span>
   <span class="author" itemprop="copyrightHolder">逃貓</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  <div class="powered-by">由 <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl theme-link" data-url="aHR0cHM6Ly9taXN0LnRoZW1lLW5leHQub3Jn">NexT.Mist</span> 强力驱动
   </div>
 
         
@@ -558,7 +556,7 @@ NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
       notify     : true,
       appId      : 'BwfroBJnkh22Gmd39XCKHVR6-MdYXbMMI',
       appKey     : '6kUQN2hR5mA4BEGerhyY4dGa',
-      placeholder: "不说点什么嘛？邮箱网址选填~\n说不定有机会>触发本喵现身噢~ \n喵喵喵o(=•ェ•=)m",
+      placeholder: "不说点什么嘛？邮箱网址选填~\n说不定有机会触发本喵现身噢~ \n喵喵喵o(=•ェ•=)m",
       avatar     : 'robohash',
       meta       : guest,
       pageSize   : '7' || 10,

@@ -4,11 +4,13 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.4.1">
+<meta name="generator" content="Hexo 6.2.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-icon-fish.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-fish.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-fish.png">
   <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
 
 <link rel="stylesheet" href="/css/main.css">
 
@@ -19,7 +21,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"fish-404.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"fish-404.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":true,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta name="description" content="本文对STM8单片机进行简要介绍，并对GPIO输入输出模式进行介绍，对GPIO的相关寄存器配置进行介绍。">
@@ -31,7 +33,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2018-02-19T15:01:00.000Z">
 <meta property="article:modified_time" content="2020-02-19T14:22:38.000Z">
-<meta property="article:author" content="逃貓">
+<meta property="article:author" content="Fish__404">
 <meta property="article:tag" content="STM8">
 <meta name="twitter:card" content="summary">
 
@@ -196,8 +198,8 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/cat.jpg">
-      <meta itemprop="name" content="逃貓">
-      <meta itemprop="description" content="">
+      <meta itemprop="name" content="Fish__404">
+      <meta itemprop="description" content="What's dream? Just fun!">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -262,8 +264,8 @@
         <p>本文对STM8单片机进行简要介绍，并对GPIO输入输出模式进行介绍，对GPIO的相关寄存器配置进行介绍。</p>
 <span id="more"></span>
 
-<p>本STM8系列实验基于STM8S105C6芯片。相关参考手册可以访问<a target="_blank" rel="noopener" href="http://www.st.com/content/st_com/en/products/microcontrollers/stm8-8-bit-mcus/stm8s-series/stm8s103-105/stm8s105c6.html">ST官网</a>获取。</p>
-<h1 id="GPIO简介"><a href="#GPIO简介" class="headerlink" title="GPIO简介"></a>GPIO简介</h1><p>GPIO(General purpose input/output ports)，即通用输入/输出口，用于芯片与外部的数据传输。一个I/O端口包含8个引脚，每个引脚可以被独立配置为数字输入或数字输出，部分引脚有模拟输入，外部中断等功能。打个也许不太恰当的比方，当我们的手接近火焰时会有缩手反射的现象，这个过程需要神经中枢的参与，手就像是外设，而单片机就像是神经中枢，手对于外界火焰的感知就好比输入，而神经中枢对输入的处理就好比单片机的软件处理，神经中枢所产生的神经冲动而导致缩手反射就好比输出。一个强大的系统离不开输入输出和中枢系统的协调配合。GPIO的配置是单片机编程中最基本，最常用的配置。LQFP48(7×7)封装的STM8S105C6可用I/O端口共38个(参考STM8/STM32选型手册)。不同型号的STM8芯片的可用I/O端口数量不一样，更多的I/O端口可以连接更多的外设，但也不要盲目求多，适用即可，比所用的预留一些即可，过多也是资源的浪费。</p>
+<p>本STM8系列实验基于STM8S105C6芯片。相关参考手册可以访问<span class="exturl" data-url="aHR0cDovL3d3dy5zdC5jb20vY29udGVudC9zdF9jb20vZW4vcHJvZHVjdHMvbWljcm9jb250cm9sbGVycy9zdG04LTgtYml0LW1jdXMvc3RtOHMtc2VyaWVzL3N0bThzMTAzLTEwNS9zdG04czEwNWM2Lmh0bWw=">ST官网<i class="fa fa-external-link-alt"></i></span>获取。</p>
+<h1 id="GPIO简介"><a href="#GPIO简介" class="headerlink" title="GPIO简介"></a>GPIO简介</h1><p>GPIO(General purpose input&#x2F;output ports)，即通用输入&#x2F;输出口，用于芯片与外部的数据传输。一个I&#x2F;O端口包含8个引脚，每个引脚可以被独立配置为数字输入或数字输出，部分引脚有模拟输入，外部中断等功能。打个也许不太恰当的比方，当我们的手接近火焰时会有缩手反射的现象，这个过程需要神经中枢的参与，手就像是外设，而单片机就像是神经中枢，手对于外界火焰的感知就好比输入，而神经中枢对输入的处理就好比单片机的软件处理，神经中枢所产生的神经冲动而导致缩手反射就好比输出。一个强大的系统离不开输入输出和中枢系统的协调配合。GPIO的配置是单片机编程中最基本，最常用的配置。LQFP48(7×7)封装的STM8S105C6可用I&#x2F;O端口共38个(参考STM8&#x2F;STM32选型手册)。不同型号的STM8芯片的可用I&#x2F;O端口数量不一样，更多的I&#x2F;O端口可以连接更多的外设，但也不要盲目求多，适用即可，比所用的预留一些即可，过多也是资源的浪费。</p>
 <h1 id="输入模式"><a href="#输入模式" class="headerlink" title="输入模式"></a>输入模式</h1><p>STM8S系列芯片的GPIO输入模式有四种：</p>
 <ul>
 <li>悬浮不带中断输入</li>
@@ -299,7 +301,7 @@
 <li>CR2：配置输出速率</li>
 </ul>
 </li>
-<li>写ODR寄存器，STM8将通过锁存器输出对应的数值到I/O</li>
+<li>写ODR寄存器，STM8将通过锁存器输出对应的数值到I&#x2F;O</li>
 </ul>
 
     </div>
@@ -307,27 +309,28 @@
     
     
     
-        
+          
 
 <div>
 <ul class="post-copyright">
   <li class="post-copyright-author">
-    <strong>本文作者： </strong>逃貓
+    <strong>本文作者： </strong>Fish__404
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
     <a href="https://fish-404.github.io/STM8-GPIO-input-output/" title="STM8-认识GPIO及输入输出模式">https://fish-404.github.io/STM8-GPIO-input-output/</a>
   </li>
   <li class="post-copyright-license">
-    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！
   </li>
 </ul>
 </div>
 
 
       <footer class="post-footer">
+          
           <div class="post-tags">
-              <a href="/tags/STM8/" rel="tag"># STM8</a>
+              <a href="/tags/STM8/" rel="tag"><i class="fa fa-tag"></i> STM8</a>
           </div>
 
         
@@ -408,24 +411,24 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="逃貓"
+    <img class="site-author-image" itemprop="image" alt="Fish__404"
       src="/images/cat.jpg">
-  <p class="site-author-name" itemprop="name">逃貓</p>
-  <div class="site-description" itemprop="description"></div>
+  <p class="site-author-name" itemprop="name">Fish__404</p>
+  <div class="site-description" itemprop="description">What's dream? Just fun!</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">97</span>
+          <span class="site-state-item-count">99</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-count">22</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -442,14 +445,14 @@
   </div>
   <div class="links-of-author motion-element">
       <span class="links-of-author-item">
-        <a href="https://github.com/fish-404" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;fish-404" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2Zpc2gtNDA0" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;fish-404"><i class="fab fa-github fa-fw"></i></span>
       </span>
       <span class="links-of-author-item">
-        <a href="mailto:fish404hsif@gmail.com" title="E-Mail → mailto:fish404hsif@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+        <span class="exturl" data-url="bWFpbHRvOmZpc2g0MDRoc2lmQGdtYWlsLmNvbQ==" title="E-Mail → mailto:fish404hsif@gmail.com"><i class="fa fa-envelope fa-fw"></i></span>
       </span>
   </div>
   <div class="cc-license motion-element" itemprop="license">
-    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+    <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></span>
   </div>
 
 
@@ -479,7 +482,7 @@
   </span>
   <span class="author" itemprop="copyrightHolder">逃貓</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  <div class="powered-by">由 <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl theme-link" data-url="aHR0cHM6Ly9taXN0LnRoZW1lLW5leHQub3Jn">NexT.Mist</span> 强力驱动
   </div>
 
         
@@ -567,7 +570,7 @@ NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
       notify     : true,
       appId      : 'BwfroBJnkh22Gmd39XCKHVR6-MdYXbMMI',
       appKey     : '6kUQN2hR5mA4BEGerhyY4dGa',
-      placeholder: "不说点什么嘛？邮箱网址选填~\n说不定有机会>触发本喵现身噢~ \n喵喵喵o(=•ェ•=)m",
+      placeholder: "不说点什么嘛？邮箱网址选填~\n说不定有机会触发本喵现身噢~ \n喵喵喵o(=•ェ•=)m",
       avatar     : 'robohash',
       meta       : guest,
       pageSize   : '7' || 10,

@@ -4,11 +4,13 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.4.1">
+<meta name="generator" content="Hexo 6.2.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-icon-fish.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-fish.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-fish.png">
   <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
 
 <link rel="stylesheet" href="/css/main.css">
 
@@ -19,7 +21,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"fish-404.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"fish-404.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":true,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta name="description" content="本文总结了使用mcmthesis的方法，以及一些美赛时可能用到的表格，图片等环境。本文并不能作为LaTex的学习教程。">
@@ -31,7 +33,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2018-02-08T05:19:31.000Z">
 <meta property="article:modified_time" content="2020-01-11T15:38:38.000Z">
-<meta property="article:author" content="逃貓">
+<meta property="article:author" content="Fish__404">
 <meta property="article:tag" content="LaTeX">
 <meta property="article:tag" content="Mathematical modeling">
 <meta name="twitter:card" content="summary">
@@ -197,8 +199,8 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/cat.jpg">
-      <meta itemprop="name" content="逃貓">
-      <meta itemprop="description" content="">
+      <meta itemprop="name" content="Fish__404">
+      <meta itemprop="description" content="What's dream? Just fun!">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -292,7 +294,7 @@
 <h2 id="插入图片（Figure）"><a href="#插入图片（Figure）" class="headerlink" title="插入图片（Figure）"></a>插入图片（Figure）</h2><p>在文中常常需要插入图片，图片的标题应该在图片下方，<code>mcmthesis</code>模板中提供了一个参考格式如下：</p>
 <figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\begin</span>&#123;figure&#125;[htbp]</span><br><span class="line">    <span class="keyword">\small</span></span><br><span class="line">    <span class="keyword">\centering</span></span><br><span class="line">    <span class="keyword">\includegraphics</span>[width=12cm]&#123;a.eps&#125;</span><br><span class="line">    <span class="keyword">\caption</span>&#123;a&#125;</span><br><span class="line">    <span class="keyword">\label</span>&#123;fig:Figure 1&#125;</span><br><span class="line"><span class="keyword">\end</span>&#123;figure&#125;</span><br></pre></td></tr></table></figure>
 
-<p>htbp选项表示由LaTex决定插图位置，即这里，页顶，页底，浮动。 <code>\centring</code>表示居中，<code>\label&#123;&#125;</code>应该在<code>\caption</code>之后。图片格式可以通过 <a target="_blank" rel="noopener" href="http://www.tlhiv.org/rast2vec/">Convert PNG/JPEG(Raster) to EPS/PDF(Vector) Format</a> 转化为<code>*.eps</code>,<code>*.pdf</code>格式，放置于<code>figure</code>文件夹中，并且<code>*.pdf</code>的命名格式有一定的要求，如图片为<code>a.eps</code>，则PDF文件应该命名为<code>a-eps-converted-to.pdf</code>。</p>
+<p>htbp选项表示由LaTex决定插图位置，即这里，页顶，页底，浮动。 <code>\centring</code>表示居中，<code>\label&#123;&#125;</code>应该在<code>\caption</code>之后。图片格式可以通过 <span class="exturl" data-url="aHR0cDovL3d3dy50bGhpdi5vcmcvcmFzdDJ2ZWMv">Convert PNG&#x2F;JPEG(Raster) to EPS&#x2F;PDF(Vector) Format<i class="fa fa-external-link-alt"></i></span> 转化为<code>*.eps</code>,<code>*.pdf</code>格式，放置于<code>figure</code>文件夹中，并且<code>*.pdf</code>的命名格式有一定的要求，如图片为<code>a.eps</code>，则PDF文件应该命名为<code>a-eps-converted-to.pdf</code>。</p>
 <h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><p>简单的列表样式通常用于列举assumptions，方程、公式等的参数</p>
 <h3 id="无序列表"><a href="#无序列表" class="headerlink" title="无序列表"></a>无序列表</h3><p>无序列表各项前的符号默认为实心小圆点，可以通过改变<code>\item[]</code>参数来修改符号。</p>
 <figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\begin</span>&#123;itemize&#125;</span><br><span class="line">  <span class="keyword">\item</span></span><br><span class="line">  <span class="keyword">\item</span>[-]</span><br><span class="line">  <span class="keyword">\item</span>[*]</span><br><span class="line"><span class="keyword">\end</span>&#123;itemize&#125;</span><br></pre></td></tr></table></figure>
@@ -313,17 +315,17 @@
 <h3 id="多行公式等号对齐"><a href="#多行公式等号对齐" class="headerlink" title="多行公式等号对齐"></a>多行公式等号对齐</h3><figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\begin</span>&#123;align&#125;</span><br><span class="line">    <span class="keyword">\eta</span><span class="built_in">_</span>1 <span class="built_in">&amp;</span>= <span class="keyword">\frac</span>&#123;S<span class="built_in">_</span>1&#125;&#123;A&#125;</span><br><span class="line">    <span class="keyword">\\</span></span><br><span class="line">    <span class="keyword">\eta</span><span class="built_in">_</span>2 <span class="built_in">&amp;</span>= <span class="keyword">\frac</span>&#123;N <span class="keyword">\times</span> A&#125;&#123;S<span class="built_in">_</span>&#123;Total&#125;&#125;</span><br><span class="line">    <span class="keyword">\\</span></span><br><span class="line">         Z <span class="built_in">&amp;</span>= p <span class="keyword">\eta</span><span class="built_in">_</span>3 + (1-p)<span class="keyword">\eta</span><span class="built_in">_</span>4</span><br><span class="line"><span class="keyword">\end</span>&#123;align&#125;</span><br></pre></td></tr></table></figure>
 
 <p>更多常用数学符号的整理传送门：<a href="https://fish-404.github.io/LaTeX-common-math-symbol-equation/">LaTeX - 常用数学符号 | 在逃的貓</a></p>
-<p>LaTeX 数学符号快速搜索：<a target="_blank" rel="noopener" href="https://latex.guide/">LaTeX Search: Find LaTeX commands</a></p>
+<p>LaTeX 数学符号快速搜索：<span class="exturl" data-url="aHR0cHM6Ly9sYXRleC5ndWlkZS8=">LaTeX Search: Find LaTeX commands<i class="fa fa-external-link-alt"></i></span></p>
 <h2 id="参考文献的书写"><a href="#参考文献的书写" class="headerlink" title="参考文献的书写"></a>参考文献的书写</h2><figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\begin</span>&#123;thebibliography&#125;&#123;99&#125;</span><br><span class="line">  <span class="keyword">\bibitem</span>&#123;1&#125;Wikipedia. 2018. Thermal Conduction. <span class="keyword">\url</span>&#123;<span class="link">https://en.wikipedia.org/wiki/Thermal_conduction</span>&#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">\bibitem</span>&#123;2&#125;Name. Article(in Chinese). <span class="keyword">\emph</span>&#123;Magazine&#125;, year, number: page. <span class="keyword">\url</span>&#123;<span class="link">site</span>&#125;</span><br><span class="line"><span class="keyword">\end</span>&#123;thebibliography&#125;</span><br></pre></td></tr></table></figure>
 
 <p>99表示允许的最大条目数。在文章中可以使用<code>\cite&#123;&#125;</code>对<code>\bibitem</code>中编号了的参考文献进行引用。</p>
 <h2 id="强调"><a href="#强调" class="headerlink" title="强调"></a>强调</h2><p><code>\emph</code>用于强调，通常会变为斜体<br><code>\textbf&#123;&#125;</code>用于字体加粗</p>
 <h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ul>
-<li><p><a target="_blank" rel="noopener" href="https://liam0205.me/2016/01/27/how-to-use-mcmthesis/">如何使用美赛模板mcmthesis|始终</a></p>
+<li><p><span class="exturl" data-url="aHR0cHM6Ly9saWFtMDIwNS5tZS8yMDE2LzAxLzI3L2hvdy10by11c2UtbWNtdGhlc2lzLw==">如何使用美赛模板mcmthesis|始终<i class="fa fa-external-link-alt"></i></span></p>
 </li>
-<li><p><a target="_blank" rel="noopener" href="http://www.ptep-online.com/ctan/lshort_chinese.pdf">一份不太简短的LATEX2ε介绍(PDF)</a></p>
+<li><p><span class="exturl" data-url="aHR0cDovL3d3dy5wdGVwLW9ubGluZS5jb20vY3Rhbi9sc2hvcnRfY2hpbmVzZS5wZGY=">一份不太简短的LATEX2ε介绍(PDF)<i class="fa fa-external-link-alt"></i></span></p>
 </li>
-<li><p><a target="_blank" rel="noopener" href="http://dralpha.altervista.org/zh/tech/lnotes2.pdf">LATEX Notes雷太赫排版系统简介第二版v2.03(PDF)</a></p>
+<li><p><span class="exturl" data-url="aHR0cDovL2RyYWxwaGEuYWx0ZXJ2aXN0YS5vcmcvemgvdGVjaC9sbm90ZXMyLnBkZg==">LATEX Notes雷太赫排版系统简介第二版v2.03(PDF)<i class="fa fa-external-link-alt"></i></span></p>
 </li>
 </ul>
 
@@ -332,28 +334,29 @@
     
     
     
-        
+          
 
 <div>
 <ul class="post-copyright">
   <li class="post-copyright-author">
-    <strong>本文作者： </strong>逃貓
+    <strong>本文作者： </strong>Fish__404
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
     <a href="https://fish-404.github.io/LaTex-use-mcmthesis-write/" title="LaTeX-使用Mcmthesis模板写作美赛论文">https://fish-404.github.io/LaTex-use-mcmthesis-write/</a>
   </li>
   <li class="post-copyright-license">
-    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！
   </li>
 </ul>
 </div>
 
 
       <footer class="post-footer">
+          
           <div class="post-tags">
-              <a href="/tags/LaTeX/" rel="tag"># LaTeX</a>
-              <a href="/tags/Mathematical-modeling/" rel="tag"># Mathematical modeling</a>
+              <a href="/tags/LaTeX/" rel="tag"><i class="fa fa-tag"></i> LaTeX</a>
+              <a href="/tags/Mathematical-modeling/" rel="tag"><i class="fa fa-tag"></i> Mathematical modeling</a>
           </div>
 
         
@@ -362,8 +365,8 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/Blog-adjust-sidebar-nextmist-left/" rel="prev" title="Blog-调整NexT主题Mist外观侧边栏在左（v7.3.0 以下）">
-      <i class="fa fa-chevron-left"></i> Blog-调整NexT主题Mist外观侧边栏在左（v7.3.0 以下）
+    <a href="/Blog-adjust-sidebar-nextmist-left/" rel="prev" title="Blog-调整NexT主题Mist外观侧边栏在左">
+      <i class="fa fa-chevron-left"></i> Blog-调整NexT主题Mist外观侧边栏在左
     </a></div>
       <div class="post-nav-item">
     <a href="/STM8-GPIO-input-output/" rel="next" title="STM8-认识GPIO及输入输出模式">
@@ -434,24 +437,24 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="逃貓"
+    <img class="site-author-image" itemprop="image" alt="Fish__404"
       src="/images/cat.jpg">
-  <p class="site-author-name" itemprop="name">逃貓</p>
-  <div class="site-description" itemprop="description"></div>
+  <p class="site-author-name" itemprop="name">Fish__404</p>
+  <div class="site-description" itemprop="description">What's dream? Just fun!</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">97</span>
+          <span class="site-state-item-count">99</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-count">22</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -468,14 +471,14 @@
   </div>
   <div class="links-of-author motion-element">
       <span class="links-of-author-item">
-        <a href="https://github.com/fish-404" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;fish-404" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2Zpc2gtNDA0" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;fish-404"><i class="fab fa-github fa-fw"></i></span>
       </span>
       <span class="links-of-author-item">
-        <a href="mailto:fish404hsif@gmail.com" title="E-Mail → mailto:fish404hsif@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+        <span class="exturl" data-url="bWFpbHRvOmZpc2g0MDRoc2lmQGdtYWlsLmNvbQ==" title="E-Mail → mailto:fish404hsif@gmail.com"><i class="fa fa-envelope fa-fw"></i></span>
       </span>
   </div>
   <div class="cc-license motion-element" itemprop="license">
-    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+    <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></span>
   </div>
 
 
@@ -505,7 +508,7 @@
   </span>
   <span class="author" itemprop="copyrightHolder">逃貓</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  <div class="powered-by">由 <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl theme-link" data-url="aHR0cHM6Ly9taXN0LnRoZW1lLW5leHQub3Jn">NexT.Mist</span> 强力驱动
   </div>
 
         
@@ -593,7 +596,7 @@ NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
       notify     : true,
       appId      : 'BwfroBJnkh22Gmd39XCKHVR6-MdYXbMMI',
       appKey     : '6kUQN2hR5mA4BEGerhyY4dGa',
-      placeholder: "不说点什么嘛？邮箱网址选填~\n说不定有机会>触发本喵现身噢~ \n喵喵喵o(=•ェ•=)m",
+      placeholder: "不说点什么嘛？邮箱网址选填~\n说不定有机会触发本喵现身噢~ \n喵喵喵o(=•ェ•=)m",
       avatar     : 'robohash',
       meta       : guest,
       pageSize   : '7' || 10,

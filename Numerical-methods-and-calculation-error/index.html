@@ -4,11 +4,13 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.4.1">
+<meta name="generator" content="Hexo 6.2.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-icon-fish.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-fish.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-fish.png">
   <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
 
 <link rel="stylesheet" href="/css/main.css">
 
@@ -19,7 +21,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"fish-404.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"fish-404.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":true,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta name="description" content="计算方法课程第一章绪论与计算误差整理，来自课程内容，因 Github 无法渲染公式，故整理在此. 源文件：https:&#x2F;&#x2F;github.com&#x2F;fish-404&#x2F;Notes&#x2F;tree&#x2F;master&#x2F;%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95">
@@ -32,7 +34,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/fish-404/Notes/master/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/%E5%88%A9%E7%94%A8%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%A3%E5%86%B3%E5%AE%9E%E9%99%85%E9%97%AE%E9%A2%98%E7%9A%84%E5%9F%BA%E6%9C%AC%E8%BF%87%E7%A8%8B.png">
 <meta property="article:published_time" content="2019-03-05T16:00:00.000Z">
 <meta property="article:modified_time" content="2019-05-08T09:22:24.000Z">
-<meta property="article:author" content="逃貓">
+<meta property="article:author" content="Fish__404">
 <meta property="article:tag" content="Numerical methods">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/fish-404/Notes/master/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/%E5%88%A9%E7%94%A8%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%A3%E5%86%B3%E5%AE%9E%E9%99%85%E9%97%AE%E9%A2%98%E7%9A%84%E5%9F%BA%E6%9C%AC%E8%BF%87%E7%A8%8B.png">
@@ -198,8 +200,8 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/cat.jpg">
-      <meta itemprop="name" content="逃貓">
-      <meta itemprop="description" content="">
+      <meta itemprop="name" content="Fish__404">
+      <meta itemprop="description" content="What's dream? Just fun!">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -262,7 +264,7 @@
 
       
         <p>计算方法课程第一章绪论与计算误差整理，来自课程内容，因 Github 无法渲染公式，故整理在此.</p>
-<p>源文件：<a target="_blank" rel="noopener" href="https://github.com/fish-404/Notes/tree/master/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95">https://github.com/fish-404/Notes/tree/master/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95</a></p>
+<p>源文件：<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2Zpc2gtNDA0L05vdGVzL3RyZWUvbWFzdGVyLyVFOCVBRSVBMSVFNyVBRSU5NyVFNiU5NiVCOSVFNiVCMyU5NQ==">https://github.com/fish-404/Notes/tree/master/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95<i class="fa fa-external-link-alt"></i></span></p>
 <span id="more"></span>
 
 <h2 id="计算方法研究内容与意义"><a href="#计算方法研究内容与意义" class="headerlink" title="计算方法研究内容与意义"></a>计算方法研究内容与意义</h2><h3 id="研究对象"><a href="#研究对象" class="headerlink" title="研究对象"></a>研究对象</h3><p>计算方法研究的是运用计算机来解决各种数学问题的 <strong>近似</strong> 计算方法与理论。</p>
@@ -290,8 +292,8 @@
 </li>
 </ul>
 <h2 id="误差的基本概念"><a href="#误差的基本概念" class="headerlink" title="误差的基本概念"></a>误差的基本概念</h2><h3 id="计算机中数的浮点表示"><a href="#计算机中数的浮点表示" class="headerlink" title="计算机中数的浮点表示"></a>计算机中数的浮点表示</h3><p>计算机中参与运算的数是用浮点表示的</p>
-<p>$$<br>x = \pm a_1a_2 \cdots a_s \times \beta^c<br>$$</p>
-<p>其中 $1 \le a_1 &lt; \beta, 0 \le a_i &lt; \beta, i = 2, 3, \cdots, s\ge$, $c$是阶码</p>
+<p>$$<br>x &#x3D; \pm a_1a_2 \cdots a_s \times \beta^c<br>$$</p>
+<p>其中 $1 \le a_1 &lt; \beta, 0 \le a_i &lt; \beta, i &#x3D; 2, 3, \cdots, s\ge$, $c$是阶码</p>
 <h3 id="计算机中的舍入误差"><a href="#计算机中的舍入误差" class="headerlink" title="计算机中的舍入误差"></a>计算机中的舍入误差</h3><p>大多数计算机以二进制形式存储数字，由于计算机字长有限，不是所有数字都可以被准确地表示，它们必须被舍入到适合计算机的字长，意味着被执行的算术运算使不精确的。</p>
 <h3 id="误差来源"><a href="#误差来源" class="headerlink" title="误差来源"></a>误差来源</h3><ul>
 <li>观察误差</li>
@@ -312,23 +314,23 @@
 <li>舍入误差</li>
 </ul>
 <p>由于计算机字长有限，在计算过程中的数据通过四舍五入或类似操作来保留有限位的有效数字，引入舍入误差。</p>
-<h3 id="误差与误差限"><a href="#误差与误差限" class="headerlink" title="误差与误差限"></a>误差与误差限</h3><h4 id="绝对误差"><a href="#绝对误差" class="headerlink" title="绝对误差"></a>绝对误差</h4><p>$$<br>e(x^*) = x - x^*<br>$$</p>
+<h3 id="误差与误差限"><a href="#误差与误差限" class="headerlink" title="误差与误差限"></a>误差与误差限</h3><h4 id="绝对误差"><a href="#绝对误差" class="headerlink" title="绝对误差"></a>绝对误差</h4><p>$$<br>e(x^*) &#x3D; x - x^*<br>$$</p>
 <p>$x$ 为精确值， $x^*$ 为 $x$ 的近似值</p>
 <p>$e(x^*)$可正可负。</p>
 <h4 id="绝对误差限"><a href="#绝对误差限" class="headerlink" title="绝对误差限"></a>绝对误差限</h4><p>$|e(x^*)|$的上限称为$ x^*$ 的绝对误差限，记为 $\varepsilon(x^*)$</p>
 <p>$\varepsilon(x^*)$不唯一，越小越有参考价值</p>
-<p>给定近似值$x^*$ 的误差限$\varepsilon(x^*)$，就可以直到准确值 $x$ 的区间，实际应用中一般记为 $x = x^* \pm \varepsilon(x^*)$</p>
-<h4 id="相对误差"><a href="#相对误差" class="headerlink" title="相对误差"></a>相对误差</h4><p>$$<br>e_r(x^*) =\frac{e(x^*)}{x}  = \frac{(x - x^*)}{x}<br>$$</p>
+<p>给定近似值$x^*$ 的误差限$\varepsilon(x^*)$，就可以直到准确值 $x$ 的区间，实际应用中一般记为 $x &#x3D; x^* \pm \varepsilon(x^*)$</p>
+<h4 id="相对误差"><a href="#相对误差" class="headerlink" title="相对误差"></a>相对误差</h4><p>$$<br>e_r(x^*) &#x3D;\frac{e(x^*)}{x}  &#x3D; \frac{(x - x^*)}{x}<br>$$</p>
 <h4 id="相对误差限"><a href="#相对误差限" class="headerlink" title="相对误差限"></a>相对误差限</h4><p>$|e_r(x^*)|$ 的上限称为 $x^*$ 的相对误差限，记为 $\varepsilon_r(x^*)$</p>
 <h4 id="有效数字与误差限的关系"><a href="#有效数字与误差限的关系" class="headerlink" title="有效数字与误差限的关系"></a>有效数字与误差限的关系</h4><ul>
-<li><strong>定理1</strong><br>如果近似数 $x^* = \pm r^m \times (a_1 r^{-1} + a_2 r ^{-2} + \cdots + a_n r^{-n})$ 具有 $n$ 位有效数字，则可以得到 $x^*$ 的一个绝对误差限：<br>$$<br>|e(x^*) | = |x - x^*| \le \varepsilon(x ^*) = \frac{1}{2} \times r^{m-n}<br>$$</li>
-<li><strong>定理2</strong><br>如果近似数 $x^* = \pm r^m \times (a_1 r^{-1} + a_2 r ^{-2} + \cdots + a_n r^{-n})$ 具有 $n$ 位有效数字，则可以得到 $x^*$ 的一个相对误差限：<br>$$<br>|e(x^*) | = |x - x^*| \le \varepsilon(x ^*) = \frac{1}{2} \times r^{-(n - 1)}<br>$$</li>
-<li><strong>定理3</strong><br>如果近似数 $x^* = \pm r^m \times (a_1 r^{-1} + a_2 r ^{-2} + \cdots + a_n r^{-n})$ 满足<br>$$<br>|e_r(x^*)|\le \frac{1}{2(a_1+ 1)}\times r^{-(n-1)}<br>$$<br>那么$x^*$至少有 $n$ 位有效数字。</li>
+<li><strong>定理1</strong><br>如果近似数 $x^* &#x3D; \pm r^m \times (a_1 r^{-1} + a_2 r ^{-2} + \cdots + a_n r^{-n})$ 具有 $n$ 位有效数字，则可以得到 $x^*$ 的一个绝对误差限：<br>$$<br>|e(x^*) | &#x3D; |x - x^*| \le \varepsilon(x ^*) &#x3D; \frac{1}{2} \times r^{m-n}<br>$$</li>
+<li><strong>定理2</strong><br>如果近似数 $x^* &#x3D; \pm r^m \times (a_1 r^{-1} + a_2 r ^{-2} + \cdots + a_n r^{-n})$ 具有 $n$ 位有效数字，则可以得到 $x^*$ 的一个相对误差限：<br>$$<br>|e(x^*) | &#x3D; |x - x^*| \le \varepsilon(x ^*) &#x3D; \frac{1}{2} \times r^{-(n - 1)}<br>$$</li>
+<li><strong>定理3</strong><br>如果近似数 $x^* &#x3D; \pm r^m \times (a_1 r^{-1} + a_2 r ^{-2} + \cdots + a_n r^{-n})$ 满足<br>$$<br>|e_r(x^*)|\le \frac{1}{2(a_1+ 1)}\times r^{-(n-1)}<br>$$<br>那么$x^*$至少有 $n$ 位有效数字。</li>
 </ul>
 <p><em>注意</em> ：任意移动小数点位置不影响有效数字位数。</p>
-<h4 id="四则运算的误差传播公式"><a href="#四则运算的误差传播公式" class="headerlink" title="四则运算的误差传播公式"></a>四则运算的误差传播公式</h4><h5 id="加减法"><a href="#加减法" class="headerlink" title="加减法"></a>加减法</h5><p>$$<br>\varepsilon(x^* \pm y^*) = \varepsilon(x^*) + \varepsilon (y ^*)<br>$$</p>
-<h5 id="乘法"><a href="#乘法" class="headerlink" title="乘法"></a>乘法</h5><p>$$<br>\varepsilon(x^*y^*) = |x^*|\varepsilon(y^*) + |y^*|\varepsilon(x^*)<br>$$</p>
-<h5 id="除法"><a href="#除法" class="headerlink" title="除法"></a>除法</h5><p>$$<br>\varepsilon(\frac{x^*}{y^*})=\frac{|x^*|\varepsilon(y^*)+|y^*|\varepsilon(x^*)}{|y^*|^2}, y \ne0, y^* \ne 0<br>$$</p>
+<h4 id="四则运算的误差传播公式"><a href="#四则运算的误差传播公式" class="headerlink" title="四则运算的误差传播公式"></a>四则运算的误差传播公式</h4><h5 id="加减法"><a href="#加减法" class="headerlink" title="加减法"></a>加减法</h5><p>$$<br>\varepsilon(x^* \pm y^*) &#x3D; \varepsilon(x^*) + \varepsilon (y ^*)<br>$$</p>
+<h5 id="乘法"><a href="#乘法" class="headerlink" title="乘法"></a>乘法</h5><p>$$<br>\varepsilon(x^*y^*) &#x3D; |x^*|\varepsilon(y^*) + |y^*|\varepsilon(x^*)<br>$$</p>
+<h5 id="除法"><a href="#除法" class="headerlink" title="除法"></a>除法</h5><p>$$<br>\varepsilon(\frac{x^*}{y^*})&#x3D;\frac{|x^*|\varepsilon(y^*)+|y^*|\varepsilon(x^*)}{|y^*|^2}, y \ne0, y^* \ne 0<br>$$</p>
 <p>(误差传播公式和求导公式有些相似）</p>
 <h3 id="设计计算方法的原则"><a href="#设计计算方法的原则" class="headerlink" title="设计计算方法的原则"></a>设计计算方法的原则</h3><h4 id="计算方法的评判标准"><a href="#计算方法的评判标准" class="headerlink" title="计算方法的评判标准"></a>计算方法的评判标准</h4><ol>
 <li>稳定性的好坏</li>
@@ -338,14 +340,13 @@
 <li>逻辑是否简单</li>
 </ol>
 <h4 id="基本原则"><a href="#基本原则" class="headerlink" title="基本原则"></a>基本原则</h4><h5 id="1-避免两个相近的数相减"><a href="#1-避免两个相近的数相减" class="headerlink" title="1. 避免两个相近的数相减"></a>1. 避免两个相近的数相减</h5><p>两个相近的数相减将导致有效数字的严重丢失。在设计计算方法时应设法避免这种情况发生，常用方法时变换计算公式：</p>
-<p>常见变换公式：<br>$$<br>\sqrt{x+ \varepsilon} - \sqrt{x} = \frac{\varepsilon}{\sqrt{x + \varepsilon} + \sqrt{x}}, \varepsilon \to 0<br>$$<br>$$<br>ln(x + \varepsilon) - ln x = ln(1+\frac{\varepsilon}{x}),\varepsilon \to 0, 且 |x| \gg 0<br>$$<br>$$<br>1-cosx = 2sin^2 \frac{x}{2} , x\to 0<br>$$<br>$$<br>e^x - 1 = (1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \cdots) - 1 = x (1 + \frac{x}{2} + \frac{x^2}{6} + \cdots), x\to 0<br>$$</p>
+<p>常见变换公式：<br>$$<br>\sqrt{x+ \varepsilon} - \sqrt{x} &#x3D; \frac{\varepsilon}{\sqrt{x + \varepsilon} + \sqrt{x}}, \varepsilon \to 0<br>$$<br>$$<br>ln(x + \varepsilon) - ln x &#x3D; ln(1+\frac{\varepsilon}{x}),\varepsilon \to 0, 且 |x| \gg 0<br>$$<br>$$<br>1-cosx &#x3D; 2sin^2 \frac{x}{2} , x\to 0<br>$$<br>$$<br>e^x - 1 &#x3D; (1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \cdots) - 1 &#x3D; x (1 + \frac{x}{2} + \frac{x^2}{6} + \cdots), x\to 0<br>$$</p>
 <h5 id="2-防止大数吃小数"><a href="#2-防止大数吃小数" class="headerlink" title="2.防止大数吃小数"></a>2.防止大数吃小数</h5><p>当两个绝对值差异很大的数进行加减法运算时，绝对值小的数有可能因为计算机附点运算的特点而被“吃掉“，导致计算结果严重失真。</p>
 <ol>
-<li>求二次方程的根<br>$$<br>\begin{cases}<br>x_1 = \frac{-2c}{b + sgn(b)\sqrt{b^2 - 4ac}}, \quad sgn(b) =<br>\begin{cases}<br>1, b\ge 0 \\</li>
-</ol>
-<p>-1, b &lt; 0<br>\end{cases}\\<br>x_2 = \frac{c}{ax_1}<br>\end{cases}<br>$$</p>
-<ol start="2">
-<li>在处理多个数求和操作时，一般按照从小到大的顺序累加，可以使求和的误差减到最小。</li>
+<li><p>求二次方程的根<br>$$<br>\begin{cases}<br>x_1 &#x3D; \frac{-2c}{b + sgn(b)\sqrt{b^2 - 4ac}}, \quad sgn(b) &#x3D;<br>\begin{cases}<br>1, b\ge 0 \\<br>-1, b &lt; 0<br>\end{cases}\\<br>x_2 &#x3D; \frac{c}{ax_1}<br>\end{cases}<br>$$</p>
+</li>
+<li><p>在处理多个数求和操作时，一般按照从小到大的顺序累加，可以使求和的误差减到最小。</p>
+</li>
 </ol>
 <h5 id="3-避免采用绝对值很小的数作为除数"><a href="#3-避免采用绝对值很小的数作为除数" class="headerlink" title="3. 避免采用绝对值很小的数作为除数"></a>3. 避免采用绝对值很小的数作为除数</h5><p>当采用绝对值很小的数作为分母时，容易产生浮点溢出现象，同时可能引起大数吃小数的情况出现，导致误差很大。</p>
 <h5 id="4-简化运算步骤，减少运算次数"><a href="#4-简化运算步骤，减少运算次数" class="headerlink" title="4. 简化运算步骤，减少运算次数"></a>4. 简化运算步骤，减少运算次数</h5><ul>
@@ -367,27 +368,28 @@
     
     
     
-        
+          
 
 <div>
 <ul class="post-copyright">
   <li class="post-copyright-author">
-    <strong>本文作者： </strong>逃貓
+    <strong>本文作者： </strong>Fish__404
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
     <a href="https://fish-404.github.io/Numerical-methods-and-calculation-error/" title="计算方法-[1]绪论与计算误差">https://fish-404.github.io/Numerical-methods-and-calculation-error/</a>
   </li>
   <li class="post-copyright-license">
-    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！
   </li>
 </ul>
 </div>
 
 
       <footer class="post-footer">
+          
           <div class="post-tags">
-              <a href="/tags/Numerical-methods/" rel="tag"># Numerical methods</a>
+              <a href="/tags/Numerical-methods/" rel="tag"><i class="fa fa-tag"></i> Numerical methods</a>
           </div>
 
         
@@ -468,24 +470,24 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="逃貓"
+    <img class="site-author-image" itemprop="image" alt="Fish__404"
       src="/images/cat.jpg">
-  <p class="site-author-name" itemprop="name">逃貓</p>
-  <div class="site-description" itemprop="description"></div>
+  <p class="site-author-name" itemprop="name">Fish__404</p>
+  <div class="site-description" itemprop="description">What's dream? Just fun!</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">97</span>
+          <span class="site-state-item-count">99</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-count">22</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -502,14 +504,14 @@
   </div>
   <div class="links-of-author motion-element">
       <span class="links-of-author-item">
-        <a href="https://github.com/fish-404" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;fish-404" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2Zpc2gtNDA0" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;fish-404"><i class="fab fa-github fa-fw"></i></span>
       </span>
       <span class="links-of-author-item">
-        <a href="mailto:fish404hsif@gmail.com" title="E-Mail → mailto:fish404hsif@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+        <span class="exturl" data-url="bWFpbHRvOmZpc2g0MDRoc2lmQGdtYWlsLmNvbQ==" title="E-Mail → mailto:fish404hsif@gmail.com"><i class="fa fa-envelope fa-fw"></i></span>
       </span>
   </div>
   <div class="cc-license motion-element" itemprop="license">
-    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+    <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></span>
   </div>
 
 
@@ -539,7 +541,7 @@
   </span>
   <span class="author" itemprop="copyrightHolder">逃貓</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  <div class="powered-by">由 <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl theme-link" data-url="aHR0cHM6Ly9taXN0LnRoZW1lLW5leHQub3Jn">NexT.Mist</span> 强力驱动
   </div>
 
         
@@ -627,7 +629,7 @@ NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
       notify     : true,
       appId      : 'BwfroBJnkh22Gmd39XCKHVR6-MdYXbMMI',
       appKey     : '6kUQN2hR5mA4BEGerhyY4dGa',
-      placeholder: "不说点什么嘛？邮箱网址选填~\n说不定有机会>触发本喵现身噢~ \n喵喵喵o(=•ェ•=)m",
+      placeholder: "不说点什么嘛？邮箱网址选填~\n说不定有机会触发本喵现身噢~ \n喵喵喵o(=•ェ•=)m",
       avatar     : 'robohash',
       meta       : guest,
       pageSize   : '7' || 10,

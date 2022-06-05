@@ -4,11 +4,13 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.4.1">
+<meta name="generator" content="Hexo 6.2.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-icon-fish.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-fish.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-fish.png">
   <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
 
 <link rel="stylesheet" href="/css/main.css">
 
@@ -19,7 +21,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"fish-404.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"fish-404.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":true,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta name="description" content="计算方法第三章线性方程的数值解法课程内容整理，尚未包含代码部分。">
@@ -31,7 +33,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2019-05-07T16:00:00.000Z">
 <meta property="article:modified_time" content="2019-05-08T10:00:14.000Z">
-<meta property="article:author" content="逃貓">
+<meta property="article:author" content="Fish__404">
 <meta property="article:tag" content="Numerical methods">
 <meta name="twitter:card" content="summary">
 
@@ -196,8 +198,8 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/cat.jpg">
-      <meta itemprop="name" content="逃貓">
-      <meta itemprop="description" content="">
+      <meta itemprop="name" content="Fish__404">
+      <meta itemprop="description" content="What's dream? Just fun!">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -256,34 +258,34 @@
         <p>计算方法第三章线性方程的数值解法课程内容整理，尚未包含代码部分。</p>
 <span id="more"></span>
 
-<h2 id="直接法"><a href="#直接法" class="headerlink" title="直接法"></a>直接法</h2><h3 id="高斯消去法-Gaussian-Elimination"><a href="#高斯消去法-Gaussian-Elimination" class="headerlink" title="高斯消去法(Gaussian Elimination)"></a>高斯消去法(Gaussian Elimination)</h3><p>$$<br>\mathbf{Ax} = \mathbf{b} \Rightarrow<br>\begin{bmatrix}<br>a_{11} &amp; \cdots &amp; a_{1n} \\<br>       &amp; \ddots &amp; \vdots \\<br>       &amp;        &amp; a_{nn}^{(n-1)}<br>\end{bmatrix}\mathbf{x} =<br>\begin{bmatrix}<br>b_1 \\<br>\vdots \\<br>b_n^{(n-1)}<br>\end{bmatrix}<br>$$</p>
+<h2 id="直接法"><a href="#直接法" class="headerlink" title="直接法"></a>直接法</h2><h3 id="高斯消去法-Gaussian-Elimination"><a href="#高斯消去法-Gaussian-Elimination" class="headerlink" title="高斯消去法(Gaussian Elimination)"></a>高斯消去法(Gaussian Elimination)</h3><p>$$<br>\mathbf{Ax} &#x3D; \mathbf{b} \Rightarrow<br>\begin{bmatrix}<br>a_{11} &amp; \cdots &amp; a_{1n} \\<br>       &amp; \ddots &amp; \vdots \\<br>       &amp;        &amp; a_{nn}^{(n-1)}<br>\end{bmatrix}\mathbf{x} &#x3D;<br>\begin{bmatrix}<br>b_1 \\<br>\vdots \\<br>b_n^{(n-1)}<br>\end{bmatrix}<br>$$</p>
 <ul>
 <li>消去：</li>
 </ul>
-<p>$$<br>l_{ik} = a_{ik}^{(k)}/a_{kk}^{(k)}  \<br>$$<br>$$<br>\begin{cases}<br>a_{ij}^{(k+1)} = a_{ij}^{(k)} - l_{ik} a_{kj}^{(k)} \\<br>b_{i}^{(k+1)} = b_{i}^{(k)} - l_{ik} b_{k}^{(k)}<br>\end{cases}<br>(k = 1,2，\cdots, n - 1 ,  \quad i，j = k + 1, k + 2, \cdots, n)<br>$$</p>
+<p>$$<br>l_{ik} &#x3D; a_{ik}^{(k)}&#x2F;a_{kk}^{(k)}  \<br>$$<br>$$<br>\begin{cases}<br>a_{ij}^{(k+1)} &#x3D; a_{ij}^{(k)} - l_{ik} a_{kj}^{(k)} \\<br>b_{i}^{(k+1)} &#x3D; b_{i}^{(k)} - l_{ik} b_{k}^{(k)}<br>\end{cases}<br>(k &#x3D; 1,2，\cdots, n - 1 ,  \quad i，j &#x3D; k + 1, k + 2, \cdots, n)<br>$$</p>
 <ul>
 <li>回代：</li>
 </ul>
-<p>$$<br>\begin{cases}<br>x_n = b_n^{(n)} / a^{(n)}_{nn}\\<br>x_i = (b_i^{(i)} - \sum\limits^n_{j = i+1})/a_{ii}^{(i)}<br>\end{cases}<br>\quad i = n - 1, n - 2, \cdots, 1<br>$$</p>
+<p>$$<br>\begin{cases}<br>x_n &#x3D; b_n^{(n)} &#x2F; a^{(n)}_{nn}\\<br>x_i &#x3D; (b_i^{(i)} - \sum\limits^n_{j &#x3D; i+1})&#x2F;a_{ii}^{(i)}<br>\end{cases}<br>\quad i &#x3D; n - 1, n - 2, \cdots, 1<br>$$</p>
 <ul>
 <li>复杂度 ： $O(n^3)$</li>
 </ul>
 <h3 id="列主元消去法"><a href="#列主元消去法" class="headerlink" title="列主元消去法"></a>列主元消去法</h3><p>主元素：$a_{kk}^{(k)}$ (作为除数的元素)</p>
 <p>使用高斯消去法时，若除数很小，除法计算时将产生较大的舍入误差，影响后续消元。</p>
 <p>列主元消去法即改进的高斯消去法，在选取主元素时按列选取待消去的矩阵元素中 <strong>绝对值</strong> 最大的元素与当前行交换，成为新的主元素。即：<br>$$<br>if \quad \max_{k \le i\le n}|a_{i_k}| \ne 0 \quad and \quad i_k \ne k \\<br>then \quad i_k \leftrightarrow k<br>$$</p>
-<p>相比于高斯消去法，列主元消去法更稳定，但行列交换需花费较多时间，计算量高于高斯消去法 $O(n^2/3)$。</p>
-<h3 id="高斯-若当消去法（Gauss-Jordan-Method"><a href="#高斯-若当消去法（Gauss-Jordan-Method" class="headerlink" title="高斯-若当消去法（Gauss-Jordan Method)"></a>高斯-若当消去法（Gauss-Jordan Method)</h3><p>$$<br>\mathbf{Ax} = \mathbf{b} \Rightarrow<br>\begin{bmatrix}<br>a_{11} &amp;  &amp; \\<br>  &amp; \ddots &amp;\\<br>  &amp; &amp; a_{nn}^{(n-1)}<br>\end{bmatrix}\mathbf{x} =<br>\begin{bmatrix}<br>b_1 \\<br>\vdots \\<br>b_n^{(n-1)}<br>\end{bmatrix}<br>$$</p>
+<p>相比于高斯消去法，列主元消去法更稳定，但行列交换需花费较多时间，计算量高于高斯消去法 $O(n^2&#x2F;3)$。</p>
+<h3 id="高斯-若当消去法（Gauss-Jordan-Method"><a href="#高斯-若当消去法（Gauss-Jordan-Method" class="headerlink" title="高斯-若当消去法（Gauss-Jordan Method)"></a>高斯-若当消去法（Gauss-Jordan Method)</h3><p>$$<br>\mathbf{Ax} &#x3D; \mathbf{b} \Rightarrow<br>\begin{bmatrix}<br>a_{11} &amp;  &amp; \\<br>  &amp; \ddots &amp;\\<br>  &amp; &amp; a_{nn}^{(n-1)}<br>\end{bmatrix}\mathbf{x} &#x3D;<br>\begin{bmatrix}<br>b_1 \\<br>\vdots \\<br>b_n^{(n-1)}<br>\end{bmatrix}<br>$$</p>
 <ol>
 <li>将当前列主元 $a_{kk}^{(k)}$ 变为1</li>
 <li>将  $a_{kk}^{(k)}$ 所在列的上下元素变为0</li>
 </ol>
-<p>计算量比高斯消去法多$(n^3-3n^2 + 2n)/6$ 次乘除。常用于求逆矩阵。</p>
+<p>计算量比高斯消去法多$(n^3-3n^2 + 2n)&#x2F;6$ 次乘除。常用于求逆矩阵。</p>
 <ul>
 <li>高斯若当法求逆矩阵</li>
 </ul>
 <p>$$<br>[A|E] \Rightarrow[E| A^{-1}]<br>$$</p>
-<h3 id="LU-分解法"><a href="#LU-分解法" class="headerlink" title="LU 分解法"></a>LU 分解法</h3><p>$n$阶矩阵$A$,若其所有顺序主子式均不为0，则可将其分解为一个单位下三角矩阵$L$ 和一个上三角矩阵$U$的乘积，且这种分解唯一。<br>$$<br>\mathbf{A} =<br>\begin{bmatrix}<br>1 &amp; &amp; &amp; \\<br>l_{21} &amp; 1 &amp; &amp; \\<br>\vdots &amp; \vdots &amp; \ddots &amp; \\<br>l_{n1} &amp; l_{n2} &amp; \cdots &amp; 1<br>\end{bmatrix}<br>\begin{bmatrix}<br>u_{11} &amp; u_{12} &amp; \cdots &amp; u_{1n} \\<br>       &amp; u_{22} &amp; \cdots &amp; u_{2n} \\<br>       &amp;        &amp; \ddots &amp; \vdots \\<br>       &amp;        &amp;        &amp; u_{nn}<br>\end{bmatrix}<br>$$</p>
-<p>求解过程：<br>$$<br>\mathbf{A}^{(k)} = \mathbf{L}_{k-1} \mathbf{A}^{(k-1)}\\<br>\mathbf{U} = \mathbf{A}^{(n)} = \mathbf{L}_{n-1}\mathbf{A}^{(k-1)}\\<br>\mathbf{L}_k =<br>\begin{bmatrix}<br>1 &amp;  &amp;  &amp;  \\<br>  &amp; 1 &amp; &amp; \\<br>  &amp; -l_{k+1, k} &amp; &amp; \\<br>  &amp; \vdots     &amp; \ddots\\<br>  &amp; -l_{n, k}  &amp;  0 &amp; 1<br>\end{bmatrix},<br>\quad l_{ik} = \frac{a_{ik}^{(k)}}{a_{kk}^{(k)}}<br>\<br>$$<br>回代：<br>$$<br>\begin{cases}<br>y_i = b_i - \sum \limits_{k = 1}^{i-1} k_{ik}y_k, \quad i = 1, 2, \cdots, n \\<br>x_i = y_i - \sum \limits^{n}_{k = i + 1}u_{ik}x_{k}/u_{ii}, \quad i = n, n-1, \cdots, 1<br>\end{cases}<br>$$</p>
+<h3 id="LU-分解法"><a href="#LU-分解法" class="headerlink" title="LU 分解法"></a>LU 分解法</h3><p>$n$阶矩阵$A$,若其所有顺序主子式均不为0，则可将其分解为一个单位下三角矩阵$L$ 和一个上三角矩阵$U$的乘积，且这种分解唯一。<br>$$<br>\mathbf{A} &#x3D;<br>\begin{bmatrix}<br>1 &amp; &amp; &amp; \\<br>l_{21} &amp; 1 &amp; &amp; \\<br>\vdots &amp; \vdots &amp; \ddots &amp; \\<br>l_{n1} &amp; l_{n2} &amp; \cdots &amp; 1<br>\end{bmatrix}<br>\begin{bmatrix}<br>u_{11} &amp; u_{12} &amp; \cdots &amp; u_{1n} \\<br>       &amp; u_{22} &amp; \cdots &amp; u_{2n} \\<br>       &amp;        &amp; \ddots &amp; \vdots \\<br>       &amp;        &amp;        &amp; u_{nn}<br>\end{bmatrix}<br>$$</p>
+<p>求解过程：<br>$$<br>\mathbf{A}^{(k)} &#x3D; \mathbf{L}_{k-1} \mathbf{A}^{(k-1)}\\<br>\mathbf{U} &#x3D; \mathbf{A}^{(n)} &#x3D; \mathbf{L}_{n-1}\mathbf{A}^{(k-1)}\\<br>\mathbf{L}_k &#x3D;<br>\begin{bmatrix}<br>1 &amp;  &amp;  &amp;  \\<br>  &amp; 1 &amp; &amp; \\<br>  &amp; -l_{k+1, k} &amp; &amp; \\<br>  &amp; \vdots     &amp; \ddots\\<br>  &amp; -l_{n, k}  &amp;  0 &amp; 1<br>\end{bmatrix},<br>\quad l_{ik} &#x3D; \frac{a_{ik}^{(k)}}{a_{kk}^{(k)}}<br>\<br>$$<br>回代：<br>$$<br>\begin{cases}<br>y_i &#x3D; b_i - \sum \limits_{k &#x3D; 1}^{i-1} k_{ik}y_k, \quad i &#x3D; 1, 2, \cdots, n \\<br>x_i &#x3D; y_i - \sum \limits^{n}_{k &#x3D; i + 1}u_{ik}x_{k}&#x2F;u_{ii}, \quad i &#x3D; n, n-1, \cdots, 1<br>\end{cases}<br>$$</p>
 <h3 id="直接法求解的特点"><a href="#直接法求解的特点" class="headerlink" title="直接法求解的特点"></a>直接法求解的特点</h3><ol>
 <li>经过可预先确定的有限次<strong>算术运算</strong> 求出精确解；</li>
 <li>由于有舍入误差，只能得到近似解；</li>
@@ -299,22 +301,22 @@
 <li>特征值相差大数量级。</li>
 </ol>
 <p>使用直接法求解病态矩阵的方程组可能使解严重偏离真实值。</p>
-<h2 id="迭代法"><a href="#迭代法" class="headerlink" title="迭代法"></a>迭代法</h2><p>将待求解方程组改写成其等价形式$\mathbf{x = Bx+g}$ ，以迭代序列的形式逼近方程的根。</p>
+<h2 id="迭代法"><a href="#迭代法" class="headerlink" title="迭代法"></a>迭代法</h2><p>将待求解方程组改写成其等价形式$\mathbf{x &#x3D; Bx+g}$ ，以迭代序列的形式逼近方程的根。</p>
 <p>$\mathbf{L}$：下三角矩阵；</p>
 <p>$\mathbf{U}$：上三角矩阵；</p>
 <p>$\mathbf{D}$：对角矩阵。</p>
-<h3 id="雅可比迭代法-Jacobi-Iterative-Methods"><a href="#雅可比迭代法-Jacobi-Iterative-Methods" class="headerlink" title="雅可比迭代法(Jacobi Iterative Methods)"></a>雅可比迭代法(Jacobi Iterative Methods)</h3><p>$$<br>\mathbf{x}^{(k+1)} = \mathbf{B}_J \mathbf{x}^{(k)} + \mathbf{g}_J \\<br>\begin{cases}<br>\mathbf{B}_J = -\mathbf{D}^{-1}(\mathbf{L+U}) \\<br>\mathbf{g}_J = \mathbf{D}^{-1} \mathbf{b}<br>\end{cases}<br>$$</p>
-<h3 id="高斯-塞尔德-Gauss-Seidel-Iterative-Methods"><a href="#高斯-塞尔德-Gauss-Seidel-Iterative-Methods" class="headerlink" title="高斯-塞尔德(Gauss-Seidel Iterative Methods)"></a>高斯-塞尔德(Gauss-Seidel Iterative Methods)</h3><p>$$<br>\mathbf{x}^{(k+1)} = \mathbf{B}_S \mathbf{x}^{(k)} + \mathbf{g}_S\\<br>\begin{cases}<br>\mathbf{B}_S = -\mathbf{(D+L)}^{-1}\mathbf{U} \\<br>\mathbf{g}_S = \mathbf{(D+L)}^{-1} \mathbf{b}<br>\end{cases}<br>$$</p>
-<h3 id="迭代法的收敛性"><a href="#迭代法的收敛性" class="headerlink" title="迭代法的收敛性"></a>迭代法的收敛性</h3><p>迭代法收敛的充要条件是谱半径小于1。<br>$$<br>\rho(\mathbf{B}) &lt; 1<br>$$<br>谱半径(spectral radius)：$\rho(\mathbf{B}) = \max\limits_{1\le i\le n}|\lambda_i|$，$\lambda\ _i$ 为$\mathbf{B}$的特征值。</p>
+<h3 id="雅可比迭代法-Jacobi-Iterative-Methods"><a href="#雅可比迭代法-Jacobi-Iterative-Methods" class="headerlink" title="雅可比迭代法(Jacobi Iterative Methods)"></a>雅可比迭代法(Jacobi Iterative Methods)</h3><p>$$<br>\mathbf{x}^{(k+1)} &#x3D; \mathbf{B}_J \mathbf{x}^{(k)} + \mathbf{g}_J \\<br>\begin{cases}<br>\mathbf{B}_J &#x3D; -\mathbf{D}^{-1}(\mathbf{L+U}) \\<br>\mathbf{g}_J &#x3D; \mathbf{D}^{-1} \mathbf{b}<br>\end{cases}<br>$$</p>
+<h3 id="高斯-塞尔德-Gauss-Seidel-Iterative-Methods"><a href="#高斯-塞尔德-Gauss-Seidel-Iterative-Methods" class="headerlink" title="高斯-塞尔德(Gauss-Seidel Iterative Methods)"></a>高斯-塞尔德(Gauss-Seidel Iterative Methods)</h3><p>$$<br>\mathbf{x}^{(k+1)} &#x3D; \mathbf{B}_S \mathbf{x}^{(k)} + \mathbf{g}_S\\<br>\begin{cases}<br>\mathbf{B}_S &#x3D; -\mathbf{(D+L)}^{-1}\mathbf{U} \\<br>\mathbf{g}_S &#x3D; \mathbf{(D+L)}^{-1} \mathbf{b}<br>\end{cases}<br>$$</p>
+<h3 id="迭代法的收敛性"><a href="#迭代法的收敛性" class="headerlink" title="迭代法的收敛性"></a>迭代法的收敛性</h3><p>迭代法收敛的充要条件是谱半径小于1。<br>$$<br>\rho(\mathbf{B}) &lt; 1<br>$$<br>谱半径(spectral radius)：$\rho(\mathbf{B}) &#x3D; \max\limits_{1\le i\le n}|\lambda_i|$，$\lambda\ _i$ 为$\mathbf{B}$的特征值。</p>
 <h4 id="特殊的迭代矩阵"><a href="#特殊的迭代矩阵" class="headerlink" title="特殊的迭代矩阵"></a>特殊的迭代矩阵</h4><ul>
 <li>若$\mathbf{A}$ 为严格对对角占优矩阵，则方程组的Jacobi和 Gauss-Seidel 迭代均收敛。</li>
 </ul>
 <p>严格对角占优矩阵 (strictly diagonally dominant matrix)</p>
-<p>$\mathbf{A}$的每一行对角线元素绝对值都严格大于同行其他元素绝对值之和：<br>$$<br>|a_{ii}|&gt;\sum\limits^n_{j = 1\\j\ne i}|a_{ij}| \quad (i =  1, 2, \cdots, n)<br>$$</p>
+<p>$\mathbf{A}$的每一行对角线元素绝对值都严格大于同行其他元素绝对值之和：<br>$$<br>|a_{ii}|&gt;\sum\limits^n_{j &#x3D; 1\\j\ne i}|a_{ij}| \quad (i &#x3D;  1, 2, \cdots, n)<br>$$</p>
 <ul>
 <li>若$\mathbf{A}$ 不可约，即不能通过出初等行变换变为上三角矩阵的形式，且按行弱对角占优，则方程组的 Jacobi 和 Gauss-Seidel迭代均收敛。</li>
 </ul>
-<p>弱对角占优；<br>$$<br>|a_{ii}|\ge\sum\limits^n_{j = 1\\j\ne i}|a_{ij}| \quad (i =  1, 2, \cdots , n)<br>$$<br>且至少有一个$i$使得大于号成立，则$\mathbf{A}$为弱对角占优矩阵。</p>
+<p>弱对角占优；<br>$$<br>|a_{ii}|\ge\sum\limits^n_{j &#x3D; 1\\j\ne i}|a_{ij}| \quad (i &#x3D;  1, 2, \cdots , n)<br>$$<br>且至少有一个$i$使得大于号成立，则$\mathbf{A}$为弱对角占优矩阵。</p>
 <ul>
 <li>若$\mathbf{A}$ 为对称正定矩阵，则 Gauss-Seidel迭代收敛。</li>
 </ul>
@@ -330,40 +332,40 @@
 <h2 id="解线性方程组的误差分析"><a href="#解线性方程组的误差分析" class="headerlink" title="解线性方程组的误差分析"></a>解线性方程组的误差分析</h2><h3 id="范数"><a href="#范数" class="headerlink" title="范数"></a>范数</h3><h4 id="向量范数"><a href="#向量范数" class="headerlink" title="向量范数"></a>向量范数</h4><p>注：将向量看作矩阵时，应视为$n\times1$的列向量。</p>
 <p>$\mathbf{R}^n$ 空间的向量范数$||\cdot||$ 对任意$\mathbf{x, y} \in \mathbf{R}^n$ 满足：</p>
 <ul>
-<li><p>正定性(positive definite)： $||\mathbf{x}||\ge 0; \quad ||\mathbf{x}|| = 0 \Leftrightarrow \mathbf{x} = 0$</p>
+<li><p>正定性(positive definite)： $||\mathbf{x}||\ge 0; \quad ||\mathbf{x}|| &#x3D; 0 \Leftrightarrow \mathbf{x} &#x3D; 0$</p>
 </li>
-<li><p>齐次性(homogeneous)：$||\alpha \mathbf{x}|| = |\alpha| \cdot ||\mathbf{x}||$</p>
+<li><p>齐次性(homogeneous)：$||\alpha \mathbf{x}|| &#x3D; |\alpha| \cdot ||\mathbf{x}||$</p>
 </li>
 <li><p>三角不等式(triangle inequality)：$||\mathbf{x +y}|| \le||\mathbf{x}|| + ||\mathbf{y}||$</p>
 </li>
 </ul>
 <p>常用向量范数：</p>
 <ul>
-<li>$||x||_1 = \sum \limits_{i = 1}^n |x_i|$</li>
-<li>$||x||_2 = \sqrt{\sum \limits_{i = 1}^n | x_i| ^2}$</li>
-<li>$||x||_p = (\sum\limits_{i = 1}^n |x_i|^p)^{1/p}$</li>
-<li>$||x||_{\infty} = \max\limits_{1\le i \le n}|x_i|$</li>
+<li>$||x||_1 &#x3D; \sum \limits_{i &#x3D; 1}^n |x_i|$</li>
+<li>$||x||_2 &#x3D; \sqrt{\sum \limits_{i &#x3D; 1}^n | x_i| ^2}$</li>
+<li>$||x||_p &#x3D; (\sum\limits_{i &#x3D; 1}^n |x_i|^p)^{1&#x2F;p}$</li>
+<li>$||x||_{\infty} &#x3D; \max\limits_{1\le i \le n}|x_i|$</li>
 </ul>
 <h4 id="矩阵范数"><a href="#矩阵范数" class="headerlink" title="矩阵范数"></a>矩阵范数</h4><p>$\mathbf{R}^{m\times n}$ 空间的矩阵范数$||\cdot||$ 对任意 $\mathbf{A,B} \in \mathbf{R}^{m\times n}$ 满足：</p>
 <ul>
-<li>正定性：$||\mathbf{A}|| \ge 0; \quad ||\mathbf{A}|| = 0 \Leftrightarrow \mathbf{A} = 0$</li>
-<li>齐次性：$||\alpha \mathbf{A}|| = |\alpha| \cdot ||\mathbf{A}||$</li>
+<li>正定性：$||\mathbf{A}|| \ge 0; \quad ||\mathbf{A}|| &#x3D; 0 \Leftrightarrow \mathbf{A} &#x3D; 0$</li>
+<li>齐次性：$||\alpha \mathbf{A}|| &#x3D; |\alpha| \cdot ||\mathbf{A}||$</li>
 <li>三角不等式：$||\mathbf{A+B} || \le || \mathbf{A}|| + || \mathbf{B}||$</li>
-<li>相容(consistent)（当$m = n$ 时）：$||\mathbf{AB}||\le ||\mathbf{A}|| \cdot || \mathbf{B}||$</li>
+<li>相容(consistent)（当$m &#x3D; n$ 时）：$||\mathbf{AB}||\le ||\mathbf{A}|| \cdot || \mathbf{B}||$</li>
 </ul>
 <p>常用矩阵范数：</p>
 <ul>
-<li>行和范数： $||\mathbf{A}||_{\infty} = \max \limits_{1\le i \le n} \sum \limits_{j=1}^n |a_{ij}$</li>
-<li>列和范数：$||\mathbf{A}||_1  = \max \limits_{1\le j\le n} \sum \limits_{i = 1}^n |a_{ij}|$</li>
-<li>谱范数(spectral norm)：$||\mathbf{A}||_2 = \sqrt{\rho(\mathbf{A^TA)}}$</li>
+<li>行和范数： $||\mathbf{A}||_{\infty} &#x3D; \max \limits_{1\le i \le n} \sum \limits_{j&#x3D;1}^n |a_{ij}$</li>
+<li>列和范数：$||\mathbf{A}||_1  &#x3D; \max \limits_{1\le j\le n} \sum \limits_{i &#x3D; 1}^n |a_{ij}|$</li>
+<li>谱范数(spectral norm)：$||\mathbf{A}||_2 &#x3D; \sqrt{\rho(\mathbf{A^TA)}}$</li>
 </ul>
-<h3 id="条件数"><a href="#条件数" class="headerlink" title="条件数"></a>条件数</h3><p>矩阵$\mathbf{A}$的条件数记为$cond(\mathbf{A})$，越大则矩阵越病态，越难得到准确解。<br>$$<br>cond(\mathbf{A}) = ||\mathbf{A}|| \cdot ||A^{-1}||<br>$$<br>性质：</p>
+<h3 id="条件数"><a href="#条件数" class="headerlink" title="条件数"></a>条件数</h3><p>矩阵$\mathbf{A}$的条件数记为$cond(\mathbf{A})$，越大则矩阵越病态，越难得到准确解。<br>$$<br>cond(\mathbf{A}) &#x3D; ||\mathbf{A}|| \cdot ||A^{-1}||<br>$$<br>性质：</p>
 <ul>
-<li>若$\mathbf{A}$ 对称，则$cond(\mathbf{A})_2 = \frac{max|\lambda|}{min|\lambda|}$</li>
+<li>若$\mathbf{A}$ 对称，则$cond(\mathbf{A})_2 &#x3D; \frac{max|\lambda|}{min|\lambda|}$</li>
 <li>若$\mathbf{A}$ 可逆，则$cond(\mathbf{A})_p \ge 1$</li>
-<li>若$\mathbf{A}$ 可逆， $\alpha \in R$， 则$cond(\alpha \mathbf{A}) = cond(\mathbf{A})$</li>
-<li>若$\mathbf{A}$ 正交， 则$cond(\mathbf{A})_2 = 1$</li>
-<li>若$\mathbf{A}$ 可逆， $\mathbf{R}$ 正交， 则 $cond(\mathbf{RA})_2 = cond(\mathbf{AR})_2 = cond(\mathbf{A})_2$</li>
+<li>若$\mathbf{A}$ 可逆， $\alpha \in R$， 则$cond(\alpha \mathbf{A}) &#x3D; cond(\mathbf{A})$</li>
+<li>若$\mathbf{A}$ 正交， 则$cond(\mathbf{A})_2 &#x3D; 1$</li>
+<li>若$\mathbf{A}$ 可逆， $\mathbf{R}$ 正交， 则 $cond(\mathbf{RA})_2 &#x3D; cond(\mathbf{AR})_2 &#x3D; cond(\mathbf{A})_2$</li>
 </ul>
 
     </div>
@@ -371,27 +373,28 @@
     
     
     
-        
+          
 
 <div>
 <ul class="post-copyright">
   <li class="post-copyright-author">
-    <strong>本文作者： </strong>逃貓
+    <strong>本文作者： </strong>Fish__404
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
     <a href="https://fish-404.github.io/Numerical-solution-of-linear-equations/" title="计算方法-[3]线性方程组的数值解法">https://fish-404.github.io/Numerical-solution-of-linear-equations/</a>
   </li>
   <li class="post-copyright-license">
-    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！
   </li>
 </ul>
 </div>
 
 
       <footer class="post-footer">
+          
           <div class="post-tags">
-              <a href="/tags/Numerical-methods/" rel="tag"># Numerical methods</a>
+              <a href="/tags/Numerical-methods/" rel="tag"><i class="fa fa-tag"></i> Numerical methods</a>
           </div>
 
         
@@ -400,12 +403,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/Bookcomment-Dark-ghost/" rel="prev" title="书评-A.I.杀人吗？（读《暗夜亡灵》完全泄底）">
-      <i class="fa fa-chevron-left"></i> 书评-A.I.杀人吗？（读《暗夜亡灵》完全泄底）
+    <a href="/Bookcomment-Dark-ghost/" rel="prev" title="书籍相关-A.I.杀人吗？（读《暗夜亡灵》完全泄底）">
+      <i class="fa fa-chevron-left"></i> 书籍相关-A.I.杀人吗？（读《暗夜亡灵》完全泄底）
     </a></div>
       <div class="post-nav-item">
-    <a href="/Bookcomment-miss-you-when-sakura-sprout/" rel="next" title="书评-不见樱花不识樱树">
-      书评-不见樱花不识樱树 <i class="fa fa-chevron-right"></i>
+    <a href="/Bookcomment-miss-you-when-sakura-sprout/" rel="next" title="书籍相关-不见樱花不识樱树">
+      书籍相关-不见樱花不识樱树 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -472,24 +475,24 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="逃貓"
+    <img class="site-author-image" itemprop="image" alt="Fish__404"
       src="/images/cat.jpg">
-  <p class="site-author-name" itemprop="name">逃貓</p>
-  <div class="site-description" itemprop="description"></div>
+  <p class="site-author-name" itemprop="name">Fish__404</p>
+  <div class="site-description" itemprop="description">What's dream? Just fun!</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">97</span>
+          <span class="site-state-item-count">99</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-count">22</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -506,14 +509,14 @@
   </div>
   <div class="links-of-author motion-element">
       <span class="links-of-author-item">
-        <a href="https://github.com/fish-404" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;fish-404" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2Zpc2gtNDA0" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;fish-404"><i class="fab fa-github fa-fw"></i></span>
       </span>
       <span class="links-of-author-item">
-        <a href="mailto:fish404hsif@gmail.com" title="E-Mail → mailto:fish404hsif@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+        <span class="exturl" data-url="bWFpbHRvOmZpc2g0MDRoc2lmQGdtYWlsLmNvbQ==" title="E-Mail → mailto:fish404hsif@gmail.com"><i class="fa fa-envelope fa-fw"></i></span>
       </span>
   </div>
   <div class="cc-license motion-element" itemprop="license">
-    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+    <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></span>
   </div>
 
 
@@ -543,7 +546,7 @@
   </span>
   <span class="author" itemprop="copyrightHolder">逃貓</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  <div class="powered-by">由 <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl theme-link" data-url="aHR0cHM6Ly9taXN0LnRoZW1lLW5leHQub3Jn">NexT.Mist</span> 强力驱动
   </div>
 
         
@@ -631,7 +634,7 @@ NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
       notify     : true,
       appId      : 'BwfroBJnkh22Gmd39XCKHVR6-MdYXbMMI',
       appKey     : '6kUQN2hR5mA4BEGerhyY4dGa',
-      placeholder: "不说点什么嘛？邮箱网址选填~\n说不定有机会>触发本喵现身噢~ \n喵喵喵o(=•ェ•=)m",
+      placeholder: "不说点什么嘛？邮箱网址选填~\n说不定有机会触发本喵现身噢~ \n喵喵喵o(=•ェ•=)m",
       avatar     : 'robohash',
       meta       : guest,
       pageSize   : '7' || 10,
