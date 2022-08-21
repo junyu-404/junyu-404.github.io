@@ -2,29 +2,25 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 6.2.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-icon-fish.png">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-fish.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-fish.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-fish.png">
   <link rel="mask-icon" href="/images/logo.svg" color="#222">
-  <meta http-equiv="Cache-Control" content="no-transform">
-  <meta http-equiv="Cache-Control" content="no-siteapp">
 
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
-  <link rel="stylesheet" href="/lib/pace/pace-theme-bounce.min.css">
-  <script src="/lib/pace/pace.min.js"></script>
 
-<script id="hexo-configurations">
-    var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"fish-404.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":true,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
-  </script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha256-xejo6yLi6vGtAjcMIsY8BHdKsLg7QynVlFMzdQgUuy8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-  <meta name="description" content="本文谈谈 SQL 中的空字符串，空白字符串和 NULL.">
+<script class="next-config" data-name="main" type="application/json">{"hostname":"fish-404.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.12.3","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="本文谈谈 SQL 中的空字符串，空白字符串和 NULL.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SQL - 空字符串、空白字符串和 NULL">
 <meta property="og:url" content="https://fish-404.github.io/SQL-emptyStr-whitespace-null/index.html">
@@ -37,72 +33,46 @@
 <meta property="article:tag" content="SQL">
 <meta name="twitter:card" content="summary">
 
+
 <link rel="canonical" href="https://fish-404.github.io/SQL-emptyStr-whitespace-null/">
 
 
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome : false,
-    isPost : true,
-    lang   : 'zh-CN'
-  };
-</script>
 
-  <title>SQL - 空字符串、空白字符串和 NULL | 在逃的貓</title>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://fish-404.github.io/SQL-emptyStr-whitespace-null/","path":"SQL-emptyStr-whitespace-null/","title":"SQL - 空字符串、空白字符串和 NULL"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>SQL - 空字符串、空白字符串和 NULL | 在逃的貓</title>
   
 
 
 
 
 
-
   <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
-
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
 
+  <main class="main">
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
     </div>
   </div>
 
   <div class="site-meta">
 
     <a href="/" class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">在逃的貓</h1>
-      <span class="logo-line-after"><i></i></span>
+      <i class="logo-line"></i>
+      <p class="site-title">在逃的貓</p>
+      <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description">A cat called fish.</p>
   </div>
@@ -116,29 +86,8 @@
 
 
 
-
 <nav class="site-nav">
-  <ul id="menu" class="main-menu menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fab fa-fort-awesome fa-fw"></i>首页</a>
-
-  </li>
-        <li class="menu-item menu-item-about">
-
-    <a href="/about/" rel="section"><i class="fa fa-question fa-fw"></i>关于</a>
-
-  </li>
-        <li class="menu-item menu-item-categories">
-
-    <a href="/categories/" rel="section"><i class="fa fa-list fa-fw"></i>分类</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-inbox fa-fw"></i>归档</a>
-
-  </li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fab fa-fort-awesome fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-question fa-fw"></i>关于</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-list fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-inbox fa-fw"></i>归档</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -149,23 +98,22 @@
 
 
   <div class="search-pop-overlay">
-    <div class="popup search-popup">
-        <div class="search-header">
+    <div class="popup search-popup"><div class="search-header">
   <span class="search-icon">
     <i class="fa fa-search"></i>
   </span>
   <div class="search-input-container">
-    <input autocomplete="off" autocapitalize="off"
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
            placeholder="搜索..." spellcheck="false"
            type="search" class="search-input">
   </div>
-  <span class="popup-btn-close">
+  <span class="popup-btn-close" role="button">
     <i class="fa fa-times-circle"></i>
   </span>
 </div>
-<div id="search-result">
-  <div id="no-result">
-    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
   </div>
 </div>
 
@@ -173,309 +121,18 @@
   </div>
 
 </div>
-    </header>
-
-    
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
-  <div class="reading-progress-bar"></div>
-
-
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
-
-          <div class="content post posts-expand">
-            
-
-    
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://fish-404.github.io/SQL-emptyStr-whitespace-null/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/cat.jpg">
-      <meta itemprop="name" content="Fish__404">
-      <meta itemprop="description" content="What's dream? Just fun!">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="在逃的貓">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          SQL - 空字符串、空白字符串和 NULL
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022/04/02 0:00:00" itemprop="dateCreated datePublished" datetime="2022-04-02T00:00:00+08:00">2022/04/02</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022/04/04 0:00:00" itemprop="dateModified" datetime="2022-04-04T00:00:00+08:00">2022/04/04</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/SQL/" itemprop="url" rel="index"><span itemprop="name">SQL</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-        <p>本文谈谈 SQL 中的空字符串，空白字符串和 <code>NULL</code>.</p>
-<span id="more"></span>
-
-<p>遇到这样一个需求，从数据库中获取中文名，无中文名时以英文名代替。而无中文名实际上可能有空白字符串，空字符串，还可能是 <em><code>NULL</code></em>, 在处理这些值的时候遇到了一些有趣的结果。</p>
-<p>为了解释以下查询语句的结果，假设我们有一个表：</p>
-<table>
-<thead>
-<tr>
-<th>c_name</th>
-<th>name</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>NULL</td>
-<td>name with c_name null</td>
-</tr>
-<tr>
-<td></td>
-<td>name with c_name empty</td>
-</tr>
-</tbody></table>
-<p>你可以在 <span class="exturl" data-url="aHR0cHM6Ly9kYmZpZGRsZS51ay8/cmRibXM9c3Fsc2VydmVyXzIwMTcmZmlkZGxlPTY5YTFjM2Q3MGMxZjkyMTU1NTUyZDNlMmJlNGM5NGJk">db&lt;&gt;fiddle<i class="fa fa-external-link-alt"></i></span> 中测试本文提到的 SQL 语句。</p>
-<p>原始 SQL 语句为：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">case</span> c_name <span class="keyword">when</span> <span class="string">&#x27;&#x27;</span> <span class="keyword">then</span> name <span class="keyword">else</span> c_name <span class="keyword">end</span> <span class="keyword">as</span> name <span class="keyword">from</span> employee</span><br></pre></td></tr></table></figure>
-
-<h1 id="空白字符串与空字符串"><a href="#空白字符串与空字符串" class="headerlink" title="空白字符串与空字符串"></a>空白字符串与空字符串</h1><p>我首先考虑的是直接与空字符串比较是否会在 <code>c_name</code> 为多个空白字符的时候因被判不等而返回空白字符串，C# 中字符串的判空方法就有 <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/dotnet/api/system.string.isnullorempty?view=net-6.0"><code>String.IsNullOrEmpty(String)</code></a> 与 <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/dotnet/api/system.string.isnullorwhitespace?view=net-6.0"><code>String.IsNullOrWhiteSpace(String)</code></a> 的区别，因此将查询语句改成了以下版本。</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- SQL Server 2017 (14.x) and later</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">case</span> <span class="built_in">trim</span>(c_name) <span class="keyword">when</span> <span class="string">&#x27;&#x27;</span> <span class="keyword">then</span> name <span class="keyword">else</span> c_name <span class="keyword">end</span> <span class="keyword">as</span> name <span class="keyword">from</span> employee</span><br><span class="line"><span class="comment">-- SQL Server 2017 (14.x) before</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">case</span> ltrim(rtrim(c_name)) <span class="keyword">when</span> <span class="string">&#x27;&#x27;</span> <span class="keyword">then</span> name <span class="keyword">else</span> c_name <span class="keyword">end</span> <span class="keyword">as</span> name <span class="keyword">from</span> employee</span><br></pre></td></tr></table></figure>
-
-<p>根据 <span class="exturl" data-url="aHR0cHM6Ly9kb2NzLm1pY3Jvc29mdC5jb20vZW4tdXMvc3FsL3Qtc3FsL2Z1bmN0aW9ucy90cmltLXRyYW5zYWN0LXNxbD92aWV3PXNxbC1zZXJ2ZXItdmVyMTU=">MS Docs<i class="fa fa-external-link-alt"></i></span> , <code>TRIM</code> 与 <code>LTRIM(RTRIM(@string))</code> 的行为一致，但 <code>TRIM</code> 是 SQL Server 2017(14.x) 才引进的。</p>
-<p>但我当我使用上面的脚本和之前的脚本去测试一个包含多个空白字符的 <code>c_name</code> 时，发现它们都能得到正确的结果 <code>name</code> ，而不会返回空白字符串 <code>c_name</code> 。实验结果证明空白字符串无论含有多少个空白字符，实际上在 SQL Server 中都是相等的。</p>
-<p>几经搜索后发现这是 <span class="exturl" data-url="aHR0cHM6Ly93d3cuY29udHJpYi5hbmRyZXcuY211LmVkdS9+c2hhZG93L3NxbC9zcWwxOTkyLnR4dA==">SQL - 92<i class="fa fa-external-link-alt"></i></span> 中规定的标准。标准的第208页写道：</p>
-<blockquote>
-<p>If the length in characters of X is not equal to the length in characters of Y, then the shorter string is effectively replaced, for the purposes of comparison, with a copy of itself that has been extended to the length of the longer string by concatenation on the right of one or more pad characters, where the pad character is chosen based on CS. If CS has the NO PAD attribute, then the pad character is an    implementation-dependent character different from any character in the character set of X and Y that collates less than any string under CS. Otherwise, the pad character is a <space>.</p>
-</blockquote>
-<p>也就是说当一个空字符串与一个有多个空白字符的空白字符串进行比较时，空字符串会以添加空格的形式被扩展，从而最后两者的值被判定为相等。</p>
-<p>所以我们实际上仍然可以使用原来的查询语句。</p>
-<h1 id="NULL"><a href="#NULL" class="headerlink" title="NULL"></a>NULL</h1><p>前面提到，除了空白字符串，空字符串，实际上我们还有可能遇到 <code>NULL</code> 作为 <code>c_name</code> 的取值，这时候上面的查询语句是否还能正常工作呢？</p>
-<p>很不幸，在以 <code>NULL</code> 作为 <code>c_name</code> 的测试中，<code>NULL</code> 依然被作为了一个合法的中文名被返回。</p>
-<p>先来看看上面语句的另一种写法：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">case</span> <span class="keyword">when</span> c_name <span class="operator">!=</span> <span class="string">&#x27;&#x27;</span> <span class="keyword">then</span> c_name <span class="keyword">else</span> name <span class="keyword">end</span> <span class="keyword">as</span> name <span class="keyword">from</span> employee</span><br></pre></td></tr></table></figure>
-
-<p>这条查询语句与上面原始的查询语句是否一样呢？从语义上来看似乎是一样的，只不过是把 <code>case when</code> 条件换了个顺序。但是令人惊讶的是，换做这种写法时，我们得到了正确的结果，它不再会返回 <code>NULL</code> 。</p>
-<p>这是怎么回事呢？按照我们上面的测试，<code>c_name</code> 为 <code>NULL</code> 时与空字符串不等，所以仍然返回了 <code>c_name</code> , 但在这里，按照这样的理解，它似乎应该还是返回 <code>c_name</code> 。我一度以为是 <code>case when</code> 的用法有什么奇妙之处导致了这个问题，但似乎没有找到类似的问题，于是在 Stack Overflow 上<span class="exturl" data-url="aHR0cHM6Ly9zdGFja292ZXJmbG93LmNvbS9xdWVzdGlvbnMvNzExMjA1MjQvaGFuZGxlLW51bGwtYW5kLWVtcHR5LWluLXNxbC1zZXJ2ZXI=">发问<i class="fa fa-external-link-alt"></i></span>，才发现原来并不是 <code>case when</code> 的问题，而是 <code>NULL</code> 的问题。网友指出：</p>
-<blockquote>
-<p>Remember: <strong>null does not mean “empty”</strong>. Instead, it means “I don’t know”.</p>
-</blockquote>
-<p>LeetCode 中有道类似 SQL 的<span class="exturl" data-url="aHR0cHM6Ly9sZWV0Y29kZS1jbi5jb20vcHJvYmxlbXMvZmluZC1jdXN0b21lci1yZWZlcmVlLw==">题目<i class="fa fa-external-link-alt"></i></span>，第一反应肯定是 <code>referee_id != 2</code> 这样最直观的想法，但是你会发现如果直接使用这个 <code>where</code> 条件，在 <code>NULL</code> 确实与2不相等的情况下却不会被返回，这是怎么回事呢？</p>
-<p>来看看 <span class="exturl" data-url="aHR0cHM6Ly93d3cuY29udHJpYi5hbmRyZXcuY211LmVkdS9+c2hhZG93L3NxbC9zcWwxOTkyLnR4dA==">SQL - 92<i class="fa fa-external-link-alt"></i></span> 关于等于操作符有怎样的规定：</p>
-<blockquote>
-<p>General Rules</p>
-<ol>
-<li><p>Let X and Y be any two corresponding <code>&lt;row value constructor element&gt;</code>s. Let XV and YV be the values represented by X and Y, respectively.</p>
-<p>Case:</p>
-<p>a) If XV or YV is the null value, then “X <code>&lt;comp op&gt;</code> Y” is unknown.</p>
-</li>
-</ol>
-</blockquote>
-<p>在这里我们可以看到，如果被比较的两个值至少有一个为 <code>NULL</code> , 比较的结果实际上并非我们想象中的 <code>True | False</code> , 而是 <code>Unkown</code> ，所以我们的 <code>WHERE</code> 语句对于值为 <code>NULL</code> 的记录得到的并不是一个 <code>True</code> 的结果。</p>
-<p>在前面的查询语句中，我们的相等条件不满足，返回了 <code>c_name</code> , 在这一条查询语句中，我们的不等条件实际上得到了一个<code>Unkown</code> 也不满足 <code>True</code> ，所以它不会返回第一个表达式 <code>c_name</code> ，误打误撞返回了正确的 <code>name</code> 。</p>
-<p>这里涉及到了一个三元问题，我们发现一个原本应该得到的二元布尔值集合变成了一个三元集合。在我们所接触过的其他语言中，布尔值明确地就是 <code>True | False</code> ，而在 SQL 中，这个概念相当于是被扩充了，在逻辑运算的计算法则上也有很大的不同，这里不再展开。</p>
-<h1 id="ISNULL-NULLIF"><a href="#ISNULL-NULLIF" class="headerlink" title="ISNULL|NULLIF"></a>ISNULL|NULLIF</h1><p>回到上面的最初查询名字的问题，网友给出了一种方案：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> isnull(<span class="built_in">nullif</span>(c_name, <span class="string">&#x27;&#x27;</span>), name) <span class="keyword">as</span> name <span class="keyword">from</span> employee</span><br></pre></td></tr></table></figure>
-
-<p>我尝试使用该查询语句，它确实可以返回不为空和 <code>NULL</code> 的结果，但是结果被截断了。实际上当我的 <code>c_name</code> 定义长度小于 <code>name</code> 的定义长度时，就有可能返回一个截断的结果。</p>
-<p>先来看看这两个表达式，首先是 <code>NULLIF</code> :</p>
-<blockquote>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NULLIF</span> ( expression , expression )  </span><br></pre></td></tr></table></figure>
-
-<p>NULLIF returns the first <em>expression</em> if the two expressions are not equal. If the expressions are equal, NULLIF returns a null value of the type of the first <em>expression</em>.</p>
-</blockquote>
-<p>两个表达式不等时返回第一个表达式，两个表达式相等时，返回 <code>NULL</code> 。</p>
-<p>根据 <span class="exturl" data-url="aHR0cHM6Ly93d3cuY29udHJpYi5hbmRyZXcuY211LmVkdS9+c2hhZG93L3NxbC9zcWwxOTkyLnR4dA==">SQL - 92<i class="fa fa-external-link-alt"></i></span> ，实际上 <code>NULLIF</code> 相当于 <code>CASE ... WHEN</code> ：</p>
-<blockquote>
-<p>NULLIF (V1, V2) is equivalent to the following <code>&lt;case specification&gt;</code>:</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CASE</span> <span class="keyword">WHEN</span> V1<span class="operator">=</span>V2 <span class="keyword">THEN</span> <span class="keyword">NULL</span> <span class="keyword">ELSE</span> V1 <span class="keyword">END</span></span><br></pre></td></tr></table></figure>
-</blockquote>
-<p>当我们的 <code>c_name</code> 为空字符串或空白字符串时， 两个表达式根据前面的解释应该相等，即返回 <code>NULL</code> ，当 <code>c_name</code> 为 <code>NULL</code> 时，由于 <code>NULL</code> 不等于空白字符串，返回自身，即这里将空白字符串，空字符串，<code>NULL</code> 都返回为了 <code>NULL</code> ，注意这里的返回类型与 <code>c_name</code> 一致。</p>
-<p> 再来看看 <code>IFNULL</code> :</p>
-<blockquote>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ISNULL ( check_expression , replacement_value )  </span><br></pre></td></tr></table></figure>
-
-<p>Returns the same type as <em>check_expression</em>. If a literal NULL is provided as <em>check_expression</em>, returns the datatype of the <em>replacement_value</em>. If a literal NULL is provided as <em>check_expression</em> and no <em>replacement_value</em> is provided, returns an <strong>int</strong>.</p>
-</blockquote>
-<p>现在我们已经知道 <code>check_expression</code> 是一个 <code>NULL</code> ，只需要 <code>replacement_value</code> 用我们需要的 <code>name</code> 代替似乎就大功告成了。但事实上我们丢失了部分字符，例如我如果定义 <code>c_name</code> 为 <code>char(4)</code>，返回结果将变为只保留了前4个字符而非我们完整的 <code>name</code> 字符串。这又是怎么回事呢？</p>
-<blockquote>
-<p>The value of <em>check_expression</em> is returned if it is not NULL; otherwise, <em>replacement_value</em> is returned after it is implicitly converted to the type of <em>check_expression</em>, if the types are different. <em>replacement_value</em> can be truncated if <em>replacement_value</em> is longer than <em>check_expression</em>.</p>
-</blockquote>
-<p>官方定义文档中提到了这点，如果 <code>check_expression</code> 与 <code>replacement_value</code> 的类型定义不一致，且 <code>replacement_value</code> 长度大于 <code>check_expression</code> ，这时返回值会被截断。值得注意的是，<span class="exturl" data-url="aHR0cHM6Ly93d3cuY29udHJpYi5hbmRyZXcuY211LmVkdS9+c2hhZG93L3NxbC9zcWwxOTkyLnR4dA==">SQL - 92<i class="fa fa-external-link-alt"></i></span> 中对 <code>ISNULL</code> 是没有定义的。</p>
-<h1 id="COALESCE"><a href="#COALESCE" class="headerlink" title="COALESCE"></a>COALESCE</h1><p>在搜索 <code>ISNULL</code> 的截断相关资料时，又看到了类似的 <code>COALESCE</code> 的讨论。</p>
-<p>于是我们上面使用 <code>ISNULL</code> 得到截断结果的查询语句又可以改写成：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="built_in">coalesce</span>(<span class="built_in">nullif</span>(c_name, <span class="string">&#x27;&#x27;</span>), name) <span class="keyword">from</span> employee</span><br></pre></td></tr></table></figure>
-
-<p>这一次我们发现我们不再会得到截断的结果，它和我们上面使用 <code>CASE</code> 误打误撞得到的正确结果一致。</p>
-<p>实际上根据 <span class="exturl" data-url="aHR0cHM6Ly93d3cuY29udHJpYi5hbmRyZXcuY211LmVkdS9+c2hhZG93L3NxbC9zcWwxOTkyLnR4dA==">SQL - 92<i class="fa fa-external-link-alt"></i></span> 的定义，<code>COALESCE</code> 可以改写成 <code>CASE</code> ：</p>
-<blockquote>
-<p>COALESCE (V1, V2) is equivalent to the following <case specification>:</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CASE</span> <span class="keyword">WHEN</span> V1 <span class="keyword">IS</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">THEN</span> V1 <span class="keyword">ELSE</span> V2 <span class="keyword">END</span></span><br></pre></td></tr></table></figure>
-</blockquote>
-<p>这时候理解 <code>COALESCE</code> 就非常直观了，我们先用 <code>NULLIF</code> 将不相等的空白字符串与 <code>NULL</code> 都转成一样的 <code>NULL</code> ，再使用 <code>COALESCE</code> 代替前面有截断缺陷的 <code>ISNULL</code>，它实际上是与 <code>ISNULL</code> 的语义一致。</p>
-<h1 id="Stored-Procedure-与NULL"><a href="#Stored-Procedure-与NULL" class="headerlink" title="Stored Procedure 与NULL"></a>Stored Procedure 与NULL</h1><p>上面的问题我们已经得到了合适的方案，这里顺便一提正好有点相关的 <code>NULL</code> 在 Stroed Procedure 中的使用。</p>
-<p>常常会遇到这样的需求，某个查询页面，用户需要根据不同的条件查询不同的信息，往往这个不同的信息还需要“全部”这个选项。我们知道，如果是一个单一的查询条件，传递起来是比较方便的，我们直接获取用户通过控件选择的输入值作为 <code>WHERE</code> 语句的判断条件即可得到正确结果。但是对于全部呢？这时候如果这个选项非常多，将其串联再传递给 Stored Procedure 就显得非常没有必要了，因为这时候我们实际上不需要对这些记录进行过滤。</p>
-<p>通常我们可能会使用 <code>IF ... ELSE ... </code> 去判断参数值然后走不同的 <code>SELECT</code> 语句，但是如果可供用户选择的条件非常多，这样又显得有些繁琐了。还有一种办法是通过 <code>IF ... ELSE ...</code> 判断后生成 <code>WHERE</code> 条件，然后生成我们需要的查询语句。那么有没有什么办法，让我们直接去判断这个参数呢？通过我们上面提到的 <code>COALESCE</code> 就可以做到：</p>
-<blockquote>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">WHERE</span> COL <span class="operator">=</span> <span class="built_in">COALESCE</span>(<span class="variable">@INPUT</span>, COL)</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p>这时候当后台调用传入 <code>@INTPUT = NULL</code> 时，就相当于忽视了这个 <code>WHERE</code> 条件，而当我们传入一个不为 <code>NULL</code> 的筛选值时，这个 <code>@INPUT</code> 筛选值就会作用于这个 <code>WHERE</code> 语句，这时候我们就很容易处理后台的用户输入值，也很容易用单一 Stored Procedure 去完成这个查询任务了。  </p>
-<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ol>
-<li><span class="exturl" data-url="aHR0cHM6Ly93d3cuY29udHJpYi5hbmRyZXcuY211LmVkdS9+c2hhZG93L3NxbC9zcWwxOTkyLnR4dA==">Information Technology - Database Language SQL (Proposed revised text of DIS 9075) - July 1992 (TXT)<i class="fa fa-external-link-alt"></i></span></li>
-<li><span class="exturl" data-url="aHR0cHM6Ly93d3cucmVkLWdhdGUuY29tL3NpbXBsZS10YWxrL2RhdGFiYXNlcy9zcWwtc2VydmVyL2xlYXJuL3NxbC1hbmQtdGhlLXNuYXJlLW9mLXRocmVlLXZhbHVlZC1sb2dpYy8=">SQL and the Snare of Three-Valued Logic - Simple Talk<i class="fa fa-external-link-alt"></i></span></li>
-<li><span class="exturl" data-url="aHR0cHM6Ly9kYmEuc3RhY2tleGNoYW5nZS5jb20vcXVlc3Rpb25zLzk0NTYvZW1wdHktc3RyaW5ncy13aHktb3Itd2hlbi1pcy1lcXVhbC10bw==">sql server 2008 - Empty Strings: Why or when is “equal to”? - Database Administrators Stack Exchange<i class="fa fa-external-link-alt"></i></span></li>
-<li><span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvTnVsbF8oU1FMKQ==">Null (SQL) - Wikipedia<i class="fa fa-external-link-alt"></i></span></li>
-<li><span class="exturl" data-url="aHR0cHM6Ly93d3cubXNzcWx0aXBzLmNvbS9zcWxzZXJ2ZXJ0aXAvMjY4OS9kZWNpZGluZy1iZXR3ZWVuLWNvYWxlc2NlLWFuZC1pc251bGwtaW4tc3FsLXNlcnZlci8=">Deciding between COALESCE and ISNULL in SQL Server<i class="fa fa-external-link-alt"></i></span></li>
-<li><span class="exturl" data-url="aHR0cHM6Ly9zdGFja292ZXJmbG93LmNvbS9xdWVzdGlvbnMvMTM5OTg0NC9zcWwtc2VydmVyLTIwMDgtZW1wdHktc3RyaW5nLXZzLXNwYWNl">SQL Server 2008 Empty String vs. Space - Stack Overflow<i class="fa fa-external-link-alt"></i></span></li>
-<li><span class="exturl" data-url="aHR0cHM6Ly9zdGFja292ZXJmbG93LmNvbS9xdWVzdGlvbnMvNTQ2NTIzNS9pbi1zcWwtc2VydmVyLXdoeS1pcy1pdC10aGF0LW51bGwtZG9lcy1ub3QtZXF1YWwtZW1wdHktc3RyaW5nLWFuZC1kb2VzbnQtbm90LWU=">In SQL Server, why is it that NULL does not equal empty string AND doesn’t not equal empty string? - Stack Overflow<i class="fa fa-external-link-alt"></i></span></li>
-<li><span class="exturl" data-url="aHR0cHM6Ly9zdGFja292ZXJmbG93LmNvbS9xdWVzdGlvbnMvMjU3ODE5NC93aGF0LWFyZS1kZGwtYW5kLWRtbA==">sql - What are DDL and DML? - Stack Overflow<i class="fa fa-external-link-alt"></i></span></li>
-<li><span class="exturl" data-url="aHR0cHM6Ly9zdGFja292ZXJmbG93LmNvbS9xdWVzdGlvbnMvMjU3NTI4NzkvaXNudWxsLXJldHVybmluZy10cnVuY2F0ZWQtc3RyaW5nLzI1NzUyOTA4IzI1NzUyOTA4">sql server - ISNULL returning truncated string - Stack Overflow<i class="fa fa-external-link-alt"></i></span></li>
-<li><span class="exturl" data-url="aHR0cHM6Ly9zdGFja292ZXJmbG93LmNvbS9xdWVzdGlvbnMvMTg4ODUyNTYvd2h5LWlzLXQtc3FsLWlzbnVsbC10cnVuY2F0aW5nLXRoZS1zdHJpbmctYW5kLWNvYWxlc2NlLWlzLW5vdA==">sql server - Why is T-SQL ISNULL() truncating the string and COALESCE is not? - Stack Overflow<i class="fa fa-external-link-alt"></i></span></li>
-<li><span class="exturl" data-url="aHR0cHM6Ly9zdGFja292ZXJmbG93LmNvbS9xdWVzdGlvbnMvNzQwODg5My91c2luZy1pc251bGwtdnMtdXNpbmctY29hbGVzY2UtZm9yLWNoZWNraW5nLWEtc3BlY2lmaWMtY29uZGl0aW9u">sql - Using ISNULL vs using COALESCE for checking a specific condition? - Stack Overflow<i class="fa fa-external-link-alt"></i></span></li>
-<li><span class="exturl" data-url="aHR0cHM6Ly9zdGFja292ZXJmbG93LmNvbS9xdWVzdGlvbnMvMTg4Mjg2NDEvc3FsLWRpZmZlcmVuY2UtYmV0d2Vlbi1jb2FsZXNjZS1hbmQtaXNudWxs">sql server - SQL - Difference between COALESCE and ISNULL? - Stack Overflow<i class="fa fa-external-link-alt"></i></span></li>
-<li><span class="exturl" data-url="aHR0cHM6Ly9zdGFja292ZXJmbG93LmNvbS9xdWVzdGlvbnMvMTMxNzQzOTkvY29hbGVzY2UtdnMtY2FzZQ==">sql - Coalesce vs Case - Stack Overflow<i class="fa fa-external-link-alt"></i></span></li>
-<li><span class="exturl" data-url="aHR0cHM6Ly9zdGFja292ZXJmbG93LmNvbS9xdWVzdGlvbnMvMTAxODU2Mzgvb3B0aW9uYWwtYXJndW1lbnRzLWluLXdoZXJlLWNsYXVzZQ==">sql - Optional Arguments in WHERE Clause - Stack Overflow<i class="fa fa-external-link-alt"></i></span></li>
-<li><span class="exturl" data-url="aHR0cHM6Ly9zdGFja292ZXJmbG93LmNvbS9xdWVzdGlvbnMvNjk3NjcxL3N0b3JlZC1wcm9jZWR1cmUtd2l0aC1vcHRpb25hbC13aGVyZS1wYXJhbWV0ZXJz">sql - Stored Procedure with optional “WHERE” parameters - Stack Overflow<i class="fa fa-external-link-alt"></i></span></li>
-<li><span class="exturl" data-url="aHR0cHM6Ly9zdGFja292ZXJmbG93LmNvbS9xdWVzdGlvbnMvMjE5MTkxNjEvc3FsLXNlcnZlci1zdG9yZWQtcHJvY2VkdXJlLW51bGxhYmxlLXBhcmFtZXRlcg==">SQL Server stored procedure Nullable parameter - Stack Overflow<i class="fa fa-external-link-alt"></i></span></li>
-<li><span class="exturl" data-url="aHR0cHM6Ly9kb2NzLm9yYWNsZS5jb20vY2QvQjE0MTE3XzAxL3NlcnZlci4xMDEvYjEwNzU5L3N0YXRlbWVudHNfMTAwMS5odG0=">Types of SQL Statements<i class="fa fa-external-link-alt"></i></span></li>
-<li><span class="exturl" data-url="aHR0cHM6Ly9zdXBwb3J0Lm1pY3Jvc29mdC5jb20vZW4tdXMvdG9waWMvaW5mLWhvdy1zcWwtc2VydmVyLWNvbXBhcmVzLXN0cmluZ3Mtd2l0aC10cmFpbGluZy1zcGFjZXMtYjYyYjFhMmQtMjdkMy00MjYwLTIxNmQtYTYwNTcxOTAwM2Iw">INF: How SQL Server Compares Strings with Trailing Spaces<i class="fa fa-external-link-alt"></i></span></li>
-<li><span class="exturl" data-url="aHR0cHM6Ly93d3cuaWJtLmNvbS9kb2NzL2VuL2kvNy40P3RvcGljPWNvbmNlcHRzLWNvbGxhdGluZy1zZXF1ZW5jZQ==">Collating sequence - IBM Documentation<i class="fa fa-external-link-alt"></i></span></li>
-<li><span class="exturl" data-url="aHR0cHM6Ly9kb2NzLm1pY3Jvc29mdC5jb20vZW4tdXMvc3FsL3Qtc3FsL2Z1bmN0aW9ucy9pc251bGwtdHJhbnNhY3Qtc3FsP3ZpZXc9c3FsLXNlcnZlci12ZXIxNQ==">ISNULL (Transact-SQL) - SQL Server | Microsoft Docs<i class="fa fa-external-link-alt"></i></span></li>
-<li><span class="exturl" data-url="aHR0cHM6Ly9kb2NzLm1pY3Jvc29mdC5jb20vZW4tdXMvc3FsL3Qtc3FsL2xhbmd1YWdlLWVsZW1lbnRzL251bGxpZi10cmFuc2FjdC1zcWw/dmlldz1zcWwtc2VydmVyLXZlcjE1">NULLIF (Transact-SQL) - SQL Server | Microsoft Docs<i class="fa fa-external-link-alt"></i></span></li>
-<li><span class="exturl" data-url="aHR0cHM6Ly9kb2NzLm1pY3Jvc29mdC5jb20vZW4tdXMvc3FsL3Qtc3FsL2xhbmd1YWdlLWVsZW1lbnRzL2NvYWxlc2NlLXRyYW5zYWN0LXNxbD9yZWRpcmVjdGVkZnJvbT1NU0ROJnZpZXc9c3FsLXNlcnZlci12ZXIxNQ==">COALESCE (Transact-SQL) - SQL Server | Microsoft Docs<i class="fa fa-external-link-alt"></i></span></li>
-<li><span class="exturl" data-url="aHR0cHM6Ly9kb2NzLm1pY3Jvc29mdC5jb20vZW4tdXMvc3FsL3Qtc3FsL2xhbmd1YWdlLWVsZW1lbnRzL251bGwtYW5kLXVua25vd24tdHJhbnNhY3Qtc3FsP3ZpZXc9c3FsLXNlcnZlci12ZXIxNQ==">NULL and UNKNOWN (Transact-SQL) - SQL Server | Microsoft Docs<i class="fa fa-external-link-alt"></i></span></li>
-<li><span class="exturl" data-url="aHR0cHM6Ly9kb2NzLm1pY3Jvc29mdC5jb20vZW4tdXMvc3FsL3Qtc3FsL3N0YXRlbWVudHMvc2V0LWFuc2ktbnVsbHMtdHJhbnNhY3Qtc3FsP3ZpZXc9c3FsLXNlcnZlci12ZXIxNQ==">SET ANSI_NULLS (Transact-SQL) - SQL Server | Microsoft Docs<i class="fa fa-external-link-alt"></i></span></li>
-<li><span class="exturl" data-url="aHR0cHM6Ly9kb2NzLm1pY3Jvc29mdC5jb20vZW4tdXMvc3FsL3Qtc3FsL2xhbmd1YWdlLWVsZW1lbnRzL2Nhc2UtdHJhbnNhY3Qtc3FsP3ZpZXc9c3FsLXNlcnZlci12ZXIxNQ==">CASE (Transact - SQL) - SQL Server | Microsoft Docs<i class="fa fa-external-link-alt"></i></span></li>
-<li><span class="exturl" data-url="aHR0cHM6Ly9kb2NzLm1pY3Jvc29mdC5jb20vZW4tdXMvc3FsL3Qtc3FsL2xhbmd1YWdlLWVsZW1lbnRzL2VxdWFscy10cmFuc2FjdC1zcWw/dmlldz1zcWwtc2VydmVyLXZlcjE1">&#x3D;(Equals) (Transact - SQL) - SQL Server | Microsoft Docs<i class="fa fa-external-link-alt"></i></span></li>
-<li><span class="exturl" data-url="aHR0cHM6Ly9kb2NzLm1pY3Jvc29mdC5jb20vZW4tdXMvZG90bmV0L2FwaS9zeXN0ZW0uc3RyaW5nLmlzbnVsbG9yZW1wdHk/dmlldz1uZXQtNi4w">String.IsNullOrEmpty(String) Method (System) | Microsoft Docs<i class="fa fa-external-link-alt"></i></span></li>
-<li><span class="exturl" data-url="aHR0cHM6Ly9kb2NzLm1pY3Jvc29mdC5jb20vZW4tdXMvZG90bmV0L2FwaS9zeXN0ZW0uc3RyaW5nLmlzbnVsbG9yd2hpdGVzcGFjZT92aWV3PW5ldC02LjA=">String.IsNullOrWhiteSpace(String) Method (System) | Microsoft Docs<i class="fa fa-external-link-alt"></i></span></li>
-<li><span class="exturl" data-url="aHR0cHM6Ly9kb2NzLm1pY3Jvc29mdC5jb20vZW4tdXMvc3FsL3Qtc3FsL2Z1bmN0aW9ucy90cmltLXRyYW5zYWN0LXNxbD92aWV3PXNxbC1zZXJ2ZXItdmVyMTU=">TRIM (Transact-SQL) - SQL Server | Microsoft Docs<i class="fa fa-external-link-alt"></i></span></li>
-</ol>
-
-    </div>
-
-    
-    
-    
-          
-
-<div>
-<ul class="post-copyright">
-  <li class="post-copyright-author">
-    <strong>本文作者： </strong>Fish__404
-  </li>
-  <li class="post-copyright-link">
-    <strong>本文链接：</strong>
-    <a href="https://fish-404.github.io/SQL-emptyStr-whitespace-null/" title="SQL - 空字符串、空白字符串和 NULL">https://fish-404.github.io/SQL-emptyStr-whitespace-null/</a>
-  </li>
-  <li class="post-copyright-license">
-    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！
-  </li>
-</ul>
-</div>
-
-
-      <footer class="post-footer">
-          
-          <div class="post-tags">
-              <a href="/tags/SQL/" rel="tag"><i class="fa fa-tag"></i> SQL</a>
-          </div>
-
         
-
-
-        
-    <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/Job-seek-record-2/" rel="prev" title="求职小记2">
-      <i class="fa fa-chevron-left"></i> 求职小记2
-    </a></div>
-      <div class="post-nav-item">
-    <a href="/Essay-2019-nCoV-personal-record-18/" rel="next" title="疫期小记 18">
-      疫期小记 18 <i class="fa fa-chevron-right"></i>
-    </a></div>
-    </div>
-      </footer>
-    
-  </article>
   
-  
-  
-
-
-
-          </div>
-          
-
-<script>
-  window.addEventListener('tabs:register', () => {
-    let { activeClass } = CONFIG.comments;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
-      }
-    }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
-  }
-</script>
-
-        </div>
-          
-  
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
   </div>
 
   <aside class="sidebar">
-    <div class="sidebar-inner">
 
-      <ul class="sidebar-nav motion-element">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
         </li>
@@ -484,115 +141,532 @@
         </li>
       </ul>
 
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A9%BA%E7%99%BD%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%8E%E7%A9%BA%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-number">1.</span> <span class="nav-text">空白字符串与空字符串</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#NULL"><span class="nav-number">2.</span> <span class="nav-text">NULL</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ISNULL-NULLIF"><span class="nav-number">3.</span> <span class="nav-text">ISNULL|NULLIF</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#COALESCE"><span class="nav-number">4.</span> <span class="nav-text">COALESCE</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Stored-Procedure-%E4%B8%8ENULL"><span class="nav-number">5.</span> <span class="nav-text">Stored Procedure 与NULL</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">6.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
-      </div>
-      <!--/noindex-->
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A9%BA%E7%99%BD%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%8E%E7%A9%BA%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-number">1.</span> <span class="nav-text">空白字符串与空字符串</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#null"><span class="nav-number">2.</span> <span class="nav-text">NULL</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#isnullnullif"><span class="nav-number">3.</span> <span class="nav-text">ISNULL|NULLIF</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#coalesce"><span class="nav-number">4.</span> <span class="nav-text">COALESCE</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#stored-procedure-%E4%B8%8Enull"><span class="nav-number">5.</span> <span class="nav-text">Stored Procedure 与NULL</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">6.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
 
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image" alt="Fish__404"
       src="/images/cat.jpg">
   <p class="site-author-name" itemprop="name">Fish__404</p>
   <div class="site-description" itemprop="description">What's dream? Just fun!</div>
 </div>
-<div class="site-state-wrap motion-element">
+<div class="site-state-wrap site-overview-item animated">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
+        <a href="/archives/">
           <span class="site-state-item-count">100</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-            <a href="/categories/">
-          
+          <a href="/categories/">
         <span class="site-state-item-count">22</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-            <a href="/tags/">
+          <a href="/tags/">
         <span class="site-state-item-count">38</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
 </div>
-  <div class="sidebar-button motion-element">
-    <a onclick="Chatra('openChat', true);"><i class="fa fa-comment"></i>
-    
-  </a>
+  <div class="sidebar-button site-overview-item animated">
+    <button><i class="fa fa-comment"></i>
+      留言
+    </button>
   </div>
-  <div class="links-of-author motion-element">
+  <div class="links-of-author site-overview-item animated">
       <span class="links-of-author-item">
-        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2Zpc2gtNDA0" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;fish-404"><i class="fab fa-github fa-fw"></i></span>
+        <a href="https://github.com/fish-404" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;fish-404" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
       </span>
       <span class="links-of-author-item">
-        <span class="exturl" data-url="bWFpbHRvOmZpc2g0MDRoc2lmQGdtYWlsLmNvbQ==" title="E-Mail → mailto:fish404hsif@gmail.com"><i class="fa fa-envelope fa-fw"></i></span>
+        <a href="mailto:fish404hsif@gmail.com" title="E-Mail → mailto:fish404hsif@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
       </span>
   </div>
-  <div class="cc-license motion-element" itemprop="license">
-    <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></span>
-  </div>
 
 
 
+        </div>
       </div>
-
     </div>
   </aside>
-  <div id="sidebar-dimmer"></div>
+  <div class="sidebar-dimmer"></div>
 
 
-      </div>
-    </main>
+    </header>
 
-    <footer class="footer">
-      <div class="footer-inner">
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://fish-404.github.io/SQL-emptyStr-whitespace-null/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/cat.jpg">
+      <meta itemprop="name" content="Fish__404">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="在逃的貓">
+      <meta itemprop="description" content="What's dream? Just fun!">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="SQL - 空字符串、空白字符串和 NULL | 在逃的貓">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          SQL - 空字符串、空白字符串和 NULL
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022/04/02 0:00:00" itemprop="dateCreated datePublished" datetime="2022-04-02T00:00:00+08:00">2022/04/02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022/04/04 0:00:00" itemprop="dateModified" datetime="2022-04-04T00:00:00+08:00">2022/04/04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/SQL/" itemprop="url" rel="index"><span itemprop="name">SQL</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>本文谈谈 SQL 中的空字符串，空白字符串和 <code>NULL</code>.</p>
+<span id="more"></span>
+<p>遇到这样一个需求，从数据库中获取中文名，无中文名时以英文名代替。而无中文名实际上可能有空白字符串，空字符串，还可能是
+<em><code>NULL</code></em>, 在处理这些值的时候遇到了一些有趣的结果。</p>
+<p>为了解释以下查询语句的结果，假设我们有一个表：</p>
+<table>
+<thead>
+<tr class="header">
+<th>c_name</th>
+<th>name</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>NULL</td>
+<td>name with c_name null</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>name with c_name empty</td>
+</tr>
+</tbody>
+</table>
+<p>你可以在 <a
+target="_blank" rel="noopener" href="https://dbfiddle.uk/?rdbms=sqlserver_2017&amp;fiddle=69a1c3d70c1f92155552d3e2be4c94bd">db&lt;&gt;fiddle</a>
+中测试本文提到的 SQL 语句。</p>
+<p>原始 SQL 语句为：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">case</span> c_name <span class="keyword">when</span> <span class="string">&#x27;&#x27;</span> <span class="keyword">then</span> name <span class="keyword">else</span> c_name <span class="keyword">end</span> <span class="keyword">as</span> name <span class="keyword">from</span> employee</span><br></pre></td></tr></table></figure>
+<h1 id="空白字符串与空字符串">空白字符串与空字符串</h1>
+<p>我首先考虑的是直接与空字符串比较是否会在 <code>c_name</code>
+为多个空白字符的时候因被判不等而返回空白字符串，C#
+中字符串的判空方法就有 <a
+target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/dotnet/api/system.string.isnullorempty?view=net-6.0"><code>String.IsNullOrEmpty(String)</code></a>
+与 <a
+target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/dotnet/api/system.string.isnullorwhitespace?view=net-6.0"><code>String.IsNullOrWhiteSpace(String)</code></a>
+的区别，因此将查询语句改成了以下版本。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- SQL Server 2017 (14.x) and later</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">case</span> <span class="built_in">trim</span>(c_name) <span class="keyword">when</span> <span class="string">&#x27;&#x27;</span> <span class="keyword">then</span> name <span class="keyword">else</span> c_name <span class="keyword">end</span> <span class="keyword">as</span> name <span class="keyword">from</span> employee</span><br><span class="line"><span class="comment">-- SQL Server 2017 (14.x) before</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">case</span> ltrim(rtrim(c_name)) <span class="keyword">when</span> <span class="string">&#x27;&#x27;</span> <span class="keyword">then</span> name <span class="keyword">else</span> c_name <span class="keyword">end</span> <span class="keyword">as</span> name <span class="keyword">from</span> employee</span><br></pre></td></tr></table></figure>
+<p>根据 <a
+target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/sql/t-sql/functions/trim-transact-sql?view=sql-server-ver15">MS
+Docs</a> , <code>TRIM</code> 与 <code>LTRIM(RTRIM(@string))</code>
+的行为一致，但 <code>TRIM</code> 是 SQL Server 2017(14.x) 才引进的。</p>
+<p>但我当我使用上面的脚本和之前的脚本去测试一个包含多个空白字符的
+<code>c_name</code> 时，发现它们都能得到正确的结果 <code>name</code>
+，而不会返回空白字符串 <code>c_name</code>
+。实验结果证明空白字符串无论含有多少个空白字符，实际上在 SQL Server
+中都是相等的。</p>
+<p>几经搜索后发现这是 <a
+target="_blank" rel="noopener" href="https://www.contrib.andrew.cmu.edu/~shadow/sql/sql1992.txt">SQL -
+92</a> 中规定的标准。标准的第208页写道：</p>
+<blockquote>
+<p>If the length in characters of X is not equal to the length in
+characters of Y, then the shorter string is effectively replaced, for
+the purposes of comparison, with a copy of itself that has been extended
+to the length of the longer string by concatenation on the right of one
+or more pad characters, where the pad character is chosen based on CS.
+If CS has the NO PAD attribute, then the pad character is an
+implementation-dependent character different from any character in the
+character set of X and Y that collates less than any string under CS.
+Otherwise, the pad character is a <space>.</p>
+</blockquote>
+<p>也就是说当一个空字符串与一个有多个空白字符的空白字符串进行比较时，空字符串会以添加空格的形式被扩展，从而最后两者的值被判定为相等。</p>
+<p>所以我们实际上仍然可以使用原来的查询语句。</p>
+<h1 id="null">NULL</h1>
+<p>前面提到，除了空白字符串，空字符串，实际上我们还有可能遇到
+<code>NULL</code> 作为 <code>c_name</code>
+的取值，这时候上面的查询语句是否还能正常工作呢？</p>
+<p>很不幸，在以 <code>NULL</code> 作为 <code>c_name</code>
+的测试中，<code>NULL</code> 依然被作为了一个合法的中文名被返回。</p>
+<p>先来看看上面语句的另一种写法：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">case</span> <span class="keyword">when</span> c_name <span class="operator">!=</span> <span class="string">&#x27;&#x27;</span> <span class="keyword">then</span> c_name <span class="keyword">else</span> name <span class="keyword">end</span> <span class="keyword">as</span> name <span class="keyword">from</span> employee</span><br></pre></td></tr></table></figure>
+<p>这条查询语句与上面原始的查询语句是否一样呢？从语义上来看似乎是一样的，只不过是把
+<code>case when</code>
+条件换了个顺序。但是令人惊讶的是，换做这种写法时，我们得到了正确的结果，它不再会返回
+<code>NULL</code> 。</p>
+<p>这是怎么回事呢？按照我们上面的测试，<code>c_name</code> 为
+<code>NULL</code> 时与空字符串不等，所以仍然返回了 <code>c_name</code> ,
+但在这里，按照这样的理解，它似乎应该还是返回 <code>c_name</code>
+。我一度以为是 <code>case when</code>
+的用法有什么奇妙之处导致了这个问题，但似乎没有找到类似的问题，于是在
+Stack Overflow 上<a
+target="_blank" rel="noopener" href="https://stackoverflow.com/questions/71120524/handle-null-and-empty-in-sql-server">发问</a>，才发现原来并不是
+<code>case when</code> 的问题，而是 <code>NULL</code>
+的问题。网友指出：</p>
+<blockquote>
+<p>Remember: <strong>null does not mean "empty"</strong>. Instead, it
+means "I don't know".</p>
+</blockquote>
+<p>LeetCode 中有道类似 SQL 的<a
+target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/find-customer-referee/">题目</a>，第一反应肯定是
+<code>referee_id != 2</code>
+这样最直观的想法，但是你会发现如果直接使用这个 <code>where</code>
+条件，在 <code>NULL</code>
+确实与2不相等的情况下却不会被返回，这是怎么回事呢？</p>
+<p>来看看 <a
+target="_blank" rel="noopener" href="https://www.contrib.andrew.cmu.edu/~shadow/sql/sql1992.txt">SQL -
+92</a> 关于等于操作符有怎样的规定：</p>
+<blockquote>
+<p>General Rules</p>
+<ol type="1">
+<li><p>Let X and Y be any two corresponding
+<code>&lt;row value constructor element&gt;</code>s. Let XV and YV be
+the values represented by X and Y, respectively.</p>
+<p>Case:</p>
+<ol type="a">
+<li>If XV or YV is the null value, then "X <code>&lt;comp op&gt;</code>
+Y" is unknown.</li>
+</ol></li>
+</ol>
+</blockquote>
+<p>在这里我们可以看到，如果被比较的两个值至少有一个为 <code>NULL</code>
+, 比较的结果实际上并非我们想象中的 <code>True | False</code> , 而是
+<code>Unkown</code> ，所以我们的 <code>WHERE</code> 语句对于值为
+<code>NULL</code> 的记录得到的并不是一个 <code>True</code> 的结果。</p>
+<p>在前面的查询语句中，我们的相等条件不满足，返回了 <code>c_name</code>
+, 在这一条查询语句中，我们的不等条件实际上得到了一个<code>Unkown</code>
+也不满足 <code>True</code> ，所以它不会返回第一个表达式
+<code>c_name</code> ，误打误撞返回了正确的 <code>name</code> 。</p>
+<p>这里涉及到了一个三元问题，我们发现一个原本应该得到的二元布尔值集合变成了一个三元集合。在我们所接触过的其他语言中，布尔值明确地就是
+<code>True | False</code> ，而在 SQL
+中，这个概念相当于是被扩充了，在逻辑运算的计算法则上也有很大的不同，这里不再展开。</p>
+<h1 id="isnullnullif">ISNULL|NULLIF</h1>
+<p>回到上面的最初查询名字的问题，网友给出了一种方案：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> isnull(<span class="built_in">nullif</span>(c_name, <span class="string">&#x27;&#x27;</span>), name) <span class="keyword">as</span> name <span class="keyword">from</span> employee</span><br></pre></td></tr></table></figure>
+<p>我尝试使用该查询语句，它确实可以返回不为空和 <code>NULL</code>
+的结果，但是结果被截断了。实际上当我的 <code>c_name</code> 定义长度小于
+<code>name</code> 的定义长度时，就有可能返回一个截断的结果。</p>
+<p>先来看看这两个表达式，首先是 <code>NULLIF</code> :</p>
+<blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NULLIF</span> ( expression , expression )  </span><br></pre></td></tr></table></figure>
+<p>NULLIF returns the first <em>expression</em> if the two expressions
+are not equal. If the expressions are equal, NULLIF returns a null value
+of the type of the first <em>expression</em>.</p>
+</blockquote>
+<p>两个表达式不等时返回第一个表达式，两个表达式相等时，返回
+<code>NULL</code> 。</p>
+<p>根据 <a
+target="_blank" rel="noopener" href="https://www.contrib.andrew.cmu.edu/~shadow/sql/sql1992.txt">SQL -
+92</a> ，实际上 <code>NULLIF</code> 相当于 <code>CASE ... WHEN</code>
+：</p>
+<blockquote>
+<p>NULLIF (V1, V2) is equivalent to the following
+<code>&lt;case specification&gt;</code>:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CASE</span> <span class="keyword">WHEN</span> V1<span class="operator">=</span>V2 <span class="keyword">THEN</span> <span class="keyword">NULL</span> <span class="keyword">ELSE</span> V1 <span class="keyword">END</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>当我们的 <code>c_name</code> 为空字符串或空白字符串时，
+两个表达式根据前面的解释应该相等，即返回 <code>NULL</code> ，当
+<code>c_name</code> 为 <code>NULL</code> 时，由于 <code>NULL</code>
+不等于空白字符串，返回自身，即这里将空白字符串，空字符串，<code>NULL</code>
+都返回为了 <code>NULL</code> ，注意这里的返回类型与 <code>c_name</code>
+一致。</p>
+<p>再来看看 <code>IFNULL</code> :</p>
+<blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ISNULL ( check_expression , replacement_value )  </span><br></pre></td></tr></table></figure>
+<p>Returns the same type as <em>check_expression</em>. If a literal NULL
+is provided as <em>check_expression</em>, returns the datatype of the
+<em>replacement_value</em>. If a literal NULL is provided as
+<em>check_expression</em> and no <em>replacement_value</em> is provided,
+returns an <strong>int</strong>.</p>
+</blockquote>
+<p>现在我们已经知道 <code>check_expression</code> 是一个
+<code>NULL</code> ，只需要 <code>replacement_value</code> 用我们需要的
+<code>name</code>
+代替似乎就大功告成了。但事实上我们丢失了部分字符，例如我如果定义
+<code>c_name</code> 为
+<code>char(4)</code>，返回结果将变为只保留了前4个字符而非我们完整的
+<code>name</code> 字符串。这又是怎么回事呢？</p>
+<blockquote>
+<p>The value of <em>check_expression</em> is returned if it is not NULL;
+otherwise, <em>replacement_value</em> is returned after it is implicitly
+converted to the type of <em>check_expression</em>, if the types are
+different. <em>replacement_value</em> can be truncated if
+<em>replacement_value</em> is longer than <em>check_expression</em>.</p>
+</blockquote>
+<p>官方定义文档中提到了这点，如果 <code>check_expression</code> 与
+<code>replacement_value</code> 的类型定义不一致，且
+<code>replacement_value</code> 长度大于 <code>check_expression</code>
+，这时返回值会被截断。值得注意的是，<a
+target="_blank" rel="noopener" href="https://www.contrib.andrew.cmu.edu/~shadow/sql/sql1992.txt">SQL -
+92</a> 中对 <code>ISNULL</code> 是没有定义的。</p>
+<h1 id="coalesce">COALESCE</h1>
+<p>在搜索 <code>ISNULL</code> 的截断相关资料时，又看到了类似的
+<code>COALESCE</code> 的讨论。</p>
+<p>于是我们上面使用 <code>ISNULL</code>
+得到截断结果的查询语句又可以改写成：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="built_in">coalesce</span>(<span class="built_in">nullif</span>(c_name, <span class="string">&#x27;&#x27;</span>), name) <span class="keyword">from</span> employee</span><br></pre></td></tr></table></figure>
+<p>这一次我们发现我们不再会得到截断的结果，它和我们上面使用
+<code>CASE</code> 误打误撞得到的正确结果一致。</p>
+<p>实际上根据 <a
+target="_blank" rel="noopener" href="https://www.contrib.andrew.cmu.edu/~shadow/sql/sql1992.txt">SQL -
+92</a> 的定义，<code>COALESCE</code> 可以改写成 <code>CASE</code> ：</p>
+<blockquote>
+COALESCE (V1, V2) is equivalent to the following
+<case specification>
+<p>:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CASE</span> <span class="keyword">WHEN</span> V1 <span class="keyword">IS</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">THEN</span> V1 <span class="keyword">ELSE</span> V2 <span class="keyword">END</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>这时候理解 <code>COALESCE</code> 就非常直观了，我们先用
+<code>NULLIF</code> 将不相等的空白字符串与 <code>NULL</code>
+都转成一样的 <code>NULL</code> ，再使用 <code>COALESCE</code>
+代替前面有截断缺陷的 <code>ISNULL</code>，它实际上是与
+<code>ISNULL</code> 的语义一致。</p>
+<h1 id="stored-procedure-与null">Stored Procedure 与NULL</h1>
+<p>上面的问题我们已经得到了合适的方案，这里顺便一提正好有点相关的
+<code>NULL</code> 在 Stroed Procedure 中的使用。</p>
+<p>常常会遇到这样的需求，某个查询页面，用户需要根据不同的条件查询不同的信息，往往这个不同的信息还需要“全部”这个选项。我们知道，如果是一个单一的查询条件，传递起来是比较方便的，我们直接获取用户通过控件选择的输入值作为
+<code>WHERE</code>
+语句的判断条件即可得到正确结果。但是对于全部呢？这时候如果这个选项非常多，将其串联再传递给
+Stored Procedure
+就显得非常没有必要了，因为这时候我们实际上不需要对这些记录进行过滤。</p>
+<p>通常我们可能会使用 <code>IF ... ELSE ...</code>
+去判断参数值然后走不同的 <code>SELECT</code>
+语句，但是如果可供用户选择的条件非常多，这样又显得有些繁琐了。还有一种办法是通过
+<code>IF ... ELSE ...</code> 判断后生成 <code>WHERE</code>
+条件，然后生成我们需要的查询语句。那么有没有什么办法，让我们直接去判断这个参数呢？通过我们上面提到的
+<code>COALESCE</code> 就可以做到：</p>
+<blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">WHERE</span> COL <span class="operator">=</span> <span class="built_in">COALESCE</span>(<span class="variable">@INPUT</span>, COL)</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>这时候当后台调用传入 <code>@INTPUT = NULL</code>
+时，就相当于忽视了这个 <code>WHERE</code> 条件，而当我们传入一个不为
+<code>NULL</code> 的筛选值时，这个 <code>@INPUT</code>
+筛选值就会作用于这个 <code>WHERE</code>
+语句，这时候我们就很容易处理后台的用户输入值，也很容易用单一 Stored
+Procedure 去完成这个查询任务了。</p>
+<h1 id="参考资料">参考资料</h1>
+<ol type="1">
+<li><a
+target="_blank" rel="noopener" href="https://www.contrib.andrew.cmu.edu/~shadow/sql/sql1992.txt">Information
+Technology - Database Language SQL (Proposed revised text of DIS 9075) -
+July 1992 (TXT)</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://www.red-gate.com/simple-talk/databases/sql-server/learn/sql-and-the-snare-of-three-valued-logic/">SQL
+and the Snare of Three-Valued Logic - Simple Talk</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://dba.stackexchange.com/questions/9456/empty-strings-why-or-when-is-equal-to">sql
+server 2008 - Empty Strings: Why or when is “equal to”? - Database
+Administrators Stack Exchange</a></li>
+<li><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Null_(SQL)">Null (SQL) -
+Wikipedia</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://www.mssqltips.com/sqlservertip/2689/deciding-between-coalesce-and-isnull-in-sql-server/">Deciding
+between COALESCE and ISNULL in SQL Server</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://stackoverflow.com/questions/1399844/sql-server-2008-empty-string-vs-space">SQL
+Server 2008 Empty String vs. Space - Stack Overflow</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://stackoverflow.com/questions/5465235/in-sql-server-why-is-it-that-null-does-not-equal-empty-string-and-doesnt-not-e">In
+SQL Server, why is it that NULL does not equal empty string AND doesn’t
+not equal empty string? - Stack Overflow</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://stackoverflow.com/questions/2578194/what-are-ddl-and-dml">sql
+- What are DDL and DML? - Stack Overflow</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://stackoverflow.com/questions/25752879/isnull-returning-truncated-string/25752908#25752908">sql
+server - ISNULL returning truncated string - Stack Overflow</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://stackoverflow.com/questions/18885256/why-is-t-sql-isnull-truncating-the-string-and-coalesce-is-not">sql
+server - Why is T-SQL ISNULL() truncating the string and COALESCE is
+not? - Stack Overflow</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://stackoverflow.com/questions/7408893/using-isnull-vs-using-coalesce-for-checking-a-specific-condition">sql
+- Using ISNULL vs using COALESCE for checking a specific condition? -
+Stack Overflow</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://stackoverflow.com/questions/18828641/sql-difference-between-coalesce-and-isnull">sql
+server - SQL - Difference between COALESCE and ISNULL? - Stack
+Overflow</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://stackoverflow.com/questions/13174399/coalesce-vs-case">sql
+- Coalesce vs Case - Stack Overflow</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://stackoverflow.com/questions/10185638/optional-arguments-in-where-clause">sql
+- Optional Arguments in WHERE Clause - Stack Overflow</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://stackoverflow.com/questions/697671/stored-procedure-with-optional-where-parameters">sql
+- Stored Procedure with optional "WHERE" parameters - Stack
+Overflow</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://stackoverflow.com/questions/21919161/sql-server-stored-procedure-nullable-parameter">SQL
+Server stored procedure Nullable parameter - Stack Overflow</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://docs.oracle.com/cd/B14117_01/server.101/b10759/statements_1001.htm">Types
+of SQL Statements</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://support.microsoft.com/en-us/topic/inf-how-sql-server-compares-strings-with-trailing-spaces-b62b1a2d-27d3-4260-216d-a605719003b0">INF:
+How SQL Server Compares Strings with Trailing Spaces</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://www.ibm.com/docs/en/i/7.4?topic=concepts-collating-sequence">Collating
+sequence - IBM Documentation</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/sql/t-sql/functions/isnull-transact-sql?view=sql-server-ver15">ISNULL
+(Transact-SQL) - SQL Server | Microsoft Docs</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/sql/t-sql/language-elements/nullif-transact-sql?view=sql-server-ver15">NULLIF
+(Transact-SQL) - SQL Server | Microsoft Docs</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/sql/t-sql/language-elements/coalesce-transact-sql?redirectedfrom=MSDN&amp;view=sql-server-ver15">COALESCE
+(Transact-SQL) - SQL Server | Microsoft Docs</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/sql/t-sql/language-elements/null-and-unknown-transact-sql?view=sql-server-ver15">NULL
+and UNKNOWN (Transact-SQL) - SQL Server | Microsoft Docs</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/sql/t-sql/statements/set-ansi-nulls-transact-sql?view=sql-server-ver15">SET
+ANSI_NULLS (Transact-SQL) - SQL Server | Microsoft Docs</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/sql/t-sql/language-elements/case-transact-sql?view=sql-server-ver15">CASE
+(Transact - SQL) - SQL Server | Microsoft Docs</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/sql/t-sql/language-elements/equals-transact-sql?view=sql-server-ver15">=(Equals)
+(Transact - SQL) - SQL Server | Microsoft Docs</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/dotnet/api/system.string.isnullorempty?view=net-6.0">String.IsNullOrEmpty(String)
+Method (System) | Microsoft Docs</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/dotnet/api/system.string.isnullorwhitespace?view=net-6.0">String.IsNullOrWhiteSpace(String)
+Method (System) | Microsoft Docs</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/sql/t-sql/functions/trim-transact-sql?view=sql-server-ver15">TRIM
+(Transact-SQL) - SQL Server | Microsoft Docs</a></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/SQL/" rel="tag"><i class="fa fa-tag"></i> SQL</a>
+          </div>
+
         
 
-        
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/Job-seek-record-2/" rel="prev" title="求职小记2">
+                  <i class="fa fa-chevron-left"></i> 求职小记2
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/Essay-2019-nCoV-personal-record-18/" rel="next" title="疫期小记 18">
+                  疫期小记 18 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
 
 <div class="copyright">
-  
   &copy; 2018 – 
   <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
-    <i class="fa fa-user-secret"></i>
+    <i class="fa fa-user-secrect"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">逃貓</span>
 </div>
-  <div class="powered-by">由 <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl theme-link" data-url="aHR0cHM6Ly9taXN0LnRoZW1lLW5leHQub3Jn">NexT.Mist</span> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
   </div>
 
-        
-
-
-
-
-
-
-
-
-      </div>
-    </footer>
-  </div>
+    </div>
+  </footer>
 
   
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
 
-<script src="/js/utils.js"></script>
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+<script class="next-config" data-name="chatra" type="application/json">{"enable":true,"async":true,"id":"JBgdQtj33YZBaPNj7"}</script>
+<script src="/js/third-party/chat/chatra.js"></script>
+<script async src="https://call.chatra.io/chatra.js"></script>
 
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/muse.js"></script>
-
-
-<script src="/js/next-boot.js"></script>
 
 
 
@@ -603,38 +677,11 @@
 
 
   
-<script src="/js/local-search.js"></script>
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
-
-
-  <script>
-    (function(d, w, c) {
-      w.ChatraID = 'JBgdQtj33YZBaPNj7';
-      var s = d.createElement('script');
-      w[c] = w[c] || function() {
-        (w[c].q = w[c].q || []).push(arguments);
-      };
-      s.async = true;
-      s.src = 'https://call.chatra.io/chatra.js';
-      if (d.head) d.head.appendChild(s);
-    })(document, window, 'Chatra');
-  </script>
-
-
-  <script src="//code.tidio.co/amphtooacns56ag7meqg3qwdiecofxwz.js"></script>
-
-
-
-
-
-
-
-  
-
-  
-
-  
 
 </body>
 </html>

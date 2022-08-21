@@ -2,29 +2,25 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 6.2.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-icon-fish.png">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-fish.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-fish.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-fish.png">
   <link rel="mask-icon" href="/images/logo.svg" color="#222">
-  <meta http-equiv="Cache-Control" content="no-transform">
-  <meta http-equiv="Cache-Control" content="no-siteapp">
 
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
-  <link rel="stylesheet" href="/lib/pace/pace-theme-bounce.min.css">
-  <script src="/lib/pace/pace.min.js"></script>
 
-<script id="hexo-configurations">
-    var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"fish-404.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":true,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
-  </script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha256-xejo6yLi6vGtAjcMIsY8BHdKsLg7QynVlFMzdQgUuy8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-  <meta name="description" content="本文介绍C语言中的宏定义，并比较宏与函数的异同。">
+<script class="next-config" data-name="main" type="application/json">{"hostname":"fish-404.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.12.3","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="本文介绍C语言中的宏定义，并比较宏与函数的异同。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C语言中的宏及与函数的比较">
 <meta property="og:url" content="https://fish-404.github.io/C-marco-and-function/index.html">
@@ -38,72 +34,46 @@
 <meta property="article:tag" content="C">
 <meta name="twitter:card" content="summary">
 
+
 <link rel="canonical" href="https://fish-404.github.io/C-marco-and-function/">
 
 
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome : false,
-    isPost : true,
-    lang   : 'zh-CN'
-  };
-</script>
 
-  <title>C语言中的宏及与函数的比较 | 在逃的貓</title>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://fish-404.github.io/C-marco-and-function/","path":"C-marco-and-function/","title":"C语言中的宏及与函数的比较"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>C语言中的宏及与函数的比较 | 在逃的貓</title>
   
 
 
 
 
 
-
   <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
-
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
 
+  <main class="main">
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
     </div>
   </div>
 
   <div class="site-meta">
 
     <a href="/" class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">在逃的貓</h1>
-      <span class="logo-line-after"><i></i></span>
+      <i class="logo-line"></i>
+      <p class="site-title">在逃的貓</p>
+      <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description">A cat called fish.</p>
   </div>
@@ -117,29 +87,8 @@
 
 
 
-
 <nav class="site-nav">
-  <ul id="menu" class="main-menu menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fab fa-fort-awesome fa-fw"></i>首页</a>
-
-  </li>
-        <li class="menu-item menu-item-about">
-
-    <a href="/about/" rel="section"><i class="fa fa-question fa-fw"></i>关于</a>
-
-  </li>
-        <li class="menu-item menu-item-categories">
-
-    <a href="/categories/" rel="section"><i class="fa fa-list fa-fw"></i>分类</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-inbox fa-fw"></i>归档</a>
-
-  </li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fab fa-fort-awesome fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-question fa-fw"></i>关于</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-list fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-inbox fa-fw"></i>归档</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -150,23 +99,22 @@
 
 
   <div class="search-pop-overlay">
-    <div class="popup search-popup">
-        <div class="search-header">
+    <div class="popup search-popup"><div class="search-header">
   <span class="search-icon">
     <i class="fa fa-search"></i>
   </span>
   <div class="search-input-container">
-    <input autocomplete="off" autocapitalize="off"
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
            placeholder="搜索..." spellcheck="false"
            type="search" class="search-input">
   </div>
-  <span class="popup-btn-close">
+  <span class="popup-btn-close" role="button">
     <i class="fa fa-times-circle"></i>
   </span>
 </div>
-<div id="search-result">
-  <div id="no-result">
-    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
   </div>
 </div>
 
@@ -174,275 +122,18 @@
   </div>
 
 </div>
-    </header>
-
-    
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
-  <div class="reading-progress-bar"></div>
-
-
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
-
-          <div class="content post posts-expand">
-            
-
-    
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://fish-404.github.io/C-marco-and-function/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/cat.jpg">
-      <meta itemprop="name" content="Fish__404">
-      <meta itemprop="description" content="What's dream? Just fun!">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="在逃的貓">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          C语言中的宏及与函数的比较
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2019/03/25 0:00:00 / 修改时间：17:32:02" itemprop="dateCreated datePublished" datetime="2019-03-25T00:00:00+08:00">2019/03/25</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C%E8%AF%AD%E8%A8%80/" itemprop="url" rel="index"><span itemprop="name">C语言</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-        <p>本文介绍C语言中的宏定义，并比较宏与函数的异同。</p>
-<span id="more"></span>
-
-<p>编译一个C程序的第一个步骤称为预处理(preprocessing)阶段。在此阶段下，由<code>#define</code>指令定义的符号将被替换。</p>
-<h1 id="简单的宏"><a href="#简单的宏" class="headerlink" title="简单的宏"></a>简单的宏</h1><p>简单的宏（对象式宏）的定义如下：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> name stuff</span></span><br></pre></td></tr></table></figure>
-
-<p>使用该指令，可以将任何文本替换到程序中，预处理器遇到一个宏定义时，会将<code>name</code>用<code>stuff</code>进行替换。<code>stuff</code>可以包括标识符、关键字、数值常量、字符常量、字符串字面量、操作符和排列。</p>
-<p>通常，我们会在以下两种情况下用宏来为常量命名，替代字符或字符串字面量：</p>
-<ul>
-<li>常量被不止一次地使用</li>
-<li>常量日后可能需要修改</li>
-</ul>
-<p>可以用<code>#undef name</code>指令移除一个宏定义。</p>
-<h2 id="使用-define为常量命名的优点"><a href="#使用-define为常量命名的优点" class="headerlink" title="使用#define为常量命名的优点"></a>使用<code>#define</code>为常量命名的优点</h2><ul>
-<li><p><strong>程序更易读</strong></p>
-<p>帮助读者理解常量的意义，免于受大量「魔法数」的困惑。</p>
-</li>
-<li><p><strong>程序更易修改</strong></p>
-<p>仅需要改变一个宏定义，就可以改变程序中出现的所有常量值。对比「硬编码」常量，若在大型程序中多处出现，修改时很可能漏掉某处。</p>
-</li>
-<li><p><strong>避免前后不一致或键盘输入错误</strong></p>
-<p>例如数值常量$\pi$的值。</p>
-</li>
-<li><p><strong>可以对C语法进行修改</strong></p>
-<p>对于习惯使用其他编程语言的程序员可以使用宏定义来修改语法。但，修改语法并不是个好主意，会使程序难被其他程序员理解，并且可能造成混淆，使可读性下降。<em>避免用<code>#define</code>创建新语言。</em></p>
-</li>
-<li><p><strong>对类型重命名</strong></p>
-</li>
-<li><p><strong>控制条件编译</strong></p>
-</li>
-</ul>
-<h2 id="指令的规则"><a href="#指令的规则" class="headerlink" title="指令的规则"></a>指令的规则</h2><p>以下规则也适用于其他预处理指令。</p>
-<ul>
-<li><p><strong>指令以<code>#</code>开始</strong></p>
-<p><code>#</code>符号不需要出现在一行的行首，只要之前有空白字符就行。在<code>#</code>后是指令名，接着是指令所需要的其他信息。</p>
-</li>
-<li><p><strong>指令总是在第一个换行符处结束，除非明确指明要延续</strong></p>
-<p>如果想要在下一行延续指令，必须在当前行末尾使用<code>\</code>字符。</p>
-<p>利用相邻字符串常量被自动链接为一个字符串的特性，可以使用如下声明来调试一个存在许多涉及一组变量的不同计算过程的程序：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> DEBUG_PRINT printf(<span class="string">&quot;File %s line %d:&quot;</span> \ </span></span><br><span class="line">						<span class="string">&quot;x = %d, y = %d, z = %d&quot;</span>, \ </span><br><span class="line">						__FILE__, __LINE__, \ </span><br><span class="line">						x, y, z)</span><br></pre></td></tr></table></figure>
-
-<p><em>注意</em>：为避免出错，不要在末尾放置分号。</p>
-<p>使用此调试语句示例：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">x *= <span class="number">2</span>;</span><br><span class="line">y += x; </span><br><span class="line">z = x * y;</span><br><span class="line">DEBUG_PRINT;</span><br></pre></td></tr></table></figure>
-
-
-
-<ul>
-<li><p><strong>指令可以出现在程序中的任何地方</strong></p>
-<p>我们常将<code>#define</code>指令放在文件的开始。</p>
-</li>
-<li><p><strong>注释可以与指令放在同一行</strong></p>
-<p>在宏定义后面加一个注释来解释宏的含义是一种好习惯。</p>
-</li>
-</ul>
-<h1 id="带参数的宏"><a href="#带参数的宏" class="headerlink" title="带参数的宏"></a>带参数的宏</h1><p><code>#define</code>机制允许将参数替换到文本中，称为带参数的宏&#x2F;函数式宏&#x2F;定义宏：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> name(paramter-list) stuff</span></span><br></pre></td></tr></table></figure>
-
-<p>为了区分带参数宏和函数，通常使用大写来命名宏。</p>
-<p>带参数宏常用于执行简单的函数，如：</p>
-<ol>
-<li><p>求两数最大值</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> MAX(x, y) ((x)&gt;(y)?(x):(y)</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>判断奇偶性</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> IS_EVEN(n) ((n) % 2 == 0）</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>交换两个数</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> SWAP(x, y, t) ((t) = (x), (x) = (y), (y) = (t)</span></span><br></pre></td></tr></table></figure></li>
-</ol>
-<p>带参数的宏不仅适用于模拟函数调用，也经常用作需要重复书写的代码段，如：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> MALLOC(n, type)\</span></span><br><span class="line"><span class="meta">		((type *)malloc((n) * sizeof(type)))</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="带参数宏与函数的比较"><a href="#带参数宏与函数的比较" class="headerlink" title="带参数宏与函数的比较"></a>带参数宏与函数的比较</h2><h3 id="执行速度"><a href="#执行速度" class="headerlink" title="执行速度"></a>执行速度</h3><p>程序执行时调用&#x2F;返回函数通常会有额外开销，包括存储上下文信息、复制参数值等。</p>
-<p>调用宏则没有这些运行开销。</p>
-<h3 id="代码长度"><a href="#代码长度" class="headerlink" title="代码长度"></a>代码长度</h3><p>每一处宏调用都会导致插入宏的替换列表，由此导致程序源代码增加，编译后的代码也变大。</p>
-<p>函数调用的函数代码仅出现于一个地方：每次使用函数，调用同一份代码。</p>
-<p><em>如果相同的代码需要出现在程序的几个地方，更好的方法是实现为一个函数。避免用<code>#define</code>指令定义可以用函数实现的长序列代码。</em></p>
-<h3 id="参数求值"><a href="#参数求值" class="headerlink" title="参数求值"></a>参数求值</h3><p>参数每次用于宏定义时，都将重新求值。因此宏可能会不止一次地计算它的参数，由于多次求值，具有副作用的参数可能会产生不可预料的结果。</p>
-<p>参数在函数被调用前只求值一次，在函数中多次使用参数不会导致多种求值过程。</p>
-<p>考虑上面的求两数最值的一种使用情况：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="number">5</span>;</span><br><span class="line">y = <span class="number">8</span>;</span><br><span class="line">z = MAX(x++, y++);</span><br></pre></td></tr></table></figure>
-
-<p>宏替换后产生以下代码：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">z = ((x++) &gt; (y++) ? (x++) : (y++));</span><br></pre></td></tr></table></figure>
-
-<p>较小的值增加了一次，而较大的值却增加了两次，第一次在比较时，第二次在执行后面的表达式时，因此此时得到的结果是<code>x = 6, y = 10, z = 9</code>。</p>
-<h3 id="操作符优先级"><a href="#操作符优先级" class="headerlink" title="操作符优先级"></a>操作符优先级</h3><p>宏参数的求值是在所有周围表达式的上下文环境里，邻近操作符的优先级可能会产生不可预料的结果</p>
-<p>函数只在函数调用时求值一次，结果值传递给函数，表达式的求值结果更容易预测。</p>
-<p>考虑以下代码：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> SQUARE(x)</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, SQUARE(a + <span class="number">1</span>));</span><br></pre></td></tr></table></figure>
-
-<p>宏定义后产生的代码为：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, a + <span class="number">1</span> * a + <span class="number">1</span>);</span><br></pre></td></tr></table></figure>
-
-<p>表达式没有按照预想的次序求值。</p>
-<p><strong>注意</strong>：<em>所有用于对数值表达式进行的宏定义都应该在宏定义每个参数周围加上括号，且在整个宏定义的两边也加上括号。</em></p>
-<h3 id="参数类型"><a href="#参数类型" class="headerlink" title="参数类型"></a>参数类型</h3><p>宏与类型无关，只要对参数的操作何发，可以用于任何类型参数。</p>
-<p>函数与类型有关，函数类型不同，需要使用不同函数，即使执行任务相同。</p>
-<p>例如上面举例的<code>MAX</code>宏，可以接受多种类型数：<code>int</code>, <code>long</code>, <code>float</code>, <code>double</code>等。</p>
-<p>例如上面举例的<code>MALLOC</code>宏，<code>type</code>参数是一种类型，无法作为函数参数进行传递。</p>
-<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ul>
-<li>《C语言程序设计现代方法（第2版）》</li>
-<li>《C和指针》</li>
-</ul>
-</li>
-</ul>
-
-    </div>
-
-    
-    
-    
-          
-
-<div>
-<ul class="post-copyright">
-  <li class="post-copyright-author">
-    <strong>本文作者： </strong>Fish__404
-  </li>
-  <li class="post-copyright-link">
-    <strong>本文链接：</strong>
-    <a href="https://fish-404.github.io/C-marco-and-function/" title="C语言中的宏及与函数的比较">https://fish-404.github.io/C-marco-and-function/</a>
-  </li>
-  <li class="post-copyright-license">
-    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！
-  </li>
-</ul>
-</div>
-
-
-      <footer class="post-footer">
-          
-          <div class="post-tags">
-              <a href="/tags/Program/" rel="tag"><i class="fa fa-tag"></i> Program</a>
-              <a href="/tags/C/" rel="tag"><i class="fa fa-tag"></i> C</a>
-          </div>
-
         
-
-
-        
-    <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/Bookcomment-highest-guidelines/" rel="prev" title="书籍相关-最高指导原则（读《束手》）">
-      <i class="fa fa-chevron-left"></i> 书籍相关-最高指导原则（读《束手》）
-    </a></div>
-      <div class="post-nav-item">
-    <a href="/Numerical-methods-solutions-of-nolinear-equations/" rel="next" title="计算方法-[2]非线性方程的数值解法">
-      计算方法-[2]非线性方程的数值解法 <i class="fa fa-chevron-right"></i>
-    </a></div>
-    </div>
-      </footer>
-    
-  </article>
   
-  
-  
-
-
-
-          </div>
-          
-
-<script>
-  window.addEventListener('tabs:register', () => {
-    let { activeClass } = CONFIG.comments;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
-      }
-    }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
-  }
-</script>
-
-        </div>
-          
-  
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
   </div>
 
   <aside class="sidebar">
-    <div class="sidebar-inner">
 
-      <ul class="sidebar-nav motion-element">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
         </li>
@@ -451,115 +142,304 @@
         </li>
       </ul>
 
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E7%9A%84%E5%AE%8F"><span class="nav-number">1.</span> <span class="nav-text">简单的宏</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-define%E4%B8%BA%E5%B8%B8%E9%87%8F%E5%91%BD%E5%90%8D%E7%9A%84%E4%BC%98%E7%82%B9"><span class="nav-number">1.1.</span> <span class="nav-text">使用#define为常量命名的优点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E7%9A%84%E8%A7%84%E5%88%99"><span class="nav-number">1.2.</span> <span class="nav-text">指令的规则</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B8%A6%E5%8F%82%E6%95%B0%E7%9A%84%E5%AE%8F"><span class="nav-number">2.</span> <span class="nav-text">带参数的宏</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%A6%E5%8F%82%E6%95%B0%E5%AE%8F%E4%B8%8E%E5%87%BD%E6%95%B0%E7%9A%84%E6%AF%94%E8%BE%83"><span class="nav-number">2.1.</span> <span class="nav-text">带参数宏与函数的比较</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%A7%E8%A1%8C%E9%80%9F%E5%BA%A6"><span class="nav-number">2.1.1.</span> <span class="nav-text">执行速度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E9%95%BF%E5%BA%A6"><span class="nav-number">2.1.2.</span> <span class="nav-text">代码长度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E6%B1%82%E5%80%BC"><span class="nav-number">2.1.3.</span> <span class="nav-text">参数求值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E7%AC%A6%E4%BC%98%E5%85%88%E7%BA%A7"><span class="nav-number">2.1.4.</span> <span class="nav-text">操作符优先级</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E7%B1%BB%E5%9E%8B"><span class="nav-number">2.1.5.</span> <span class="nav-text">参数类型</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">3.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
-      </div>
-      <!--/noindex-->
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E7%9A%84%E5%AE%8F"><span class="nav-number">1.</span> <span class="nav-text">简单的宏</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8define%E4%B8%BA%E5%B8%B8%E9%87%8F%E5%91%BD%E5%90%8D%E7%9A%84%E4%BC%98%E7%82%B9"><span class="nav-number">1.1.</span> <span class="nav-text">使用#define为常量命名的优点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E7%9A%84%E8%A7%84%E5%88%99"><span class="nav-number">1.2.</span> <span class="nav-text">指令的规则</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B8%A6%E5%8F%82%E6%95%B0%E7%9A%84%E5%AE%8F"><span class="nav-number">2.</span> <span class="nav-text">带参数的宏</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%A6%E5%8F%82%E6%95%B0%E5%AE%8F%E4%B8%8E%E5%87%BD%E6%95%B0%E7%9A%84%E6%AF%94%E8%BE%83"><span class="nav-number">2.1.</span> <span class="nav-text">带参数宏与函数的比较</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%A7%E8%A1%8C%E9%80%9F%E5%BA%A6"><span class="nav-number">2.1.1.</span> <span class="nav-text">执行速度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E9%95%BF%E5%BA%A6"><span class="nav-number">2.1.2.</span> <span class="nav-text">代码长度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E6%B1%82%E5%80%BC"><span class="nav-number">2.1.3.</span> <span class="nav-text">参数求值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E7%AC%A6%E4%BC%98%E5%85%88%E7%BA%A7"><span class="nav-number">2.1.4.</span> <span class="nav-text">操作符优先级</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E7%B1%BB%E5%9E%8B"><span class="nav-number">2.1.5.</span> <span class="nav-text">参数类型</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">3.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
 
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image" alt="Fish__404"
       src="/images/cat.jpg">
   <p class="site-author-name" itemprop="name">Fish__404</p>
   <div class="site-description" itemprop="description">What's dream? Just fun!</div>
 </div>
-<div class="site-state-wrap motion-element">
+<div class="site-state-wrap site-overview-item animated">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
+        <a href="/archives/">
           <span class="site-state-item-count">100</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-            <a href="/categories/">
-          
+          <a href="/categories/">
         <span class="site-state-item-count">22</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-            <a href="/tags/">
+          <a href="/tags/">
         <span class="site-state-item-count">38</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
 </div>
-  <div class="sidebar-button motion-element">
-    <a onclick="Chatra('openChat', true);"><i class="fa fa-comment"></i>
-    
-  </a>
+  <div class="sidebar-button site-overview-item animated">
+    <button><i class="fa fa-comment"></i>
+      留言
+    </button>
   </div>
-  <div class="links-of-author motion-element">
+  <div class="links-of-author site-overview-item animated">
       <span class="links-of-author-item">
-        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2Zpc2gtNDA0" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;fish-404"><i class="fab fa-github fa-fw"></i></span>
+        <a href="https://github.com/fish-404" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;fish-404" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
       </span>
       <span class="links-of-author-item">
-        <span class="exturl" data-url="bWFpbHRvOmZpc2g0MDRoc2lmQGdtYWlsLmNvbQ==" title="E-Mail → mailto:fish404hsif@gmail.com"><i class="fa fa-envelope fa-fw"></i></span>
+        <a href="mailto:fish404hsif@gmail.com" title="E-Mail → mailto:fish404hsif@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
       </span>
   </div>
-  <div class="cc-license motion-element" itemprop="license">
-    <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></span>
-  </div>
 
 
 
+        </div>
       </div>
-
     </div>
   </aside>
-  <div id="sidebar-dimmer"></div>
+  <div class="sidebar-dimmer"></div>
 
 
-      </div>
-    </main>
+    </header>
 
-    <footer class="footer">
-      <div class="footer-inner">
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://fish-404.github.io/C-marco-and-function/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/cat.jpg">
+      <meta itemprop="name" content="Fish__404">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="在逃的貓">
+      <meta itemprop="description" content="What's dream? Just fun!">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="C语言中的宏及与函数的比较 | 在逃的貓">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          C语言中的宏及与函数的比较
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2019/03/25 0:00:00 / 修改时间：17:32:02" itemprop="dateCreated datePublished" datetime="2019-03-25T00:00:00+08:00">2019/03/25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/C%E8%AF%AD%E8%A8%80/" itemprop="url" rel="index"><span itemprop="name">C语言</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>本文介绍C语言中的宏定义，并比较宏与函数的异同。</p>
+<span id="more"></span>
+<p>编译一个C程序的第一个步骤称为预处理(preprocessing)阶段。在此阶段下，由<code>#define</code>指令定义的符号将被替换。</p>
+<h1 id="简单的宏">简单的宏</h1>
+<p>简单的宏（对象式宏）的定义如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> name stuff</span></span><br></pre></td></tr></table></figure>
+<p>使用该指令，可以将任何文本替换到程序中，预处理器遇到一个宏定义时，会将<code>name</code>用<code>stuff</code>进行替换。<code>stuff</code>可以包括标识符、关键字、数值常量、字符常量、字符串字面量、操作符和排列。</p>
+<p>通常，我们会在以下两种情况下用宏来为常量命名，替代字符或字符串字面量：</p>
+<ul>
+<li>常量被不止一次地使用</li>
+<li>常量日后可能需要修改</li>
+</ul>
+<p>可以用<code>#undef name</code>指令移除一个宏定义。</p>
+<h2
+id="使用define为常量命名的优点">使用<code>#define</code>为常量命名的优点</h2>
+<ul>
+<li><p><strong>程序更易读</strong></p>
+<p>帮助读者理解常量的意义，免于受大量「魔法数」的困惑。</p></li>
+<li><p><strong>程序更易修改</strong></p>
+<p>仅需要改变一个宏定义，就可以改变程序中出现的所有常量值。对比「硬编码」常量，若在大型程序中多处出现，修改时很可能漏掉某处。</p></li>
+<li><p><strong>避免前后不一致或键盘输入错误</strong></p>
+<p>例如数值常量<span class="math inline">\(\pi\)</span>的值。</p></li>
+<li><p><strong>可以对C语法进行修改</strong></p>
+<p>对于习惯使用其他编程语言的程序员可以使用宏定义来修改语法。但，修改语法并不是个好主意，会使程序难被其他程序员理解，并且可能造成混淆，使可读性下降。<em>避免用<code>#define</code>创建新语言。</em></p></li>
+<li><p><strong>对类型重命名</strong></p></li>
+<li><p><strong>控制条件编译</strong></p></li>
+</ul>
+<h2 id="指令的规则">指令的规则</h2>
+<p>以下规则也适用于其他预处理指令。</p>
+<ul>
+<li><p><strong>指令以<code>#</code>开始</strong></p>
+<p><code>#</code>符号不需要出现在一行的行首，只要之前有空白字符就行。在<code>#</code>后是指令名，接着是指令所需要的其他信息。</p></li>
+<li><p><strong>指令总是在第一个换行符处结束，除非明确指明要延续</strong></p>
+<p>如果想要在下一行延续指令，必须在当前行末尾使用<code>\</code>字符。</p>
+<p>利用相邻字符串常量被自动链接为一个字符串的特性，可以使用如下声明来调试一个存在许多涉及一组变量的不同计算过程的程序：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> DEBUG_PRINT printf(<span class="string">&quot;File %s line %d:&quot;</span> \ </span></span><br><span class="line">						<span class="string">&quot;x = %d, y = %d, z = %d&quot;</span>, \ </span><br><span class="line">						__FILE__, __LINE__, \ </span><br><span class="line">						x, y, z)</span><br></pre></td></tr></table></figure>
+<p><em>注意</em>：为避免出错，不要在末尾放置分号。</p>
+<p>使用此调试语句示例：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">x *= <span class="number">2</span>;</span><br><span class="line">y += x; </span><br><span class="line">z = x * y;</span><br><span class="line">DEBUG_PRINT;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p><strong>指令可以出现在程序中的任何地方</strong></p>
+<p>我们常将<code>#define</code>指令放在文件的开始。</p></li>
+<li><p><strong>注释可以与指令放在同一行</strong></p>
+<p>在宏定义后面加一个注释来解释宏的含义是一种好习惯。</p></li>
+</ul>
+<h1 id="带参数的宏">带参数的宏</h1>
+<p><code>#define</code>机制允许将参数替换到文本中，称为带参数的宏/函数式宏/定义宏：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> name(paramter-list) stuff</span></span><br></pre></td></tr></table></figure>
+<p>为了区分带参数宏和函数，通常使用大写来命名宏。</p>
+<p>带参数宏常用于执行简单的函数，如：</p>
+<ol type="1">
+<li><p>求两数最大值</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> MAX(x, y) ((x)&gt;(y)?(x):(y)</span></span><br></pre></td></tr></table></figure></li>
+<li><p>判断奇偶性</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> IS_EVEN(n) ((n) % 2 == 0）</span></span><br></pre></td></tr></table></figure></li>
+<li><p>交换两个数</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> SWAP(x, y, t) ((t) = (x), (x) = (y), (y) = (t)</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>带参数的宏不仅适用于模拟函数调用，也经常用作需要重复书写的代码段，如：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> MALLOC(n, type)\</span></span><br><span class="line"><span class="meta">		((type *)malloc((n) * sizeof(type)))</span></span><br></pre></td></tr></table></figure>
+<h2 id="带参数宏与函数的比较">带参数宏与函数的比较</h2>
+<h3 id="执行速度">执行速度</h3>
+<p>程序执行时调用/返回函数通常会有额外开销，包括存储上下文信息、复制参数值等。</p>
+<p>调用宏则没有这些运行开销。</p>
+<h3 id="代码长度">代码长度</h3>
+<p>每一处宏调用都会导致插入宏的替换列表，由此导致程序源代码增加，编译后的代码也变大。</p>
+<p>函数调用的函数代码仅出现于一个地方：每次使用函数，调用同一份代码。</p>
+<p><em>如果相同的代码需要出现在程序的几个地方，更好的方法是实现为一个函数。避免用<code>#define</code>指令定义可以用函数实现的长序列代码。</em></p>
+<h3 id="参数求值">参数求值</h3>
+<p>参数每次用于宏定义时，都将重新求值。因此宏可能会不止一次地计算它的参数，由于多次求值，具有副作用的参数可能会产生不可预料的结果。</p>
+<p>参数在函数被调用前只求值一次，在函数中多次使用参数不会导致多种求值过程。</p>
+<p>考虑上面的求两数最值的一种使用情况：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="number">5</span>;</span><br><span class="line">y = <span class="number">8</span>;</span><br><span class="line">z = MAX(x++, y++);</span><br></pre></td></tr></table></figure>
+<p>宏替换后产生以下代码：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">z = ((x++) &gt; (y++) ? (x++) : (y++));</span><br></pre></td></tr></table></figure>
+<p>较小的值增加了一次，而较大的值却增加了两次，第一次在比较时，第二次在执行后面的表达式时，因此此时得到的结果是<code>x = 6, y = 10, z = 9</code>。</p>
+<h3 id="操作符优先级">操作符优先级</h3>
+<p>宏参数的求值是在所有周围表达式的上下文环境里，邻近操作符的优先级可能会产生不可预料的结果</p>
+<p>函数只在函数调用时求值一次，结果值传递给函数，表达式的求值结果更容易预测。</p>
+<p>考虑以下代码：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> SQUARE(x)</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, SQUARE(a + <span class="number">1</span>));</span><br></pre></td></tr></table></figure>
+<p>宏定义后产生的代码为：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, a + <span class="number">1</span> * a + <span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+<p>表达式没有按照预想的次序求值。</p>
+<p><strong>注意</strong>：<em>所有用于对数值表达式进行的宏定义都应该在宏定义每个参数周围加上括号，且在整个宏定义的两边也加上括号。</em></p>
+<h3 id="参数类型">参数类型</h3>
+<p>宏与类型无关，只要对参数的操作何发，可以用于任何类型参数。</p>
+<p>函数与类型有关，函数类型不同，需要使用不同函数，即使执行任务相同。</p>
+<p>例如上面举例的<code>MAX</code>宏，可以接受多种类型数：<code>int</code>,
+<code>long</code>, <code>float</code>, <code>double</code>等。</p>
+<p>例如上面举例的<code>MALLOC</code>宏，<code>type</code>参数是一种类型，无法作为函数参数进行传递。</p>
+<h1 id="参考资料">参考资料</h1>
+<ul>
+<li>《C语言程序设计现代方法（第2版）》</li>
+<li>《C和指针》</li>
+</ul></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Program/" rel="tag"><i class="fa fa-tag"></i> Program</a>
+              <a href="/tags/C/" rel="tag"><i class="fa fa-tag"></i> C</a>
+          </div>
+
         
 
-        
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/Bookcomment-highest-guidelines/" rel="prev" title="书籍相关-最高指导原则（读《束手》）">
+                  <i class="fa fa-chevron-left"></i> 书籍相关-最高指导原则（读《束手》）
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/Numerical-methods-solutions-of-nolinear-equations/" rel="next" title="计算方法-[2]非线性方程的数值解法">
+                  计算方法-[2]非线性方程的数值解法 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
 
 <div class="copyright">
-  
   &copy; 2018 – 
   <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
-    <i class="fa fa-user-secret"></i>
+    <i class="fa fa-user-secrect"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">逃貓</span>
 </div>
-  <div class="powered-by">由 <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl theme-link" data-url="aHR0cHM6Ly9taXN0LnRoZW1lLW5leHQub3Jn">NexT.Mist</span> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
   </div>
 
-        
-
-
-
-
-
-
-
-
-      </div>
-    </footer>
-  </div>
+    </div>
+  </footer>
 
   
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
 
-<script src="/js/utils.js"></script>
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+<script class="next-config" data-name="chatra" type="application/json">{"enable":true,"async":true,"id":"JBgdQtj33YZBaPNj7"}</script>
+<script src="/js/third-party/chat/chatra.js"></script>
+<script async src="https://call.chatra.io/chatra.js"></script>
 
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/muse.js"></script>
-
-
-<script src="/js/next-boot.js"></script>
 
 
 
@@ -570,38 +450,11 @@
 
 
   
-<script src="/js/local-search.js"></script>
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
-
-
-  <script>
-    (function(d, w, c) {
-      w.ChatraID = 'JBgdQtj33YZBaPNj7';
-      var s = d.createElement('script');
-      w[c] = w[c] || function() {
-        (w[c].q = w[c].q || []).push(arguments);
-      };
-      s.async = true;
-      s.src = 'https://call.chatra.io/chatra.js';
-      if (d.head) d.head.appendChild(s);
-    })(document, window, 'Chatra');
-  </script>
-
-
-  <script src="//code.tidio.co/amphtooacns56ag7meqg3qwdiecofxwz.js"></script>
-
-
-
-
-
-
-
-  
-
-  
-
-  
 
 </body>
 </html>

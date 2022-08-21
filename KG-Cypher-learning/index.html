@@ -2,34 +2,30 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 6.2.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-icon-fish.png">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-fish.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-fish.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-fish.png">
   <link rel="mask-icon" href="/images/logo.svg" color="#222">
-  <meta http-equiv="Cache-Control" content="no-transform">
-  <meta http-equiv="Cache-Control" content="no-siteapp">
 
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
-  <link rel="stylesheet" href="/lib/pace/pace-theme-bounce.min.css">
-  <script src="/lib/pace/pace.min.js"></script>
 
-<script id="hexo-configurations">
-    var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"fish-404.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":true,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
-  </script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha256-xejo6yLi6vGtAjcMIsY8BHdKsLg7QynVlFMzdQgUuy8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-  <meta name="description" content="本文为图数据库 Neo4j 查询语言 Cypher 学习笔记，包括 MATCH RETURN CREATE DELETE REMOVE MERGE 语句的基本用法。">
+<script class="next-config" data-name="main" type="application/json">{"hostname":"fish-404.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.12.3","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="本文为图数据库 Neo4j 查询语言 Cypher 学习笔记，包括 MATCH RETURN CREATE DELETE REMOVE MERGE 语句的基本用法。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Neo4j之Cypher语句">
 <meta property="og:url" content="https://fish-404.github.io/KG-Cypher-learning/index.html">
 <meta property="og:site_name" content="在逃的貓">
-<meta property="og:description" content="本文为图数据库 Neo4j 查询语言 Cypher 学习笔记，包括 MATCH RETURN CREATE DELETE REMOVE MERGE 语句的基本用法。">
+<meta property="og:description" content="本文为图数据库 Neo4j 查询语言 Cypher 学习笔记，包括 MATCH RETURN CREATE DELETE REMOVE MERGE 语句的基本用法。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-03-03T16:00:00.000Z">
 <meta property="article:modified_time" content="2020-06-11T02:48:36.000Z">
@@ -38,72 +34,46 @@
 <meta property="article:tag" content="Cypher">
 <meta name="twitter:card" content="summary">
 
+
 <link rel="canonical" href="https://fish-404.github.io/KG-Cypher-learning/">
 
 
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome : false,
-    isPost : true,
-    lang   : 'zh-CN'
-  };
-</script>
 
-  <title>Neo4j之Cypher语句 | 在逃的貓</title>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://fish-404.github.io/KG-Cypher-learning/","path":"KG-Cypher-learning/","title":"Neo4j之Cypher语句"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Neo4j之Cypher语句 | 在逃的貓</title>
   
 
 
 
 
 
-
   <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
-
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
 
+  <main class="main">
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
     </div>
   </div>
 
   <div class="site-meta">
 
     <a href="/" class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">在逃的貓</h1>
-      <span class="logo-line-after"><i></i></span>
+      <i class="logo-line"></i>
+      <p class="site-title">在逃的貓</p>
+      <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description">A cat called fish.</p>
   </div>
@@ -117,29 +87,8 @@
 
 
 
-
 <nav class="site-nav">
-  <ul id="menu" class="main-menu menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fab fa-fort-awesome fa-fw"></i>首页</a>
-
-  </li>
-        <li class="menu-item menu-item-about">
-
-    <a href="/about/" rel="section"><i class="fa fa-question fa-fw"></i>关于</a>
-
-  </li>
-        <li class="menu-item menu-item-categories">
-
-    <a href="/categories/" rel="section"><i class="fa fa-list fa-fw"></i>分类</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-inbox fa-fw"></i>归档</a>
-
-  </li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fab fa-fort-awesome fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-question fa-fw"></i>关于</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-list fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-inbox fa-fw"></i>归档</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -150,23 +99,22 @@
 
 
   <div class="search-pop-overlay">
-    <div class="popup search-popup">
-        <div class="search-header">
+    <div class="popup search-popup"><div class="search-header">
   <span class="search-icon">
     <i class="fa fa-search"></i>
   </span>
   <div class="search-input-container">
-    <input autocomplete="off" autocapitalize="off"
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
            placeholder="搜索..." spellcheck="false"
            type="search" class="search-input">
   </div>
-  <span class="popup-btn-close">
+  <span class="popup-btn-close" role="button">
     <i class="fa fa-times-circle"></i>
   </span>
 </div>
-<div id="search-result">
-  <div id="no-result">
-    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
   </div>
 </div>
 
@@ -174,293 +122,18 @@
   </div>
 
 </div>
-    </header>
-
-    
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
-  <div class="reading-progress-bar"></div>
-
-
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
-
-          <div class="content post posts-expand">
-            
-
-    
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://fish-404.github.io/KG-Cypher-learning/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/cat.jpg">
-      <meta itemprop="name" content="Fish__404">
-      <meta itemprop="description" content="What's dream? Just fun!">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="在逃的貓">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          Neo4j之Cypher语句
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020/03/04 0:00:00" itemprop="dateCreated datePublished" datetime="2020-03-04T00:00:00+08:00">2020/03/04</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020/06/11 10:48:36" itemprop="dateModified" datetime="2020-06-11T10:48:36+08:00">2020/06/11</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/" itemprop="url" rel="index"><span itemprop="name">知识图谱</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-        <p>本文为图数据库 Neo4j 查询语言 Cypher 学习笔记，包括 <code>MATCH</code> <code>RETURN</code> <code>CREATE</code> <code>DELETE</code> <code>REMOVE</code> <code>MERGE</code> 语句的基本用法。</p>
-<span id="more"></span>
-
-<h1 id="MATCH"><a href="#MATCH" class="headerlink" title="MATCH"></a>MATCH</h1><p><code>MATCH</code> 语句用于查询，常与 <code>WHERE</code> 连用，与 SQL 语句中的 <code>SELECT ... FROM ... WHERE</code> 用法相似。</p>
-<h2 id="查找节点"><a href="#查找节点" class="headerlink" title="查找节点"></a>查找节点</h2><h3 id="查找所有节点"><a href="#查找所有节点" class="headerlink" title="查找所有节点"></a>查找所有节点</h3><p>以下命令将返回所有节点，若在 Neo4j Browser 下，则会返回整个图，包括节点和关系，与 SQL 中的 <code>SELECT *</code> 类似。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MATCH (n) </span><br><span class="line">RETURN n</span><br></pre></td></tr></table></figure>
-
-<p>注：</p>
-<ol>
-<li><p>分行并非必要；</p>
-</li>
-<li><p><code>n</code> 相当于一个假定变量，大小写敏感，前后不一致将会导致变量未定义错误，同时，因为 <code>n</code> 是一个假定变量，因此在查询语句的书写时和程序中设置变量一样可以使用一个更具体的描述词，而不是使用通常的变量名 <code>n</code> <code>x</code> <code>y</code> ，增强查询语句的可读性；</p>
-</li>
-<li><p>括号是必要的，作为模式的表示方式，节点是最简单的模式；</p>
-</li>
-<li><p>关键字的大小写不敏感，与 SQL 类似，大小写混用并不会出错，但并不建议混用。</p>
-</li>
-</ol>
-<h3 id="查找指定标签节点"><a href="#查找指定标签节点" class="headerlink" title="查找指定标签节点"></a>查找指定标签节点</h3><p>以下命令返回 <code>Lable</code> 标签下的所有节点。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MATCH (n:Lable)</span><br><span class="line">RETURN n</span><br></pre></td></tr></table></figure>
-
-<h3 id="查找连接节点"><a href="#查找连接节点" class="headerlink" title="查找连接节点"></a>查找连接节点</h3><p>以下命令返回与带 <code>Label</code> 标签，属性 <code>name</code> 值为 <code>a</code> 的节点相连接的所有节点。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MATCH (Lable&#123;name:&#x27;a&#x27;&#125;)--(n)</span><br><span class="line">RETURN n</span><br></pre></td></tr></table></figure>
-
-<p>若要限定返回节点的标签 <code>Lable1</code>，可在变量 <code>n</code> 后做限定。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MATCH (Lalbe&#123;name:&#x27;a&#x27;&#125;)--(n:Lable1)</span><br><span class="line">RETURN n</span><br></pre></td></tr></table></figure>
-
-<p>关系表示符可指定方向：</p>
-<ul>
-<li><p><code>--</code> ：任意方向；</p>
-</li>
-<li><p><code>--&gt;</code> ：指向其他节点；</p>
-</li>
-<li><p><code>&lt;--</code> ：指向自身。</p>
-</li>
-</ul>
-<h2 id="查找关系"><a href="#查找关系" class="headerlink" title="查找关系"></a>查找关系</h2><h3 id="查找关系类型"><a href="#查找关系类型" class="headerlink" title="查找关系类型"></a>查找关系类型</h3><p>以下命令返回连接 <code>Lable</code> 标签下 <code>name</code> 属性分别为 <code>a</code>, <code>b</code> 的两个节点的关系类型。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MATCH (:Lable&#123;name:&#x27;a&#x27;&#125;)-[r]-(:Lable&#123;name:&#x27;b&#x27;&#125;)</span><br><span class="line">RETURN TYPE(r) </span><br></pre></td></tr></table></figure>
-
-<p><code>TYPE</code> 大小写不敏感。</p>
-<p>若两个节点间没有关系，则不会做任何改变，也无返回值。</p>
-<p>若要指定关系方向，可将第一句改为以下两种情况：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MATCH (:Lable&#123;name:&#x27;a&#x27;&#125;)&lt;-[r]-(:Lable&#123;name:&#x27;b&#x27;&#125;)</span><br><span class="line">MATCH (:Lable&#123;name:&#x27;a&#x27;&#125;)-[r]-&gt;(:Lable&#123;name:&#x27;b&#x27;&#125;)</span><br></pre></td></tr></table></figure>
-
-<h3 id="查找指定关系"><a href="#查找指定关系" class="headerlink" title="查找指定关系"></a>查找指定关系</h3><p>以下命令返回关系类型为 <code>RELAY</code> 的节点及其关系。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MATCH (a)-[:RELAY]-(b)</span><br><span class="line">RETURN *  </span><br></pre></td></tr></table></figure>
-
-<p>匹配多个关系可用管道符 <code>|</code> 连接，如：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MATCH (a)-[:RELAY|:RELAY1]-(b)</span><br></pre></td></tr></table></figure>
-
-<h1 id="RETURN"><a href="#RETURN" class="headerlink" title="RETURN"></a>RETURN</h1><p><code>RETURN</code> 语句设定返回类型，如上面提到的返回节点，返回关系，返回节点的特定属性。已上一个命令为例，返回的是所有节点和关系，相当于：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MATCH (a)-[r:RELAY]-(b)</span><br><span class="line">RETURN a, b, r</span><br></pre></td></tr></table></figure>
-
-<p>若要返回节点属性 <code>name</code>，可写作</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MATCH (a)-[:RELAY]-(b)</span><br><span class="line">RETURN a.name</span><br></pre></td></tr></table></figure>
-
-<p>返回关系类型上面已提及，不重复描述。</p>
-<h1 id="CREATE"><a href="#CREATE" class="headerlink" title="CREATE"></a>CREATE</h1><h2 id="创建节点"><a href="#创建节点" class="headerlink" title="创建节点"></a>创建节点</h2><p>若要查看创建节点的结果，需用 <code>RETURN</code> 语句返回，实际上以下其他命令也是如此，下面不再列出 <code>RETURN</code> 语句除非必要。否则仅会输出提示节点的创建数量、属性的设置数量、标签的创建数量。</p>
-<h3 id="创建空节点"><a href="#创建空节点" class="headerlink" title="创建空节点"></a>创建空节点</h3><p>以下命令创建一个空节点。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE (n)</span><br></pre></td></tr></table></figure>
-
-<p>若要创建多个节点，可用逗号分隔。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE (n), (m)</span><br></pre></td></tr></table></figure>
-
-<h3 id="创建带标签的节点"><a href="#创建带标签的节点" class="headerlink" title="创建带标签的节点"></a>创建带标签的节点</h3><p>以下命令创建一个带标签的节点。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE (n:Lable)</span><br></pre></td></tr></table></figure>
-
-<p>若要创建多个标签，可紧随其后。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE (n:Lalbe:Lable1)</span><br></pre></td></tr></table></figure>
-
-<h3 id="创建带属性节点"><a href="#创建带属性节点" class="headerlink" title="创建带属性节点"></a>创建带属性节点</h3><p>以下命令创建一个带属性节点，并指定 <code>name</code> <code>name1</code>为属性名， <code>a</code> <code>b</code>  为属性值</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE (n:Lable&#123;name:&#x27;a&#x27;, name1:&#x27;b&#x27;&#125;)</span><br></pre></td></tr></table></figure>
-
-<h2 id="创建关系"><a href="#创建关系" class="headerlink" title="创建关系"></a>创建关系</h2><p>创建关系首先要使用 <code>MATCH</code> 语句匹配到关系的起点和终点。以下命令先匹配到 <code>a</code> <code>b</code> 两个节点，然后建立两个节点间的关系 <code>RELAY</code>。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MATCH (a:Lable&#123;name:&#x27;a&#x27;&#125;), (b:Lable&#123;name:&#x27;b&#x27;&#125;)</span><br><span class="line">CREATE (a)-[:RELAY]-&gt;(b)</span><br></pre></td></tr></table></figure>
-
-<p>注：</p>
-<ol>
-<li><p>关系的创建与查询时不同，必须指明关系方向，仅允许创建有方向的关系；</p>
-</li>
-<li><p>关系创建时必须设定关系名；</p>
-</li>
-<li><p>此匹配节点语句并不是最佳，会弹出 <code>Warning</code> 提示建议使用 <code>OPIONAL MATCH</code> 优化查询速度，此处不做探讨。</p>
-</li>
-</ol>
-<h1 id="DELETE"><a href="#DELETE" class="headerlink" title="DELETE"></a>DELETE</h1><p><code>DELETE</code> 语句用于删除节点或关系。需要先查找到节点或者关系，实际上在仅对节点和关系的删除上只要把 <code>MATCH</code> 中的 <code>RETURN</code> 语句换做 <code>DELETE</code> 语句就可以完成删除。</p>
-<p>有一点不同的是，<code>DELETE</code> 语句可以在删除节点的同时删除掉与之的关系，使用 <code>DETACH DELETE</code>, 如：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MATCH (n:Lable&#123;name:&#x27;a&#x27;&#125;)</span><br><span class="line">DETACH DELETE n</span><br></pre></td></tr></table></figure>
-
-<p>以下命令可以删除所有节点和关系，在学习试验的小数据中很有用：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MATCH (n)</span><br><span class="line">DETACH DELETE n</span><br></pre></td></tr></table></figure>
-
-<h1 id="REMOVE"><a href="#REMOVE" class="headerlink" title="REMOVE"></a>REMOVE</h1><h2 id="移除节点属性"><a href="#移除节点属性" class="headerlink" title="移除节点属性"></a>移除节点属性</h2><p>Neo4j 不允许属性值为 <code>null</code>，所以移除节点属性也可说是用于删除该属性。以下命令移除所有节点的 <code>name</code> 属性。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MATCH (n)</span><br><span class="line">REMOVE n.name</span><br></pre></td></tr></table></figure>
-
-<p><code>REMOVE</code> 语句无法使用一条命令删除所有属性，需要使用 <code>SET</code> 语句，此处不做探讨。</p>
-<h2 id="移除节点标签"><a href="#移除节点标签" class="headerlink" title="移除节点标签"></a>移除节点标签</h2><p>以下命令移除节点 <code>a</code> 标签 <code>Lable</code>，移除多个标签和 <code>CREATE</code> 语句类似。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MATCH (n&#123;name:&#x27;a&#x27;&#125;)</span><br><span class="line">REMOVE a:Lable</span><br></pre></td></tr></table></figure>
-
-<h1 id="MERGE"><a href="#MERGE" class="headerlink" title="MERGE"></a>MERGE</h1><p><code>MERGE</code> 命令用于在模式匹配不成功时创建该模式，类似先通过 <code>MATHCH</code> 进行模式查找，再用 <code>CREATE</code> 进行模式创建。相比后一种方式，<code>MERGE</code> 命令更简洁，但无法进行部分匹配，一旦匹配表达式的某项不满足，整个模式都将被创建。</p>
-<h2 id="归并节点"><a href="#归并节点" class="headerlink" title="归并节点"></a>归并节点</h2><h3 id="归并节点标签"><a href="#归并节点标签" class="headerlink" title="归并节点标签"></a>归并节点标签</h3><p>以下命令查找是否存在标签为 <code>LABEL</code> 的节点，若不存在，则创建一个标签为 <code>LABEL</code> 的节点，若存在，则不会做出改动。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MERGE (n:LABEL)</span><br></pre></td></tr></table></figure>
-
-<h3 id="归并节点属性"><a href="#归并节点属性" class="headerlink" title="归并节点属性"></a>归并节点属性</h3><p>以下命令查找是否存在 <code>name</code> 属性为 <code>n</code> 的节点，若不存在，则创建一个 <code>name</code> 属性为 <code>n</code> 的节点，若存在，则不做出改动。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MERGE (n&#123;name:&#x27;n&#x27;&#125;)</span><br></pre></td></tr></table></figure>
-
-<p>要匹配多个属性及其对应的值可用逗号隔开，如：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MERGE (n&#123;name1:&#x27;n&#x27;, name2:&#x27;m&#x27;&#125;)</span><br></pre></td></tr></table></figure>
-
-<p>在上面这条语句的情况下，只有 <code>name1</code> 和 <code>name2</code> 属性同时满足匹配条件时才不会对图数据库做出改动，只要不存在有一个节点同时满足上述两个条件，则会创建新的节点，即前面提到的 <code>MERGE</code> 语句无法实现部分归并。</p>
-<h3 id="从已有属性归并节点"><a href="#从已有属性归并节点" class="headerlink" title="从已有属性归并节点"></a>从已有属性归并节点</h3><p>以下命令从已有的 <code>LABEL1</code> 标签下的节点查找其节点属性 <code>p1</code> ，并归并出 <code>LABLE2</code> 标签的节点，新节点的属性视为 <code>p2</code> ，从而不重复创建。 </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MATCH (n:LABEL1)</span><br><span class="line">MERGE (m:LABEL2&#123;p2:n.p1&#125;)</span><br></pre></td></tr></table></figure>
-
-<p>具体示例可查看官方手册的 <code>MERGE</code> 章节，举个简单的例子假设图数据库中已有几名学生的信息作为节点，学生的信息包括其籍贯，通过上面的命令即将学生视为标签 <code>LABEL1</code>，籍贯视为属性 <code>p1</code>，并将籍贯形成新的节点标签 <code>LABEL2</code>，以上命令就相当于不重复地列出学生的籍贯并一一建立新节点，并为新籍贯节点创建的属性视为 <code>p2</code> ，如果图数据库中已有籍贯相同的节点，则不会再被创建，保证了唯一性。这在从已有数据分离出一些较小的数据项时很有用。</p>
-<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ul>
-<li><p><span class="exturl" data-url="aHR0cHM6Ly9uZW80ai5jb20vZG9jcy9jeXBoZXItbWFudWFsLzMuNS8=">The Neo4j Cypher Manual v3.5<i class="fa fa-external-link-alt"></i></span></p>
-</li>
-<li><p>《 Neo4j 权威指南》</p>
-</li>
-</ul>
-
-    </div>
-
-    
-    
-    
-          
-
-<div>
-<ul class="post-copyright">
-  <li class="post-copyright-author">
-    <strong>本文作者： </strong>Fish__404
-  </li>
-  <li class="post-copyright-link">
-    <strong>本文链接：</strong>
-    <a href="https://fish-404.github.io/KG-Cypher-learning/" title="Neo4j之Cypher语句">https://fish-404.github.io/KG-Cypher-learning/</a>
-  </li>
-  <li class="post-copyright-license">
-    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！
-  </li>
-</ul>
-</div>
-
-
-      <footer class="post-footer">
-          
-          <div class="post-tags">
-              <a href="/tags/Neo4j/" rel="tag"><i class="fa fa-tag"></i> Neo4j</a>
-              <a href="/tags/Cypher/" rel="tag"><i class="fa fa-tag"></i> Cypher</a>
-          </div>
-
         
-
-
-        
-    <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/Essay-2019-nCoV-personal-record-13/" rel="prev" title="疫期小记 13">
-      <i class="fa fa-chevron-left"></i> 疫期小记 13
-    </a></div>
-      <div class="post-nav-item">
-    <a href="/Essay-2019-nCoV-personal-record-14/" rel="next" title="疫期小记 14">
-      疫期小记 14 <i class="fa fa-chevron-right"></i>
-    </a></div>
-    </div>
-      </footer>
-    
-  </article>
   
-  
-  
-
-
-
-          </div>
-          
-
-<script>
-  window.addEventListener('tabs:register', () => {
-    let { activeClass } = CONFIG.comments;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
-      }
-    }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
-  }
-</script>
-
-        </div>
-          
-  
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
   </div>
 
   <aside class="sidebar">
-    <div class="sidebar-inner">
 
-      <ul class="sidebar-nav motion-element">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
         </li>
@@ -469,115 +142,372 @@
         </li>
       </ul>
 
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#MATCH"><span class="nav-number">1.</span> <span class="nav-text">MATCH</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E6%89%BE%E8%8A%82%E7%82%B9"><span class="nav-number">1.1.</span> <span class="nav-text">查找节点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E6%89%BE%E6%89%80%E6%9C%89%E8%8A%82%E7%82%B9"><span class="nav-number">1.1.1.</span> <span class="nav-text">查找所有节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E6%89%BE%E6%8C%87%E5%AE%9A%E6%A0%87%E7%AD%BE%E8%8A%82%E7%82%B9"><span class="nav-number">1.1.2.</span> <span class="nav-text">查找指定标签节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E6%89%BE%E8%BF%9E%E6%8E%A5%E8%8A%82%E7%82%B9"><span class="nav-number">1.1.3.</span> <span class="nav-text">查找连接节点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E6%89%BE%E5%85%B3%E7%B3%BB"><span class="nav-number">1.2.</span> <span class="nav-text">查找关系</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E6%89%BE%E5%85%B3%E7%B3%BB%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.2.1.</span> <span class="nav-text">查找关系类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E6%89%BE%E6%8C%87%E5%AE%9A%E5%85%B3%E7%B3%BB"><span class="nav-number">1.2.2.</span> <span class="nav-text">查找指定关系</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#RETURN"><span class="nav-number">2.</span> <span class="nav-text">RETURN</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CREATE"><span class="nav-number">3.</span> <span class="nav-text">CREATE</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E8%8A%82%E7%82%B9"><span class="nav-number">3.1.</span> <span class="nav-text">创建节点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E7%A9%BA%E8%8A%82%E7%82%B9"><span class="nav-number">3.1.1.</span> <span class="nav-text">创建空节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E5%B8%A6%E6%A0%87%E7%AD%BE%E7%9A%84%E8%8A%82%E7%82%B9"><span class="nav-number">3.1.2.</span> <span class="nav-text">创建带标签的节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E5%B8%A6%E5%B1%9E%E6%80%A7%E8%8A%82%E7%82%B9"><span class="nav-number">3.1.3.</span> <span class="nav-text">创建带属性节点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E5%85%B3%E7%B3%BB"><span class="nav-number">3.2.</span> <span class="nav-text">创建关系</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DELETE"><span class="nav-number">4.</span> <span class="nav-text">DELETE</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#REMOVE"><span class="nav-number">5.</span> <span class="nav-text">REMOVE</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A7%BB%E9%99%A4%E8%8A%82%E7%82%B9%E5%B1%9E%E6%80%A7"><span class="nav-number">5.1.</span> <span class="nav-text">移除节点属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A7%BB%E9%99%A4%E8%8A%82%E7%82%B9%E6%A0%87%E7%AD%BE"><span class="nav-number">5.2.</span> <span class="nav-text">移除节点标签</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MERGE"><span class="nav-number">6.</span> <span class="nav-text">MERGE</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BD%92%E5%B9%B6%E8%8A%82%E7%82%B9"><span class="nav-number">6.1.</span> <span class="nav-text">归并节点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BD%92%E5%B9%B6%E8%8A%82%E7%82%B9%E6%A0%87%E7%AD%BE"><span class="nav-number">6.1.1.</span> <span class="nav-text">归并节点标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BD%92%E5%B9%B6%E8%8A%82%E7%82%B9%E5%B1%9E%E6%80%A7"><span class="nav-number">6.1.2.</span> <span class="nav-text">归并节点属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%8E%E5%B7%B2%E6%9C%89%E5%B1%9E%E6%80%A7%E5%BD%92%E5%B9%B6%E8%8A%82%E7%82%B9"><span class="nav-number">6.1.3.</span> <span class="nav-text">从已有属性归并节点</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">7.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
-      </div>
-      <!--/noindex-->
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#match"><span class="nav-number">1.</span> <span class="nav-text">MATCH</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E6%89%BE%E8%8A%82%E7%82%B9"><span class="nav-number">1.1.</span> <span class="nav-text">查找节点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E6%89%BE%E6%89%80%E6%9C%89%E8%8A%82%E7%82%B9"><span class="nav-number">1.1.1.</span> <span class="nav-text">查找所有节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E6%89%BE%E6%8C%87%E5%AE%9A%E6%A0%87%E7%AD%BE%E8%8A%82%E7%82%B9"><span class="nav-number">1.1.2.</span> <span class="nav-text">查找指定标签节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E6%89%BE%E8%BF%9E%E6%8E%A5%E8%8A%82%E7%82%B9"><span class="nav-number">1.1.3.</span> <span class="nav-text">查找连接节点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E6%89%BE%E5%85%B3%E7%B3%BB"><span class="nav-number">1.2.</span> <span class="nav-text">查找关系</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E6%89%BE%E5%85%B3%E7%B3%BB%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.2.1.</span> <span class="nav-text">查找关系类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E6%89%BE%E6%8C%87%E5%AE%9A%E5%85%B3%E7%B3%BB"><span class="nav-number">1.2.2.</span> <span class="nav-text">查找指定关系</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#return"><span class="nav-number">2.</span> <span class="nav-text">RETURN</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#create"><span class="nav-number">3.</span> <span class="nav-text">CREATE</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E8%8A%82%E7%82%B9"><span class="nav-number">3.1.</span> <span class="nav-text">创建节点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E7%A9%BA%E8%8A%82%E7%82%B9"><span class="nav-number">3.1.1.</span> <span class="nav-text">创建空节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E5%B8%A6%E6%A0%87%E7%AD%BE%E7%9A%84%E8%8A%82%E7%82%B9"><span class="nav-number">3.1.2.</span> <span class="nav-text">创建带标签的节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E5%B8%A6%E5%B1%9E%E6%80%A7%E8%8A%82%E7%82%B9"><span class="nav-number">3.1.3.</span> <span class="nav-text">创建带属性节点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E5%85%B3%E7%B3%BB"><span class="nav-number">3.2.</span> <span class="nav-text">创建关系</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#delete"><span class="nav-number">4.</span> <span class="nav-text">DELETE</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#remove"><span class="nav-number">5.</span> <span class="nav-text">REMOVE</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A7%BB%E9%99%A4%E8%8A%82%E7%82%B9%E5%B1%9E%E6%80%A7"><span class="nav-number">5.1.</span> <span class="nav-text">移除节点属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A7%BB%E9%99%A4%E8%8A%82%E7%82%B9%E6%A0%87%E7%AD%BE"><span class="nav-number">5.2.</span> <span class="nav-text">移除节点标签</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#merge"><span class="nav-number">6.</span> <span class="nav-text">MERGE</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BD%92%E5%B9%B6%E8%8A%82%E7%82%B9"><span class="nav-number">6.1.</span> <span class="nav-text">归并节点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BD%92%E5%B9%B6%E8%8A%82%E7%82%B9%E6%A0%87%E7%AD%BE"><span class="nav-number">6.1.1.</span> <span class="nav-text">归并节点标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BD%92%E5%B9%B6%E8%8A%82%E7%82%B9%E5%B1%9E%E6%80%A7"><span class="nav-number">6.1.2.</span> <span class="nav-text">归并节点属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%8E%E5%B7%B2%E6%9C%89%E5%B1%9E%E6%80%A7%E5%BD%92%E5%B9%B6%E8%8A%82%E7%82%B9"><span class="nav-number">6.1.3.</span> <span class="nav-text">从已有属性归并节点</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">7.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
 
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image" alt="Fish__404"
       src="/images/cat.jpg">
   <p class="site-author-name" itemprop="name">Fish__404</p>
   <div class="site-description" itemprop="description">What's dream? Just fun!</div>
 </div>
-<div class="site-state-wrap motion-element">
+<div class="site-state-wrap site-overview-item animated">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
+        <a href="/archives/">
           <span class="site-state-item-count">100</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-            <a href="/categories/">
-          
+          <a href="/categories/">
         <span class="site-state-item-count">22</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-            <a href="/tags/">
+          <a href="/tags/">
         <span class="site-state-item-count">38</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
 </div>
-  <div class="sidebar-button motion-element">
-    <a onclick="Chatra('openChat', true);"><i class="fa fa-comment"></i>
-    
-  </a>
+  <div class="sidebar-button site-overview-item animated">
+    <button><i class="fa fa-comment"></i>
+      留言
+    </button>
   </div>
-  <div class="links-of-author motion-element">
+  <div class="links-of-author site-overview-item animated">
       <span class="links-of-author-item">
-        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2Zpc2gtNDA0" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;fish-404"><i class="fab fa-github fa-fw"></i></span>
+        <a href="https://github.com/fish-404" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;fish-404" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
       </span>
       <span class="links-of-author-item">
-        <span class="exturl" data-url="bWFpbHRvOmZpc2g0MDRoc2lmQGdtYWlsLmNvbQ==" title="E-Mail → mailto:fish404hsif@gmail.com"><i class="fa fa-envelope fa-fw"></i></span>
+        <a href="mailto:fish404hsif@gmail.com" title="E-Mail → mailto:fish404hsif@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
       </span>
   </div>
-  <div class="cc-license motion-element" itemprop="license">
-    <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></span>
-  </div>
 
 
 
+        </div>
       </div>
-
     </div>
   </aside>
-  <div id="sidebar-dimmer"></div>
+  <div class="sidebar-dimmer"></div>
 
 
-      </div>
-    </main>
+    </header>
 
-    <footer class="footer">
-      <div class="footer-inner">
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://fish-404.github.io/KG-Cypher-learning/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/cat.jpg">
+      <meta itemprop="name" content="Fish__404">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="在逃的貓">
+      <meta itemprop="description" content="What's dream? Just fun!">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Neo4j之Cypher语句 | 在逃的貓">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Neo4j之Cypher语句
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020/03/04 0:00:00" itemprop="dateCreated datePublished" datetime="2020-03-04T00:00:00+08:00">2020/03/04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2020/06/11 10:48:36" itemprop="dateModified" datetime="2020-06-11T10:48:36+08:00">2020/06/11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/" itemprop="url" rel="index"><span itemprop="name">知识图谱</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>本文为图数据库 Neo4j 查询语言 Cypher 学习笔记，包括
+<code>MATCH</code> <code>RETURN</code> <code>CREATE</code>
+<code>DELETE</code> <code>REMOVE</code> <code>MERGE</code>
+语句的基本用法。</p>
+<span id="more"></span>
+<h1 id="match">MATCH</h1>
+<p><code>MATCH</code> 语句用于查询，常与 <code>WHERE</code> 连用，与 SQL
+语句中的 <code>SELECT ... FROM ... WHERE</code> 用法相似。</p>
+<h2 id="查找节点">查找节点</h2>
+<h3 id="查找所有节点">查找所有节点</h3>
+<p>以下命令将返回所有节点，若在 Neo4j Browser
+下，则会返回整个图，包括节点和关系，与 SQL 中的 <code>SELECT *</code>
+类似。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MATCH (n) </span><br><span class="line">RETURN n</span><br></pre></td></tr></table></figure>
+<p>注：</p>
+<ol type="1">
+<li><p>分行并非必要；</p></li>
+<li><p><code>n</code>
+相当于一个假定变量，大小写敏感，前后不一致将会导致变量未定义错误，同时，因为
+<code>n</code>
+是一个假定变量，因此在查询语句的书写时和程序中设置变量一样可以使用一个更具体的描述词，而不是使用通常的变量名
+<code>n</code> <code>x</code> <code>y</code>
+，增强查询语句的可读性；</p></li>
+<li><p>括号是必要的，作为模式的表示方式，节点是最简单的模式；</p></li>
+<li><p>关键字的大小写不敏感，与 SQL
+类似，大小写混用并不会出错，但并不建议混用。</p></li>
+</ol>
+<h3 id="查找指定标签节点">查找指定标签节点</h3>
+<p>以下命令返回 <code>Lable</code> 标签下的所有节点。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MATCH (n:Lable)</span><br><span class="line">RETURN n</span><br></pre></td></tr></table></figure>
+<h3 id="查找连接节点">查找连接节点</h3>
+<p>以下命令返回与带 <code>Label</code> 标签，属性 <code>name</code> 值为
+<code>a</code> 的节点相连接的所有节点。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MATCH (Lable&#123;name:&#x27;a&#x27;&#125;)--(n)</span><br><span class="line">RETURN n</span><br></pre></td></tr></table></figure>
+<p>若要限定返回节点的标签 <code>Lable1</code>，可在变量 <code>n</code>
+后做限定。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MATCH (Lalbe&#123;name:&#x27;a&#x27;&#125;)--(n:Lable1)</span><br><span class="line">RETURN n</span><br></pre></td></tr></table></figure>
+<p>关系表示符可指定方向：</p>
+<ul>
+<li><p><code>--</code> ：任意方向；</p></li>
+<li><p><code>--&gt;</code> ：指向其他节点；</p></li>
+<li><p><code>&lt;--</code> ：指向自身。</p></li>
+</ul>
+<h2 id="查找关系">查找关系</h2>
+<h3 id="查找关系类型">查找关系类型</h3>
+<p>以下命令返回连接 <code>Lable</code> 标签下 <code>name</code>
+属性分别为 <code>a</code>, <code>b</code> 的两个节点的关系类型。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MATCH (:Lable&#123;name:&#x27;a&#x27;&#125;)-[r]-(:Lable&#123;name:&#x27;b&#x27;&#125;)</span><br><span class="line">RETURN TYPE(r) </span><br></pre></td></tr></table></figure>
+<p><code>TYPE</code> 大小写不敏感。</p>
+<p>若两个节点间没有关系，则不会做任何改变，也无返回值。</p>
+<p>若要指定关系方向，可将第一句改为以下两种情况：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MATCH (:Lable&#123;name:&#x27;a&#x27;&#125;)&lt;-[r]-(:Lable&#123;name:&#x27;b&#x27;&#125;)</span><br><span class="line">MATCH (:Lable&#123;name:&#x27;a&#x27;&#125;)-[r]-&gt;(:Lable&#123;name:&#x27;b&#x27;&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="查找指定关系">查找指定关系</h3>
+<p>以下命令返回关系类型为 <code>RELAY</code> 的节点及其关系。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MATCH (a)-[:RELAY]-(b)</span><br><span class="line">RETURN *  </span><br></pre></td></tr></table></figure>
+<p>匹配多个关系可用管道符 <code>|</code> 连接，如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MATCH (a)-[:RELAY|:RELAY1]-(b)</span><br></pre></td></tr></table></figure>
+<h1 id="return">RETURN</h1>
+<p><code>RETURN</code>
+语句设定返回类型，如上面提到的返回节点，返回关系，返回节点的特定属性。已上一个命令为例，返回的是所有节点和关系，相当于：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MATCH (a)-[r:RELAY]-(b)</span><br><span class="line">RETURN a, b, r</span><br></pre></td></tr></table></figure>
+<p>若要返回节点属性 <code>name</code>，可写作</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MATCH (a)-[:RELAY]-(b)</span><br><span class="line">RETURN a.name</span><br></pre></td></tr></table></figure>
+<p>返回关系类型上面已提及，不重复描述。</p>
+<h1 id="create">CREATE</h1>
+<h2 id="创建节点">创建节点</h2>
+<p>若要查看创建节点的结果，需用 <code>RETURN</code>
+语句返回，实际上以下其他命令也是如此，下面不再列出 <code>RETURN</code>
+语句除非必要。否则仅会输出提示节点的创建数量、属性的设置数量、标签的创建数量。</p>
+<h3 id="创建空节点">创建空节点</h3>
+<p>以下命令创建一个空节点。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE (n)</span><br></pre></td></tr></table></figure>
+<p>若要创建多个节点，可用逗号分隔。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE (n), (m)</span><br></pre></td></tr></table></figure>
+<h3 id="创建带标签的节点">创建带标签的节点</h3>
+<p>以下命令创建一个带标签的节点。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE (n:Lable)</span><br></pre></td></tr></table></figure>
+<p>若要创建多个标签，可紧随其后。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE (n:Lalbe:Lable1)</span><br></pre></td></tr></table></figure>
+<h3 id="创建带属性节点">创建带属性节点</h3>
+<p>以下命令创建一个带属性节点，并指定 <code>name</code>
+<code>name1</code>为属性名， <code>a</code> <code>b</code> 为属性值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE (n:Lable&#123;name:&#x27;a&#x27;, name1:&#x27;b&#x27;&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="创建关系">创建关系</h2>
+<p>创建关系首先要使用 <code>MATCH</code>
+语句匹配到关系的起点和终点。以下命令先匹配到 <code>a</code>
+<code>b</code> 两个节点，然后建立两个节点间的关系
+<code>RELAY</code>。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MATCH (a:Lable&#123;name:&#x27;a&#x27;&#125;), (b:Lable&#123;name:&#x27;b&#x27;&#125;)</span><br><span class="line">CREATE (a)-[:RELAY]-&gt;(b)</span><br></pre></td></tr></table></figure>
+<p>注：</p>
+<ol type="1">
+<li><p>关系的创建与查询时不同，必须指明关系方向，仅允许创建有方向的关系；</p></li>
+<li><p>关系创建时必须设定关系名；</p></li>
+<li><p>此匹配节点语句并不是最佳，会弹出 <code>Warning</code>
+提示建议使用 <code>OPIONAL MATCH</code>
+优化查询速度，此处不做探讨。</p></li>
+</ol>
+<h1 id="delete">DELETE</h1>
+<p><code>DELETE</code>
+语句用于删除节点或关系。需要先查找到节点或者关系，实际上在仅对节点和关系的删除上只要把
+<code>MATCH</code> 中的 <code>RETURN</code> 语句换做 <code>DELETE</code>
+语句就可以完成删除。</p>
+<p>有一点不同的是，<code>DELETE</code>
+语句可以在删除节点的同时删除掉与之的关系，使用
+<code>DETACH DELETE</code>, 如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MATCH (n:Lable&#123;name:&#x27;a&#x27;&#125;)</span><br><span class="line">DETACH DELETE n</span><br></pre></td></tr></table></figure>
+<p>以下命令可以删除所有节点和关系，在学习试验的小数据中很有用：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MATCH (n)</span><br><span class="line">DETACH DELETE n</span><br></pre></td></tr></table></figure>
+<h1 id="remove">REMOVE</h1>
+<h2 id="移除节点属性">移除节点属性</h2>
+<p>Neo4j 不允许属性值为
+<code>null</code>，所以移除节点属性也可说是用于删除该属性。以下命令移除所有节点的
+<code>name</code> 属性。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MATCH (n)</span><br><span class="line">REMOVE n.name</span><br></pre></td></tr></table></figure>
+<p><code>REMOVE</code> 语句无法使用一条命令删除所有属性，需要使用
+<code>SET</code> 语句，此处不做探讨。</p>
+<h2 id="移除节点标签">移除节点标签</h2>
+<p>以下命令移除节点 <code>a</code> 标签
+<code>Lable</code>，移除多个标签和 <code>CREATE</code> 语句类似。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MATCH (n&#123;name:&#x27;a&#x27;&#125;)</span><br><span class="line">REMOVE a:Lable</span><br></pre></td></tr></table></figure>
+<h1 id="merge">MERGE</h1>
+<p><code>MERGE</code> 命令用于在模式匹配不成功时创建该模式，类似先通过
+<code>MATHCH</code> 进行模式查找，再用 <code>CREATE</code>
+进行模式创建。相比后一种方式，<code>MERGE</code>
+命令更简洁，但无法进行部分匹配，一旦匹配表达式的某项不满足，整个模式都将被创建。</p>
+<h2 id="归并节点">归并节点</h2>
+<h3 id="归并节点标签">归并节点标签</h3>
+<p>以下命令查找是否存在标签为 <code>LABEL</code>
+的节点，若不存在，则创建一个标签为 <code>LABEL</code>
+的节点，若存在，则不会做出改动。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MERGE (n:LABEL)</span><br></pre></td></tr></table></figure>
+<h3 id="归并节点属性">归并节点属性</h3>
+<p>以下命令查找是否存在 <code>name</code> 属性为 <code>n</code>
+的节点，若不存在，则创建一个 <code>name</code> 属性为 <code>n</code>
+的节点，若存在，则不做出改动。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MERGE (n&#123;name:&#x27;n&#x27;&#125;)</span><br></pre></td></tr></table></figure>
+<p>要匹配多个属性及其对应的值可用逗号隔开，如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MERGE (n&#123;name1:&#x27;n&#x27;, name2:&#x27;m&#x27;&#125;)</span><br></pre></td></tr></table></figure>
+<p>在上面这条语句的情况下，只有 <code>name1</code> 和 <code>name2</code>
+属性同时满足匹配条件时才不会对图数据库做出改动，只要不存在有一个节点同时满足上述两个条件，则会创建新的节点，即前面提到的
+<code>MERGE</code> 语句无法实现部分归并。</p>
+<h3 id="从已有属性归并节点">从已有属性归并节点</h3>
+<p>以下命令从已有的 <code>LABEL1</code> 标签下的节点查找其节点属性
+<code>p1</code> ，并归并出 <code>LABLE2</code>
+标签的节点，新节点的属性视为 <code>p2</code> ，从而不重复创建。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MATCH (n:LABEL1)</span><br><span class="line">MERGE (m:LABEL2&#123;p2:n.p1&#125;)</span><br></pre></td></tr></table></figure>
+<p>具体示例可查看官方手册的 <code>MERGE</code>
+章节，举个简单的例子假设图数据库中已有几名学生的信息作为节点，学生的信息包括其籍贯，通过上面的命令即将学生视为标签
+<code>LABEL1</code>，籍贯视为属性
+<code>p1</code>，并将籍贯形成新的节点标签
+<code>LABEL2</code>，以上命令就相当于不重复地列出学生的籍贯并一一建立新节点，并为新籍贯节点创建的属性视为
+<code>p2</code>
+，如果图数据库中已有籍贯相同的节点，则不会再被创建，保证了唯一性。这在从已有数据分离出一些较小的数据项时很有用。</p>
+<h1 id="参考资料">参考资料</h1>
+<ul>
+<li><p><a target="_blank" rel="noopener" href="https://neo4j.com/docs/cypher-manual/3.5/">The Neo4j
+Cypher Manual v3.5</a></p></li>
+<li><p>《 Neo4j 权威指南》</p></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Neo4j/" rel="tag"><i class="fa fa-tag"></i> Neo4j</a>
+              <a href="/tags/Cypher/" rel="tag"><i class="fa fa-tag"></i> Cypher</a>
+          </div>
+
         
 
-        
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/Essay-2019-nCoV-personal-record-13/" rel="prev" title="疫期小记 13">
+                  <i class="fa fa-chevron-left"></i> 疫期小记 13
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/Essay-2019-nCoV-personal-record-14/" rel="next" title="疫期小记 14">
+                  疫期小记 14 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
 
 <div class="copyright">
-  
   &copy; 2018 – 
   <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
-    <i class="fa fa-user-secret"></i>
+    <i class="fa fa-user-secrect"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">逃貓</span>
 </div>
-  <div class="powered-by">由 <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl theme-link" data-url="aHR0cHM6Ly9taXN0LnRoZW1lLW5leHQub3Jn">NexT.Mist</span> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
   </div>
 
-        
-
-
-
-
-
-
-
-
-      </div>
-    </footer>
-  </div>
+    </div>
+  </footer>
 
   
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
 
-<script src="/js/utils.js"></script>
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+<script class="next-config" data-name="chatra" type="application/json">{"enable":true,"async":true,"id":"JBgdQtj33YZBaPNj7"}</script>
+<script src="/js/third-party/chat/chatra.js"></script>
+<script async src="https://call.chatra.io/chatra.js"></script>
 
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/muse.js"></script>
-
-
-<script src="/js/next-boot.js"></script>
 
 
 
@@ -588,38 +518,11 @@
 
 
   
-<script src="/js/local-search.js"></script>
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
-
-
-  <script>
-    (function(d, w, c) {
-      w.ChatraID = 'JBgdQtj33YZBaPNj7';
-      var s = d.createElement('script');
-      w[c] = w[c] || function() {
-        (w[c].q = w[c].q || []).push(arguments);
-      };
-      s.async = true;
-      s.src = 'https://call.chatra.io/chatra.js';
-      if (d.head) d.head.appendChild(s);
-    })(document, window, 'Chatra');
-  </script>
-
-
-  <script src="//code.tidio.co/amphtooacns56ag7meqg3qwdiecofxwz.js"></script>
-
-
-
-
-
-
-
-  
-
-  
-
-  
 
 </body>
 </html>

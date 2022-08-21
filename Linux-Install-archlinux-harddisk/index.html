@@ -2,34 +2,30 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 6.2.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-icon-fish.png">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-fish.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-fish.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-fish.png">
   <link rel="mask-icon" href="/images/logo.svg" color="#222">
-  <meta http-equiv="Cache-Control" content="no-transform">
-  <meta http-equiv="Cache-Control" content="no-siteapp">
 
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
-  <link rel="stylesheet" href="/lib/pace/pace-theme-bounce.min.css">
-  <script src="/lib/pace/pace.min.js"></script>
 
-<script id="hexo-configurations">
-    var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"fish-404.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":true,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
-  </script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha256-xejo6yLi6vGtAjcMIsY8BHdKsLg7QynVlFMzdQgUuy8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-  <meta name="description" content="记录在移动硬盘上安装Arch Linux的过程。一部分用作Arch Linux，另一部分则用于日常存储。">
+<script class="next-config" data-name="main" type="application/json">{"hostname":"fish-404.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.12.3","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="记录在移动硬盘上安装Arch Linux的过程。一部分用作Arch Linux，另一部分则用于日常存储。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux-在移动硬盘上安装Arch Linux">
 <meta property="og:url" content="https://fish-404.github.io/Linux-Install-archlinux-harddisk/index.html">
 <meta property="og:site_name" content="在逃的貓">
-<meta property="og:description" content="记录在移动硬盘上安装Arch Linux的过程。一部分用作Arch Linux，另一部分则用于日常存储。">
+<meta property="og:description" content="记录在移动硬盘上安装Arch Linux的过程。一部分用作Arch Linux，另一部分则用于日常存储。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2018-07-26T16:00:00.000Z">
 <meta property="article:modified_time" content="2018-08-22T16:00:00.000Z">
@@ -38,72 +34,46 @@
 <meta property="article:tag" content="Linux">
 <meta name="twitter:card" content="summary">
 
+
 <link rel="canonical" href="https://fish-404.github.io/Linux-Install-archlinux-harddisk/">
 
 
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome : false,
-    isPost : true,
-    lang   : 'zh-CN'
-  };
-</script>
 
-  <title>Linux-在移动硬盘上安装Arch Linux | 在逃的貓</title>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://fish-404.github.io/Linux-Install-archlinux-harddisk/","path":"Linux-Install-archlinux-harddisk/","title":"Linux-在移动硬盘上安装Arch Linux"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Linux-在移动硬盘上安装Arch Linux | 在逃的貓</title>
   
 
 
 
 
 
-
   <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
-
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
 
+  <main class="main">
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
     </div>
   </div>
 
   <div class="site-meta">
 
     <a href="/" class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">在逃的貓</h1>
-      <span class="logo-line-after"><i></i></span>
+      <i class="logo-line"></i>
+      <p class="site-title">在逃的貓</p>
+      <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description">A cat called fish.</p>
   </div>
@@ -117,29 +87,8 @@
 
 
 
-
 <nav class="site-nav">
-  <ul id="menu" class="main-menu menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fab fa-fort-awesome fa-fw"></i>首页</a>
-
-  </li>
-        <li class="menu-item menu-item-about">
-
-    <a href="/about/" rel="section"><i class="fa fa-question fa-fw"></i>关于</a>
-
-  </li>
-        <li class="menu-item menu-item-categories">
-
-    <a href="/categories/" rel="section"><i class="fa fa-list fa-fw"></i>分类</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-inbox fa-fw"></i>归档</a>
-
-  </li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fab fa-fort-awesome fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-question fa-fw"></i>关于</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-list fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-inbox fa-fw"></i>归档</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -150,23 +99,22 @@
 
 
   <div class="search-pop-overlay">
-    <div class="popup search-popup">
-        <div class="search-header">
+    <div class="popup search-popup"><div class="search-header">
   <span class="search-icon">
     <i class="fa fa-search"></i>
   </span>
   <div class="search-input-container">
-    <input autocomplete="off" autocapitalize="off"
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
            placeholder="搜索..." spellcheck="false"
            type="search" class="search-input">
   </div>
-  <span class="popup-btn-close">
+  <span class="popup-btn-close" role="button">
     <i class="fa fa-times-circle"></i>
   </span>
 </div>
-<div id="search-result">
-  <div id="no-result">
-    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
   </div>
 </div>
 
@@ -174,236 +122,18 @@
   </div>
 
 </div>
-    </header>
-
-    
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
-  <div class="reading-progress-bar"></div>
-
-
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
-
-          <div class="content post posts-expand">
-            
-
-    
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://fish-404.github.io/Linux-Install-archlinux-harddisk/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/cat.jpg">
-      <meta itemprop="name" content="Fish__404">
-      <meta itemprop="description" content="What's dream? Just fun!">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="在逃的貓">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          Linux-在移动硬盘上安装Arch Linux
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018/07/27 0:00:00" itemprop="dateCreated datePublished" datetime="2018-07-27T00:00:00+08:00">2018/07/27</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2018/08/23 0:00:00" itemprop="dateModified" datetime="2018-08-23T00:00:00+08:00">2018/08/23</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-        <p>记录在移动硬盘上安装Arch Linux的过程。一部分用作Arch Linux，另一部分则用于日常存储。</p>
-<span id="more"></span>
-
-<h1 id="安装背景"><a href="#安装背景" class="headerlink" title="安装背景"></a>安装背景</h1><p>在2017年暑期接触到Linux，接触得并不太多，也只是装了个虚拟机VM ware，在虚拟机上使用过Ubuntu和CentOS，后来很长一段时间没怎么玩。最近入手了一块移动硬盘，Win 10用得总是崩溃，又想捣鼓一下Linux玩玩，电脑的配置并不高，也不想再重新分区，所以并没有装双系统，于是就想着是不是可以在移动硬盘上面装一个Linux，周围的伙伴推荐过Arch Linux，再加上Arch Linux的Wiki非常详细，大多数的东西都能在官方Wiki上面找到，于是决定进行尝试。</p>
-<h1 id="安装准备"><a href="#安装准备" class="headerlink" title="安装准备"></a>安装准备</h1><p>采用MBR+BIOS引导启动，通过<span class="exturl" data-url="aHR0cHM6Ly92aXJ0dWFsYm94Lm9yZw==">Virtual Box<i class="fa fa-external-link-alt"></i></span>引导Arch 的 ISO，将移动硬盘连接到虚拟机进行安装。在使用前我删除了移动硬盘上的所有分区，移动硬盘处于未分配状态，分区操作将在后文提及。（也可以选择使用<span class="exturl" data-url="aHR0cHM6Ly93d3cuZGlza3Rvb2wuY24v">分区助手<i class="fa fa-external-link-alt"></i></span>将GPT格式分区修改为MBR分区方式，以及格式化和分区。）</p>
-<h2 id="新建虚拟机"><a href="#新建虚拟机" class="headerlink" title="新建虚拟机"></a>新建虚拟机</h2><p>在Virtual Box上新建一个虚拟机，不设置虚拟磁盘。需要注意的是在虚拟机的设置中需要启用USB设置项，选择“启用USB控制器”，选择USB 3.0(xHCI)控制器。此选项需要安装<span class="exturl" data-url="aHR0cHM6Ly92aXJ0dWFsYm94Lm9yZy93aWtpL0Rvd25sb2Fkcw==">VirtualBox Extension Pack<i class="fa fa-external-link-alt"></i></span>，下载完扩展包后，在VirtualBox的全局设定中的扩展选项卡将此扩展包加入，才可以正常使用USB3.0控制器。</p>
-<p><strong>加载Arch Linux ISO文件时，记得在顶部的菜单栏选择USB设备！</strong></p>
-<h2 id="分区，格式化，挂载"><a href="#分区，格式化，挂载" class="headerlink" title="分区，格式化，挂载"></a>分区，格式化，挂载</h2><h3 id="分区"><a href="#分区" class="headerlink" title="分区"></a>分区</h3><p>运行分区工具：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cfdisk</span><br></pre></td></tr></table></figure>
-<p>如果移动硬盘中并不存在分区，则将会出现一个选择菜单”Select label type”，这里我们选择<code>dos</code>，这将会使用MBR方式对硬盘进行分区。之后将显示整个移动硬盘的分区状态，当前显示为<code>Free Space</code>，对此进行分区，根据提示输入分区大小，创建分区后，需要选择<code>Write</code>将分区写入，忽略<code>Write</code>操作分区将并不会被修改，根据自己的需要进行分区。我创建了两个分区用于<code>root</code>，和<code>home</code>，这两个分区的类型为<code>83 Linux</code>，一个分区用于<code>swap</code>，分区类型为<code>82 Linux swap / Solaris</code>，剩下的作为日常存储使用，当然这里我也根据需要进行了一定的分区，分区类型均为<code>7 HPFS/NTFS/exFAT</code>。</p>
-<p>分区完成后可以使用以下命令查看分区情况：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fdisk -l</span><br></pre></td></tr></table></figure>
-<p>或者使用命令：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsblk</span><br></pre></td></tr></table></figure>
-<h3 id="格式化"><a href="#格式化" class="headerlink" title="格式化"></a>格式化</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkfs.ext4 /dev/sda1</span><br></pre></td></tr></table></figure>
-<h3 id="设置卷标"><a href="#设置卷标" class="headerlink" title="设置卷标"></a>设置卷标</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">e2label /dev/sda1 <span class="built_in">arch</span></span><br></pre></td></tr></table></figure>
-<h3 id="挂载分区，启用swap"><a href="#挂载分区，启用swap" class="headerlink" title="挂载分区，启用swap"></a>挂载分区，启用swap</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mount /dev/sda1 /mnt</span><br><span class="line"><span class="built_in">mkdir</span> /mnt/home</span><br><span class="line">mount /dev/sda2 /mnt/home</span><br><span class="line">mkswap /dev/sda3</span><br><span class="line">swapon /dev/sda3</span><br></pre></td></tr></table></figure>
-
-<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h2 id="检查网络连接"><a href="#检查网络连接" class="headerlink" title="检查网络连接"></a>检查网络连接</h2><p>检查网络连接是否正常（此时机器应该时自动连接到网络的），可以使用<code>ping</code>验证连接是否正常：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ping -c 3 archlinux.org</span><br></pre></td></tr></table></figure>
-<h2 id="选择镜像源"><a href="#选择镜像源" class="headerlink" title="选择镜像源"></a>选择镜像源</h2><p>修改<code>/etc/pacman.d/mirrorlist</code>文件，</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/pacman.d/mirrorlist</span><br></pre></td></tr></table></figure>
-<p>关于vim的操作，此处不做介绍。<br>此文件定义了软件包会从哪个镜像源下载，在列表中越前的镜像在下载软件包时有越高的优先权。可以加入以下两个镜像：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># 中科大的</span></span></span><br><span class="line">Server = https://mirrors.ustc.edu.cn/archlinux/$repo/os/$arch</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># 阿里云的</span></span></span><br><span class="line">Server = https://mirrors.aliyun.com/archlinux/$repo/os/$arch</span><br></pre></td></tr></table></figure>
-<h2 id="安装基本系统"><a href="#安装基本系统" class="headerlink" title="安装基本系统"></a>安装基本系统</h2><p>使用<code>pacstrap</code>脚本，安装<code>base</code>组，和<code>base-devel</code>软件包组，也可以之后再安装：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pasctrap -i /mnt base base-devel</span><br></pre></td></tr></table></figure>
-
-<h1 id="配置系统"><a href="#配置系统" class="headerlink" title="配置系统"></a>配置系统</h1><h2 id="Fstab"><a href="#Fstab" class="headerlink" title="Fstab"></a>Fstab</h2><p>生成<code>fstab</code>文件，该文件用于定义磁盘分区，其他块设备和远程文件系统如何装入文件系统，<code>-U</code>选项设置使用UUID：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">genfstab -U /mnt &gt;&gt; /mnt/etc/fstab</span><br></pre></td></tr></table></figure>
-<p>根据 Arch Wiki 的建议， 最好检查一下<code>fstab</code>文件是否正确：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> /mnt/etc/fstab</span><br></pre></td></tr></table></figure>
-<h2 id="Chroot"><a href="#Chroot" class="headerlink" title="Chroot"></a>Chroot</h2><p>Change root 到新系统</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arch-chroot /mnt</span><br></pre></td></tr></table></figure>
-<h2 id="时区"><a href="#时区" class="headerlink" title="时区"></a>时区</h2><p>设置时区：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ln</span> -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime</span><br><span class="line">hwclock --systohc</span><br></pre></td></tr></table></figure>
-<h2 id="本地化"><a href="#本地化" class="headerlink" title="本地化"></a>本地化</h2><p>(这里vim可能尚未安装，使用<code>pacman -S vim</code>进行安装）<br>在<code>/etc/locale.gen</code>文件中修改需要的本地化类型，移除掉对应行前的注释号即可:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/locale.gen</span><br></pre></td></tr></table></figure>
-<p>执行<code>locale-gen</code>生成locale讯息，使<code>/etc/locale.ben</code>生成指定的本地化文件：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">locale-gen</span><br></pre></td></tr></table></figure>
-<p>创建<code>locale.conf</code>并编辑<code>LANG</code>变量：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/locale.conf</span><br></pre></td></tr></table></figure>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LANG = en_US.UTF-8</span><br></pre></td></tr></table></figure>
-<h2 id="设置主机名"><a href="#设置主机名" class="headerlink" title="设置主机名"></a>设置主机名</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> myhostname &gt; /etc/hostname</span><br></pre></td></tr></table></figure>
-<h2 id="设置root密码"><a href="#设置root密码" class="headerlink" title="设置root密码"></a>设置root密码</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">passwd</span><br></pre></td></tr></table></figure>
-<h2 id="添加普通用户"><a href="#添加普通用户" class="headerlink" title="添加普通用户"></a>添加普通用户</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">useradd -m newuser</span><br><span class="line">passwd newuser</span><br></pre></td></tr></table></figure>
-<p>修改权限：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">visudo</span><br></pre></td></tr></table></figure>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">root ALL=(ALL)ALL</span><br><span class="line">newuser ALL=(ALL)ALL</span><br></pre></td></tr></table></figure>
-<h2 id="安装Grub"><a href="#安装Grub" class="headerlink" title="安装Grub"></a>安装Grub</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pacman -S grub</span><br><span class="line">grub-install --recheck /dev/sda</span><br><span class="line">grub-mkconfig -o /boot/grub/grub.cfg</span><br></pre></td></tr></table></figure>
-<h2 id="退出Chroot环境并卸载分区，关闭虚拟机"><a href="#退出Chroot环境并卸载分区，关闭虚拟机" class="headerlink" title="退出Chroot环境并卸载分区，关闭虚拟机"></a>退出Chroot环境并卸载分区，关闭虚拟机</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">exit</span></span><br><span class="line">umount /mnt/home</span><br><span class="line">umount /mnt</span><br><span class="line">power off</span><br></pre></td></tr></table></figure>
-
-<p>系统安装完成~<br>重启，通过BIOS启动菜单直接进入移动硬盘即可进入Arch Linux~</p>
-<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ul>
-<li><span class="exturl" data-url="aHR0cHM6Ly93aWtpLmFyY2hsaW51eC5vcmcvaW5kZXgucGhwL0luc3RhbGxhdGlvbl9ndWlkZQ==">Installation guide - ArchWiki<i class="fa fa-external-link-alt"></i></span></li>
-<li><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNvbnRhYm8uY29tL3R1dG9yaWFscy9tb3VudGluZy1hZGRpdGlvbmFsLWhhcmQtZGlza3MtbGludXgv">Mounting of additional hard disks in Linux | Official Blog - Contabo.com<i class="fa fa-external-link-alt"></i></span></li>
-<li><span class="exturl" data-url="aHR0cHM6Ly93aWtpLmFyY2hsaW51eC5vcmcvaW5kZXgucGhwL1BhcnRpdGlvbmluZw==">Partitioning &#x3D;ArchWiki<i class="fa fa-external-link-alt"></i></span></li>
-<li><span class="exturl" data-url="aHR0cHM6Ly93aWtpLmFyY2hsaW51eC5vcmcvaW5kZXgucGhwL0ZzdGFi">fstab - ArchWiki<i class="fa fa-external-link-alt"></i></span></li>
-<li><span class="exturl" data-url="aHR0cHM6Ly93aWtpLmFyY2hsaW51eC5vcmcvaW5kZXgucGhwL01pY3JvY29kZQ==">Microcode - ArchWiki<i class="fa fa-external-link-alt"></i></span></li>
-<li><span class="exturl" data-url="aHR0cHM6Ly93aWtpLmFyY2hsaW51eC5vcmcvaW5kZXgucGhwL0dSVUI=">GRUB - ArchWiki<i class="fa fa-external-link-alt"></i></span></li>
-<li><span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vdHNkeGR4L3AvNzIxNTQxNi5odG1s">Arch Linux 安装记（安装到移动硬盘）- 天下掉下的X - 博客园<i class="fa fa-external-link-alt"></i></span></li>
-<li><span class="exturl" data-url="aHR0cHM6Ly93d3cuamlhbnNodS5jb20vcC9hMWMxMGU2YzllYmE=">arch linux安装到移动介质-简书<i class="fa fa-external-link-alt"></i></span></li>
-<li><span class="exturl" data-url="aHR0cDovL3NtaWxlamF5LmNvbS8yMDEyLzA2L3N3YXBfc2l6ZS8=">交换分区(SWAP)的大小分配-笑遍世界<i class="fa fa-external-link-alt"></i></span></li>
-</ul>
-
-    </div>
-
-    
-    
-    
-          
-
-<div>
-<ul class="post-copyright">
-  <li class="post-copyright-author">
-    <strong>本文作者： </strong>Fish__404
-  </li>
-  <li class="post-copyright-link">
-    <strong>本文链接：</strong>
-    <a href="https://fish-404.github.io/Linux-Install-archlinux-harddisk/" title="Linux-在移动硬盘上安装Arch Linux">https://fish-404.github.io/Linux-Install-archlinux-harddisk/</a>
-  </li>
-  <li class="post-copyright-license">
-    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！
-  </li>
-</ul>
-</div>
-
-
-      <footer class="post-footer">
-          
-          <div class="post-tags">
-              <a href="/tags/Arch-Linux/" rel="tag"><i class="fa fa-tag"></i> Arch Linux</a>
-              <a href="/tags/Linux/" rel="tag"><i class="fa fa-tag"></i> Linux</a>
-          </div>
-
         
-
-
-        
-    <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/Algorithms-selection-sort/" rel="prev" title="算法-选择排序">
-      <i class="fa fa-chevron-left"></i> 算法-选择排序
-    </a></div>
-      <div class="post-nav-item">
-    <a href="/Bookcomment-knowledge-is-insecure/" rel="next" title="书籍相关-学问是靠不住的">
-      书籍相关-学问是靠不住的 <i class="fa fa-chevron-right"></i>
-    </a></div>
-    </div>
-      </footer>
-    
-  </article>
   
-  
-  
-
-
-
-          </div>
-          
-
-<script>
-  window.addEventListener('tabs:register', () => {
-    let { activeClass } = CONFIG.comments;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
-      }
-    }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
-  }
-</script>
-
-        </div>
-          
-  
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
   </div>
 
   <aside class="sidebar">
-    <div class="sidebar-inner">
 
-      <ul class="sidebar-nav motion-element">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
         </li>
@@ -412,115 +142,285 @@
         </li>
       </ul>
 
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E8%83%8C%E6%99%AF"><span class="nav-number">1.</span> <span class="nav-text">安装背景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E5%87%86%E5%A4%87"><span class="nav-number">2.</span> <span class="nav-text">安装准备</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B0%E5%BB%BA%E8%99%9A%E6%8B%9F%E6%9C%BA"><span class="nav-number">2.1.</span> <span class="nav-text">新建虚拟机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E5%8C%BA%EF%BC%8C%E6%A0%BC%E5%BC%8F%E5%8C%96%EF%BC%8C%E6%8C%82%E8%BD%BD"><span class="nav-number">2.2.</span> <span class="nav-text">分区，格式化，挂载</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E5%8C%BA"><span class="nav-number">2.2.1.</span> <span class="nav-text">分区</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%BC%E5%BC%8F%E5%8C%96"><span class="nav-number">2.2.2.</span> <span class="nav-text">格式化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E5%8D%B7%E6%A0%87"><span class="nav-number">2.2.3.</span> <span class="nav-text">设置卷标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%82%E8%BD%BD%E5%88%86%E5%8C%BA%EF%BC%8C%E5%90%AF%E7%94%A8swap"><span class="nav-number">2.2.4.</span> <span class="nav-text">挂载分区，启用swap</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">3.</span> <span class="nav-text">安装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A3%80%E6%9F%A5%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5"><span class="nav-number">3.1.</span> <span class="nav-text">检查网络连接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%89%E6%8B%A9%E9%95%9C%E5%83%8F%E6%BA%90"><span class="nav-number">3.2.</span> <span class="nav-text">选择镜像源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E5%9F%BA%E6%9C%AC%E7%B3%BB%E7%BB%9F"><span class="nav-number">3.3.</span> <span class="nav-text">安装基本系统</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E7%B3%BB%E7%BB%9F"><span class="nav-number">4.</span> <span class="nav-text">配置系统</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Fstab"><span class="nav-number">4.1.</span> <span class="nav-text">Fstab</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chroot"><span class="nav-number">4.2.</span> <span class="nav-text">Chroot</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%B6%E5%8C%BA"><span class="nav-number">4.3.</span> <span class="nav-text">时区</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%AC%E5%9C%B0%E5%8C%96"><span class="nav-number">4.4.</span> <span class="nav-text">本地化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E4%B8%BB%E6%9C%BA%E5%90%8D"><span class="nav-number">4.5.</span> <span class="nav-text">设置主机名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AEroot%E5%AF%86%E7%A0%81"><span class="nav-number">4.6.</span> <span class="nav-text">设置root密码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E6%99%AE%E9%80%9A%E7%94%A8%E6%88%B7"><span class="nav-number">4.7.</span> <span class="nav-text">添加普通用户</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85Grub"><span class="nav-number">4.8.</span> <span class="nav-text">安装Grub</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%80%E5%87%BAChroot%E7%8E%AF%E5%A2%83%E5%B9%B6%E5%8D%B8%E8%BD%BD%E5%88%86%E5%8C%BA%EF%BC%8C%E5%85%B3%E9%97%AD%E8%99%9A%E6%8B%9F%E6%9C%BA"><span class="nav-number">4.9.</span> <span class="nav-text">退出Chroot环境并卸载分区，关闭虚拟机</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">5.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
-      </div>
-      <!--/noindex-->
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E8%83%8C%E6%99%AF"><span class="nav-number">1.</span> <span class="nav-text">安装背景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E5%87%86%E5%A4%87"><span class="nav-number">2.</span> <span class="nav-text">安装准备</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B0%E5%BB%BA%E8%99%9A%E6%8B%9F%E6%9C%BA"><span class="nav-number">2.1.</span> <span class="nav-text">新建虚拟机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E5%8C%BA%E6%A0%BC%E5%BC%8F%E5%8C%96%E6%8C%82%E8%BD%BD"><span class="nav-number">2.2.</span> <span class="nav-text">分区，格式化，挂载</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E5%8C%BA"><span class="nav-number">2.2.1.</span> <span class="nav-text">分区</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">3.</span> <span class="nav-text">安装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A3%80%E6%9F%A5%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5"><span class="nav-number">3.1.</span> <span class="nav-text">检查网络连接</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E7%B3%BB%E7%BB%9F"><span class="nav-number">4.</span> <span class="nav-text">配置系统</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#fstab"><span class="nav-number">4.1.</span> <span class="nav-text">Fstab</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
 
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image" alt="Fish__404"
       src="/images/cat.jpg">
   <p class="site-author-name" itemprop="name">Fish__404</p>
   <div class="site-description" itemprop="description">What's dream? Just fun!</div>
 </div>
-<div class="site-state-wrap motion-element">
+<div class="site-state-wrap site-overview-item animated">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
+        <a href="/archives/">
           <span class="site-state-item-count">100</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-            <a href="/categories/">
-          
+          <a href="/categories/">
         <span class="site-state-item-count">22</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-            <a href="/tags/">
+          <a href="/tags/">
         <span class="site-state-item-count">38</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
 </div>
-  <div class="sidebar-button motion-element">
-    <a onclick="Chatra('openChat', true);"><i class="fa fa-comment"></i>
-    
-  </a>
+  <div class="sidebar-button site-overview-item animated">
+    <button><i class="fa fa-comment"></i>
+      留言
+    </button>
   </div>
-  <div class="links-of-author motion-element">
+  <div class="links-of-author site-overview-item animated">
       <span class="links-of-author-item">
-        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2Zpc2gtNDA0" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;fish-404"><i class="fab fa-github fa-fw"></i></span>
+        <a href="https://github.com/fish-404" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;fish-404" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
       </span>
       <span class="links-of-author-item">
-        <span class="exturl" data-url="bWFpbHRvOmZpc2g0MDRoc2lmQGdtYWlsLmNvbQ==" title="E-Mail → mailto:fish404hsif@gmail.com"><i class="fa fa-envelope fa-fw"></i></span>
+        <a href="mailto:fish404hsif@gmail.com" title="E-Mail → mailto:fish404hsif@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
       </span>
   </div>
-  <div class="cc-license motion-element" itemprop="license">
-    <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></span>
-  </div>
 
 
 
+        </div>
       </div>
-
     </div>
   </aside>
-  <div id="sidebar-dimmer"></div>
+  <div class="sidebar-dimmer"></div>
 
 
-      </div>
-    </main>
+    </header>
 
-    <footer class="footer">
-      <div class="footer-inner">
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://fish-404.github.io/Linux-Install-archlinux-harddisk/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/cat.jpg">
+      <meta itemprop="name" content="Fish__404">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="在逃的貓">
+      <meta itemprop="description" content="What's dream? Just fun!">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Linux-在移动硬盘上安装Arch Linux | 在逃的貓">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Linux-在移动硬盘上安装Arch Linux
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018/07/27 0:00:00" itemprop="dateCreated datePublished" datetime="2018-07-27T00:00:00+08:00">2018/07/27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2018/08/23 0:00:00" itemprop="dateModified" datetime="2018-08-23T00:00:00+08:00">2018/08/23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>记录在移动硬盘上安装Arch Linux的过程。一部分用作Arch
+Linux，另一部分则用于日常存储。</p>
+<span id="more"></span>
+<h1 id="安装背景">安装背景</h1>
+<p>在2017年暑期接触到Linux，接触得并不太多，也只是装了个虚拟机VM
+ware，在虚拟机上使用过Ubuntu和CentOS，后来很长一段时间没怎么玩。最近入手了一块移动硬盘，Win
+10用得总是崩溃，又想捣鼓一下Linux玩玩，电脑的配置并不高，也不想再重新分区，所以并没有装双系统，于是就想着是不是可以在移动硬盘上面装一个Linux，周围的伙伴推荐过Arch
+Linux，再加上Arch
+Linux的Wiki非常详细，大多数的东西都能在官方Wiki上面找到，于是决定进行尝试。</p>
+<h1 id="安装准备">安装准备</h1>
+<p>采用MBR+BIOS引导启动，通过<a target="_blank" rel="noopener" href="https://virtualbox.org">Virtual
+Box</a>引导Arch 的
+ISO，将移动硬盘连接到虚拟机进行安装。在使用前我删除了移动硬盘上的所有分区，移动硬盘处于未分配状态，分区操作将在后文提及。（也可以选择使用<a target="_blank" rel="noopener" href="https://www.disktool.cn/">分区助手</a>将GPT格式分区修改为MBR分区方式，以及格式化和分区。）</p>
+<h2 id="新建虚拟机">新建虚拟机</h2>
+<p>在Virtual
+Box上新建一个虚拟机，不设置虚拟磁盘。需要注意的是在虚拟机的设置中需要启用USB设置项，选择“启用USB控制器”，选择USB
+3.0(xHCI)控制器。此选项需要安装<a target="_blank" rel="noopener" href="https://virtualbox.org/wiki/Downloads">VirtualBox
+Extension
+Pack</a>，下载完扩展包后，在VirtualBox的全局设定中的扩展选项卡将此扩展包加入，才可以正常使用USB3.0控制器。</p>
+<p><strong>加载Arch Linux
+ISO文件时，记得在顶部的菜单栏选择USB设备！</strong></p>
+<h2 id="分区格式化挂载">分区，格式化，挂载</h2>
+<h3 id="分区">分区</h3>
+<p>运行分区工具： <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cfdisk</span><br></pre></td></tr></table></figure>
+如果移动硬盘中并不存在分区，则将会出现一个选择菜单"Select label
+type"，这里我们选择<code>dos</code>，这将会使用MBR方式对硬盘进行分区。之后将显示整个移动硬盘的分区状态，当前显示为<code>Free Space</code>，对此进行分区，根据提示输入分区大小，创建分区后，需要选择<code>Write</code>将分区写入，忽略<code>Write</code>操作分区将并不会被修改，根据自己的需要进行分区。我创建了两个分区用于<code>root</code>，和<code>home</code>，这两个分区的类型为<code>83 Linux</code>，一个分区用于<code>swap</code>，分区类型为<code>82 Linux swap / Solaris</code>，剩下的作为日常存储使用，当然这里我也根据需要进行了一定的分区，分区类型均为<code>7 HPFS/NTFS/exFAT</code>。</p>
+<p>分区完成后可以使用以下命令查看分区情况： <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fdisk -l</span><br></pre></td></tr></table></figure> 或者使用命令：
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsblk</span><br></pre></td></tr></table></figure> ### 格式化 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkfs.ext4 /dev/sda1</span><br></pre></td></tr></table></figure> ### 设置卷标 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">e2label /dev/sda1 <span class="built_in">arch</span></span><br></pre></td></tr></table></figure> ###
+挂载分区，启用swap <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mount /dev/sda1 /mnt</span><br><span class="line"><span class="built_in">mkdir</span> /mnt/home</span><br><span class="line">mount /dev/sda2 /mnt/home</span><br><span class="line">mkswap /dev/sda3</span><br><span class="line">swapon /dev/sda3</span><br></pre></td></tr></table></figure></p>
+<h1 id="安装">安装</h1>
+<h2 id="检查网络连接">检查网络连接</h2>
+<p>检查网络连接是否正常（此时机器应该时自动连接到网络的），可以使用<code>ping</code>验证连接是否正常：
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ping -c 3 archlinux.org</span><br></pre></td></tr></table></figure> ## 选择镜像源
+修改<code>/etc/pacman.d/mirrorlist</code>文件， <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/pacman.d/mirrorlist</span><br></pre></td></tr></table></figure>
+关于vim的操作，此处不做介绍。
+此文件定义了软件包会从哪个镜像源下载，在列表中越前的镜像在下载软件包时有越高的优先权。可以加入以下两个镜像：
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># 中科大的</span></span></span><br><span class="line">Server = https://mirrors.ustc.edu.cn/archlinux/$repo/os/$arch</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># 阿里云的</span></span></span><br><span class="line">Server = https://mirrors.aliyun.com/archlinux/$repo/os/$arch</span><br></pre></td></tr></table></figure> ## 安装基本系统
+使用<code>pacstrap</code>脚本，安装<code>base</code>组，和<code>base-devel</code>软件包组，也可以之后再安装：
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pasctrap -i /mnt base base-devel</span><br></pre></td></tr></table></figure></p>
+<h1 id="配置系统">配置系统</h1>
+<h2 id="fstab">Fstab</h2>
+<p>生成<code>fstab</code>文件，该文件用于定义磁盘分区，其他块设备和远程文件系统如何装入文件系统，<code>-U</code>选项设置使用UUID：
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">genfstab -U /mnt &gt;&gt; /mnt/etc/fstab</span><br></pre></td></tr></table></figure> 根据 Arch Wiki 的建议，
+最好检查一下<code>fstab</code>文件是否正确： <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> /mnt/etc/fstab</span><br></pre></td></tr></table></figure> ## Chroot
+Change root 到新系统 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arch-chroot /mnt</span><br></pre></td></tr></table></figure> ## 时区 设置时区： <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ln</span> -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime</span><br><span class="line">hwclock --systohc</span><br></pre></td></tr></table></figure> ##
+本地化 (这里vim可能尚未安装，使用<code>pacman -S vim</code>进行安装）
+在<code>/etc/locale.gen</code>文件中修改需要的本地化类型，移除掉对应行前的注释号即可:
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/locale.gen</span><br></pre></td></tr></table></figure>
+执行<code>locale-gen</code>生成locale讯息，使<code>/etc/locale.ben</code>生成指定的本地化文件：
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">locale-gen</span><br></pre></td></tr></table></figure> 创建<code>locale.conf</code>并编辑<code>LANG</code>变量：
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/locale.conf</span><br></pre></td></tr></table></figure> <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LANG = en_US.UTF-8</span><br></pre></td></tr></table></figure> ## 设置主机名 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> myhostname &gt; /etc/hostname</span><br></pre></td></tr></table></figure> ##
+设置root密码 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">passwd</span><br></pre></td></tr></table></figure> ## 添加普通用户 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">useradd -m newuser</span><br><span class="line">passwd newuser</span><br></pre></td></tr></table></figure> 修改权限：
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">visudo</span><br></pre></td></tr></table></figure> <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">root ALL=(ALL)ALL</span><br><span class="line">newuser ALL=(ALL)ALL</span><br></pre></td></tr></table></figure> ## 安装Grub <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pacman -S grub</span><br><span class="line">grub-install --recheck /dev/sda</span><br><span class="line">grub-mkconfig -o /boot/grub/grub.cfg</span><br></pre></td></tr></table></figure> ##
+退出Chroot环境并卸载分区，关闭虚拟机 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">exit</span></span><br><span class="line">umount /mnt/home</span><br><span class="line">umount /mnt</span><br><span class="line">power off</span><br></pre></td></tr></table></figure></p>
+<p>系统安装完成~ 重启，通过BIOS启动菜单直接进入移动硬盘即可进入Arch
+Linux~ # 参考资料 *
+<a target="_blank" rel="noopener" href="https://wiki.archlinux.org/index.php/Installation_guide">Installation
+guide - ArchWiki</a> *
+<a target="_blank" rel="noopener" href="https://blog.contabo.com/tutorials/mounting-additional-hard-disks-linux/">Mounting
+of additional hard disks in Linux | Official Blog - Contabo.com</a> *
+<a target="_blank" rel="noopener" href="https://wiki.archlinux.org/index.php/Partitioning">Partitioning
+=ArchWiki</a> *
+<a target="_blank" rel="noopener" href="https://wiki.archlinux.org/index.php/Fstab">fstab -
+ArchWiki</a> *
+<a target="_blank" rel="noopener" href="https://wiki.archlinux.org/index.php/Microcode">Microcode -
+ArchWiki</a> * <a target="_blank" rel="noopener" href="https://wiki.archlinux.org/index.php/GRUB">GRUB
+- ArchWiki</a> *
+<a target="_blank" rel="noopener" href="https://www.cnblogs.com/tsdxdx/p/7215416.html">Arch Linux
+安装记（安装到移动硬盘）- 天下掉下的X - 博客园</a> *
+<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/a1c10e6c9eba">arch
+linux安装到移动介质-简书</a> *
+<a target="_blank" rel="noopener" href="http://smilejay.com/2012/06/swap_size/">交换分区(SWAP)的大小分配-笑遍世界</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Arch-Linux/" rel="tag"><i class="fa fa-tag"></i> Arch Linux</a>
+              <a href="/tags/Linux/" rel="tag"><i class="fa fa-tag"></i> Linux</a>
+          </div>
+
         
 
-        
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/Algorithms-selection-sort/" rel="prev" title="算法-选择排序">
+                  <i class="fa fa-chevron-left"></i> 算法-选择排序
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/Bookcomment-knowledge-is-insecure/" rel="next" title="书籍相关-学问是靠不住的">
+                  书籍相关-学问是靠不住的 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
 
 <div class="copyright">
-  
   &copy; 2018 – 
   <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
-    <i class="fa fa-user-secret"></i>
+    <i class="fa fa-user-secrect"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">逃貓</span>
 </div>
-  <div class="powered-by">由 <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl theme-link" data-url="aHR0cHM6Ly9taXN0LnRoZW1lLW5leHQub3Jn">NexT.Mist</span> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
   </div>
 
-        
-
-
-
-
-
-
-
-
-      </div>
-    </footer>
-  </div>
+    </div>
+  </footer>
 
   
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
 
-<script src="/js/utils.js"></script>
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+<script class="next-config" data-name="chatra" type="application/json">{"enable":true,"async":true,"id":"JBgdQtj33YZBaPNj7"}</script>
+<script src="/js/third-party/chat/chatra.js"></script>
+<script async src="https://call.chatra.io/chatra.js"></script>
 
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/muse.js"></script>
-
-
-<script src="/js/next-boot.js"></script>
 
 
 
@@ -531,38 +431,11 @@
 
 
   
-<script src="/js/local-search.js"></script>
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
-
-
-  <script>
-    (function(d, w, c) {
-      w.ChatraID = 'JBgdQtj33YZBaPNj7';
-      var s = d.createElement('script');
-      w[c] = w[c] || function() {
-        (w[c].q = w[c].q || []).push(arguments);
-      };
-      s.async = true;
-      s.src = 'https://call.chatra.io/chatra.js';
-      if (d.head) d.head.appendChild(s);
-    })(document, window, 'Chatra');
-  </script>
-
-
-  <script src="//code.tidio.co/amphtooacns56ag7meqg3qwdiecofxwz.js"></script>
-
-
-
-
-
-
-
-  
-
-  
-
-  
 
 </body>
 </html>

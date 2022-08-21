@@ -2,29 +2,25 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 6.2.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-icon-fish.png">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-fish.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-fish.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-fish.png">
   <link rel="mask-icon" href="/images/logo.svg" color="#222">
-  <meta http-equiv="Cache-Control" content="no-transform">
-  <meta http-equiv="Cache-Control" content="no-siteapp">
 
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
-  <link rel="stylesheet" href="/lib/pace/pace-theme-bounce.min.css">
-  <script src="/lib/pace/pace.min.js"></script>
 
-<script id="hexo-configurations">
-    var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"fish-404.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":true,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
-  </script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha256-xejo6yLi6vGtAjcMIsY8BHdKsLg7QynVlFMzdQgUuy8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-  <meta name="description" content="前些天有师弟问起关于C语言中转义序列的问题，尤其提到了\?这个转义字符，因为记得??似乎是三元字符集的开头，应该也算是特殊字符，但记得并不太清楚，于是搜寻了些资料，和转义序列的问题一并作整理和记录。">
+<script class="next-config" data-name="main" type="application/json">{"hostname":"fish-404.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.12.3","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="前些天有师弟问起关于C语言中转义序列的问题，尤其提到了\?这个转义字符，因为记得??似乎是三元字符集的开头，应该也算是特殊字符，但记得并不太清楚，于是搜寻了些资料，和转义序列的问题一并作整理和记录。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C语言中的转义序列">
 <meta property="og:url" content="https://fish-404.github.io/C-program-escape-sequence/index.html">
@@ -38,72 +34,46 @@
 <meta property="article:tag" content="C">
 <meta name="twitter:card" content="summary">
 
+
 <link rel="canonical" href="https://fish-404.github.io/C-program-escape-sequence/">
 
 
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome : false,
-    isPost : true,
-    lang   : 'zh-CN'
-  };
-</script>
 
-  <title>C语言中的转义序列 | 在逃的貓</title>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://fish-404.github.io/C-program-escape-sequence/","path":"C-program-escape-sequence/","title":"C语言中的转义序列"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>C语言中的转义序列 | 在逃的貓</title>
   
 
 
 
 
 
-
   <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
-
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
 
+  <main class="main">
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
     </div>
   </div>
 
   <div class="site-meta">
 
     <a href="/" class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">在逃的貓</h1>
-      <span class="logo-line-after"><i></i></span>
+      <i class="logo-line"></i>
+      <p class="site-title">在逃的貓</p>
+      <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description">A cat called fish.</p>
   </div>
@@ -117,29 +87,8 @@
 
 
 
-
 <nav class="site-nav">
-  <ul id="menu" class="main-menu menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fab fa-fort-awesome fa-fw"></i>首页</a>
-
-  </li>
-        <li class="menu-item menu-item-about">
-
-    <a href="/about/" rel="section"><i class="fa fa-question fa-fw"></i>关于</a>
-
-  </li>
-        <li class="menu-item menu-item-categories">
-
-    <a href="/categories/" rel="section"><i class="fa fa-list fa-fw"></i>分类</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-inbox fa-fw"></i>归档</a>
-
-  </li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fab fa-fort-awesome fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-question fa-fw"></i>关于</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-list fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-inbox fa-fw"></i>归档</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -150,23 +99,22 @@
 
 
   <div class="search-pop-overlay">
-    <div class="popup search-popup">
-        <div class="search-header">
+    <div class="popup search-popup"><div class="search-header">
   <span class="search-icon">
     <i class="fa fa-search"></i>
   </span>
   <div class="search-input-container">
-    <input autocomplete="off" autocapitalize="off"
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
            placeholder="搜索..." spellcheck="false"
            type="search" class="search-input">
   </div>
-  <span class="popup-btn-close">
+  <span class="popup-btn-close" role="button">
     <i class="fa fa-times-circle"></i>
   </span>
 </div>
-<div id="search-result">
-  <div id="no-result">
-    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
   </div>
 </div>
 
@@ -174,291 +122,18 @@
   </div>
 
 </div>
-    </header>
-
-    
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
-  <div class="reading-progress-bar"></div>
-
-
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
-
-          <div class="content post posts-expand">
-            
-
-    
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://fish-404.github.io/C-program-escape-sequence/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/cat.jpg">
-      <meta itemprop="name" content="Fish__404">
-      <meta itemprop="description" content="What's dream? Just fun!">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="在逃的貓">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          C语言中的转义序列
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018/08/26 0:00:00" itemprop="dateCreated datePublished" datetime="2018-08-26T00:00:00+08:00">2018/08/26</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019/03/25 15:14:10" itemprop="dateModified" datetime="2019-03-25T15:14:10+08:00">2019/03/25</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C%E8%AF%AD%E8%A8%80/" itemprop="url" rel="index"><span itemprop="name">C语言</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-        <p>前些天有师弟问起关于C语言中转义序列的问题，尤其提到了<code>\?</code>这个转义字符，因为记得<code>??</code>似乎是三元字符集的开头，应该也算是特殊字符，但记得并不太清楚，于是搜寻了些资料，和转义序列的问题一并作整理和记录。</p>
-<span id="more"></span>
-<h1 id="转义序列-escape-sequence"><a href="#转义序列-escape-sequence" class="headerlink" title="转义序列 (escape sequence)"></a>转义序列 (escape sequence)</h1><p>首先，我们知道，在C语言中，字符常量使用单引号括起来表示，但并不是所有的字符都可以直接由键盘输入而表示出来，比如换行符，也就无法用这样的方式来书写。通常来说有这样两种无法用这种方式表示的字符，一是非打印字符，如换行符，一是特殊字符，键盘上并没有直接的键位可以录入。这时候就需要用到转义序列来表示，字符转义序列和数字转义序列。</p>
-<h2 id="字符转义序列-charatcter-escape"><a href="#字符转义序列-charatcter-escape" class="headerlink" title="字符转义序列 (charatcter escape)"></a>字符转义序列 (charatcter escape)</h2><p>字符转义序列即我们常见的如<code>\n</code>表示换行符这样，下面给出字符转义序列表：</p>
-<table>
-<thead>
-<tr>
-<th>转义序列</th>
-<th align="left">描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>\&#39;</code></td>
-<td align="left">单引号</td>
-</tr>
-<tr>
-<td><code>\&quot;</code></td>
-<td align="left">双引号</td>
-</tr>
-<tr>
-<td><code>\?</code></td>
-<td align="left">问号</td>
-</tr>
-<tr>
-<td><code>\</code></td>
-<td align="left">反斜杠</td>
-</tr>
-<tr>
-<td><code>\a</code></td>
-<td align="left">响铃</td>
-</tr>
-<tr>
-<td><code>\b</code></td>
-<td align="left">退格</td>
-</tr>
-<tr>
-<td><code>\f</code></td>
-<td align="left">换页</td>
-</tr>
-<tr>
-<td><code>\n</code></td>
-<td align="left">换行</td>
-</tr>
-<tr>
-<td><code>\r</code></td>
-<td align="left">回车</td>
-</tr>
-<tr>
-<td><code>\t</code></td>
-<td align="left">水平制表符</td>
-</tr>
-<tr>
-<td><code>\v</code></td>
-<td align="left">垂直制表符</td>
-</tr>
-</tbody></table>
-<p>这里我们看到前四个都是符号，而除了问号以外，其他三个符号因为在C语言中有其他的作用，为了避免两者混淆，我们需要用转义序列来表示，那么为什么问号也需要呢，这就是我们后面要提到的三元字符序列，这里先按下不表。</p>
-<h2 id="数字转义序列-numberic-escape"><a href="#数字转义序列-numberic-escape" class="headerlink" title="数字转义序列 (numberic escape)"></a>数字转义序列 (numberic escape)</h2><p>虽然字符转义序列已经可以表示出一些无法打印的字符，但并仍然没法包含所有无法打印的 ASCII 字符，而我们通过查阅 <span class="exturl" data-url="aHR0cDovL3d3dy5hc2NpaXRhYmxlLmNvbS8=">ASCII 字符集<i class="fa fa-external-link-alt"></i></span>中字符编号，就可以使用数字转义序列来表示这些字符，就好比我们每个人都有一个身份证号，用身份证号就可以表示我们这个人的身份一样。</p>
-<h3 id="八进制转义序列"><a href="#八进制转义序列" class="headerlink" title="八进制转义序列"></a>八进制转义序列</h3><p>$\verb||NUMBER_{(8)}$</p>
-<ul>
-<li>NUMBER 为一不超过三位数字的八进制数;</li>
-<li>NUMBER 需表示为无符号字符，最大值通常是$337_{(8)}$;</li>
-<li>转义序列中的八进制数不一定要用 0 开头.</li>
-</ul>
-<h3 id="十六进制转义序列"><a href="#十六进制转义序列" class="headerlink" title="十六进制转义序列"></a>十六进制转义序列</h3><p>$\verb|\x|NUMBER_{(16)}$</p>
-<ul>
-<li>NUMBER 为一十六进制数;</li>
-<li>NUBMBER 需表示为无符号字符（若字符长度为 8 位，则不能超过 FF）;</li>
-<li>字符 x 必须为小写;</li>
-<li>NUMBER 不限大小写;<br>当作为字符常量使用时，转义序列必须用一对单引号括起来，而采用数字转义序列的方式来表示某个字符常量可能会使代码的可读性降低，可以使用<code>#define</code>宏定义的方式进行命名：</li>
-</ul>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> ESC <span class="string">&#x27;\33&#x27;</span> <span class="comment">/* ASCII escape character */</span></span></span><br></pre></td></tr></table></figure>
-
-<h1 id="三字符序列-trigraph-sequence"><a href="#三字符序列-trigraph-sequence" class="headerlink" title="三字符序列 (trigraph sequence)"></a>三字符序列 (trigraph sequence)</h1><p>前面我们提到了问号这个特殊字符也需要一个转义序列是由于三字符序列的存在。在欧洲的某些老式键盘提供的使欧洲语言所使用的古老字符，键盘上缺少 C 语言需要的字符，因此引入了三字符来解决这一问题。</p>
-<p>三字符序列是一种三字符码，所有的三字符都以<code>??</code>开始，下面是三字符序列表：</p>
-<table>
-<thead>
-<tr>
-<th>三字符序列</th>
-<th align="left">等价的 ASCII码</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>??=</code></td>
-<td align="left">#</td>
-</tr>
-<tr>
-<td><code>??(</code></td>
-<td align="left">[</td>
-</tr>
-<tr>
-<td><code>??/</code></td>
-<td align="left">\</td>
-</tr>
-<tr>
-<td><code>??&#39;</code></td>
-<td align="left">^</td>
-</tr>
-<tr>
-<td><code>??&lt;</code></td>
-<td align="left">{</td>
-</tr>
-<tr>
-<td><code>??!</code></td>
-<td align="left">}</td>
-</tr>
-<tr>
-<td><code>??&gt;</code></td>
-<td align="left">~</td>
-</tr>
-</tbody></table>
-<p>例如，我们在学习编程时学习的第一个程序 Hello, world 就可以用三字符写成下面的形式：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">??=include &lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> main(<span class="type">void</span>)</span><br><span class="line">??&lt;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Hello, world??/n&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"> ??&gt;</span><br></pre></td></tr></table></figure>
-<p>遵循 C89 或 C99 标准的编译器都必须能接受三字符，所以上面这段程序是能够通过编译并执行的，混杂三字符和正常字符表示也是可以的。这也就是说，我们在字符串中放置<code>??</code>，有一定几率会因为三字符而导致问题，因为编译器可能会将其视为三字符的开始标志。如果发生这种情况，我们可以在第二个<code>?</code>字符前面放置<code>\</code>把第二个字符<code>?</code>变成转义序列，即<code>?\?</code>，这样就不会被看作是三字符的开始了，这也是为什么在字符串中直接使用<code>?</code>是可以输出的，但转义序列中却包含<code>\?</code>。不过在我的几次尝试中，发现，编译器通常会在碰到疑似三字符出现的情况下出现 warning，提示你三字符被忽略，如果需要启用三字符，需要添加<code>-trigraphs</code>编译选项，添加了编译选项后就可以正常使用三字符了，虽然通常我们很少用及。</p>
-<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ul>
-<li>《C语言程序设计现代方法（第 2 版）》</li>
-<li><span class="exturl" data-url="aHR0cHM6Ly96aC5jcHByZWZlcmVuY2UuY29tL3cvYy9sYW5ndWFnZS9lc2NhcGU=">转义序列 - cppreference.com<i class="fa fa-external-link-alt"></i></span></li>
-</ul>
-
-    </div>
-
-    
-    
-    
-          
-
-<div>
-<ul class="post-copyright">
-  <li class="post-copyright-author">
-    <strong>本文作者： </strong>Fish__404
-  </li>
-  <li class="post-copyright-link">
-    <strong>本文链接：</strong>
-    <a href="https://fish-404.github.io/C-program-escape-sequence/" title="C语言中的转义序列">https://fish-404.github.io/C-program-escape-sequence/</a>
-  </li>
-  <li class="post-copyright-license">
-    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！
-  </li>
-</ul>
-</div>
-
-
-      <footer class="post-footer">
-          
-          <div class="post-tags">
-              <a href="/tags/Program/" rel="tag"><i class="fa fa-tag"></i> Program</a>
-              <a href="/tags/C/" rel="tag"><i class="fa fa-tag"></i> C</a>
-          </div>
-
         
-
-
-        
-    <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/vim-vimtutor/" rel="prev" title="Vim-Vimtutor学习整理">
-      <i class="fa fa-chevron-left"></i> Vim-Vimtutor学习整理
-    </a></div>
-      <div class="post-nav-item">
-    <a href="/Bookcomment-butterfly-killing/" rel="next" title="书籍相关-戏中人">
-      书籍相关-戏中人 <i class="fa fa-chevron-right"></i>
-    </a></div>
-    </div>
-      </footer>
-    
-  </article>
   
-  
-  
-
-
-
-          </div>
-          
-
-<script>
-  window.addEventListener('tabs:register', () => {
-    let { activeClass } = CONFIG.comments;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
-      }
-    }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
-  }
-</script>
-
-        </div>
-          
-  
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
   </div>
 
   <aside class="sidebar">
-    <div class="sidebar-inner">
 
-      <ul class="sidebar-nav motion-element">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
         </li>
@@ -467,115 +142,349 @@
         </li>
       </ul>
 
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BD%AC%E4%B9%89%E5%BA%8F%E5%88%97-escape-sequence"><span class="nav-number">1.</span> <span class="nav-text">转义序列 (escape sequence)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E8%BD%AC%E4%B9%89%E5%BA%8F%E5%88%97-charatcter-escape"><span class="nav-number">1.1.</span> <span class="nav-text">字符转义序列 (charatcter escape)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E5%AD%97%E8%BD%AC%E4%B9%89%E5%BA%8F%E5%88%97-numberic-escape"><span class="nav-number">1.2.</span> <span class="nav-text">数字转义序列 (numberic escape)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%AB%E8%BF%9B%E5%88%B6%E8%BD%AC%E4%B9%89%E5%BA%8F%E5%88%97"><span class="nav-number">1.2.1.</span> <span class="nav-text">八进制转义序列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%81%E5%85%AD%E8%BF%9B%E5%88%B6%E8%BD%AC%E4%B9%89%E5%BA%8F%E5%88%97"><span class="nav-number">1.2.2.</span> <span class="nav-text">十六进制转义序列</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%89%E5%AD%97%E7%AC%A6%E5%BA%8F%E5%88%97-trigraph-sequence"><span class="nav-number">2.</span> <span class="nav-text">三字符序列 (trigraph sequence)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">3.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
-      </div>
-      <!--/noindex-->
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E8%BD%AC%E4%B9%89%E5%BA%8F%E5%88%97-charatcter-escape"><span class="nav-number">1.</span> <span class="nav-text">字符转义序列 (charatcter
+escape)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E5%AD%97%E8%BD%AC%E4%B9%89%E5%BA%8F%E5%88%97-numberic-escape"><span class="nav-number">2.</span> <span class="nav-text">数字转义序列 (numberic
+escape)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%AB%E8%BF%9B%E5%88%B6%E8%BD%AC%E4%B9%89%E5%BA%8F%E5%88%97"><span class="nav-number">2.1.</span> <span class="nav-text">八进制转义序列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%81%E5%85%AD%E8%BF%9B%E5%88%B6%E8%BD%AC%E4%B9%89%E5%BA%8F%E5%88%97"><span class="nav-number">2.2.</span> <span class="nav-text">十六进制转义序列</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%89%E5%AD%97%E7%AC%A6%E5%BA%8F%E5%88%97-trigraph-sequence"><span class="nav-number"></span> <span class="nav-text">三字符序列 (trigraph
+sequence)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number"></span> <span class="nav-text">参考资料</span></a></div>
+        </div>
+        <!--/noindex-->
 
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image" alt="Fish__404"
       src="/images/cat.jpg">
   <p class="site-author-name" itemprop="name">Fish__404</p>
   <div class="site-description" itemprop="description">What's dream? Just fun!</div>
 </div>
-<div class="site-state-wrap motion-element">
+<div class="site-state-wrap site-overview-item animated">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
+        <a href="/archives/">
           <span class="site-state-item-count">100</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-            <a href="/categories/">
-          
+          <a href="/categories/">
         <span class="site-state-item-count">22</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-            <a href="/tags/">
+          <a href="/tags/">
         <span class="site-state-item-count">38</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
 </div>
-  <div class="sidebar-button motion-element">
-    <a onclick="Chatra('openChat', true);"><i class="fa fa-comment"></i>
-    
-  </a>
+  <div class="sidebar-button site-overview-item animated">
+    <button><i class="fa fa-comment"></i>
+      留言
+    </button>
   </div>
-  <div class="links-of-author motion-element">
+  <div class="links-of-author site-overview-item animated">
       <span class="links-of-author-item">
-        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2Zpc2gtNDA0" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;fish-404"><i class="fab fa-github fa-fw"></i></span>
+        <a href="https://github.com/fish-404" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;fish-404" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
       </span>
       <span class="links-of-author-item">
-        <span class="exturl" data-url="bWFpbHRvOmZpc2g0MDRoc2lmQGdtYWlsLmNvbQ==" title="E-Mail → mailto:fish404hsif@gmail.com"><i class="fa fa-envelope fa-fw"></i></span>
+        <a href="mailto:fish404hsif@gmail.com" title="E-Mail → mailto:fish404hsif@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
       </span>
   </div>
-  <div class="cc-license motion-element" itemprop="license">
-    <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></span>
-  </div>
 
 
 
+        </div>
       </div>
-
     </div>
   </aside>
-  <div id="sidebar-dimmer"></div>
+  <div class="sidebar-dimmer"></div>
 
 
-      </div>
-    </main>
+    </header>
 
-    <footer class="footer">
-      <div class="footer-inner">
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://fish-404.github.io/C-program-escape-sequence/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/cat.jpg">
+      <meta itemprop="name" content="Fish__404">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="在逃的貓">
+      <meta itemprop="description" content="What's dream? Just fun!">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="C语言中的转义序列 | 在逃的貓">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          C语言中的转义序列
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018/08/26 0:00:00" itemprop="dateCreated datePublished" datetime="2018-08-26T00:00:00+08:00">2018/08/26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2019/03/25 15:14:10" itemprop="dateModified" datetime="2019-03-25T15:14:10+08:00">2019/03/25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/C%E8%AF%AD%E8%A8%80/" itemprop="url" rel="index"><span itemprop="name">C语言</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>前些天有师弟问起关于C语言中转义序列的问题，尤其提到了<code>\?</code>这个转义字符，因为记得<code>??</code>似乎是三元字符集的开头，应该也算是特殊字符，但记得并不太清楚，于是搜寻了些资料，和转义序列的问题一并作整理和记录。
+<span id="more"></span> # 转义序列 (escape sequence)</p>
+<p>首先，我们知道，在C语言中，字符常量使用单引号括起来表示，但并不是所有的字符都可以直接由键盘输入而表示出来，比如换行符，也就无法用这样的方式来书写。通常来说有这样两种无法用这种方式表示的字符，一是非打印字符，如换行符，一是特殊字符，键盘上并没有直接的键位可以录入。这时候就需要用到转义序列来表示，字符转义序列和数字转义序列。</p>
+<h2 id="字符转义序列-charatcter-escape">字符转义序列 (charatcter
+escape)</h2>
+<p>字符转义序列即我们常见的如<code>\n</code>表示换行符这样，下面给出字符转义序列表：</p>
+<table>
+<thead>
+<tr class="header">
+<th>转义序列</th>
+<th style="text-align: left;">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>\'</code></td>
+<td style="text-align: left;">单引号</td>
+</tr>
+<tr class="even">
+<td><code>\"</code></td>
+<td style="text-align: left;">双引号</td>
+</tr>
+<tr class="odd">
+<td><code>\?</code></td>
+<td style="text-align: left;">问号</td>
+</tr>
+<tr class="even">
+<td><code>\</code></td>
+<td style="text-align: left;">反斜杠</td>
+</tr>
+<tr class="odd">
+<td><code>\a</code></td>
+<td style="text-align: left;">响铃</td>
+</tr>
+<tr class="even">
+<td><code>\b</code></td>
+<td style="text-align: left;">退格</td>
+</tr>
+<tr class="odd">
+<td><code>\f</code></td>
+<td style="text-align: left;">换页</td>
+</tr>
+<tr class="even">
+<td><code>\n</code></td>
+<td style="text-align: left;">换行</td>
+</tr>
+<tr class="odd">
+<td><code>\r</code></td>
+<td style="text-align: left;">回车</td>
+</tr>
+<tr class="even">
+<td><code>\t</code></td>
+<td style="text-align: left;">水平制表符</td>
+</tr>
+<tr class="odd">
+<td><code>\v</code></td>
+<td style="text-align: left;">垂直制表符</td>
+</tr>
+</tbody>
+</table>
+<p>这里我们看到前四个都是符号，而除了问号以外，其他三个符号因为在C语言中有其他的作用，为了避免两者混淆，我们需要用转义序列来表示，那么为什么问号也需要呢，这就是我们后面要提到的三元字符序列，这里先按下不表。</p>
+<h2 id="数字转义序列-numberic-escape">数字转义序列 (numberic
+escape)</h2>
+<p>虽然字符转义序列已经可以表示出一些无法打印的字符，但并仍然没法包含所有无法打印的
+ASCII 字符，而我们通过查阅 <a target="_blank" rel="noopener" href="http://www.asciitable.com/">ASCII
+字符集</a>中字符编号，就可以使用数字转义序列来表示这些字符，就好比我们每个人都有一个身份证号，用身份证号就可以表示我们这个人的身份一样。</p>
+<h3 id="八进制转义序列">八进制转义序列</h3>
+<p><span class="math inline">\(\verb|\|NUMBER_{(8)}\)</span> * NUMBER
+为一不超过三位数字的八进制数; * NUMBER
+需表示为无符号字符，最大值通常是<span
+class="math inline">\(337_{(8)}\)</span>; *
+转义序列中的八进制数不一定要用 0 开头.</p>
+<h3 id="十六进制转义序列">十六进制转义序列</h3>
+<p><span class="math inline">\(\verb|\x|NUMBER_{(16)}\)</span> * NUMBER
+为一十六进制数; * NUBMBER 需表示为无符号字符（若字符长度为 8
+位，则不能超过 FF）; * 字符 x 必须为小写; * NUMBER 不限大小写;
+当作为字符常量使用时，转义序列必须用一对单引号括起来，而采用数字转义序列的方式来表示某个字符常量可能会使代码的可读性降低，可以使用<code>#define</code>宏定义的方式进行命名：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> ESC <span class="string">&#x27;\33&#x27;</span> <span class="comment">/* ASCII escape character */</span></span></span><br></pre></td></tr></table></figure>
+<h1 id="三字符序列-trigraph-sequence">三字符序列 (trigraph
+sequence)</h1>
+<p>前面我们提到了问号这个特殊字符也需要一个转义序列是由于三字符序列的存在。在欧洲的某些老式键盘提供的使欧洲语言所使用的古老字符，键盘上缺少
+C 语言需要的字符，因此引入了三字符来解决这一问题。</p>
+<p>三字符序列是一种三字符码，所有的三字符都以<code>??</code>开始，下面是三字符序列表：</p>
+<table>
+<thead>
+<tr class="header">
+<th>三字符序列</th>
+<th style="text-align: left;">等价的 ASCII码</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>??=</code></td>
+<td style="text-align: left;">#</td>
+</tr>
+<tr class="even">
+<td><code>??(</code></td>
+<td style="text-align: left;">[</td>
+</tr>
+<tr class="odd">
+<td><code>??/</code></td>
+<td style="text-align: left;">\</td>
+</tr>
+<tr class="even">
+<td><code>??'</code></td>
+<td style="text-align: left;">^</td>
+</tr>
+<tr class="odd">
+<td><code>??&lt;</code></td>
+<td style="text-align: left;">{</td>
+</tr>
+<tr class="even">
+<td><code>??!</code></td>
+<td style="text-align: left;">}</td>
+</tr>
+<tr class="odd">
+<td><code>??&gt;</code></td>
+<td style="text-align: left;">~</td>
+</tr>
+</tbody>
+</table>
+<p>例如，我们在学习编程时学习的第一个程序 Hello, world
+就可以用三字符写成下面的形式：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">??=include &lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> main(<span class="type">void</span>)</span><br><span class="line">??&lt;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Hello, world??/n&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"> ??&gt;</span><br></pre></td></tr></table></figure>
+<p>遵循 C89 或 C99
+标准的编译器都必须能接受三字符，所以上面这段程序是能够通过编译并执行的，混杂三字符和正常字符表示也是可以的。这也就是说，我们在字符串中放置<code>??</code>，有一定几率会因为三字符而导致问题，因为编译器可能会将其视为三字符的开始标志。如果发生这种情况，我们可以在第二个<code>?</code>字符前面放置<code>\</code>把第二个字符<code>?</code>变成转义序列，即<code>?\?</code>，这样就不会被看作是三字符的开始了，这也是为什么在字符串中直接使用<code>?</code>是可以输出的，但转义序列中却包含<code>\?</code>。不过在我的几次尝试中，发现，编译器通常会在碰到疑似三字符出现的情况下出现
+warning，提示你三字符被忽略，如果需要启用三字符，需要添加<code>-trigraphs</code>编译选项，添加了编译选项后就可以正常使用三字符了，虽然通常我们很少用及。</p>
+<h1 id="参考资料">参考资料</h1>
+<ul>
+<li>《C语言程序设计现代方法（第 2 版）》</li>
+<li><a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/c/language/escape">转义序列 -
+cppreference.com</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Program/" rel="tag"><i class="fa fa-tag"></i> Program</a>
+              <a href="/tags/C/" rel="tag"><i class="fa fa-tag"></i> C</a>
+          </div>
+
         
 
-        
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/vim-vimtutor/" rel="prev" title="Vim-Vimtutor学习整理">
+                  <i class="fa fa-chevron-left"></i> Vim-Vimtutor学习整理
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/Bookcomment-butterfly-killing/" rel="next" title="书籍相关-戏中人">
+                  书籍相关-戏中人 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
 
 <div class="copyright">
-  
   &copy; 2018 – 
   <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
-    <i class="fa fa-user-secret"></i>
+    <i class="fa fa-user-secrect"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">逃貓</span>
 </div>
-  <div class="powered-by">由 <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl theme-link" data-url="aHR0cHM6Ly9taXN0LnRoZW1lLW5leHQub3Jn">NexT.Mist</span> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
   </div>
 
-        
-
-
-
-
-
-
-
-
-      </div>
-    </footer>
-  </div>
+    </div>
+  </footer>
 
   
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
 
-<script src="/js/utils.js"></script>
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+<script class="next-config" data-name="chatra" type="application/json">{"enable":true,"async":true,"id":"JBgdQtj33YZBaPNj7"}</script>
+<script src="/js/third-party/chat/chatra.js"></script>
+<script async src="https://call.chatra.io/chatra.js"></script>
 
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/muse.js"></script>
-
-
-<script src="/js/next-boot.js"></script>
 
 
 
@@ -586,38 +495,11 @@
 
 
   
-<script src="/js/local-search.js"></script>
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
-
-
-  <script>
-    (function(d, w, c) {
-      w.ChatraID = 'JBgdQtj33YZBaPNj7';
-      var s = d.createElement('script');
-      w[c] = w[c] || function() {
-        (w[c].q = w[c].q || []).push(arguments);
-      };
-      s.async = true;
-      s.src = 'https://call.chatra.io/chatra.js';
-      if (d.head) d.head.appendChild(s);
-    })(document, window, 'Chatra');
-  </script>
-
-
-  <script src="//code.tidio.co/amphtooacns56ag7meqg3qwdiecofxwz.js"></script>
-
-
-
-
-
-
-
-  
-
-  
-
-  
 
 </body>
 </html>

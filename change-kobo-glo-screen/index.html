@@ -2,106 +2,76 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 6.2.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-icon-fish.png">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-fish.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-fish.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-fish.png">
   <link rel="mask-icon" href="/images/logo.svg" color="#222">
-  <meta http-equiv="Cache-Control" content="no-transform">
-  <meta http-equiv="Cache-Control" content="no-siteapp">
 
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
-  <link rel="stylesheet" href="/lib/pace/pace-theme-bounce.min.css">
-  <script src="/lib/pace/pace.min.js"></script>
 
-<script id="hexo-configurations">
-    var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"fish-404.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":true,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
-  </script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha256-xejo6yLi6vGtAjcMIsY8BHdKsLg7QynVlFMzdQgUuy8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-  <meta name="description" content="本文记录在 Kobo Glo 原生系统 nickel 下设置自定义休眠&#x2F;关机壁纸过程，系统版本为4.15.x。其他版本的 Kobo 应该也适用，因没有相应设备，故无法测试。">
+<script class="next-config" data-name="main" type="application/json">{"hostname":"fish-404.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.12.3","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="本文记录在 Kobo Glo 原生系统 nickel 下设置自定义休眠&#x2F;关机壁纸过程，系统版本为4.15.x。其他版本的 Kobo 应该也适用，因没有相应设备，故无法测试。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="设置 Kobo Glo 休眠&#x2F;关机壁纸">
 <meta property="og:url" content="https://fish-404.github.io/change-kobo-glo-screen/index.html">
 <meta property="og:site_name" content="在逃的貓">
-<meta property="og:description" content="本文记录在 Kobo Glo 原生系统 nickel 下设置自定义休眠&#x2F;关机壁纸过程，系统版本为4.15.x。其他版本的 Kobo 应该也适用，因没有相应设备，故无法测试。">
+<meta property="og:description" content="本文记录在 Kobo Glo 原生系统 nickel 下设置自定义休眠&#x2F;关机壁纸过程，系统版本为4.15.x。其他版本的 Kobo 应该也适用，因没有相应设备，故无法测试。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2019-07-09T16:00:00.000Z">
 <meta property="article:modified_time" content="2019-11-19T16:00:00.000Z">
 <meta property="article:author" content="Fish__404">
 <meta name="twitter:card" content="summary">
 
+
 <link rel="canonical" href="https://fish-404.github.io/change-kobo-glo-screen/">
 
 
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome : false,
-    isPost : true,
-    lang   : 'zh-CN'
-  };
-</script>
 
-  <title>设置 Kobo Glo 休眠/关机壁纸 | 在逃的貓</title>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://fish-404.github.io/change-kobo-glo-screen/","path":"change-kobo-glo-screen/","title":"设置 Kobo Glo 休眠/关机壁纸"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>设置 Kobo Glo 休眠/关机壁纸 | 在逃的貓</title>
   
 
 
 
 
 
-
   <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
-
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
 
+  <main class="main">
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
     </div>
   </div>
 
   <div class="site-meta">
 
     <a href="/" class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">在逃的貓</h1>
-      <span class="logo-line-after"><i></i></span>
+      <i class="logo-line"></i>
+      <p class="site-title">在逃的貓</p>
+      <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description">A cat called fish.</p>
   </div>
@@ -115,29 +85,8 @@
 
 
 
-
 <nav class="site-nav">
-  <ul id="menu" class="main-menu menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fab fa-fort-awesome fa-fw"></i>首页</a>
-
-  </li>
-        <li class="menu-item menu-item-about">
-
-    <a href="/about/" rel="section"><i class="fa fa-question fa-fw"></i>关于</a>
-
-  </li>
-        <li class="menu-item menu-item-categories">
-
-    <a href="/categories/" rel="section"><i class="fa fa-list fa-fw"></i>分类</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-inbox fa-fw"></i>归档</a>
-
-  </li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fab fa-fort-awesome fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-question fa-fw"></i>关于</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-list fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-inbox fa-fw"></i>归档</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -148,23 +97,22 @@
 
 
   <div class="search-pop-overlay">
-    <div class="popup search-popup">
-        <div class="search-header">
+    <div class="popup search-popup"><div class="search-header">
   <span class="search-icon">
     <i class="fa fa-search"></i>
   </span>
   <div class="search-input-container">
-    <input autocomplete="off" autocapitalize="off"
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
            placeholder="搜索..." spellcheck="false"
            type="search" class="search-input">
   </div>
-  <span class="popup-btn-close">
+  <span class="popup-btn-close" role="button">
     <i class="fa fa-times-circle"></i>
   </span>
 </div>
-<div id="search-result">
-  <div id="no-result">
-    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
   </div>
 </div>
 
@@ -172,260 +120,18 @@
   </div>
 
 </div>
-    </header>
-
-    
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
-  <div class="reading-progress-bar"></div>
-
-
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
-
-          <div class="content post posts-expand">
-            
-
-    
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://fish-404.github.io/change-kobo-glo-screen/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/cat.jpg">
-      <meta itemprop="name" content="Fish__404">
-      <meta itemprop="description" content="What's dream? Just fun!">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="在逃的貓">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          设置 Kobo Glo 休眠/关机壁纸
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019/07/10 0:00:00" itemprop="dateCreated datePublished" datetime="2019-07-10T00:00:00+08:00">2019/07/10</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019/11/20 0:00:00" itemprop="dateModified" datetime="2019-11-20T00:00:00+08:00">2019/11/20</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%8A%80%E6%9C%AF%E6%9D%82%E8%B0%88/" itemprop="url" rel="index"><span itemprop="name">技术杂谈</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-        <p>本文记录在 Kobo Glo 原生系统 nickel 下设置自定义休眠&#x2F;关机壁纸过程，系统版本为4.15.x。其他版本的 Kobo 应该也适用，因没有相应设备，故无法测试。</p>
-<span id="more"></span>
-
-<h1 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h1><p>4.13.x以上版本直接在<code>.kobo</code>文件夹内新建<code>screensaver</code>文件夹，将屏保图片放入文件夹内，屏保即可随机生成，注意与插件版本不同，<code>顯示目前正在閲讀</code> 选项需要勾选。经4.18.x固件版本测试可用。</p>
-<ul>
-<li>上面的方式会出现阅读 Pocket 文章的时候关闭屏幕显示的不是自定义封面而是 Pocket 标题或里面的图片</li>
-<li>以下插件版本在新旧版本固件均可使用</li>
-<li>以下插件版本可实现关机与待机不同屏保</li>
-<li>4.18.x固件会将图片文件显示在书架中，即若采用插件版本，屏保图片也会显示在书架中<ul>
-<li>根据补丁文件中的说明，在4.17.13541版本之后自己附加的隐藏文件夹<code>.xxx</code>中的文件也会被读取</li>
-</ul>
-</li>
-</ul>
-<h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>虽对纸质书多有偏爱，对于在手机上阅读电子书多有排斥，出于便携性的考虑入手了电纸书。入手的是在国内尚属小众的 Kobo 电纸书，Kobo Glo 算是这个系列最初级的产品。最新的固件版本已经支持设定内置语言为繁体中文，书名显示也基本没有问题，因此直接打算用原生系统，但发现原生系统下没法改变休眠和关机时屏幕显示，只会显示休眠或关机字样，看着相当枯燥，想要自设壁纸但没有找到相关选项，网上的大部分解决方案都翻译自一篇英文博客(参考资料2），而该方法自系统版本升级后已无法生效。几经查找，找到了该方法程序的原作者，以及其仍在维护和更新的解决方案，几经折腾，成功将屏幕设置为可爱的小哀~</p>
-<p>更多折腾参见程序作者的 Github 仓库：<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2Zyb3N0c2NodXR6L0tvYm8=">https://github.com/frostschutz/Kobo<i class="fa fa-external-link-alt"></i></span> </p>
-<h1 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h1><ol>
-<li><p><code>設定</code> 中找到 <code>省電和隱私權設定</code> ，去掉<code>顯示目前正在閲讀</code>选项的勾选状态，即将其置为关闭状态。</p>
-</li>
-<li><p>下载该压缩包 <span class="exturl" data-url="aHR0cHM6Ly93d3cubW9iaWxlcmVhZC5jb20vZm9ydW1zL2F0dGFjaG1lbnQucGhwP2F0dGFjaG1lbnRpZD0xNjg0MTImZD0xNTQ0OTk5Mzc1">KoboRoot-ScreecSaver-20181216.zip<i class="fa fa-external-link-alt"></i></span> 。解压，其中有一个名为<code>KoboRoot-ScreenSaver-20181216.tgz</code>的文件，将其重命名为<code>KoboRoot.tgz</code></p>
-</li>
-<li><p>将 Kobo Glo 通过数据线连接到电脑，将<code>KoboRoot.tgz</code>拷贝至<code>KOBOeReader</code>（磁盘名）下<code>.kobo</code>的根目录，即位置为<code>.kobo/KoboRoot.tgz</code></p>
-</li>
-<li><p>拔掉数据线连在 Kobo 的一端（注意，若先拔掉在电脑的一端，可能会造成假死机，通过上面的小圆孔可以恢复）。此时，设备将会自动重启。</p>
-</li>
-<li><p>再次连接设备和电脑，可以发现多了一个<code>.addons</code>的文件夹，在该文件夹中<code>screensaver/poweroff</code>和<code>screensaver/standby</code>文件夹下放入自己想要设置的图片，放入多张将会随机选择一张显示。</p>
-<ul>
-<li><p>图片应为 PNG 格式</p>
-</li>
-<li><p>最多大约1000张，取决于文件名长度，越短越好</p>
-</li>
-<li><p>根据设备调整图片大小(以下数据来自参考资料2）</p>
-</li>
-</ul>
-</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th>设备型号</th>
-<th>分辨率</th>
-<th>PPI</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Kobo Touch</td>
-<td>600 x 800</td>
-<td>167</td>
-</tr>
-<tr>
-<td>Kobo Glo</td>
-<td>768 x 1024</td>
-<td>213</td>
-</tr>
-<tr>
-<td>Kobo Aura</td>
-<td>758 x 1024</td>
-<td>212</td>
-</tr>
-<tr>
-<td>Kobo Aura HD</td>
-<td>1080 x 1440</td>
-<td>265</td>
-</tr>
-<tr>
-<td>Kobo Aura H20</td>
-<td>1080 x 1440</td>
-<td>265</td>
-</tr>
-</tbody></table>
-<p> 一个在线编辑图片的网站 <a href = "https://pixlr.com/x/">Photo Editor: Pixlr X - free image editing online </a></p>
-<ul>
-<li>将图片调整为灰阶或黑白（上面的网站也可以做到）</li>
-</ul>
-<ol start="6">
-<li><p>修改<code>.addons/screensaver/</code>中的<code>screensaver.cfg</code>文件，写入</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">standby=</span><br><span class="line"></span><br><span class="line">poweroff=</span><br></pre></td></tr></table></figure>
-
-<p>值无需设置，会自动生成，在系统更新和更换语言后该值可能不再适用，将其删除再次自动生成即可。注意最好不要用记事本编辑。</p>
-</li>
-<li><p>修改<code>.kobo</code>中的<code>affiliate.conf</code>文件，将值改为<code>kobo</code>:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[General]</span><br><span class="line">affiliate=kobo</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>掉连接线，滑动顶部开关，可以看到已经生效。</p>
-</li>
-<li><p>补充：当直接在PIN码验证界面滑动顶部开关进入休眠模式的话，会进入默认的空白模式。</p>
-</li>
-</ol>
-<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ul>
-<li><span class="exturl" data-url="aHR0cHM6Ly93d3cubW9iaWxlcmVhZC5jb20vZm9ydW1zL3Nob3d0aHJlYWQucGhwP3Q9MjU1MjM4">Random Screensaver Image - MobileRead Forums<i class="fa fa-external-link-alt"></i></span></li>
-<li><span class="exturl" data-url="aHR0cHM6Ly93d3cuaG93dG9nZWVrLmNvbS8yMTkwNTYvaG93LXRvLWFkZC1jdXN0b20tc2NyZWVuc2F2ZXJzLXRvLXlvdXIta29iby1lYm9vay1yZWFkZXIv">How to Add Custom Screensavers to Your Kobo Ebook Reader<i class="fa fa-external-link-alt"></i></span></li>
-<li><span class="exturl" data-url="aHR0cHM6Ly93d3cubW9iaWxlcmVhZC5jb20vZm9ydW1zL3Nob3d0aHJlYWQucGhwP3A9Mzg2ODc5NQ==">Random Screensaver - MobileRead Forums<i class="fa fa-external-link-alt"></i></span></li>
-</ul>
-
-    </div>
-
-    
-    
-    
-          
-
-<div>
-<ul class="post-copyright">
-  <li class="post-copyright-author">
-    <strong>本文作者： </strong>Fish__404
-  </li>
-  <li class="post-copyright-link">
-    <strong>本文链接：</strong>
-    <a href="https://fish-404.github.io/change-kobo-glo-screen/" title="设置 Kobo Glo 休眠&#x2F;关机壁纸">https://fish-404.github.io/change-kobo-glo-screen/</a>
-  </li>
-  <li class="post-copyright-license">
-    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！
-  </li>
-</ul>
-</div>
-
-
-      <footer class="post-footer">
-
         
-
-
-        
-    <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/Bookcomment-truth-cannot-distinguish/" rel="prev" title="书籍相关-真假莫辨">
-      <i class="fa fa-chevron-left"></i> 书籍相关-真假莫辨
-    </a></div>
-      <div class="post-nav-item">
-    <a href="/Bookcomment-candy-bullet/" rel="next" title="书籍相关-斯德哥尔摩胁迫">
-      书籍相关-斯德哥尔摩胁迫 <i class="fa fa-chevron-right"></i>
-    </a></div>
-    </div>
-      </footer>
-    
-  </article>
   
-  
-  
-
-
-
-          </div>
-          
-
-<script>
-  window.addEventListener('tabs:register', () => {
-    let { activeClass } = CONFIG.comments;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
-      }
-    }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
-  }
-</script>
-
-        </div>
-          
-  
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
   </div>
 
   <aside class="sidebar">
-    <div class="sidebar-inner">
 
-      <ul class="sidebar-nav motion-element">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
         </li>
@@ -434,115 +140,307 @@
         </li>
       </ul>
 
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9B%B4%E6%96%B0"><span class="nav-number">1.</span> <span class="nav-text">更新</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%83%8C%E6%99%AF"><span class="nav-number">2.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A4"><span class="nav-number">3.</span> <span class="nav-text">步骤</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">4.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
-      </div>
-      <!--/noindex-->
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9B%B4%E6%96%B0"><span class="nav-number">1.</span> <span class="nav-text">更新</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%83%8C%E6%99%AF"><span class="nav-number">2.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A4"><span class="nav-number">3.</span> <span class="nav-text">步骤</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">4.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
 
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image" alt="Fish__404"
       src="/images/cat.jpg">
   <p class="site-author-name" itemprop="name">Fish__404</p>
   <div class="site-description" itemprop="description">What's dream? Just fun!</div>
 </div>
-<div class="site-state-wrap motion-element">
+<div class="site-state-wrap site-overview-item animated">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
+        <a href="/archives/">
           <span class="site-state-item-count">100</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-            <a href="/categories/">
-          
+          <a href="/categories/">
         <span class="site-state-item-count">22</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-            <a href="/tags/">
+          <a href="/tags/">
         <span class="site-state-item-count">38</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
 </div>
-  <div class="sidebar-button motion-element">
-    <a onclick="Chatra('openChat', true);"><i class="fa fa-comment"></i>
-    
-  </a>
+  <div class="sidebar-button site-overview-item animated">
+    <button><i class="fa fa-comment"></i>
+      留言
+    </button>
   </div>
-  <div class="links-of-author motion-element">
+  <div class="links-of-author site-overview-item animated">
       <span class="links-of-author-item">
-        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2Zpc2gtNDA0" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;fish-404"><i class="fab fa-github fa-fw"></i></span>
+        <a href="https://github.com/fish-404" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;fish-404" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
       </span>
       <span class="links-of-author-item">
-        <span class="exturl" data-url="bWFpbHRvOmZpc2g0MDRoc2lmQGdtYWlsLmNvbQ==" title="E-Mail → mailto:fish404hsif@gmail.com"><i class="fa fa-envelope fa-fw"></i></span>
+        <a href="mailto:fish404hsif@gmail.com" title="E-Mail → mailto:fish404hsif@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
       </span>
   </div>
-  <div class="cc-license motion-element" itemprop="license">
-    <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></span>
-  </div>
 
 
 
+        </div>
       </div>
-
     </div>
   </aside>
-  <div id="sidebar-dimmer"></div>
+  <div class="sidebar-dimmer"></div>
 
 
-      </div>
-    </main>
+    </header>
 
-    <footer class="footer">
-      <div class="footer-inner">
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://fish-404.github.io/change-kobo-glo-screen/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/cat.jpg">
+      <meta itemprop="name" content="Fish__404">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="在逃的貓">
+      <meta itemprop="description" content="What's dream? Just fun!">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="设置 Kobo Glo 休眠/关机壁纸 | 在逃的貓">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          设置 Kobo Glo 休眠/关机壁纸
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019/07/10 0:00:00" itemprop="dateCreated datePublished" datetime="2019-07-10T00:00:00+08:00">2019/07/10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2019/11/20 0:00:00" itemprop="dateModified" datetime="2019-11-20T00:00:00+08:00">2019/11/20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%9D%82%E8%B0%88/" itemprop="url" rel="index"><span itemprop="name">技术杂谈</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>本文记录在 Kobo Glo 原生系统 nickel
+下设置自定义休眠/关机壁纸过程，系统版本为4.15.x。其他版本的 Kobo
+应该也适用，因没有相应设备，故无法测试。</p>
+<span id="more"></span>
+<h1 id="更新">更新</h1>
+<p>4.13.x以上版本直接在<code>.kobo</code>文件夹内新建<code>screensaver</code>文件夹，将屏保图片放入文件夹内，屏保即可随机生成，注意与插件版本不同，<code>顯示目前正在閲讀</code>
+选项需要勾选。经4.18.x固件版本测试可用。</p>
+<ul>
+<li>上面的方式会出现阅读 Pocket
+文章的时候关闭屏幕显示的不是自定义封面而是 Pocket 标题或里面的图片</li>
+<li>以下插件版本在新旧版本固件均可使用</li>
+<li>以下插件版本可实现关机与待机不同屏保</li>
+<li>4.18.x固件会将图片文件显示在书架中，即若采用插件版本，屏保图片也会显示在书架中
+<ul>
+<li>根据补丁文件中的说明，在4.17.13541版本之后自己附加的隐藏文件夹<code>.xxx</code>中的文件也会被读取</li>
+</ul></li>
+</ul>
+<h1 id="背景">背景</h1>
+<p>虽对纸质书多有偏爱，对于在手机上阅读电子书多有排斥，出于便携性的考虑入手了电纸书。入手的是在国内尚属小众的
+Kobo 电纸书，Kobo Glo
+算是这个系列最初级的产品。最新的固件版本已经支持设定内置语言为繁体中文，书名显示也基本没有问题，因此直接打算用原生系统，但发现原生系统下没法改变休眠和关机时屏幕显示，只会显示休眠或关机字样，看着相当枯燥，想要自设壁纸但没有找到相关选项，网上的大部分解决方案都翻译自一篇英文博客(参考资料2），而该方法自系统版本升级后已无法生效。几经查找，找到了该方法程序的原作者，以及其仍在维护和更新的解决方案，几经折腾，成功将屏幕设置为可爱的小哀~</p>
+<p>更多折腾参见程序作者的 Github
+仓库：https://github.com/frostschutz/Kobo</p>
+<h1 id="步骤">步骤</h1>
+<ol type="1">
+<li><p><code>設定</code> 中找到 <code>省電和隱私權設定</code>
+，去掉<code>顯示目前正在閲讀</code>选项的勾选状态，即将其置为关闭状态。</p></li>
+<li><p>下载该压缩包
+<a target="_blank" rel="noopener" href="https://www.mobileread.com/forums/attachment.php?attachmentid=168412&d=1544999375">KoboRoot-ScreecSaver-20181216.zip</a>
+。解压，其中有一个名为<code>KoboRoot-ScreenSaver-20181216.tgz</code>的文件，将其重命名为<code>KoboRoot.tgz</code></p></li>
+<li><p>将 Kobo Glo
+通过数据线连接到电脑，将<code>KoboRoot.tgz</code>拷贝至<code>KOBOeReader</code>（磁盘名）下<code>.kobo</code>的根目录，即位置为<code>.kobo/KoboRoot.tgz</code></p></li>
+<li><p>拔掉数据线连在 Kobo
+的一端（注意，若先拔掉在电脑的一端，可能会造成假死机，通过上面的小圆孔可以恢复）。此时，设备将会自动重启。</p></li>
+<li><p>再次连接设备和电脑，可以发现多了一个<code>.addons</code>的文件夹，在该文件夹中<code>screensaver/poweroff</code>和<code>screensaver/standby</code>文件夹下放入自己想要设置的图片，放入多张将会随机选择一张显示。</p>
+<ul>
+<li><p>图片应为 PNG 格式</p></li>
+<li><p>最多大约1000张，取决于文件名长度，越短越好</p></li>
+<li><p>根据设备调整图片大小(以下数据来自参考资料2）</p></li>
+</ul></li>
+</ol>
+<table>
+<thead>
+<tr class="header">
+<th>设备型号</th>
+<th>分辨率</th>
+<th>PPI</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Kobo Touch</td>
+<td>600 x 800</td>
+<td>167</td>
+</tr>
+<tr class="even">
+<td>Kobo Glo</td>
+<td>768 x 1024</td>
+<td>213</td>
+</tr>
+<tr class="odd">
+<td>Kobo Aura</td>
+<td>758 x 1024</td>
+<td>212</td>
+</tr>
+<tr class="even">
+<td>Kobo Aura HD</td>
+<td>1080 x 1440</td>
+<td>265</td>
+</tr>
+<tr class="odd">
+<td>Kobo Aura H20</td>
+<td>1080 x 1440</td>
+<td>265</td>
+</tr>
+</tbody>
+</table>
+<p>一个在线编辑图片的网站 <a href = "https://pixlr.com/x/">Photo Editor:
+Pixlr X - free image editing online </a></p>
+<ul>
+<li>将图片调整为灰阶或黑白（上面的网站也可以做到）</li>
+</ul>
+<ol start="6" type="1">
+<li><p>修改<code>.addons/screensaver/</code>中的<code>screensaver.cfg</code>文件，写入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">standby=</span><br><span class="line"></span><br><span class="line">poweroff=</span><br></pre></td></tr></table></figure>
+<p>值无需设置，会自动生成，在系统更新和更换语言后该值可能不再适用，将其删除再次自动生成即可。注意最好不要用记事本编辑。</p></li>
+<li><p>修改<code>.kobo</code>中的<code>affiliate.conf</code>文件，将值改为<code>kobo</code>:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[General]</span><br><span class="line">affiliate=kobo</span><br></pre></td></tr></table></figure></li>
+<li><p>掉连接线，滑动顶部开关，可以看到已经生效。</p></li>
+<li><p>补充：当直接在PIN码验证界面滑动顶部开关进入休眠模式的话，会进入默认的空白模式。</p></li>
+</ol>
+<h1 id="参考资料">参考资料</h1>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.mobileread.com/forums/showthread.php?t=255238">Random Screensaver Image - MobileRead Forums</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.howtogeek.com/219056/how-to-add-custom-screensavers-to-your-kobo-ebook-reader/">How to Add Custom Screensavers to Your Kobo Ebook Reader</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.mobileread.com/forums/showthread.php?p=3868795">Random
+Screensaver - MobileRead Forums</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
         
 
-        
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/Bookcomment-truth-cannot-distinguish/" rel="prev" title="书籍相关-真假莫辨">
+                  <i class="fa fa-chevron-left"></i> 书籍相关-真假莫辨
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/Bookcomment-candy-bullet/" rel="next" title="书籍相关-斯德哥尔摩胁迫">
+                  书籍相关-斯德哥尔摩胁迫 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
 
 <div class="copyright">
-  
   &copy; 2018 – 
   <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
-    <i class="fa fa-user-secret"></i>
+    <i class="fa fa-user-secrect"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">逃貓</span>
 </div>
-  <div class="powered-by">由 <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl theme-link" data-url="aHR0cHM6Ly9taXN0LnRoZW1lLW5leHQub3Jn">NexT.Mist</span> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
   </div>
 
-        
-
-
-
-
-
-
-
-
-      </div>
-    </footer>
-  </div>
+    </div>
+  </footer>
 
   
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
 
-<script src="/js/utils.js"></script>
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+<script class="next-config" data-name="chatra" type="application/json">{"enable":true,"async":true,"id":"JBgdQtj33YZBaPNj7"}</script>
+<script src="/js/third-party/chat/chatra.js"></script>
+<script async src="https://call.chatra.io/chatra.js"></script>
 
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/muse.js"></script>
-
-
-<script src="/js/next-boot.js"></script>
 
 
 
@@ -553,38 +451,11 @@
 
 
   
-<script src="/js/local-search.js"></script>
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
-
-
-  <script>
-    (function(d, w, c) {
-      w.ChatraID = 'JBgdQtj33YZBaPNj7';
-      var s = d.createElement('script');
-      w[c] = w[c] || function() {
-        (w[c].q = w[c].q || []).push(arguments);
-      };
-      s.async = true;
-      s.src = 'https://call.chatra.io/chatra.js';
-      if (d.head) d.head.appendChild(s);
-    })(document, window, 'Chatra');
-  </script>
-
-
-  <script src="//code.tidio.co/amphtooacns56ag7meqg3qwdiecofxwz.js"></script>
-
-
-
-
-
-
-
-  
-
-  
-
-  
 
 </body>
 </html>
