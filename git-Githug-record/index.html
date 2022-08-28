@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-fish.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-fish.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-fish.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha256-xejo6yLi6vGtAjcMIsY8BHdKsLg7QynVlFMzdQgUuy8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"fish-404.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.12.3","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="Githug 通关记录，简要写关于涉及到的部分命令的使用。一个适用于 Git 初学者的练习游戏。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Githug 记录">
+<meta property="og:url" content="https://fish-404.github.io/git-Githug-record/index.html">
+<meta property="og:site_name" content="在逃的貓">
+<meta property="og:description" content="Githug 通关记录，简要写关于涉及到的部分命令的使用。一个适用于 Git 初学者的练习游戏。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-08-26T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-08-27T16:00:00.000Z">
+<meta property="article:author" content="逃貓">
+<meta property="article:tag" content="git">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://fish-404.github.io/git-Githug-record/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://fish-404.github.io/git-Githug-record/","path":"git-Githug-record/","title":"Githug 记录"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Githug 记录 | 在逃的貓</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">在逃的貓</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">A cat called fish.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fab fa-fort-awesome fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-question fa-fw"></i>关于</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-list fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-inbox fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%86%99%E5%9C%A8%E5%89%8D%E9%9D%A2"><span class="nav-number">1.</span> <span class="nav-text">写在前面</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#level-1---init"><span class="nav-number">2.</span> <span class="nav-text">Level 1 - Init</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#level-2---config"><span class="nav-number">3.</span> <span class="nav-text">Level 2 - Config</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#level-3---add"><span class="nav-number">4.</span> <span class="nav-text">Level 3 - Add</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#level-4---commit"><span class="nav-number">5.</span> <span class="nav-text">Level 4 - Commit</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#level-5---clone"><span class="nav-number">6.</span> <span class="nav-text">Level 5 - Clone</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#level-6-clone-to-folder"><span class="nav-number">7.</span> <span class="nav-text">Level 6 Clone to folder</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#level-7-ignore"><span class="nav-number">8.</span> <span class="nav-text">Level 7 Ignore</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#level-8---include"><span class="nav-number">9.</span> <span class="nav-text">Level 8 - Include</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#level-9---status"><span class="nav-number">10.</span> <span class="nav-text">Level 9 - Status</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#level-10---number-of-files-commited"><span class="nav-number">11.</span> <span class="nav-text">Level 10 - Number of files
+commited</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#level-11---rm"><span class="nav-number">12.</span> <span class="nav-text">Level 11 - Rm</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#level-12---rm-cached"><span class="nav-number">13.</span> <span class="nav-text">Level 12 - Rm cached</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#level-13---stash"><span class="nav-number">14.</span> <span class="nav-text">Level 13 - Stash</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#level-14---rename"><span class="nav-number">15.</span> <span class="nav-text">Level 14 - Rename</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#level-15---restructure"><span class="nav-number">16.</span> <span class="nav-text">Level 15 - Restructure</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#level-16---log"><span class="nav-number">17.</span> <span class="nav-text">Level 16 - Log</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#level-17---tag"><span class="nav-number">18.</span> <span class="nav-text">Level 17 - Tag</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#level-18---push-tags"><span class="nav-number">19.</span> <span class="nav-text">Level 18 - Push tags</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#level-19---commit-amend"><span class="nav-number">20.</span> <span class="nav-text">Level 19 - Commit amend</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#level-20---commit-in-furture"><span class="nav-number">21.</span> <span class="nav-text">Level 20 - Commit in furture</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#level-21---reset"><span class="nav-number">22.</span> <span class="nav-text">Level 21 - Reset</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#level-22---reset-soft"><span class="nav-number">23.</span> <span class="nav-text">Level 22 - Reset soft</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#level-23---checkout-file"><span class="nav-number">24.</span> <span class="nav-text">Level 23 - Checkout file</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#level-24---remote"><span class="nav-number">25.</span> <span class="nav-text">Level 24 - Remote</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#level-25---remote-url"><span class="nav-number">26.</span> <span class="nav-text">Level 25 - Remote url</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#level-26---pull"><span class="nav-number">27.</span> <span class="nav-text">Level 26 - Pull</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#level-27---remote-add"><span class="nav-number">28.</span> <span class="nav-text">Level 27 - Remote add</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#level-28---push"><span class="nav-number">29.</span> <span class="nav-text">Level 28 - Push</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#level-29---diff"><span class="nav-number">30.</span> <span class="nav-text">Level 29 - Diff</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#level-30---blame"><span class="nav-number">31.</span> <span class="nav-text">Level 30 - Blame</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#level-31---branch"><span class="nav-number">32.</span> <span class="nav-text">Level 31 - Branch</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#level-32---checkout"><span class="nav-number">33.</span> <span class="nav-text">Level 32 - Checkout</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#level-33---checkout-tag"><span class="nav-number">34.</span> <span class="nav-text">Level 33 - Checkout tag</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#level-34---checkout-tag-over-branch"><span class="nav-number">35.</span> <span class="nav-text">Level 34 - Checkout tag
+over branch</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#level-35---branch-at"><span class="nav-number">36.</span> <span class="nav-text">Level 35 - Branch at</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#level-36---delete-branch"><span class="nav-number">37.</span> <span class="nav-text">Level 36 - Delete branch</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#level-37---push-branch"><span class="nav-number">38.</span> <span class="nav-text">Level 37 - Push branch</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#level-38---merge"><span class="nav-number">39.</span> <span class="nav-text">Level 38 - Merge</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#level-39---fetch"><span class="nav-number">40.</span> <span class="nav-text">Level 39 - Fetch</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#level-40---rebase"><span class="nav-number">41.</span> <span class="nav-text">Level 40 - Rebase</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#level-41---rebase-onto"><span class="nav-number">42.</span> <span class="nav-text">Level 41 - Rebase onto</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#level-42---repack"><span class="nav-number">43.</span> <span class="nav-text">Level 42 - Repack</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#level-43---pick"><span class="nav-number">44.</span> <span class="nav-text">Level 43 - Pick</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#level-44---grep"><span class="nav-number">45.</span> <span class="nav-text">Level 44 - Grep</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#level-45---rename-commit"><span class="nav-number">46.</span> <span class="nav-text">Level 45 - Rename commit</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#level-46---squash"><span class="nav-number">47.</span> <span class="nav-text">Level 46 - Squash</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#level-47---merge-squash"><span class="nav-number">48.</span> <span class="nav-text">Level 47 - Merge squash</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#level-48---reorder"><span class="nav-number">49.</span> <span class="nav-text">Level 48 - Reorder</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#level-49---bisect"><span class="nav-number">50.</span> <span class="nav-text">Level 49 - Bisect</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#level-50---stage-lines"><span class="nav-number">51.</span> <span class="nav-text">Level 50 - Stage lines</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#level-51---find-old-branch"><span class="nav-number">52.</span> <span class="nav-text">Level 51 - Find old branch</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#level-52---revert"><span class="nav-number">53.</span> <span class="nav-text">Level 52 - Revert</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#level-53---restore"><span class="nav-number">54.</span> <span class="nav-text">Level 53 - Restore</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#level-54---conflict"><span class="nav-number">55.</span> <span class="nav-text">Level 54 - Conflict</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#level-55---submodule"><span class="nav-number">56.</span> <span class="nav-text">Level 55 - Submodule</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">57.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="逃貓"
+      src="/images/cat.jpg">
+  <p class="site-author-name" itemprop="name">逃貓</p>
+  <div class="site-description" itemprop="description">喵喵喵~</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">102</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">23</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">38</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="sidebar-button site-overview-item animated">
+    <button><i class="fa fa-comment"></i>
+      留言
+    </button>
+  </div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/fish-404" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;fish-404" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:fish404hsif@gmail.com" title="E-Mail → mailto:fish404hsif@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://fish-404.github.io/git-Githug-record/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/cat.jpg">
+      <meta itemprop="name" content="逃貓">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="在逃的貓">
+      <meta itemprop="description" content="喵喵喵~">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Githug 记录 | 在逃的貓">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Githug 记录
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022/08/27 0:00:00" itemprop="dateCreated datePublished" datetime="2022-08-27T00:00:00+08:00">2022/08/27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022/08/28 0:00:00" itemprop="dateModified" datetime="2022-08-28T00:00:00+08:00">2022/08/28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/git/" itemprop="url" rel="index"><span itemprop="name">git</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p><a target="_blank" rel="noopener" href="https://github.com/Gazler/githug">Githug</a>
+通关记录，简要写关于涉及到的部分命令的使用。一个适用于 Git
+初学者的练习游戏。</p>
+<span id="more"></span>
+<h1 id="写在前面">写在前面</h1>
+<p>刚开始接触 Git 推荐先使用<a
+target="_blank" rel="noopener" href="https://learngitbranching.js.org/">Learn Git Branching</a>
+可视化学习一下分支，然后可以试一下 Githug。另外还有相似的<a
+target="_blank" rel="noopener" href="https://gitexercises.fracz.com/">Git
+Exercises</a>。虽然我自己玩这几个练习的时候因为并不清楚具体的区别，并不是按这个顺序，都玩过一遍后觉得这可能是一个比较合适的顺序。几个练习的区别是，Learning
+Git Branching 可视化学习最适合初学者，有命令指引和 solution，Githug
+涉及的命令比较广，不过大多比较浅，没有 solution，所以在此记录，Git
+Exercises 有些关卡的场景比较复杂，难度上较 Githug
+难一点，完成后每个关卡有讲解。后面两个游戏都是命令行 base，
+可能会涉及一些最基本的命令行操作。目前已有许多 Git 的 GUI
+客户端，并且主流编辑器大多也有 Git 插件可以实现图形化操作，不过个人使用
+Git 还是更习惯使用命令行，当然在 <code>diff</code> 的时候 GUI
+界面还是更方便一些 。公司使用的团队合作控制是
+TFS，对于本地的版本控制几乎没有，同时改多个项目的时候很难记录变更，尤其是时间跨度比较长的时候，所以我在本地引入了
+Git 作为自己的版本管理控制，也方便记录哪些已提交到团队的 TFS
+上面，对于近期刚完成的半年多时长的项目，引入 Git
+之后对自己开发的过程追溯就容易了许多。而最近的工作比较多涉及数据库脚本，没有版本控制就非常痛苦。</p>
+<div class="note info"><p>你可以使用 Gitpod 来运行后面两个命令行的 Git 练习。</p>
+</div>
+<h1 id="level-1---init">Level 1 - Init</h1>
+<blockquote>
+<p>A new directory, <code>git_hug</code>, has been created; initialize
+an empty repository in it.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
+<p>初始化仓库，无论你是使用一个新的仓库，还是在已有的文件系统内建仓库，都是必不可缺的一个命令。</p>
+<h1 id="level-2---config">Level 2 - Config</h1>
+<blockquote>
+<p>Set up your git name and email, this is important so that your
+commits can be identified.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name <span class="string">&quot;name&quot;</span></span><br><span class="line">git config --global user.email email@example.com</span><br></pre></td></tr></table></figure>
+<p>设置 Git 配置，<code>--global</code>
+是一个全局配置参数，之后所有的提交都会使用此配置。</p>
+<h1 id="level-3---add">Level 3 - Add</h1>
+<blockquote>
+<p>There is a file in your folder called <code>README</code>, you should
+add it to your staging area Note: You start each level with a new repo.
+Don't look for files from the previous one.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add README </span><br><span class="line"></span><br><span class="line">git add .</span><br></pre></td></tr></table></figure>
+<p>添加文件至暂存区，日常中最常用的命令了，对于一次变更同时涉及多个文件时可以使用
+<code>git add .</code>，利用通配符同时提交多个文件，通配符同时也作用于比如提交某个文件夹的全部文件，与
+Linux 中的通配符规则是一致的。</p>
+<p>原则上一次提交不应该包含多个改动，即小步提交，而暂存后的文件才进行提交，所以一次暂存通常也只包含本次提交中的内容。曾看到过一个比喻，Git
+有点像是打游戏断点存档，在哪里断点存档你就可以从那里重新开始。一次提交包含多个改动，当你追溯自己的版本变更时就非常困难。</p>
+<p>理解 Git 命令与各个不同区域的关系参见 <a
+target="_blank" rel="noopener" href="https://ndpsoftware.com/git-cheatsheet.html#loc=index;">Git
+Cheatsheet</a>。</p>
+<h1 id="level-4---commit">Level 4 - Commit</h1>
+<blockquote>
+<p>The <code>README</code> file has been added to your staging area, now
+commit it.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m “add readme”</span><br></pre></td></tr></table></figure>
+<p>提交变更，通常使用 <code>-m</code>
+参数在提交时也提交对本次提交的内容的附注。如没有使用此参数，Git
+将会使用唤起你的编辑器以便键入提交信息。提交信息推荐参考 <a
+target="_blank" rel="noopener" href="https://www.conventionalcommits.org/en/v1.0.0/">Convertional
+Commits</a>，以让你的提交信息更通用，更规范，也更易读。</p>
+<h1 id="level-5---clone">Level 5 - Clone</h1>
+<blockquote>
+<p>Clone the repository at <a
+target="_blank" rel="noopener" href="https://github.com/Gazler/cloneme">https://github.com/Gazler/cloneme</a>.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> </span><br></pre></td></tr></table></figure>
+<h1 id="level-6-clone-to-folder">Level 6 Clone to folder</h1>
+<blockquote>
+<p>Clone the repository at <a
+target="_blank" rel="noopener" href="https://github.com/Gazler/cloneme">https://github.com/Gazler/cloneme</a>
+to <code>my_cloned_repo</code>.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> … my_cloned_repo</span><br></pre></td></tr></table></figure>
+<h1 id="level-7-ignore">Level 7 Ignore</h1>
+<blockquote>
+<p>The text editor 'vim' creates files ending in <code>.swp</code> (swap
+files) for all files that are currently open. We don't want them
+creeping into the repository. Make this repository ignore those swap
+files which are ending in <code>.swp</code>.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim .gitignore</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*.swp</span><br></pre></td></tr></table></figure>
+<p>配置 <code>gitignore</code>
+文件，对于一些临时文件和不希望提交的文件非常有用，尤其是编辑器/IDE环境会产生大量的配置文件，这时候可能不希望追溯这些文件的变更。在
+VS 中的 Git 环境会默认写一个 <code>gitignore</code> 帮助你忽视掉不必要的
+VS 产生的文件。</p>
+<p>两个 <code>gitignore</code> 的参考：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/github/gitignore">github/gitignore: A
+collection of useful .gitignore templates</a> [Github 官方]</li>
+<li><a target="_blank" rel="noopener" href="https://www.toptal.com/developers/gitignore">gitignore.io -
+Create Useful .gitignore Files For Your Project</a>
+[带搜索功能，查找起来比较方便]</li>
+</ul>
+<h1 id="level-8---include">Level 8 - Include</h1>
+<blockquote>
+<p>Notice a few files with the '.a' extension. We want git to ignore all
+but the 'lib.a' file.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim .gitignore</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">*.a</span><br><span class="line">!lib.a</span><br></pre></td></tr></table></figure>
+<h1 id="level-9---status">Level 9 - Status</h1>
+<blockquote>
+<p>There are some files in this repository, one of the files is
+untracked, which file is it?</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure>
+<h1 id="level-10---number-of-files-commited">Level 10 - Number of files
+commited</h1>
+<blockquote>
+<p>There are some files in this repository, how many of the files will
+be committed?</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br><span class="line">git diff --<span class="built_in">stat</span></span><br><span class="line">git diff --cached --<span class="built_in">stat</span></span><br></pre></td></tr></table></figure>
+<p>使用 <code>status</code>
+可能是最简单的方式，但文件较多时就不方便了。参考 <a
+target="_blank" rel="noopener" href="https://stackoverflow.com/questions/3162444/git-count-files-in-the-staged-index">git
+count files in the staged index - Stack Overflow</a>。</p>
+<h1 id="level-11---rm">Level 11 - Rm</h1>
+<blockquote>
+<p>A file has been removed from the working tree, however the file was
+not removed from the repository. Find out what this file was and remove
+it.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -a -m “delete”</span><br></pre></td></tr></table></figure>
+<h1 id="level-12---rm-cached">Level 12 - Rm cached</h1>
+<blockquote>
+<p>A file has accidentally been added to your staging area, find out
+which file and remove it from the staging area. <em>NOTE</em> Do not
+remove the file from the file system, only from git.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">rm</span></span><br></pre></td></tr></table></figure>
+<p>使用 <code>git status</code> 时会提示该命令的使用。</p>
+<h1 id="level-13---stash">Level 13 - Stash</h1>
+<blockquote>
+<p>You've made some changes and want to work on them later. You should
+save them, but don't commit them.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git stash</span><br></pre></td></tr></table></figure>
+<h1 id="level-14---rename">Level 14 - Rename</h1>
+<blockquote>
+<p>We have a file called <code>oldfile.txt</code>. We want to rename it
+to <code>newfile.txt</code> and stage this change.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">mv</span> oldfile.txt newfile.txt</span><br></pre></td></tr></table></figure>
+<p>这和 Linux 中的重命名是一样的，其实 Git 中有很多命令与 Linux
+命令相似。</p>
+<h1 id="level-15---restructure">Level 15 - Restructure</h1>
+<blockquote>
+<p>You added some files to your repository, but now realize that your
+project needs to be restructured. Make a new folder named
+<code>src</code> and using Git move all of the .html files into this
+folder.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> src</span><br><span class="line">git <span class="built_in">mv</span> *.html  src/ </span><br></pre></td></tr></table></figure>
+<h1 id="level-16---log">Level 16 - Log</h1>
+<blockquote>
+<p>You will be asked for the hash of most recent commit. You will need
+to investigate the logs of the repository for this.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span> -1</span><br></pre></td></tr></table></figure>
+<h1 id="level-17---tag">Level 17 - Tag</h1>
+<p>We have a git repo and we want to tag the current commit with
+<code>new_tag</code>.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag new_tag</span><br></pre></td></tr></table></figure>
+<h1 id="level-18---push-tags">Level 18 - Push tags</h1>
+<blockquote>
+<p>There are tags in the repository that aren't pushed into remote
+repository. Push them now.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push - -tags</span><br></pre></td></tr></table></figure>
+<h1 id="level-19---commit-amend">Level 19 - Commit amend</h1>
+<blockquote>
+<p>The <code>README</code> file has been committed, but it looks like
+the file <code>forgotten_file.rb</code> was missing from the commit. Add
+the file and amend your previous commit to include it.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit —amend —no-edit</span><br></pre></td></tr></table></figure>
+<p>添加 <code>--no-edit</code> 参数不会弹出编辑窗口。</p>
+<h1 id="level-20---commit-in-furture">Level 20 - Commit in furture</h1>
+<blockquote>
+<p>Commit your changes with the future date (e.g. tomorrow).</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m “commit msg” —<span class="built_in">date</span> “2023-08-01”</span><br></pre></td></tr></table></figure>
+<h1 id="level-21---reset">Level 21 - Reset</h1>
+<blockquote>
+<p>There are two files to be committed. The goal was to add each file as
+a separate commit, however both were added by accident. Unstage the file
+<code>to_commit_second.rb</code> using the reset command (don't commit
+anything).</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git restore --staged to_commit_second.rb</span><br></pre></td></tr></table></figure>
+<h1 id="level-22---reset-soft">Level 22 - Reset soft</h1>
+<blockquote>
+<p>You committed too soon. Now you want to undo the last commit, while
+keeping the index.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span> --oneline</span><br><span class="line">git reset --soft fa51390</span><br></pre></td></tr></table></figure>
+<h1 id="level-23---checkout-file">Level 23 - Checkout file</h1>
+<blockquote>
+<p>A file has been modified, but you don't want to keep the
+modification. Checkout the <code>config.rb</code> file from the last
+commit.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout — config.rb</span><br></pre></td></tr></table></figure>
+<h1 id="level-24---remote">Level 24 - Remote</h1>
+<blockquote>
+<p>This project has a remote repository. Identify it.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote</span><br></pre></td></tr></table></figure>
+<h1 id="level-25---remote-url">Level 25 - Remote url</h1>
+<blockquote>
+<p>The remote repositories have a url associated to them. Please enter
+the url of remote_location.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote -v</span><br></pre></td></tr></table></figure>
+<h1 id="level-26---pull">Level 26 - Pull</h1>
+<blockquote>
+<p>You need to pull changes from your origin repository.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull origin master</span><br></pre></td></tr></table></figure>
+<h1 id="level-27---remote-add">Level 27 - Remote add</h1>
+<blockquote>
+<p>Add a remote repository called <code>origin</code> with the url <a
+target="_blank" rel="noopener" href="https://github.com/githug/githug">https://github.com/githug/githug</a></p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin [https://github.com/githug/githug](https://github.com/githug/githug)</span><br></pre></td></tr></table></figure>
+<h1 id="level-28---push">Level 28 - Push</h1>
+<blockquote>
+<p>Your local master branch has diverged from the remote origin/master
+branch. Rebase your commit onto origin/master and push it to remote.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git rebase origin/master </span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
+<h1 id="level-29---diff">Level 29 - Diff</h1>
+<blockquote>
+<p>There have been modifications to the <code>app.rb</code> file since
+your last commit. Find out which line has changed.</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff -U0</span><br></pre></td></tr></table></figure>
+<p>Git diff 的信息并非实际行数，参考 <a
+target="_blank" rel="noopener" href="https://stackoverflow.com/questions/24455377/git-diff-with-line-numbers-git-log-with-line-numbers">Git
+diff with line numbers (Git log with line numbers) - Stack
+Overflow</a>。</p>
+<h1 id="level-30---blame">Level 30 - Blame</h1>
+<blockquote>
+<p>Someone has put a password inside the file <code>config.rb</code>
+find out who it was.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git blame config.rb</span><br></pre></td></tr></table></figure>
+<h1 id="level-31---branch">Level 31 - Branch</h1>
+<blockquote>
+<p>You want to work on a piece of code that has the potential to break
+things, create the branch test_code.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch test_code</span><br></pre></td></tr></table></figure>
+<h1 id="level-32---checkout">Level 32 - Checkout</h1>
+<blockquote>
+<p>Create and switch to a new branch called my_branch. You will need to
+create a branch like you did in the previous level.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b my_branch</span><br></pre></td></tr></table></figure>
+<h1 id="level-33---checkout-tag">Level 33 - Checkout tag</h1>
+<blockquote>
+<p>You need to fix a bug in the version 1.2 of your app. Checkout the
+tag <code>v1.2</code>.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout v1.2</span><br></pre></td></tr></table></figure>
+<h1 id="level-34---checkout-tag-over-branch">Level 34 - Checkout tag
+over branch</h1>
+<blockquote>
+<p>You need to fix a bug in the version 1.2 of your app. Checkout the
+tag <code>v1.2</code> (Note: There is also a branch named
+<code>v1.2</code>).</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span> —tags —online </span><br><span class="line">git checkout [commit-SHA]</span><br></pre></td></tr></table></figure>
+<p>先找到这个 tag 的 SHA 值，如果你直接 checkout <code>v1.2</code>
+将会变为 checkout 分支。</p>
+<h1 id="level-35---branch-at">Level 35 - Branch at</h1>
+<blockquote>
+<p>You forgot to branch at the previous commit and made a commit on top
+of it. Create branch test_branch at the commit before the last.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch test_branch HEAD~1</span><br></pre></td></tr></table></figure>
+<h1 id="level-36---delete-branch">Level 36 - Delete branch</h1>
+<blockquote>
+<p>You have created too many branches for your project. There is an old
+branch in your repo called 'delete_me', you should delete it.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -d delete_me</span><br></pre></td></tr></table></figure>
+<h1 id="level-37---push-branch">Level 37 - Push branch</h1>
+<blockquote>
+<p>You've made some changes to a local branch and want to share it, but
+aren't yet ready to merge it with the 'master' branch. Push only
+'test_branch' to the remote repository</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin test_branch</span><br></pre></td></tr></table></figure>
+<h1 id="level-38---merge">Level 38 - Merge</h1>
+<blockquote>
+<p>We have a file in the branch 'feature'; Let's merge it to the master
+branch.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge feature</span><br></pre></td></tr></table></figure>
+<h1 id="level-39---fetch">Level 39 - Fetch</h1>
+<blockquote>
+<p>Looks like a new branch was pushed into our remote repository. Get
+the changes without merging them with the local repository</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git fetch</span><br></pre></td></tr></table></figure>
+<h1 id="level-40---rebase">Level 40 - Rebase</h1>
+<blockquote>
+<p>We are using a git rebase workflow and the feature branch is ready to
+go into master. Let's rebase the feature branch onto our master
+branch.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase master feature</span><br></pre></td></tr></table></figure>
+<h1 id="level-41---rebase-onto">Level 41 - Rebase onto</h1>
+<blockquote>
+<p>You have created your branch from <code>wrong_branch</code> and
+already made some commits, and you realise that you needed to create
+your branch from <code>master</code>. Rebase your commits onto
+<code>master</code> branch so that you don't have
+<code>wrong_branch</code> commits.</p>
+</blockquote>
+<p>now: readme-update branch</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase —onto master wrong_branch readme-update</span><br></pre></td></tr></table></figure>
+<p>关于 <code>rebase</code> 的使用，参考<a
+target="_blank" rel="noopener" href="https://womanonrails.com/git-rebase-onto">Git rebase --onto an
+overview</a>。</p>
+<h1 id="level-42---repack">Level 42 - Repack</h1>
+<blockquote>
+<p>Optimise how your repository is packaged ensuring that redundant
+packs are removed.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git repack -d</span><br></pre></td></tr></table></figure>
+<h1 id="level-43---pick">Level 43 - Pick</h1>
+<blockquote>
+<p>Your new feature isn't worth the time and you're going to delete it.
+But it has one commit that fills in <code>README</code> file, and you
+want this commit to be on the master as well.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git branch</span><br><span class="line">git switch new-branch</span><br><span class="line">git <span class="built_in">log</span> —oneline — README.md</span><br><span class="line">git switch master</span><br><span class="line">git cherry-pick [commit-SHA]</span><br></pre></td></tr></table></figure>
+<h1 id="level-44---grep">Level 44 - Grep</h1>
+<blockquote>
+<p>Your project's deadline approaches, you should evaluate how many
+TODOs are left in your code</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git grep TODO</span><br></pre></td></tr></table></figure>
+<h1 id="level-45---rename-commit">Level 45 - Rename commit</h1>
+<blockquote>
+<p>Correct the typo in the message of your first (non-root) commit.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git rebase -i HEAD~2</span><br><span class="line">% change `pick` to `reword` </span><br><span class="line">% fix the message <span class="keyword">then</span> save</span><br></pre></td></tr></table></figure>
+<h1 id="level-46---squash">Level 46 - Squash</h1>
+<blockquote>
+<p>You have committed several times but would like all those changes to
+be one commit.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git rebase -i HEAD~4</span><br><span class="line"></span><br><span class="line">% change `pick` to `squash`</span><br><span class="line">% comment other messages</span><br></pre></td></tr></table></figure>
+<p>这两个关卡都涉及了
+<code>git rebase -i</code>，一个相当有用的命令，可以让你做出非常多的对过去提交的变更，Git
+Exercise 中有关于这个命令的更复杂的练习。</p>
+<h1 id="level-47---merge-squash">Level 47 - Merge squash</h1>
+<blockquote>
+<p>Merge all commits from the long-feature-branch as a single
+commit.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git merge long-feature-branch —squash</span><br><span class="line">git commit -am <span class="string">&quot;&quot;</span></span><br></pre></td></tr></table></figure>
+<h1 id="level-48---reorder">Level 48 - Reorder</h1>
+<blockquote>
+<p>You have committed several times but in the wrong order. Please
+reorder your commits.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase -i HEAD~3</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pick 468b4ea First commit</span><br><span class="line">pick b497bf6 Third commit</span><br><span class="line">pick c4ebdaf Second commit</span><br></pre></td></tr></table></figure>
+<p>与 <code>git log</code> 不同，<code>git rebase -i</code>
+模式下显示的提交顺序是最近的提交在末端，最初的提交在开始。</p>
+<h1 id="level-49---bisect">Level 49 - Bisect</h1>
+<blockquote>
+<p>A bug was introduced somewhere along the way. You know that running
+<code>ruby prog.rb 5</code> should output 15. You can also run
+<code>make test</code>. What are the first 7 chars of the hash of the
+commit that introduced the bug.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span> —online </span><br><span class="line">% get the first commit </span><br><span class="line">git bisect start</span><br><span class="line">git bisect bad</span><br><span class="line">git bisect good [SHA]</span><br><span class="line">git bisect run make <span class="built_in">test</span></span><br></pre></td></tr></table></figure>
+<p>这个命令对于查找哪个版本引入的变更非常有用，尤其是利用测试模块测试哪个版本引入
+bug。我常常在公司的项目中要查找哪个版本开始改动，对于有明确提交信息的变更还相对好找，很多提交没有写明版本变更，找历史变更是非常痛苦的事情。</p>
+<h1 id="level-50---stage-lines">Level 50 - Stage lines</h1>
+<blockquote>
+<p>You've made changes within a single file that belong to two different
+features, but neither of the changes are yet staged. Stage only the
+changes belonging to the first feature.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add -p </span><br><span class="line">e</span><br><span class="line">%remove second line </span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">+This change belongs to the first feature</span><br><span class="line">+This change belongs to the second feature</span><br></pre></td></tr></table></figure>
+<p>这个命令也是一个非常丰富的命令，
+可以将未暂存的一次大变更分为几个小变更，前面说到小步提交，但实际开发过程中其实很经常会习惯过去的方式一口气写完，这时候会出现这样的问题，可以通过这个命令来帮助你把一个大的变更拆解成几个小的变更。</p>
+<h1 id="level-51---find-old-branch">Level 51 - Find old branch</h1>
+<blockquote>
+<p>You have been working on a branch but got distracted by a major issue
+and forgot the name of it. Switch back to that branch.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reflog</span><br></pre></td></tr></table></figure>
+<h1 id="level-52---revert">Level 52 - Revert</h1>
+<blockquote>
+<p>You have committed several times but want to undo the middle commit.
+All commits have been pushed, so you can't change existing history.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span> —oneline</span><br><span class="line">git revert [commit-SHA]</span><br></pre></td></tr></table></figure>
+<h1 id="level-53---restore">Level 53 - Restore</h1>
+<blockquote>
+<p>You decided to delete your latest commit by running
+<code>git reset --hard HEAD^</code>. (Not a smart thing to do.) You then
+change your mind, and want that commit back. Restore the deleted
+commit.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git reflog</span><br><span class="line">git reset —hard HEAD@&#123;1&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="level-54---conflict">Level 54 - Conflict</h1>
+<blockquote>
+<p>You need to merge mybranch into the current branch (master). But
+there may be some incorrect changes in mybranch which may cause
+conflicts. Solve any merge-conflicts you come across and finish the
+merge.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git merge mybranch</span><br><span class="line">vim poem.txt</span><br></pre></td></tr></table></figure>
+<h1 id="level-55---submodule">Level 55 - Submodule</h1>
+<blockquote>
+<p>You want to include the files from the following repo:
+<code>https://github.com/jackmaney/githug-include-me</code> into a the
+folder <code>./githug-include-me</code>. Do this without manually
+cloning the repo or copying the files from the repo into this repo.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git submodule add [https://github.com/jackmaney/githug-include-me](https://github.com/jackmaney/githug-include-me) ./githug-include-me</span><br></pre></td></tr></table></figure>
+<h1 id="参考资料">参考资料</h1>
+<ol type="1">
+<li><a target="_blank" rel="noopener" href="https://ndpsoftware.com/git-cheatsheet.html#loc=index;">Git
+Cheatsheet</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://www.conventionalcommits.org/en/v1.0.0/">Convertional
+Commits</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/github/gitignore">github/gitignore: A
+collection of useful .gitignore templates</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.toptal.com/developers/gitignore">gitignore.io -
+Create Useful .gitignore Files For Your Project</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://stackoverflow.com/questions/3162444/git-count-files-in-the-staged-index">git
+count files in the staged index - Stack Overflow</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://stackoverflow.com/questions/24455377/git-diff-with-line-numbers-git-log-with-line-numbers">Git
+diff with line numbers (Git log with line numbers) - Stack
+Overflow</a></li>
+<li><a target="_blank" rel="noopener" href="https://womanonrails.com/git-rebase-onto">Git rebase --onto
+an overview</a></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>逃貓
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://fish-404.github.io/git-Githug-record/" title="Githug 记录">https://fish-404.github.io/git-Githug-record/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/git/" rel="tag"><i class="fa fa-tag"></i> git</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/Essay-2019-nCoV-personal-record-20/" rel="prev" title="疫期小记 20">
+                  <i class="fa fa-chevron-left"></i> 疫期小记 20
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa-solid fa-paw"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">逃貓</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+<script class="next-config" data-name="chatra" type="application/json">{"enable":true,"async":true,"id":"JBgdQtj33YZBaPNj7"}</script>
+<script src="/js/third-party/chat/chatra.js"></script>
+<script async src="https://call.chatra.io/chatra.js"></script>
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

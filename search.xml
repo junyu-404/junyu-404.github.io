@@ -6754,7 +6754,7 @@ match any.</a></p></li>
 </ul>
 ]]></content>
       <categories>
-        <category>技术杂谈</category>
+        <category>git</category>
       </categories>
       <tags>
         <tag>git</tag>
@@ -11084,6 +11084,514 @@ sandbox</a>这是上面那个教程网站给出的一个练习，右侧还有命
       </categories>
       <tags>
         <tag>Vim</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>疫期小记 20</title>
+    <url>/Essay-2019-nCoV-personal-record-20/</url>
+    <content><![CDATA[<p>以自己角度写的疫情记录。</p>
+<span id="more"></span>
+<p>或许因为我居住的地方比较偏僻，六月初感到疫情控制基本比较放松了，暗暗期待马上就可以解除72小时核酸的束缚。但假日里跑到市中心玩的时候，才发现可能只是我所在的区相对偏僻所以没有持续的严格管控，路过的中心城区某个片区的居民区居然是处处设卡的状态，那阵势我会以为是3月的管控期，甚至3月的管控期我所在的地区也并没有出现这样的管控举措。几乎每个通往住宅区的入口都有一搭起一个类似于小岗亭一样的存在，里面架设了几台识别机器和卷闸，要通过卷闸似乎要进行什么验证，尝试扫健康码和人脸识别都我非法身份，不知道是否限制了只允许本区登记在册的居民才可以进入，原本想到里面的小店吃个晚饭只好作罢。</p>
+<p>六月中听了来深圳后的第一场音乐会。当时可以算是疫情控制比较松散的时候了，虽然仍执行着72小时的管控。音乐会出来回家的途中，遇上两位路人或许也是刚刚听完音乐会结伴回家，在地铁口查验核酸码的时候其中一位被拦了下来，听她们的对话，核酸有效期刚刚过期几分钟，而新的核酸结果尚未出来，只好分别，放弃同行。原本还买了六月底另一场音乐会的票，没想到时隔一周，疫情管控又严格了起来，加码不断，音乐会被迫延期。深图也在几天之内连续发布了两次因疫情防控而采取的外借统一归还延期，至此已是本年度第六次因疫情延期。而截止到今日，深图今年已发布了八次疫情归还延期通告。由于关注了一些展馆，图书馆，音乐厅，甚至还没留意到卫健委的发布通知时，就已先留意到这些场所发布闭馆、延期、调整入馆要求（在24，48，72之间反复横跳）等各类相似的通知。虽然一直有见过公共场所动态管理一进一出的通告，但7月份第一次在图书馆遇到，艳阳天，排了几十个人站在图书馆门外，苦苦等着里面有人出来好能够进去。本周五前去听音乐会的途中，瞥了一眼自己的核酸记录，会在进场前过期，暗暗担心早上检测的结果出不来入不了场，搭不了地铁。处在此番机制下，每出一趟门都得跟那些检测记录较劲半天，不仅要了解场馆的政策，还得学会未卜先知，好在过期前续上一条记录，如此一来，出门的欲望都先要经过保质期的审视，常常在萌芽之初就已枯萎。而就在今天，又看到和那场音乐会同属一个音乐节的另外几场演出又被迫延期。同时看到一个钢琴比赛的组织方又恰好在选址的地点和时间内遇上了当地从未有过的疫情大规模爆发。好像每一次能够如期举行都变成了一种应该庆幸。</p>
+<p>紧接着，日常48小时核酸又被开启。有趣的是，48小时核酸实行的时候，普遍人们排队的时间却比72小时核酸的时候更短些。以我自己而言，要求72小时核酸的时候，公司总是把一次核酸检测安排在周六，刚开始还不告知具体时间，我就跑空过一次，后来干脆去其他检测点排队了，不上班却为了测个核酸跑去公司也挺滑稽。虽然72小时核酸间隔时间比较长，但相对的设点也非常少，此前的几个核算点都撤离，因此在检测点的排队其实常常需要排不少时间，真让人想要统计有多少时间花在了去测核酸的路上，等核酸的排队，以及恰好没能等到结果出来不得不改变计划的延误。而在48小时核酸的执行中，每隔一天公司就会安排核酸检测，小区楼下也几乎每一天下班时间后都有检测设点，总体而言倒嘲讽地比72小时方便了许多。暑假期间帮朋友喂猫咪，她住的地方的保安真的是一个个检查进入小区的人的核酸码，你一旦是48小时，他就会请你要每天做，有次周末没去检测，本来有72+检测中也无所谓，愣是跟保安绕了好一阵才被放进去。而在一些官方通告文章里，居然堂而皇之地把网友们调侃的“电子哨兵”“保质期”作为官方用语。</p>
+<p>说起核酸相关的见闻，基本上各个核酸点的秩序、布局、通告都有少许区别。路过别的地方检测时，有一次排在我面前的是一位母亲带着两个女儿，那里的核酸点已设成了一个核酸小屋，小一点的女孩身高还不到窗口的高度，但也已不小了，母亲又比较瘦弱，抱起小朋友的时候明显有些吃力。不同核酸点的喇叭通常都喊着不同的内容，以各自的风格叫喊着规则。最离谱的一次听到这样的播报：“不要使用以前的截图，一旦发现黄码，立马报警，拉去隔离”
+，
+“请出示粤核酸6采样检测码，没有粤核酸6的，粤核酸54321都可以”，不过最近再去的时候，这个离谱的播报被替换掉了。而在本小区，有一次在电梯里遇到一位老太太，当时深圳连日多余，她拿着伞，没留意进了正在上行的电梯，经我提醒才意识到于是小聊了几句，据说是为了下去看看有没有在做核酸，老人家或许没有手机，只是听着家人告诉的每天晚上六点楼下会设点，虽然是大雨天也不得不下楼看看，看了一眼群聊的通知，好在老人不必跑空。另有一次遇到一个小朋友，小朋友大概也没有手机，说自己到了才发现忘记带家人打印的核酸码，不得不又折返回来。诸如此类的一些事情，已经无可奈何地变成了一种新的日常，昨天排队时听到有小朋友说“想做核酸”都已经不觉得惊讶，也很难说清是什么心情。</p>
+<p>当一些古怪的事情渗入日常的时候，再难想象拥有过的曾经，以至于看到公司饭堂未来得及设立挡板的新桌子都有些惊讶，看到有员工围坐在那里吃饭的时候感到恍然，来到公司的时候已是疫情时代，彼时桌子已有挡板，但突然惊觉更早一些的时候应该所有圆桌都是此番模样。虽然作为社恐人士会觉得有挡板误打误撞地对自己比较友好，刚来的时候长桌没有挡板，当时圆桌有编号不知道会不会占用别人的座位所以我不情愿地选择没有挡板的长桌，现在则看到长桌也加上了挡板。我几乎无法想象食堂的桌子都没有挡板的时候是什么样子的。</p>
+<p><a href="https://www.postcrossing.com/">Postcrossing</a> 在
+<code>Send a postcard</code>
+页面置顶了一条通知，由于寄往国内的明信片阻滞在途，暂停推送国内的地址用于明信片交换。稍有庆幸的是，仍然可以寄往其他国家和地区，也会在不经意间收到一条遥远的回复。</p>
+<blockquote>
+<p>Due to the logistical difficulties caused by the pandemic, postcards
+to China are suffering unusually long delays, with some mail being
+delivered several months late or not at all. Currently, only about half
+of the postcards sent 4 months ago have been delivered so far. 🙁</p>
+</blockquote>
+<p>As there's no clear information on when this situation will improve,
+to avoid further increasing the existing mail backlog and affecting
+exchanges in Postcrossing, we have temporarily stopped sending postcards
+to addresses in China. We are continuously monitoring the situation and
+will restore the route when there are clear signs of improvement.</p>
+<p>If you wish, you can continue sending postcards, or take a break.
+Please rest assured that all due postcards will be sent to you when the
+route is restored. You can check the Postal Monitor page for
+updates.</p>
+]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>Essay</tag>
+        <tag>2019-nCoV</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Githug 记录</title>
+    <url>/git-Githug-record/</url>
+    <content><![CDATA[<p><a href="https://github.com/Gazler/githug">Githug</a>
+通关记录，简要写关于涉及到的部分命令的使用。一个适用于 Git
+初学者的练习游戏。</p>
+<span id="more"></span>
+<h1 id="写在前面">写在前面</h1>
+<p>刚开始接触 Git 推荐先使用<a
+href="https://learngitbranching.js.org/">Learn Git Branching</a>
+可视化学习一下分支，然后可以试一下 Githug。另外还有相似的<a
+href="https://gitexercises.fracz.com/">Git
+Exercises</a>。虽然我自己玩这几个练习的时候因为并不清楚具体的区别，并不是按这个顺序，都玩过一遍后觉得这可能是一个比较合适的顺序。几个练习的区别是，Learning
+Git Branching 可视化学习最适合初学者，有命令指引和 solution，Githug
+涉及的命令比较广，不过大多比较浅，没有 solution，所以在此记录，Git
+Exercises 有些关卡的场景比较复杂，难度上较 Githug
+难一点，完成后每个关卡有讲解。后面两个游戏都是命令行 base，
+可能会涉及一些最基本的命令行操作。目前已有许多 Git 的 GUI
+客户端，并且主流编辑器大多也有 Git 插件可以实现图形化操作，不过个人使用
+Git 还是更习惯使用命令行，当然在 <code>diff</code> 的时候 GUI
+界面还是更方便一些 。公司使用的团队合作控制是
+TFS，对于本地的版本控制几乎没有，同时改多个项目的时候很难记录变更，尤其是时间跨度比较长的时候，所以我在本地引入了
+Git 作为自己的版本管理控制，也方便记录哪些已提交到团队的 TFS
+上面，对于近期刚完成的半年多时长的项目，引入 Git
+之后对自己开发的过程追溯就容易了许多。而最近的工作比较多涉及数据库脚本，没有版本控制就非常痛苦。</p>
+<div class="note info"><p>你可以使用 Gitpod 来运行后面两个命令行的 Git 练习。</p>
+</div>
+<h1 id="level-1---init">Level 1 - Init</h1>
+<blockquote>
+<p>A new directory, <code>git_hug</code>, has been created; initialize
+an empty repository in it.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
+<p>初始化仓库，无论你是使用一个新的仓库，还是在已有的文件系统内建仓库，都是必不可缺的一个命令。</p>
+<h1 id="level-2---config">Level 2 - Config</h1>
+<blockquote>
+<p>Set up your git name and email, this is important so that your
+commits can be identified.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global user.name <span class="string">&quot;name&quot;</span></span><br><span class="line">git config --global user.email email@example.com</span><br></pre></td></tr></table></figure>
+<p>设置 Git 配置，<code>--global</code>
+是一个全局配置参数，之后所有的提交都会使用此配置。</p>
+<h1 id="level-3---add">Level 3 - Add</h1>
+<blockquote>
+<p>There is a file in your folder called <code>README</code>, you should
+add it to your staging area Note: You start each level with a new repo.
+Don't look for files from the previous one.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git add README </span><br><span class="line"></span><br><span class="line">git add .</span><br></pre></td></tr></table></figure>
+<p>添加文件至暂存区，日常中最常用的命令了，对于一次变更同时涉及多个文件时可以使用
+<code>git add .</code>，利用通配符同时提交多个文件，通配符同时也作用于比如提交某个文件夹的全部文件，与
+Linux 中的通配符规则是一致的。</p>
+<p>原则上一次提交不应该包含多个改动，即小步提交，而暂存后的文件才进行提交，所以一次暂存通常也只包含本次提交中的内容。曾看到过一个比喻，Git
+有点像是打游戏断点存档，在哪里断点存档你就可以从那里重新开始。一次提交包含多个改动，当你追溯自己的版本变更时就非常困难。</p>
+<p>理解 Git 命令与各个不同区域的关系参见 <a
+href="https://ndpsoftware.com/git-cheatsheet.html#loc=index;">Git
+Cheatsheet</a>。</p>
+<h1 id="level-4---commit">Level 4 - Commit</h1>
+<blockquote>
+<p>The <code>README</code> file has been added to your staging area, now
+commit it.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git commit -m “add readme”</span><br></pre></td></tr></table></figure>
+<p>提交变更，通常使用 <code>-m</code>
+参数在提交时也提交对本次提交的内容的附注。如没有使用此参数，Git
+将会使用唤起你的编辑器以便键入提交信息。提交信息推荐参考 <a
+href="https://www.conventionalcommits.org/en/v1.0.0/">Convertional
+Commits</a>，以让你的提交信息更通用，更规范，也更易读。</p>
+<h1 id="level-5---clone">Level 5 - Clone</h1>
+<blockquote>
+<p>Clone the repository at <a
+href="https://github.com/Gazler/cloneme">https://github.com/Gazler/cloneme</a>.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> </span><br></pre></td></tr></table></figure>
+<h1 id="level-6-clone-to-folder">Level 6 Clone to folder</h1>
+<blockquote>
+<p>Clone the repository at <a
+href="https://github.com/Gazler/cloneme">https://github.com/Gazler/cloneme</a>
+to <code>my_cloned_repo</code>.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> … my_cloned_repo</span><br></pre></td></tr></table></figure>
+<h1 id="level-7-ignore">Level 7 Ignore</h1>
+<blockquote>
+<p>The text editor 'vim' creates files ending in <code>.swp</code> (swap
+files) for all files that are currently open. We don't want them
+creeping into the repository. Make this repository ignore those swap
+files which are ending in <code>.swp</code>.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim .gitignore</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">*.swp</span><br></pre></td></tr></table></figure>
+<p>配置 <code>gitignore</code>
+文件，对于一些临时文件和不希望提交的文件非常有用，尤其是编辑器/IDE环境会产生大量的配置文件，这时候可能不希望追溯这些文件的变更。在
+VS 中的 Git 环境会默认写一个 <code>gitignore</code> 帮助你忽视掉不必要的
+VS 产生的文件。</p>
+<p>两个 <code>gitignore</code> 的参考：</p>
+<ul>
+<li><a href="https://github.com/github/gitignore">github/gitignore: A
+collection of useful .gitignore templates</a> [Github 官方]</li>
+<li><a href="https://www.toptal.com/developers/gitignore">gitignore.io -
+Create Useful .gitignore Files For Your Project</a>
+[带搜索功能，查找起来比较方便]</li>
+</ul>
+<h1 id="level-8---include">Level 8 - Include</h1>
+<blockquote>
+<p>Notice a few files with the '.a' extension. We want git to ignore all
+but the 'lib.a' file.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim .gitignore</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">*.a</span><br><span class="line">!lib.a</span><br></pre></td></tr></table></figure>
+<h1 id="level-9---status">Level 9 - Status</h1>
+<blockquote>
+<p>There are some files in this repository, one of the files is
+untracked, which file is it?</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure>
+<h1 id="level-10---number-of-files-commited">Level 10 - Number of files
+commited</h1>
+<blockquote>
+<p>There are some files in this repository, how many of the files will
+be committed?</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git status</span><br><span class="line">git diff --<span class="built_in">stat</span></span><br><span class="line">git diff --cached --<span class="built_in">stat</span></span><br></pre></td></tr></table></figure>
+<p>使用 <code>status</code>
+可能是最简单的方式，但文件较多时就不方便了。参考 <a
+href="https://stackoverflow.com/questions/3162444/git-count-files-in-the-staged-index">git
+count files in the staged index - Stack Overflow</a>。</p>
+<h1 id="level-11---rm">Level 11 - Rm</h1>
+<blockquote>
+<p>A file has been removed from the working tree, however the file was
+not removed from the repository. Find out what this file was and remove
+it.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git commit -a -m “delete”</span><br></pre></td></tr></table></figure>
+<h1 id="level-12---rm-cached">Level 12 - Rm cached</h1>
+<blockquote>
+<p>A file has accidentally been added to your staging area, find out
+which file and remove it from the staging area. <em>NOTE</em> Do not
+remove the file from the file system, only from git.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">rm</span></span><br></pre></td></tr></table></figure>
+<p>使用 <code>git status</code> 时会提示该命令的使用。</p>
+<h1 id="level-13---stash">Level 13 - Stash</h1>
+<blockquote>
+<p>You've made some changes and want to work on them later. You should
+save them, but don't commit them.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git stash</span><br></pre></td></tr></table></figure>
+<h1 id="level-14---rename">Level 14 - Rename</h1>
+<blockquote>
+<p>We have a file called <code>oldfile.txt</code>. We want to rename it
+to <code>newfile.txt</code> and stage this change.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">mv</span> oldfile.txt newfile.txt</span><br></pre></td></tr></table></figure>
+<p>这和 Linux 中的重命名是一样的，其实 Git 中有很多命令与 Linux
+命令相似。</p>
+<h1 id="level-15---restructure">Level 15 - Restructure</h1>
+<blockquote>
+<p>You added some files to your repository, but now realize that your
+project needs to be restructured. Make a new folder named
+<code>src</code> and using Git move all of the .html files into this
+folder.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> src</span><br><span class="line">git <span class="built_in">mv</span> *.html  src/ </span><br></pre></td></tr></table></figure>
+<h1 id="level-16---log">Level 16 - Log</h1>
+<blockquote>
+<p>You will be asked for the hash of most recent commit. You will need
+to investigate the logs of the repository for this.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">log</span> -1</span><br></pre></td></tr></table></figure>
+<h1 id="level-17---tag">Level 17 - Tag</h1>
+<p>We have a git repo and we want to tag the current commit with
+<code>new_tag</code>.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git tag new_tag</span><br></pre></td></tr></table></figure>
+<h1 id="level-18---push-tags">Level 18 - Push tags</h1>
+<blockquote>
+<p>There are tags in the repository that aren't pushed into remote
+repository. Push them now.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git push - -tags</span><br></pre></td></tr></table></figure>
+<h1 id="level-19---commit-amend">Level 19 - Commit amend</h1>
+<blockquote>
+<p>The <code>README</code> file has been committed, but it looks like
+the file <code>forgotten_file.rb</code> was missing from the commit. Add
+the file and amend your previous commit to include it.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit —amend —no-edit</span><br></pre></td></tr></table></figure>
+<p>添加 <code>--no-edit</code> 参数不会弹出编辑窗口。</p>
+<h1 id="level-20---commit-in-furture">Level 20 - Commit in furture</h1>
+<blockquote>
+<p>Commit your changes with the future date (e.g. tomorrow).</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git commit -m “commit msg” —<span class="built_in">date</span> “2023-08-01”</span><br></pre></td></tr></table></figure>
+<h1 id="level-21---reset">Level 21 - Reset</h1>
+<blockquote>
+<p>There are two files to be committed. The goal was to add each file as
+a separate commit, however both were added by accident. Unstage the file
+<code>to_commit_second.rb</code> using the reset command (don't commit
+anything).</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git restore --staged to_commit_second.rb</span><br></pre></td></tr></table></figure>
+<h1 id="level-22---reset-soft">Level 22 - Reset soft</h1>
+<blockquote>
+<p>You committed too soon. Now you want to undo the last commit, while
+keeping the index.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">log</span> --oneline</span><br><span class="line">git reset --soft fa51390</span><br></pre></td></tr></table></figure>
+<h1 id="level-23---checkout-file">Level 23 - Checkout file</h1>
+<blockquote>
+<p>A file has been modified, but you don't want to keep the
+modification. Checkout the <code>config.rb</code> file from the last
+commit.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git checkout — config.rb</span><br></pre></td></tr></table></figure>
+<h1 id="level-24---remote">Level 24 - Remote</h1>
+<blockquote>
+<p>This project has a remote repository. Identify it.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git remote</span><br></pre></td></tr></table></figure>
+<h1 id="level-25---remote-url">Level 25 - Remote url</h1>
+<blockquote>
+<p>The remote repositories have a url associated to them. Please enter
+the url of remote_location.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git remote -v</span><br></pre></td></tr></table></figure>
+<h1 id="level-26---pull">Level 26 - Pull</h1>
+<blockquote>
+<p>You need to pull changes from your origin repository.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git pull origin master</span><br></pre></td></tr></table></figure>
+<h1 id="level-27---remote-add">Level 27 - Remote add</h1>
+<blockquote>
+<p>Add a remote repository called <code>origin</code> with the url <a
+href="https://github.com/githug/githug">https://github.com/githug/githug</a></p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git remote add origin [https://github.com/githug/githug](https://github.com/githug/githug)</span><br></pre></td></tr></table></figure>
+<h1 id="level-28---push">Level 28 - Push</h1>
+<blockquote>
+<p>Your local master branch has diverged from the remote origin/master
+branch. Rebase your commit onto origin/master and push it to remote.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git rebase origin/master </span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
+<h1 id="level-29---diff">Level 29 - Diff</h1>
+<blockquote>
+<p>There have been modifications to the <code>app.rb</code> file since
+your last commit. Find out which line has changed.</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git diff -U0</span><br></pre></td></tr></table></figure>
+<p>Git diff 的信息并非实际行数，参考 <a
+href="https://stackoverflow.com/questions/24455377/git-diff-with-line-numbers-git-log-with-line-numbers">Git
+diff with line numbers (Git log with line numbers) - Stack
+Overflow</a>。</p>
+<h1 id="level-30---blame">Level 30 - Blame</h1>
+<blockquote>
+<p>Someone has put a password inside the file <code>config.rb</code>
+find out who it was.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git blame config.rb</span><br></pre></td></tr></table></figure>
+<h1 id="level-31---branch">Level 31 - Branch</h1>
+<blockquote>
+<p>You want to work on a piece of code that has the potential to break
+things, create the branch test_code.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git branch test_code</span><br></pre></td></tr></table></figure>
+<h1 id="level-32---checkout">Level 32 - Checkout</h1>
+<blockquote>
+<p>Create and switch to a new branch called my_branch. You will need to
+create a branch like you did in the previous level.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git checkout -b my_branch</span><br></pre></td></tr></table></figure>
+<h1 id="level-33---checkout-tag">Level 33 - Checkout tag</h1>
+<blockquote>
+<p>You need to fix a bug in the version 1.2 of your app. Checkout the
+tag <code>v1.2</code>.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git checkout v1.2</span><br></pre></td></tr></table></figure>
+<h1 id="level-34---checkout-tag-over-branch">Level 34 - Checkout tag
+over branch</h1>
+<blockquote>
+<p>You need to fix a bug in the version 1.2 of your app. Checkout the
+tag <code>v1.2</code> (Note: There is also a branch named
+<code>v1.2</code>).</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">log</span> —tags —online </span><br><span class="line">git checkout [commit-SHA]</span><br></pre></td></tr></table></figure>
+<p>先找到这个 tag 的 SHA 值，如果你直接 checkout <code>v1.2</code>
+将会变为 checkout 分支。</p>
+<h1 id="level-35---branch-at">Level 35 - Branch at</h1>
+<blockquote>
+<p>You forgot to branch at the previous commit and made a commit on top
+of it. Create branch test_branch at the commit before the last.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git branch test_branch HEAD~1</span><br></pre></td></tr></table></figure>
+<h1 id="level-36---delete-branch">Level 36 - Delete branch</h1>
+<blockquote>
+<p>You have created too many branches for your project. There is an old
+branch in your repo called 'delete_me', you should delete it.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git branch -d delete_me</span><br></pre></td></tr></table></figure>
+<h1 id="level-37---push-branch">Level 37 - Push branch</h1>
+<blockquote>
+<p>You've made some changes to a local branch and want to share it, but
+aren't yet ready to merge it with the 'master' branch. Push only
+'test_branch' to the remote repository</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git push origin test_branch</span><br></pre></td></tr></table></figure>
+<h1 id="level-38---merge">Level 38 - Merge</h1>
+<blockquote>
+<p>We have a file in the branch 'feature'; Let's merge it to the master
+branch.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git merge feature</span><br></pre></td></tr></table></figure>
+<h1 id="level-39---fetch">Level 39 - Fetch</h1>
+<blockquote>
+<p>Looks like a new branch was pushed into our remote repository. Get
+the changes without merging them with the local repository</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git fetch</span><br></pre></td></tr></table></figure>
+<h1 id="level-40---rebase">Level 40 - Rebase</h1>
+<blockquote>
+<p>We are using a git rebase workflow and the feature branch is ready to
+go into master. Let's rebase the feature branch onto our master
+branch.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git rebase master feature</span><br></pre></td></tr></table></figure>
+<h1 id="level-41---rebase-onto">Level 41 - Rebase onto</h1>
+<blockquote>
+<p>You have created your branch from <code>wrong_branch</code> and
+already made some commits, and you realise that you needed to create
+your branch from <code>master</code>. Rebase your commits onto
+<code>master</code> branch so that you don't have
+<code>wrong_branch</code> commits.</p>
+</blockquote>
+<p>now: readme-update branch</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git rebase —onto master wrong_branch readme-update</span><br></pre></td></tr></table></figure>
+<p>关于 <code>rebase</code> 的使用，参考<a
+href="https://womanonrails.com/git-rebase-onto">Git rebase --onto an
+overview</a>。</p>
+<h1 id="level-42---repack">Level 42 - Repack</h1>
+<blockquote>
+<p>Optimise how your repository is packaged ensuring that redundant
+packs are removed.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git repack -d</span><br></pre></td></tr></table></figure>
+<h1 id="level-43---pick">Level 43 - Pick</h1>
+<blockquote>
+<p>Your new feature isn't worth the time and you're going to delete it.
+But it has one commit that fills in <code>README</code> file, and you
+want this commit to be on the master as well.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git branch</span><br><span class="line">git switch new-branch</span><br><span class="line">git <span class="built_in">log</span> —oneline — README.md</span><br><span class="line">git switch master</span><br><span class="line">git cherry-pick [commit-SHA]</span><br></pre></td></tr></table></figure>
+<h1 id="level-44---grep">Level 44 - Grep</h1>
+<blockquote>
+<p>Your project's deadline approaches, you should evaluate how many
+TODOs are left in your code</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git grep TODO</span><br></pre></td></tr></table></figure>
+<h1 id="level-45---rename-commit">Level 45 - Rename commit</h1>
+<blockquote>
+<p>Correct the typo in the message of your first (non-root) commit.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git rebase -i HEAD~2</span><br><span class="line">% change `pick` to `reword` </span><br><span class="line">% fix the message <span class="keyword">then</span> save</span><br></pre></td></tr></table></figure>
+<h1 id="level-46---squash">Level 46 - Squash</h1>
+<blockquote>
+<p>You have committed several times but would like all those changes to
+be one commit.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git rebase -i HEAD~4</span><br><span class="line"></span><br><span class="line">% change `pick` to `squash`</span><br><span class="line">% comment other messages</span><br></pre></td></tr></table></figure>
+<p>这两个关卡都涉及了
+<code>git rebase -i</code>，一个相当有用的命令，可以让你做出非常多的对过去提交的变更，Git
+Exercise 中有关于这个命令的更复杂的练习。</p>
+<h1 id="level-47---merge-squash">Level 47 - Merge squash</h1>
+<blockquote>
+<p>Merge all commits from the long-feature-branch as a single
+commit.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git merge long-feature-branch —squash</span><br><span class="line">git commit -am <span class="string">&quot;&quot;</span></span><br></pre></td></tr></table></figure>
+<h1 id="level-48---reorder">Level 48 - Reorder</h1>
+<blockquote>
+<p>You have committed several times but in the wrong order. Please
+reorder your commits.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git rebase -i HEAD~3</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pick 468b4ea First commit</span><br><span class="line">pick b497bf6 Third commit</span><br><span class="line">pick c4ebdaf Second commit</span><br></pre></td></tr></table></figure>
+<p>与 <code>git log</code> 不同，<code>git rebase -i</code>
+模式下显示的提交顺序是最近的提交在末端，最初的提交在开始。</p>
+<h1 id="level-49---bisect">Level 49 - Bisect</h1>
+<blockquote>
+<p>A bug was introduced somewhere along the way. You know that running
+<code>ruby prog.rb 5</code> should output 15. You can also run
+<code>make test</code>. What are the first 7 chars of the hash of the
+commit that introduced the bug.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">log</span> —online </span><br><span class="line">% get the first commit </span><br><span class="line">git bisect start</span><br><span class="line">git bisect bad</span><br><span class="line">git bisect good [SHA]</span><br><span class="line">git bisect run make <span class="built_in">test</span></span><br></pre></td></tr></table></figure>
+<p>这个命令对于查找哪个版本引入的变更非常有用，尤其是利用测试模块测试哪个版本引入
+bug。我常常在公司的项目中要查找哪个版本开始改动，对于有明确提交信息的变更还相对好找，很多提交没有写明版本变更，找历史变更是非常痛苦的事情。</p>
+<h1 id="level-50---stage-lines">Level 50 - Stage lines</h1>
+<blockquote>
+<p>You've made changes within a single file that belong to two different
+features, but neither of the changes are yet staged. Stage only the
+changes belonging to the first feature.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git add -p </span><br><span class="line">e</span><br><span class="line">%remove second line </span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">+This change belongs to the first feature</span><br><span class="line">+This change belongs to the second feature</span><br></pre></td></tr></table></figure>
+<p>这个命令也是一个非常丰富的命令，
+可以将未暂存的一次大变更分为几个小变更，前面说到小步提交，但实际开发过程中其实很经常会习惯过去的方式一口气写完，这时候会出现这样的问题，可以通过这个命令来帮助你把一个大的变更拆解成几个小的变更。</p>
+<h1 id="level-51---find-old-branch">Level 51 - Find old branch</h1>
+<blockquote>
+<p>You have been working on a branch but got distracted by a major issue
+and forgot the name of it. Switch back to that branch.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git reflog</span><br></pre></td></tr></table></figure>
+<h1 id="level-52---revert">Level 52 - Revert</h1>
+<blockquote>
+<p>You have committed several times but want to undo the middle commit.
+All commits have been pushed, so you can't change existing history.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">log</span> —oneline</span><br><span class="line">git revert [commit-SHA]</span><br></pre></td></tr></table></figure>
+<h1 id="level-53---restore">Level 53 - Restore</h1>
+<blockquote>
+<p>You decided to delete your latest commit by running
+<code>git reset --hard HEAD^</code>. (Not a smart thing to do.) You then
+change your mind, and want that commit back. Restore the deleted
+commit.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git reflog</span><br><span class="line">git reset —hard HEAD@&#123;1&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="level-54---conflict">Level 54 - Conflict</h1>
+<blockquote>
+<p>You need to merge mybranch into the current branch (master). But
+there may be some incorrect changes in mybranch which may cause
+conflicts. Solve any merge-conflicts you come across and finish the
+merge.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git merge mybranch</span><br><span class="line">vim poem.txt</span><br></pre></td></tr></table></figure>
+<h1 id="level-55---submodule">Level 55 - Submodule</h1>
+<blockquote>
+<p>You want to include the files from the following repo:
+<code>https://github.com/jackmaney/githug-include-me</code> into a the
+folder <code>./githug-include-me</code>. Do this without manually
+cloning the repo or copying the files from the repo into this repo.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git submodule add [https://github.com/jackmaney/githug-include-me](https://github.com/jackmaney/githug-include-me) ./githug-include-me</span><br></pre></td></tr></table></figure>
+<h1 id="参考资料">参考资料</h1>
+<ol type="1">
+<li><a href="https://ndpsoftware.com/git-cheatsheet.html#loc=index;">Git
+Cheatsheet</a></li>
+<li><a
+href="https://www.conventionalcommits.org/en/v1.0.0/">Convertional
+Commits</a></li>
+<li><a href="https://github.com/github/gitignore">github/gitignore: A
+collection of useful .gitignore templates</a></li>
+<li><a href="https://www.toptal.com/developers/gitignore">gitignore.io -
+Create Useful .gitignore Files For Your Project</a></li>
+<li><a
+href="https://stackoverflow.com/questions/3162444/git-count-files-in-the-staged-index">git
+count files in the staged index - Stack Overflow</a></li>
+<li><a
+href="https://stackoverflow.com/questions/24455377/git-diff-with-line-numbers-git-log-with-line-numbers">Git
+diff with line numbers (Git log with line numbers) - Stack
+Overflow</a></li>
+<li><a href="https://womanonrails.com/git-rebase-onto">Git rebase --onto
+an overview</a></li>
+</ol>
+]]></content>
+      <categories>
+        <category>git</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
       </tags>
   </entry>
 </search>
