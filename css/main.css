@@ -793,6 +793,15 @@ pre code {
 .post-body .note img:last-child {
   margin-bottom: 0;
 }
+.post-body .note:not(.no-icon) {
+  padding-left: 2.5em;
+}
+.post-body .note:not(.no-icon)::before {
+  font-size: 1.5em;
+  left: 0.3em;
+  position: absolute;
+  top: calc(50% - 1em);
+}
 .post-body .note.default {
   border-left-color: #777;
 }
@@ -801,6 +810,12 @@ pre code {
 .post-body .note.default h4,
 .post-body .note.default h5,
 .post-body .note.default h6 {
+  color: #777;
+}
+.post-body .note.default:not(.no-icon)::before {
+  content: '\f0a9';
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
   color: #777;
 }
 .post-body .note.primary {
@@ -813,6 +828,12 @@ pre code {
 .post-body .note.primary h6 {
   color: #6f42c1;
 }
+.post-body .note.primary:not(.no-icon)::before {
+  content: '\f055';
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  color: #6f42c1;
+}
 .post-body .note.info {
   border-left-color: #428bca;
 }
@@ -821,6 +842,12 @@ pre code {
 .post-body .note.info h4,
 .post-body .note.info h5,
 .post-body .note.info h6 {
+  color: #428bca;
+}
+.post-body .note.info:not(.no-icon)::before {
+  content: '\f05a';
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
   color: #428bca;
 }
 .post-body .note.success {
@@ -833,6 +860,12 @@ pre code {
 .post-body .note.success h6 {
   color: #5cb85c;
 }
+.post-body .note.success:not(.no-icon)::before {
+  content: '\f058';
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  color: #5cb85c;
+}
 .post-body .note.warning {
   border-left-color: #f0ad4e;
 }
@@ -843,6 +876,12 @@ pre code {
 .post-body .note.warning h6 {
   color: #f0ad4e;
 }
+.post-body .note.warning:not(.no-icon)::before {
+  content: '\f06a';
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  color: #f0ad4e;
+}
 .post-body .note.danger {
   border-left-color: #d9534f;
 }
@@ -851,6 +890,12 @@ pre code {
 .post-body .note.danger h4,
 .post-body .note.danger h5,
 .post-body .note.danger h6 {
+  color: #d9534f;
+}
+.post-body .note.danger:not(.no-icon)::before {
+  content: '\f056';
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
   color: #d9534f;
 }
 .post-body .tabs {
@@ -1248,6 +1293,11 @@ header.header {
   border: 2px solid #333;
   max-width: 96px;
   padding: 2px;
+  border-radius: 50%;
+  transition: transform 1s ease-out;
+}
+.site-author-image:hover {
+  transform: rotateZ(360deg);
 }
 .site-author-name {
   color: #f5f5f5;
@@ -1261,12 +1311,6 @@ header.header {
 }
 .links-of-author a {
   font-size: 0.8125em;
-}
-.links-of-author .fa,
-.links-of-author .fab,
-.links-of-author .far,
-.links-of-author .fas {
-  margin-right: 2px;
 }
 .sidebar .sidebar-button:not(:first-child) {
   margin-top: 15px;
@@ -1543,6 +1587,7 @@ header.header {
   color: #000;
   display: inline-block;
   margin: 0 5px;
+  animation: icon-animate 1.33s ease-in-out infinite;
 }
 @-moz-keyframes icon-animate {
   0%, 100% {
@@ -2048,6 +2093,13 @@ header.header {
 }
 .post-block:last-of-type .post-eof {
   display: none;
+}
+.post-copyright ul {
+  list-style: none;
+  padding: 0.5em 1em;
+  background: var(--card-bg-color);
+  border-left: 3px solid #ff2a2a;
+  margin: 1em 0 0;
 }
 .post-tags {
   margin-top: 40px;
@@ -2741,7 +2793,7 @@ hr {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #529cff;
+  background: #780aff;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
@@ -2767,9 +2819,11 @@ hr {
 .sub-menu .menu-item {
   display: inline-block;
 }
+/* hide archive summary */
 .archive .collection-title {
   display: none !important;
 }
+/* custom background pic */
 .sidebar {
   background: url("/images/huiyuan.jpg");
   background-size: cover;
@@ -2781,6 +2835,30 @@ hr {
 .sidebar a {
   color: #000;
 }
+/* change sidebar chat button color to fit the background */
+.sidebar .sidebar-button button:hover {
+  background: #000;
+}
+.sidebar .sidebar-button button {
+  color: #000;
+  border: 1px solid #000;
+}
+/* hide sticky flag */
 .post-sticky-flag {
   display: none;
+}
+/* sidebar scrollbar */
+.sidebar-panel-container::-webkit-scrollbar {
+  background-color: unset;
+  width: 11px;
+}
+.sidebar-panel-container::-webkit-scrollbar-thumb {
+  background-color: #e0ffff;
+}
+.sidebar-panel-container::-webkit-scrollbar-corner {
+  background-color: #ffb6c1;
+}
+.sidebar-panel-container::-webkit-scrollbar-track {
+  --webkit-box-shadow: inset 0 0 7px rgba(0,0,0,0.5);
+  box-shadow: inset 0 0 7px rgba(0,0,0,0.5);
 }
