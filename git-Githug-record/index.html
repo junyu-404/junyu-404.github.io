@@ -87,7 +87,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fab fa-fort-awesome fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-question fa-fw"></i>关于</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-list fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-inbox fa-fw"></i>归档</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fab fa-fort-awesome fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-question fa-fw"></i>关于</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-list fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-inbox fa-fw"></i>归档</a></li><li class="menu-item menu-item-notes"><a href="/notes/index.htm" rel="section"><i class="fa fa-tags fa-fw"></i>notes</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -161,18 +161,18 @@ over branch</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" 
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">102</span>
+          <span class="site-state-item-count">95</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">23</span>
+        <span class="site-state-item-count">22</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">38</span>
+        <span class="site-state-item-count">37</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -338,7 +338,8 @@ Linux 中的通配符规则是一致的。</p>
 有点像是打游戏断点存档，在哪里断点存档你就可以从那里重新开始。一次提交包含多个改动，当你追溯自己的版本变更时就非常困难。</p>
 <p>理解 Git 命令与各个不同区域的关系参见 <a
 target="_blank" rel="noopener" href="https://ndpsoftware.com/git-cheatsheet.html#loc=index;">Git
-Cheatsheet</a>。</p>
+Cheatsheet</a><a href="#fn1" class="footnote-ref" id="fnref1"
+role="doc-noteref"><sup>1</sup></a>。</p>
 <h1 id="level-4---commit">Level 4 - Commit</h1>
 <blockquote>
 <p>The <code>README</code> file has been added to your staging area, now
@@ -349,7 +350,8 @@ commit it.</p>
 参数在提交时也提交对本次提交的内容的附注。如没有使用此参数，Git
 将会使用唤起你的编辑器以便键入提交信息。提交信息推荐参考 <a
 target="_blank" rel="noopener" href="https://www.conventionalcommits.org/en/v1.0.0/">Convertional
-Commits</a>，以让你的提交信息更通用，更规范，也更易读。</p>
+Commits</a><a href="#fn2" class="footnote-ref" id="fnref2"
+role="doc-noteref"><sup>2</sup></a>，以让你的提交信息更通用，更规范，也更易读。</p>
 <h1 id="level-5---clone">Level 5 - Clone</h1>
 <blockquote>
 <p>Clone the repository at <a
@@ -379,10 +381,13 @@ VS 产生的文件。</p>
 <p>两个 <code>gitignore</code> 的参考：</p>
 <ul>
 <li><a target="_blank" rel="noopener" href="https://github.com/github/gitignore">github/gitignore: A
-collection of useful .gitignore templates</a> [Github 官方]</li>
+collection of useful .gitignore templates</a> <a href="#fn3"
+class="footnote-ref" id="fnref3"
+role="doc-noteref"><sup>3</sup></a></li>
 <li><a target="_blank" rel="noopener" href="https://www.toptal.com/developers/gitignore">gitignore.io -
-Create Useful .gitignore Files For Your Project</a>
-[带搜索功能，查找起来比较方便]</li>
+Create Useful .gitignore Files For Your Project</a> <a href="#fn4"
+class="footnote-ref" id="fnref4"
+role="doc-noteref"><sup>4</sup></a></li>
 </ul>
 <h1 id="level-8---include">Level 8 - Include</h1>
 <blockquote>
@@ -407,7 +412,9 @@ be committed?</p>
 <p>使用 <code>status</code>
 可能是最简单的方式，但文件较多时就不方便了。参考 <a
 target="_blank" rel="noopener" href="https://stackoverflow.com/questions/3162444/git-count-files-in-the-staged-index">git
-count files in the staged index - Stack Overflow</a>。</p>
+count files in the staged index - Stack Overflow</a><a href="#fn5"
+class="footnote-ref" id="fnref5"
+role="doc-noteref"><sup>5</sup></a>。</p>
 <h1 id="level-11---rm">Level 11 - Rm</h1>
 <blockquote>
 <p>A file has been removed from the working tree, however the file was
@@ -513,10 +520,10 @@ the url of remote_location.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull origin master</span><br></pre></td></tr></table></figure>
 <h1 id="level-27---remote-add">Level 27 - Remote add</h1>
 <blockquote>
-<p>Add a remote repository called <code>origin</code> with the url <a
-target="_blank" rel="noopener" href="https://github.com/githug/githug">https://github.com/githug/githug</a></p>
+<p>Add a remote repository called <code>origin</code> with the url
+https://github.com/githug/githug</p>
 </blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin [https://github.com/githug/githug](https://github.com/githug/githug)</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin https://github.com/githug/githug</span><br></pre></td></tr></table></figure>
 <h1 id="level-28---push">Level 28 - Push</h1>
 <blockquote>
 <p>Your local master branch has diverged from the remote origin/master
@@ -532,7 +539,8 @@ your last commit. Find out which line has changed.</p>
 <p>Git diff 的信息并非实际行数，参考 <a
 target="_blank" rel="noopener" href="https://stackoverflow.com/questions/24455377/git-diff-with-line-numbers-git-log-with-line-numbers">Git
 diff with line numbers (Git log with line numbers) - Stack
-Overflow</a>。</p>
+Overflow</a><a href="#fn6" class="footnote-ref" id="fnref6"
+role="doc-noteref"><sup>6</sup></a>。</p>
 <h1 id="level-30---blame">Level 30 - Blame</h1>
 <blockquote>
 <p>Someone has put a password inside the file <code>config.rb</code>
@@ -617,7 +625,8 @@ your branch from <code>master</code>. Rebase your commits onto
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase —onto master wrong_branch readme-update</span><br></pre></td></tr></table></figure>
 <p>关于 <code>rebase</code> 的使用，参考<a
 target="_blank" rel="noopener" href="https://womanonrails.com/git-rebase-onto">Git rebase --onto an
-overview</a>。</p>
+overview</a><a href="#fn7" class="footnote-ref" id="fnref7"
+role="doc-noteref"><sup>7</sup></a>。</p>
 <h1 id="level-42---repack">Level 42 - Repack</h1>
 <blockquote>
 <p>Optimise how your repository is packaged ensuring that redundant
@@ -721,28 +730,42 @@ merge.</p>
 folder <code>./githug-include-me</code>. Do this without manually
 cloning the repo or copying the files from the repo into this repo.</p>
 </blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git submodule add [https://github.com/jackmaney/githug-include-me](https://github.com/jackmaney/githug-include-me) ./githug-include-me</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git submodule add https://github.com/jackmaney/githug-include-me ./githug-include-me</span><br></pre></td></tr></table></figure>
 <h1 id="参考资料">参考资料</h1>
-<ol type="1">
-<li><a target="_blank" rel="noopener" href="https://ndpsoftware.com/git-cheatsheet.html#loc=index;">Git
-Cheatsheet</a></li>
-<li><a
+<section id="footnotes" class="footnotes footnotes-end-of-document"
+role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1"><p><a
+target="_blank" rel="noopener" href="https://ndpsoftware.com/git-cheatsheet.html#loc=index;">Git
+Cheatsheet</a><a href="#fnref1" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p><a
 target="_blank" rel="noopener" href="https://www.conventionalcommits.org/en/v1.0.0/">Convertional
-Commits</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/github/gitignore">github/gitignore: A
-collection of useful .gitignore templates</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.toptal.com/developers/gitignore">gitignore.io -
-Create Useful .gitignore Files For Your Project</a></li>
-<li><a
+Commits</a><a href="#fnref2" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p><a
+target="_blank" rel="noopener" href="https://github.com/github/gitignore">github/gitignore: A
+collection of useful .gitignore templates</a><a href="#fnref3"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p><a
+target="_blank" rel="noopener" href="https://www.toptal.com/developers/gitignore">gitignore.io - Create
+Useful .gitignore Files For Your Project</a><a href="#fnref4"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p><a
 target="_blank" rel="noopener" href="https://stackoverflow.com/questions/3162444/git-count-files-in-the-staged-index">git
-count files in the staged index - Stack Overflow</a></li>
-<li><a
+count files in the staged index - Stack Overflow</a><a href="#fnref5"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p><a
 target="_blank" rel="noopener" href="https://stackoverflow.com/questions/24455377/git-diff-with-line-numbers-git-log-with-line-numbers">Git
 diff with line numbers (Git log with line numbers) - Stack
-Overflow</a></li>
-<li><a target="_blank" rel="noopener" href="https://womanonrails.com/git-rebase-onto">Git rebase --onto
-an overview</a></li>
+Overflow</a><a href="#fnref6" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p><a target="_blank" rel="noopener" href="https://womanonrails.com/git-rebase-onto">Git
+rebase --onto an overview</a><a href="#fnref7" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
 </ol>
+</section>
 
     </div>
 
@@ -781,6 +804,9 @@ an overview</a></li>
                 </a>
             </div>
             <div class="post-nav-item">
+                <a href="/Essay-2019-nCoV-personal-record-21/" rel="next" title="疫期小记 21">
+                  疫期小记 21 <i class="fa fa-chevron-right"></i>
+                </a>
             </div>
           </div>
     </footer>
@@ -801,7 +827,7 @@ an overview</a></li>
 
 <div class="copyright">
   &copy; 2018 – 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa-solid fa-paw"></i>
   </span>

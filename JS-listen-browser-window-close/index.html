@@ -87,7 +87,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fab fa-fort-awesome fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-question fa-fw"></i>关于</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-list fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-inbox fa-fw"></i>归档</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fab fa-fort-awesome fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-question fa-fw"></i>关于</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-list fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-inbox fa-fw"></i>归档</a></li><li class="menu-item menu-item-notes"><a href="/notes/index.htm" rel="section"><i class="fa fa-tags fa-fw"></i>notes</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -159,18 +159,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">102</span>
+          <span class="site-state-item-count">95</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">23</span>
+        <span class="site-state-item-count">22</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">38</span>
+        <span class="site-state-item-count">37</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -305,14 +305,16 @@ Debug / Run 过程中，在其他浏览器中均不会弹出错误提示，但�
 <code>deletePDF()</code> 函数。</p>
 <h1 id="onbeforeunloadbeforeunload">onbeforeunload/beforeunload</h1>
 <p>查询 MDN 的 <a
-target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/WindowEventHandlers/onbeforeunload">文档</a>
-，<code>onbeforeunload</code> 是 <code>beforeunload</code>
-的处理程序。语法如下：</p>
+target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/WindowEventHandlers/onbeforeunload">文档</a><a
+href="#fn1" class="footnote-ref" id="fnref1"
+role="doc-noteref"><sup>1</sup></a> ，<code>onbeforeunload</code> 是
+<code>beforeunload</code> 的处理程序。语法如下：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">window</span>.<span class="property">onbeforeunload</span> = <span class="keyword">function</span>(<span class="params">event</span>) &#123; ... &#125;;</span><br></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">window</span>.<span class="title function_">addEventListener</span>(<span class="string">&quot;beforeunload&quot;</span>, <span class="keyword">function</span>(<span class="params">event</span>) &#123; ... &#125;);</span><br></pre></td></tr></table></figure>
 <p><em>MDN 建议使用第二种语法。</em> 根据 <a
 target="_blank" rel="noopener" href="https://stackoverflow.com/a/20001174/8257973">javascript -
-beforeunload Or onbeforeunload - Stack Overflow</a>
+beforeunload Or onbeforeunload - Stack Overflow</a><a href="#fn2"
+class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>
 ，第一种语法取代原有的处理程序，第二种语法新增一个处理程序。</p>
 <p>分别使用上述两种语法修改原有的处理函数，原有的函数中的第 3
 行存在语法错误，该语句用于判断鼠标的位置，将该语句移除后将会出现多次触发
@@ -370,8 +372,9 @@ without debug 调试，通过不同浏览器打开不同窗口，此代码可以
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">window</span>.<span class="title function_">addEventListener</span>(<span class="string">&quot;unload&quot;</span>, deletePDF);</span><br></pre></td></tr></table></figure>
 <p><a
 target="_blank" rel="noopener" href="https://developers.google.com/web/updates/2018/07/page-lifecycle-api#legacy-lifecycle-apis-to-avoid">Page
-Lifecycle API | Web | Google Developers</a> 指出：使用
-<code>unload</code> , <code>beforeunload</code>
+Lifecycle API | Web | Google Developers</a><a href="#fn3"
+class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>
+指出：使用 <code>unload</code> , <code>beforeunload</code>
 作为检查页面生命周期的方式并不可靠，尤其是 <code>unload</code>
 在移动端极不可靠，建议使用 <code>pagehide</code>，而
 <code>beforeunload</code>
@@ -384,16 +387,10 @@ Lifecycle API | Web | Google Developers</a> 指出：使用
 以外可正常使用，而该项目没有移动端需求，目前尚不能看出使用
 <code>unload</code> 的劣势。</p>
 <h1 id="参考资料">参考资料</h1>
-<ul>
-<li><p><a
-target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/WindowEventHandlers/onbeforeunload">WindowEventHandlers.onbeforeunload
-- Web APIs | MDN</a></p></li>
+<ol type="1">
 <li><p><a
 target="_blank" rel="noopener" href="https://zh.javascript.info/onload-ondomcontentloaded">页生命周期：DOMContentLoaded,
 load, beforeunload, unload</a></p></li>
-<li><p><a
-target="_blank" rel="noopener" href="https://stackoverflow.com/questions/20001125/beforeunload-or-onbeforeunload">javascript
-- beforeunload Or onbeforeunload - Stack Overflow</a></p></li>
 <li><p><a
 target="_blank" rel="noopener" href="https://stackoverflow.com/questions/1631959/how-to-capture-the-browser-window-close-event">javascript
 - How to capture the browser window close event? - Stack
@@ -427,13 +424,28 @@ Stack Overflow</a></p></li>
 target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/Window/unload_event">Window:
 unload event - Web APIs | MDN</a></p></li>
 <li><p><a
-target="_blank" rel="noopener" href="https://developers.google.com/web/updates/2018/07/page-lifecycle-api#legacy-lifecycle-apis-to-avoid">Page
-Lifecycle API | Web | Google Developers</a></p></li>
-<li><p><a
 target="_blank" rel="noopener" href="https://stackoverflow.com/questions/64273246/capture-close-window-by-beforeunload-but-exclude-asp-button/64311590#64311590">javascript
 - capture close window by beforeunload but exclude asp button - Stack
 Overflow</a></p></li>
-</ul>
+</ol>
+<section id="footnotes" class="footnotes footnotes-end-of-document"
+role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1"><p><a
+target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/WindowEventHandlers/onbeforeunload">WindowEventHandlers.onbeforeunload
+- Web APIs | MDN</a><a href="#fnref1" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p><a
+target="_blank" rel="noopener" href="https://stackoverflow.com/questions/20001125/beforeunload-or-onbeforeunload">javascript
+- beforeunload Or onbeforeunload - Stack Overflow</a><a href="#fnref2"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p><a
+target="_blank" rel="noopener" href="https://developers.google.com/web/updates/2018/07/page-lifecycle-api#legacy-lifecycle-apis-to-avoid">Page
+Lifecycle API | Web | Google Developers</a><a href="#fnref3"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
 
     </div>
 
@@ -472,8 +484,8 @@ Overflow</a></p></li>
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/Book-2021-extract/" rel="next" title="书摘-2021读书摘录">
-                  书摘-2021读书摘录 <i class="fa fa-chevron-right"></i>
+                <a href="/JS-jquery-Zoom/" rel="next" title="JS-jQuery Zoom 使用">
+                  JS-jQuery Zoom 使用 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
@@ -495,7 +507,7 @@ Overflow</a></p></li>
 
 <div class="copyright">
   &copy; 2018 – 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa-solid fa-paw"></i>
   </span>
