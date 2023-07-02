@@ -2793,7 +2793,7 @@ hr {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #780aff;
+  background: #98d6fe;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
@@ -2825,7 +2825,7 @@ hr {
 }
 /* custom background pic */
 .sidebar {
-  background: url("/images/huiyuan.jpg");
+  background: url("/images/ai.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
