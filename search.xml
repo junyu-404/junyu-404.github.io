@@ -214,8 +214,9 @@ class="math inline">\(i\)</span>个元素的大小关系，不满足，则交换
   <entry>
     <title>算法-辗转相除法（欧几里得算法）</title>
     <url>/Algorithms-gcd-euclid/</url>
-    <content><![CDATA[<p>算法：辗转相除法（欧几里得算法） * GCD递归定理</p>
+    <content><![CDATA[<p>算法：辗转相除法（欧几里得算法）</p>
 <ul>
+<li><p>GCD递归定理</p></li>
 <li><p>辗转相除法算法概述</p></li>
 <li><p>辗转相除法伪代码</p></li>
 <li><p>辗转相除法代码实现</p></li>
@@ -223,11 +224,13 @@ class="math inline">\(i\)</span>个元素的大小关系，不满足，则交换
 <span id="more"></span>
 <p>对于两个数的最大公约数的求解，在我们的笔算过程中，通常是使用一个短除法，本质上其实也就是进行一个质因数分解的过程，但对于一个较大的数来说，将其进行质因数分解是一件非常耗时的过程，这显然不是一个好的做法，因此基于数论基础，我们有了辗转相除法，也叫做欧几里得算法。</p>
 <h1 id="gcd递归定理">GCD递归定理</h1>
-<p>在叙述该算法之前，先了解辗转相除法的实现前提也就是GCD递归定理： &gt;
-对任意非负整数<span class="math inline">\(a\)</span>和任意正整数<span
+<p>在叙述该算法之前，先了解辗转相除法的实现前提也就是GCD递归定理：</p>
+<blockquote>
+<p>对任意非负整数<span class="math inline">\(a\)</span>和任意正整数<span
 class="math inline">\(b\)</span>, <span class="math display">\[
 gcd(a,b) = gcd(b,a \quad mod \quad b)
 \]</span></p>
+</blockquote>
 <h1 id="辗转相除法算法概述">辗转相除法算法概述</h1>
 <p>基于上面的GCD递归定理，我们便可以知道可以采用递归的方式，对两个整数的最大公约数进行相对较为高效的计算。</p>
 <h2 id="算法描述">算法描述：</h2>
@@ -235,7 +238,7 @@ gcd(a,b) = gcd(b,a \quad mod \quad b)
 <li>求两个数的余数；</li>
 <li>若余数为0，则较小数即为最大公约数；否则执行3；</li>
 <li>用较小的数替换较大的数，用余数替换较小的数；</li>
-<li>返回1.</li>
+<li>返回1。</li>
 </ol>
 <h2 id="算法示例">算法示例</h2>
 <p><span class="math display">\[
@@ -243,7 +246,8 @@ gcd(30,21) = gcd(21,9) = gcd(9,3) = gcd(3,0) = 3
 \]</span></p>
 <h1 id="辗转相除法伪代码表示">辗转相除法伪代码表示</h1>
 <p>下面我们采用递归方式实现辗转相除法。 (以下引用自《算法导论》)</p>
-<p>GCD(a, b) <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> b == <span class="number">0</span></span><br><span class="line">  <span class="keyword">return</span> a</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">  <span class="keyword">return</span> GCD(b, a mod b)</span><br></pre></td></tr></table></figure></p>
+<p>GCD(a, b)</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> b == <span class="number">0</span></span><br><span class="line">  <span class="keyword">return</span> a</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">  <span class="keyword">return</span> GCD(b, a mod b)</span><br></pre></td></tr></table></figure>
 <h1 id="辗转相除法实现">辗转相除法实现</h1>
 <h2 id="c">C</h2>
 <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">gcd</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (b == <span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> a;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> gcd(b, a % b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
